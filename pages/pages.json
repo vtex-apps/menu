@@ -1,0 +1,12 @@
+{
+  "pages": {
+    "menu": {
+      "path": "/"
+    }
+  },
+  "extensions": {
+    "menu": {
+      "component": "Menu"
+    }
+  }
+}
