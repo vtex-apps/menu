@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import VTEXClasses from './CSSClasses'
+
+import { Link } from 'render'
 
 import './global.css'
-
-const VTEXClasses = {
-  MAIN_CLASS: 'vtex-menu',
-}
 
 /**
  * Links Menu Component. Shows a menu bar with links.
@@ -17,22 +16,28 @@ class Menu extends Component {
 
   renderLink(link) {
     let className = 'f6 link dib white dim mr3 mr4-ns'
-    if (link.position === 'LEFT') {
-      className = 'link white-70 hover-white no-underline flex items-left pa3'
+    switch (link.position) {
+      case 'LEFT':
+        className = `${VTEXClasses.LINK_LEFT} link white-70 hover-white no-underline flex items-left pa3`
+        break
+      case 'MIDDLE':
+        className = `${VTEXClasses.LINK_MIDDLE} ${className}`
+        break
+      case 'RIGHT':
+        className = `${VTEXClasses.LINK_RIGHT} ${className}`
+        break
     }
     return (
-      <a className={className} href={link.url}>
+      <Link key={link.title} className={`${className}`} page={link.url}>
         {link.title}
-      </a>
+      </Link>
     )
   }
 
   getLinksFromProps() {
     const links = []
-    for (const prop in this.props) {
-      if (prop.includes('menu')) {
-        links.push(this.props[prop])
-      }
+    for (let i = 0; i < this.props.numberOfMenus; i++) {
+      this.props[`menu${i}`] && links.push(this.props[`menu${i}`])
     }
     return links
   }
@@ -43,29 +48,22 @@ class Menu extends Component {
       <div className={`${VTEXClasses.MAIN_CLASS} w-100`}>
         <nav className="flex justify-between bb b--white-10 bg-near-black">
           <div className="flex-grow pa3 flex items-center">
-            {links.map(link => {
-              if (link.position === 'LEFT') {
-                return this.renderLink(link)
-              }
+            {links.filter((link) => link['position'] === 'LEFT').map((link2) => {
+              return this.renderLink(link2)
             })}
           </div>
           <div className="flex-grow pa3 flex items-center">
-            <a className="f6 link dib white dim mr3 mr4-ns" href="#0">Meus Pedidos</a>
-            {links.map(link => {
-              if (link.position === 'MIDDLE') {
-                return this.renderLink(link)
-              }
+            {links.filter(link => link['position'] === 'MIDDLE').map(link => {
+              return this.renderLink(link)
             })}
           </div>
           <div className="flex-grow pa3 flex items-center">
-            {links.map(link => {
-              if (link.position === 'RIGHT') {
-                return this.renderLink(link)
-              }
+            {links.filter(link => link['position'] === 'RIGHT').map(link => {
+              return this.renderLink(link)
             })}
-            <a className="f8 link dib white dim mr3 mr4-ns" href="#0">
+            <Link className={'f8 link dib white dim mr3 mr4-ns clear-link'} page="/">
               {this.getAccountName()}
-            </a>
+            </Link>
           </div>
         </nav>
       </div>
@@ -76,22 +74,24 @@ class Menu extends Component {
 Menu.getSchema = ({ numberOfMenus }) => {
   const dynamicProperties = {}
 
-  for (let i = 1; i <= numberOfMenus; i++) {
+  for (let i = 0; i < numberOfMenus; i++) {
     dynamicProperties[`menu${i}`] = {
       type: 'object',
+      title: `Menu ${i}`,
       properties: {
         title: {
-          title: `Menu ${i} (Title)`,
+          title: 'Title',
           type: 'string',
         },
         url: {
-          title: `Menu ${i} (URL)`,
+          title: 'URL',
           type: 'string',
         },
         position: {
-          title: `Menu ${i} (Position)`,
+          title: 'Position',
           type: 'string',
           enum: ['LEFT', 'MIDDLE', 'RIGHT'],
+          default: 'MIDDLE',
         },
       },
     }
@@ -119,7 +119,7 @@ Menu.getSchema = ({ numberOfMenus }) => {
 }
 
 Menu.defaultProps = {
-  numberOfMenus: 1,
+  numberOfMenus: 0,
 }
 
 Menu.propTypes = {

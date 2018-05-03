@@ -20,10 +20,9 @@ describe('Menu Component', () => {
     expect(wrapper.container).toMatchSnapshot()
   })
 
-  it('should render 3 slide items', () => {
-    // expect(
-    //   wrapper.container.querySelectorAll('.vtex-shelf').length
-    // ).toBe(1)
-    expect(1).toBe(1)
+  it('should render 1 link', () => {
+    expect(
+      wrapper.container.querySelectorAll('a').length
+    ).toBe(1)
   })
 })

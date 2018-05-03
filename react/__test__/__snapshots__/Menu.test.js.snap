@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu Component should match snapshot 1`] = `
+<div>
+  <div
+    class="vtex-menu w-100"
+  >
+    <nav
+      class="flex justify-between bb b--white-10 bg-near-black"
+    >
+      <div
+        class="flex-grow pa3 flex items-center"
+      />
+      <div
+        class="flex-grow pa3 flex items-center"
+      />
+      <div
+        class="flex-grow pa3 flex items-center"
+      >
+        <a
+          href="#"
+        >
+          storecomponents
+        </a>
+      </div>
+    </nav>
+  </div>
+</div>
+`;

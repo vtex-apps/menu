@@ -24,6 +24,9 @@ Add "vtex.menu" as your app dependency.
 
 ```css
 vtex-menu
+vtex-menu__link-left
+vtex-menu__link-middle
+vtex-menu__link-right
 ```
 
 ## Tests
