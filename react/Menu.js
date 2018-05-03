@@ -9,7 +9,63 @@ import './global.css'
 /**
  * Links Menu Component. Shows a menu bar with links.
  */
-class Menu extends Component {
+export default class Menu extends Component {
+  static defaultProps = {
+    numberOfItems: 0,
+  }
+
+  static propTypes = {
+    /** Number of menu links. */
+    numberOfItems: PropTypes.number.isRequired,
+  }
+
+  static getSchema = ({ numberOfItems }) => {
+    const dynamicProperties = {}
+
+    for (let i = 0; i < numberOfItems; i++) {
+      dynamicProperties[`menu${i}`] = {
+        type: 'object',
+        title: `Menu ${i}`,
+        properties: {
+          title: {
+            title: 'Title',
+            type: 'string',
+          },
+          url: {
+            title: 'URL',
+            type: 'string',
+          },
+          position: {
+            title: 'Position',
+            type: 'string',
+            enum: ['LEFT', 'MIDDLE', 'RIGHT'],
+            default: 'MIDDLE',
+          },
+        },
+      }
+    }
+
+    const schema = {
+      title: 'Menu',
+      description: 'A menu bar of links',
+      type: 'object',
+      properties: {
+        numberOfItems: {
+          title: 'Number of Menus',
+          type: 'number',
+          default: 0,
+        },
+      },
+    }
+
+    schema.properties = {
+      ...schema.properties,
+      ...dynamicProperties,
+    }
+
+    return schema
+  }
+
   getAccountName() {
     return global.__RUNTIME__ && global.__RUNTIME__.account
   }
@@ -36,7 +92,7 @@ class Menu extends Component {
 
   getLinksFromProps() {
     const links = []
-    for (let i = 0; i < this.props.numberOfMenus; i++) {
+    for (let i = 0; i < this.props.numberOfItems; i++) {
       this.props[`menu${i}`] && links.push(this.props[`menu${i}`])
     }
     return links
@@ -70,61 +126,3 @@ class Menu extends Component {
     )
   }
 }
-
-Menu.getSchema = ({ numberOfMenus }) => {
-  const dynamicProperties = {}
-
-  for (let i = 0; i < numberOfMenus; i++) {
-    dynamicProperties[`menu${i}`] = {
-      type: 'object',
-      title: `Menu ${i}`,
-      properties: {
-        title: {
-          title: 'Title',
-          type: 'string',
-        },
-        url: {
-          title: 'URL',
-          type: 'string',
-        },
-        position: {
-          title: 'Position',
-          type: 'string',
-          enum: ['LEFT', 'MIDDLE', 'RIGHT'],
-          default: 'MIDDLE',
-        },
-      },
-    }
-  }
-
-  const schema = {
-    title: 'Menu',
-    description: 'A menu bar of links',
-    type: 'object',
-    properties: {
-      numberOfMenus: {
-        title: 'Number of Menus',
-        type: 'number',
-        default: 0,
-      },
-    },
-  }
-
-  schema.properties = {
-    ...schema.properties,
-    ...dynamicProperties,
-  }
-
-  return schema
-}
-
-Menu.defaultProps = {
-  numberOfMenus: 0,
-}
-
-Menu.propTypes = {
-  /** Number of menu links. */
-  numberOfMenus: PropTypes.number.isRequired,
-}
-
-export default Menu
