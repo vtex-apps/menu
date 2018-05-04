@@ -59,7 +59,7 @@ class Menu extends Component {
 
   getLinksFromProps() {
     const links = []
-    for (let i = 0; i < this.props.numberOfItems; i++) {
+    for (let i = 1; i <= this.props.numberOfItems; i++) {
       this.props[`item${i}`] && links.push(this.props[`item${i}`])
     }
     return links
@@ -115,8 +115,7 @@ MenuWithIntl.getUiSchema = () => {
   return uiSchema
 }
 
-MenuWithIntl.getSchema = (props) => {
-  const numberOfItems = props.numberOfItems
+MenuWithIntl.getSchema = ({ numberOfItems }) => {
   const dynamicProperties = {}
 
   const intl = MenuWithIntl.intl
