@@ -1,1 +1,3 @@
-.vtex-menu {}
+.vtex-menu nav {
+  height: 3rem;
+}

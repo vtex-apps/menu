@@ -16,13 +16,7 @@ exports[`Menu Component should match snapshot 1`] = `
       />
       <div
         class="flex-grow pa3 flex items-center"
-      >
-        <a
-          href="#"
-        >
-          storecomponents
-        </a>
-      </div>
+      />
     </nav>
   </div>
 </div>

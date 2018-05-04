@@ -1,73 +1,40 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import VTEXClasses from './CSSClasses'
+import { intlShape, injectIntl } from 'react-intl'
 
 import { Link } from 'render'
 
 import './global.css'
 
+const MAX_ITEMS = 10
+
 /**
  * Links Menu Component. Shows a menu bar with links.
  */
-export default class Menu extends Component {
+class Menu extends Component {
+  constructor(props) {
+    super(props)
+    MenuWithIntl.intl = props.intl
+    MenuWithIntl.uiSchema = MenuWithIntl.getUiSchema()
+  }
+
   static defaultProps = {
     numberOfItems: 0,
   }
 
   static propTypes = {
-    /** Number of menu links. */
+    /** Number of items. */
     numberOfItems: PropTypes.number.isRequired,
+    /** Intl instance. */
+    intl: intlShape.isRequired,
   }
 
-  static getSchema = ({ numberOfItems }) => {
-    const dynamicProperties = {}
-
-    for (let i = 0; i < numberOfItems; i++) {
-      dynamicProperties[`menu${i}`] = {
-        type: 'object',
-        title: `Menu ${i}`,
-        properties: {
-          title: {
-            title: 'Title',
-            type: 'string',
-          },
-          url: {
-            title: 'URL',
-            type: 'string',
-          },
-          position: {
-            title: 'Position',
-            type: 'string',
-            enum: ['LEFT', 'MIDDLE', 'RIGHT'],
-            default: 'MIDDLE',
-          },
-        },
-      }
+  componentWillReceiveProps(props) {
+    if (this.props.intl !== props.intl) {
+      MenuWithIntl.intl = props.intl
+      MenuWithIntl.uiSchema = MenuWithIntl.getUiSchema()
     }
-
-    const schema = {
-      title: 'Menu',
-      description: 'A menu bar of links',
-      type: 'object',
-      properties: {
-        numberOfItems: {
-          title: 'Number of Menus',
-          type: 'number',
-          default: 0,
-        },
-      },
-    }
-
-    schema.properties = {
-      ...schema.properties,
-      ...dynamicProperties,
-    }
-
-    return schema
-  }
-
-  getAccountName() {
-    return global.__RUNTIME__ && global.__RUNTIME__.account
   }
 
   renderLink(link) {
@@ -93,7 +60,7 @@ export default class Menu extends Component {
   getLinksFromProps() {
     const links = []
     for (let i = 0; i < this.props.numberOfItems; i++) {
-      this.props[`menu${i}`] && links.push(this.props[`menu${i}`])
+      this.props[`item${i}`] && links.push(this.props[`item${i}`])
     }
     return links
   }
@@ -117,12 +84,95 @@ export default class Menu extends Component {
             {links.filter(link => link['position'] === 'RIGHT').map(link => {
               return this.renderLink(link)
             })}
-            <Link className={'f8 link dib white dim mr3 mr4-ns clear-link'} page="/">
-              {this.getAccountName()}
-            </Link>
           </div>
         </nav>
       </div>
     )
   }
 }
+
+const MenuWithIntl = injectIntl(Menu)
+
+MenuWithIntl.getUiSchema = () => {
+  const intl = MenuWithIntl.intl
+  const titleIntl = (intl && intl.formatMessage({ id: 'menu.title' })) || 'Title'
+
+  const uiSchema = {
+    numberOfItems: {
+      'ui:widget': 'range',
+    },
+  }
+  for (let i = 1; i <= MAX_ITEMS; i++) {
+    uiSchema[`item${i}`] = {
+      title: { 'ui:placeholder': titleIntl },
+      url: { 'ui:placeholder': 'URL' },
+      position: {
+        'ui:widget': 'radio',
+        'ui:options': { 'inline': true },
+      },
+    }
+  }
+  return uiSchema
+}
+
+MenuWithIntl.getSchema = (props) => {
+  const numberOfItems = props.numberOfItems
+  const dynamicProperties = {}
+
+  const intl = MenuWithIntl.intl
+  const descriptionIntl = (intl && intl.formatMessage({ id: 'menu.description' })) || 'A menu bar of links'
+  const titleIntl = (intl && intl.formatMessage({ id: 'menu.title' })) || 'Title'
+  const numberOfItemsIntl = (intl && intl.formatMessage({ id: 'menu.numberOfItems' })) || 'Number of items'
+  const positionIntl = (intl && intl.formatMessage({ id: 'menu.position' })) || 'Position'
+  const leftIntl = (intl && intl.formatMessage({ id: 'menu.position.left' })) || 'LEFT'
+  const middleIntl = (intl && intl.formatMessage({ id: 'menu.position.middle' })) || 'MIDDLE'
+  const rightIntl = (intl && intl.formatMessage({ id: 'menu.position.right' })) || 'RIGHT'
+
+  for (let i = 1; i <= numberOfItems; i++) {
+    dynamicProperties[`item${i}`] = {
+      type: 'object',
+      title: `Item #${i}`,
+      required: ['title', 'url', 'position'],
+      properties: {
+        title: {
+          title: titleIntl,
+          type: 'string',
+        },
+        url: {
+          title: 'URL',
+          type: 'string',
+        },
+        position: {
+          title: positionIntl,
+          type: 'string',
+          enum: [ 'LEFT', 'MIDDLE', 'RIGHT' ],
+          enumNames: [leftIntl, middleIntl, rightIntl],
+          default: 'MIDDLE',
+        },
+      },
+    }
+  }
+  const schema = {
+    title: 'Menu',
+    description: descriptionIntl,
+    type: 'object',
+    properties: {
+      numberOfItems: {
+        title: numberOfItemsIntl,
+        type: 'number',
+        default: 0,
+        minimum: 0,
+        maximum: MAX_ITEMS,
+      },
+    },
+  }
+
+  schema.properties = {
+    ...schema.properties,
+    ...dynamicProperties,
+  }
+
+  return schema
+}
+
+export default MenuWithIntl

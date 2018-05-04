@@ -6,7 +6,3 @@ window.matchMedia = window.matchMedia || function() {
     removeListener: function() {},
   }
 }
-
-global.__RUNTIME__ = {
-  account: 'storecomponents'
-}
