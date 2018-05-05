@@ -3,7 +3,7 @@
   "menu.description": "Una barra de menú de enlaces",
   "menu.position": "Posición",
   "menu.numberOfItems": "Número de elementos",
-  "menu.position.left": "IZQUIERDA",
-  "menu.position.middle": "MEDIO",
-  "menu.position.right": "DERECHO"
+  "menu.position.left": "Izquierda",
+  "menu.position.middle": "Medio",
+  "menu.position.right": "Derecha"
 }
