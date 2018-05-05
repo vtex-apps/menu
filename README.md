@@ -6,6 +6,8 @@ A Menu Component. Shows a superior bar with links and dropdown menus.
 
 ### Travis CI 
 
+[![Build Status](https://travis-ci.org/vtex-apps/menu.svg?branch=master)](https://travis-ci.org/vtex-apps/menu)
+
 ## Usage
 
 Add "vtex.menu" as your app dependency.
