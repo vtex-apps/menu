@@ -1,0 +1,9 @@
+{
+  "menu.title": "Título",
+  "menu.description": "Uma barra de menu com links",
+  "menu.position": "Posição",
+  "menu.numberOfItems": "Número de elementos",
+  "menu.position.left": "Esquerda",
+  "menu.position.middle": "Centro",
+  "menu.position.right": "Direita"
+}
