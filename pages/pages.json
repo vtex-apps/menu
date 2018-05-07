@@ -1,7 +1,7 @@
 {
   "pages": {
     "menu": {
-      "path": "/menu"
+      "path": "/_v/menu"
     }
   },
   "extensions": {

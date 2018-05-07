@@ -41,7 +41,7 @@ class Menu extends Component {
     let className = 'f6 link dib white dim mr3 mr4-ns'
     switch (link.position) {
       case 'LEFT':
-        className = `${VTEXClasses.LINK_LEFT} link white-70 hover-white no-underline flex items-left pa3`
+        className = `${VTEXClasses.LINK_LEFT} ${className}`
         break
       case 'MIDDLE':
         className = `${VTEXClasses.LINK_MIDDLE} ${className}`
@@ -71,8 +71,8 @@ class Menu extends Component {
       <div className={`${VTEXClasses.MAIN_CLASS} w-100`}>
         <nav className="flex justify-between bb b--white-10 bg-near-black">
           <div className="flex-grow pa3 flex items-center">
-            {links.filter((link) => link['position'] === 'LEFT').map((link2) => {
-              return this.renderLink(link2)
+            {links.filter(link => link['position'] === 'LEFT').map(link => {
+              return this.renderLink(link)
             })}
           </div>
           <div className="flex-grow pa3 flex items-center">
@@ -144,7 +144,7 @@ MenuWithIntl.getSchema = ({ numberOfItems }) => {
         position: {
           title: positionIntl,
           type: 'string',
-          enum: [ 'LEFT', 'MIDDLE', 'RIGHT' ],
+          enum: ['LEFT', 'MIDDLE', 'RIGHT'],
           enumNames: [leftIntl, middleIntl, rightIntl],
           default: 'MIDDLE',
         },
