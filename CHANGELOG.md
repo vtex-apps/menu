@@ -7,9 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.1.1] - 2018-05-07
+
+### Fixed 
+- Fix format text of left item. 
+
 ## [0.1.0] - 2018-05-05
 
 ### Added
-
- - **initial** Initial files and logic created
+ - Initial files and logic created.
 
