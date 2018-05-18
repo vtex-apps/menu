@@ -3,7 +3,7 @@
 exports[`Menu Component should match snapshot 1`] = `
 <div>
   <div
-    class="vtex-menu w-100"
+    class="vtex-menu w-100 dn db-ns"
   >
     <nav
       class="flex justify-between bb b--white-10 bg-near-black"

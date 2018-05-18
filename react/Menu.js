@@ -68,7 +68,7 @@ class Menu extends Component {
   render() {
     const links = this.getLinksFromProps()
     return (
-      <div className={`${VTEXClasses.MAIN_CLASS} w-100`}>
+      <div className={`${VTEXClasses.MAIN_CLASS} w-100 dn db-ns`}>
         <nav className="flex justify-between bb b--white-10 bg-near-black">
           <div className="flex-grow pa3 flex items-center">
             {links.filter(link => link['position'] === 'LEFT').map(link => {
