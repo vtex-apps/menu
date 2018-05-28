@@ -50,10 +50,15 @@ class Menu extends Component {
         className = `${VTEXClasses.LINK_RIGHT} ${className}`
         break
     }
+    console.log(link.typeOfRoute)
     return (
-      <Link key={link.title} className={`${className}`} page={link.url}>
-        {link.title}
-      </Link>
+      link.typeOfRoute === 'INTERNAL'
+        ? <a className={className} href={link.url}>
+            {link.title}
+          </a>
+        : <Link key={link.title} className={className} page={link.url}>
+            {link.title}
+          </Link>
     )
   }
 
@@ -121,6 +126,9 @@ MenuWithIntl.getSchema = ({ numberOfItems }) => {
   const intl = MenuWithIntl.intl
   const descriptionIntl = (intl && intl.formatMessage({ id: 'menu.description' })) || 'A menu bar of links'
   const titleIntl = (intl && intl.formatMessage({ id: 'menu.title' })) || 'Title'
+  const typeOfRouteIntl = (intl && intl.formatMessage({ id: 'menu.typeOfRoute' })) || 'Type of Route'
+  const internalIntl = (intl && intl.formatMessage({ id: 'menu.typeOfRoute.internal' })) || 'Internal'
+  const externalIntl = (intl && intl.formatMessage({ id: 'menu.typeOfRoute.external' })) || 'External'
   const numberOfItemsIntl = (intl && intl.formatMessage({ id: 'menu.numberOfItems' })) || 'Number of items'
   const positionIntl = (intl && intl.formatMessage({ id: 'menu.position' })) || 'Position'
   const leftIntl = (intl && intl.formatMessage({ id: 'menu.position.left' })) || 'LEFT'
@@ -131,7 +139,7 @@ MenuWithIntl.getSchema = ({ numberOfItems }) => {
     dynamicProperties[`item${i}`] = {
       type: 'object',
       title: `Item #${i}`,
-      required: ['title', 'url', 'position'],
+      required: ['title', 'url', 'typeOfRoute', 'position'],
       properties: {
         title: {
           title: titleIntl,
@@ -140,6 +148,13 @@ MenuWithIntl.getSchema = ({ numberOfItems }) => {
         url: {
           title: 'URL',
           type: 'string',
+        },
+        typeOfRoute: {
+          title: typeOfRouteIntl,
+          type: 'string',
+          enum: ['INTERNAL', 'EXTERNAL'],
+          enumNames: [internalIntl, externalIntl],
+          default: 'INTERNAL',
         },
         position: {
           title: positionIntl,

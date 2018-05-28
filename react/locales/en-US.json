@@ -1,5 +1,8 @@
 {
   "menu.title": "Title",
+  "menu.typeOfRoute": "Type of Route",
+  "menu.typeOfRoute.internal": "Internal",
+  "menu.typeOfRoute.external": "External",
   "menu.description": "A menu bar of links",
   "menu.position": "Position",
   "menu.numberOfItems": "Number of items",

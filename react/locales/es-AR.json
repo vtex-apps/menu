@@ -1,5 +1,8 @@
 {
   "menu.title": "Título",
+  "menu.typeOfRoute": "Tipo da Rota",
+  "menu.typeOfRoute.internal": "Interna",
+  "menu.typeOfRoute.external": "Externo",
   "menu.description": "Una barra de menú de enlaces",
   "menu.position": "Posición",
   "menu.numberOfItems": "Número de elementos",
