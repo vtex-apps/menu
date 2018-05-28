@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import VTEXClasses from './CSSClasses'
+import VTEXClasses from './constants/CSSClasses'
+import Options from './constants/Options'
 import { intlShape, injectIntl } from 'react-intl'
 
 import { Link } from 'render'
 
 import './global.css'
+
+const GLOBAL_PAGES = global.__RUNTIME__ && Object.keys(global.__RUNTIME__.pages)
 
 const MAX_ITEMS = 10
 
@@ -37,28 +40,39 @@ class Menu extends Component {
     }
   }
 
+  getParams = params => {
+    const json = {}
+    if (params) {
+      const array = params.split(',')
+      array.forEach(item => {
+        const pair = item.split('=')
+        json[pair[0]] = pair[1]
+      })
+      return json
+    }
+  }
+
   renderLink(link) {
     let className = 'f6 link dib white dim mr3 mr4-ns'
     switch (link.position) {
-      case 'LEFT':
+      case Options.LEFT:
         className = `${VTEXClasses.LINK_LEFT} ${className}`
         break
-      case 'MIDDLE':
+      case Options.MIDDLE:
         className = `${VTEXClasses.LINK_MIDDLE} ${className}`
         break
-      case 'RIGHT':
+      case Options.RIGHT:
         className = `${VTEXClasses.LINK_RIGHT} ${className}`
         break
     }
-    console.log(link.typeOfRoute)
     return (
-      link.typeOfRoute === 'INTERNAL'
-        ? <a className={className} href={link.url}>
-            {link.title}
-          </a>
-        : <Link key={link.title} className={className} page={link.url}>
+      link.typeOfRoute === Options.INTERNAL
+        ? <Link className={className} key={link.title} page={link.page} params={this.getParams(link.params)}>
             {link.title}
           </Link>
+        : <a className={className} href={link.page} target="_blank">
+            {link.title}
+          </a>
     )
   }
 
@@ -120,7 +134,7 @@ MenuWithIntl.getUiSchema = () => {
   return uiSchema
 }
 
-MenuWithIntl.getSchema = ({ numberOfItems }) => {
+MenuWithIntl.getSchema = props => {
   const dynamicProperties = {}
 
   const intl = MenuWithIntl.intl
@@ -129,39 +143,67 @@ MenuWithIntl.getSchema = ({ numberOfItems }) => {
   const typeOfRouteIntl = (intl && intl.formatMessage({ id: 'menu.typeOfRoute' })) || 'Type of Route'
   const internalIntl = (intl && intl.formatMessage({ id: 'menu.typeOfRoute.internal' })) || 'Internal'
   const externalIntl = (intl && intl.formatMessage({ id: 'menu.typeOfRoute.external' })) || 'External'
+  const internalPageTitle = (intl && intl.formatMessage({ id: 'menu.typeOfRoute.internal.pageTitle' })) || 'Target Page'
+  const internalParamsTitle = (intl && intl.formatMessage({ id: 'menu.typeOfRoute.internal.paramsTitle' })) || 'Params'
+  const internalParamsDescription = (intl && intl.formatMessage({ id: 'menu.typeOfRoute.internal.paramsDescription' })) || 'Comma separated params, e.g.: key=value,a=b,c=d'
+  const externalPageTitle = (intl && intl.formatMessage({ id: 'menu.typeOfRoute.external.pageTitle' })) || 'URL (should start with https or http)'
   const numberOfItemsIntl = (intl && intl.formatMessage({ id: 'menu.numberOfItems' })) || 'Number of items'
   const positionIntl = (intl && intl.formatMessage({ id: 'menu.position' })) || 'Position'
-  const leftIntl = (intl && intl.formatMessage({ id: 'menu.position.left' })) || 'LEFT'
-  const middleIntl = (intl && intl.formatMessage({ id: 'menu.position.middle' })) || 'MIDDLE'
-  const rightIntl = (intl && intl.formatMessage({ id: 'menu.position.right' })) || 'RIGHT'
+  const leftIntl = (intl && intl.formatMessage({ id: 'menu.position.left' })) || 'Left'
+  const middleIntl = (intl && intl.formatMessage({ id: 'menu.position.middle' })) || 'Middle'
+  const rightIntl = (intl && intl.formatMessage({ id: 'menu.position.right' })) || 'Right'
 
-  for (let i = 1; i <= numberOfItems; i++) {
+  const menuLink = typeOfRoute => 
+    typeOfRoute === Option.INTERNAL
+      ? {
+          page: {
+            type: 'string',
+            enum: GLOBAL_PAGES,
+            title: internalPageTitle,
+          },
+          params: {
+            type: 'string',
+            description: internalParamsDescription,
+            title: internalParamsTitle,
+          },
+        }
+      : {
+          page: {
+            type: 'string',
+            title: externalPageTitle
+          },
+        }
+
+  for (let i = 1; i <= props.numberOfItems; i++) {
     dynamicProperties[`item${i}`] = {
       type: 'object',
       title: `Item #${i}`,
-      required: ['title', 'url', 'typeOfRoute', 'position'],
+      required: ['title', 'typeOfRoute', 'position', 'page'],
       properties: {
         title: {
           title: titleIntl,
           type: 'string',
         },
-        url: {
-          title: 'URL',
-          type: 'string',
-        },
         typeOfRoute: {
           title: typeOfRouteIntl,
           type: 'string',
-          enum: ['INTERNAL', 'EXTERNAL'],
+          enum: [Options.INTERNAL, Options.EXTERNAL],
           enumNames: [internalIntl, externalIntl],
-          default: 'INTERNAL',
+          default: Options.INTERNAL,
+          widget: {
+            'ui:widget': 'radio',
+            'ui:options': {
+              'inline': true,
+            },
+          },
         },
+        ...menuLink((props[`item${i}`] && props[`item${i}`].typeOfRoute) || Options.INTERNAL),
         position: {
           title: positionIntl,
           type: 'string',
-          enum: ['LEFT', 'MIDDLE', 'RIGHT'],
+          enum: [Options.LEFT, Options.MIDDLE, Options.RIGHT],
           enumNames: [leftIntl, middleIntl, rightIntl],
-          default: 'MIDDLE',
+          default: Options.MIDDLE,
         },
       },
     }
