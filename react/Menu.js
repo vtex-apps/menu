@@ -4,6 +4,11 @@ import VTEXClasses from './constants/CSSClasses'
 import Options from './constants/Options'
 import { intlShape, injectIntl } from 'react-intl'
 
+import keyBy from 'lodash/keyBy'
+import map from 'lodash/map'
+import range from 'lodash/range'
+import property from 'lodash/property'
+
 import { Link } from 'render'
 
 import './global.css'
@@ -90,17 +95,17 @@ class Menu extends Component {
       <div className={`${VTEXClasses.MAIN_CLASS} w-100 dn db-ns`}>
         <nav className="flex justify-between bb b--white-10 bg-near-black">
           <div className="flex-grow pa3 flex items-center">
-            {links.filter(link => link['position'] === 'LEFT').map(link => {
+            {links.filter(link => link['position'] === Options.LEFT).map(link => {
               return this.renderLink(link)
             })}
           </div>
           <div className="flex-grow pa3 flex items-center">
-            {links.filter(link => link['position'] === 'MIDDLE').map(link => {
+            {links.filter(link => link['position'] === Options.MIDDLE).map(link => {
               return this.renderLink(link)
             })}
           </div>
           <div className="flex-grow pa3 flex items-center">
-            {links.filter(link => link['position'] === 'RIGHT').map(link => {
+            {links.filter(link => link['position'] === Options.RIGHT).map(link => {
               return this.renderLink(link)
             })}
           </div>
@@ -112,10 +117,12 @@ class Menu extends Component {
 
 const MenuWithIntl = injectIntl(Menu)
 
-MenuWithIntl.getUiSchema = () => {
+const getFormattedMessage = (messageId, defaultMessage) => {
   const intl = MenuWithIntl.intl
-  const titleIntl = (intl && intl.formatMessage({ id: 'menu.title' })) || 'Title'
+  return (intl && intl.formatMessage({ id: messageId })) || defaultMessage
+}
 
+MenuWithIntl.getUiSchema = () => {
   const uiSchema = {
     numberOfItems: {
       'ui:widget': 'range',
@@ -123,8 +130,7 @@ MenuWithIntl.getUiSchema = () => {
   }
   for (let i = 1; i <= MAX_ITEMS; i++) {
     uiSchema[`item${i}`] = {
-      title: { 'ui:placeholder': titleIntl },
-      url: { 'ui:placeholder': 'URL' },
+      title: { 'ui:placeholder': getFormattedMessage('menu.title', 'Title') },
       position: {
         'ui:widget': 'radio',
         'ui:options': { 'inline': true },
@@ -135,26 +141,23 @@ MenuWithIntl.getUiSchema = () => {
 }
 
 MenuWithIntl.getSchema = props => {
-  const dynamicProperties = {}
-
-  const intl = MenuWithIntl.intl
-  const descriptionIntl = (intl && intl.formatMessage({ id: 'menu.description' })) || 'A menu bar of links'
-  const titleIntl = (intl && intl.formatMessage({ id: 'menu.title' })) || 'Title'
-  const typeOfRouteIntl = (intl && intl.formatMessage({ id: 'menu.typeOfRoute' })) || 'Type of Route'
-  const internalIntl = (intl && intl.formatMessage({ id: 'menu.typeOfRoute.internal' })) || 'Internal'
-  const externalIntl = (intl && intl.formatMessage({ id: 'menu.typeOfRoute.external' })) || 'External'
-  const internalPageTitle = (intl && intl.formatMessage({ id: 'menu.typeOfRoute.internal.pageTitle' })) || 'Target Page'
-  const internalParamsTitle = (intl && intl.formatMessage({ id: 'menu.typeOfRoute.internal.paramsTitle' })) || 'Params'
-  const internalParamsDescription = (intl && intl.formatMessage({ id: 'menu.typeOfRoute.internal.paramsDescription' })) || 'Comma separated params, e.g.: key=value,a=b,c=d'
-  const externalPageTitle = (intl && intl.formatMessage({ id: 'menu.typeOfRoute.external.pageTitle' })) || 'URL (should start with https or http)'
-  const numberOfItemsIntl = (intl && intl.formatMessage({ id: 'menu.numberOfItems' })) || 'Number of items'
-  const positionIntl = (intl && intl.formatMessage({ id: 'menu.position' })) || 'Position'
-  const leftIntl = (intl && intl.formatMessage({ id: 'menu.position.left' })) || 'Left'
-  const middleIntl = (intl && intl.formatMessage({ id: 'menu.position.middle' })) || 'Middle'
-  const rightIntl = (intl && intl.formatMessage({ id: 'menu.position.right' })) || 'Right'
+  const descriptionIntl = getFormattedMessage('menu.description', 'A menu bar of links')
+  const titleIntl = getFormattedMessage('menu.title', 'Title')
+  const typeOfRouteIntl = getFormattedMessage('menu.typeOfRoute', 'Type of Route')
+  const internalIntl = getFormattedMessage('menu.typeOfRoute.internal', 'Internal')
+  const externalIntl = getFormattedMessage('menu.typeOfRoute.external', 'External')
+  const internalPageTitle = getFormattedMessage('menu.typeOfRoute.internal.pageTitle', 'Target Page')
+  const internalParamsTitle = getFormattedMessage('menu.typeOfRoute.internal.paramsTitle', 'Params')
+  const internalParamsDescription = getFormattedMessage('menu.typeOfRoute.internal.paramsDescription', 'Comma separated params, e.g.: key=value,a=b,c=d')
+  const externalPageTitle = getFormattedMessage('menu.typeOfRoute.external.pageTitle', 'URL (should start with https or http)')
+  const numberOfItemsIntl = getFormattedMessage('menu.numberOfItems', 'Number of items')
+  const positionIntl = getFormattedMessage('menu.position', 'Position')
+  const leftIntl = getFormattedMessage('menu.position.left', 'Left')
+  const middleIntl = getFormattedMessage('menu.position.middle', 'Middle')
+  const rightIntl = getFormattedMessage('menu.position.right', 'Right')
 
   const menuLink = typeOfRoute => 
-    typeOfRoute === Option.INTERNAL
+    typeOfRoute === Options.INTERNAL
       ? {
           page: {
             type: 'string',
@@ -173,41 +176,49 @@ MenuWithIntl.getSchema = props => {
             title: externalPageTitle
           },
         }
-
-  for (let i = 1; i <= props.numberOfItems; i++) {
-    dynamicProperties[`item${i}`] = {
-      type: 'object',
-      title: `Item #${i}`,
-      required: ['title', 'typeOfRoute', 'position', 'page'],
-      properties: {
-        title: {
-          title: titleIntl,
-          type: 'string',
-        },
-        typeOfRoute: {
-          title: typeOfRouteIntl,
-          type: 'string',
-          enum: [Options.INTERNAL, Options.EXTERNAL],
-          enumNames: [internalIntl, externalIntl],
-          default: Options.INTERNAL,
-          widget: {
-            'ui:widget': 'radio',
-            'ui:options': {
-              'inline': true,
+      
+    const getDynamicProps = numberOfItems =>
+      keyBy(
+        map(range(1, numberOfItems + 1), index => {
+          return {
+            type: 'object',
+            title: `Item #${index}`,
+            key: `item${index}`,
+            required: ['title', 'typeOfRoute', 'position', 'page'],
+            properties: {
+              title: {
+                title: titleIntl,
+                type: 'string',
+              },
+              typeOfRoute: {
+                title: typeOfRouteIntl,
+                type: 'string',
+                enum: [Options.INTERNAL, Options.EXTERNAL],
+                enumNames: [internalIntl, externalIntl],
+                default: Options.INTERNAL,
+                widget: {
+                  'ui:widget': 'radio',
+                  'ui:options': {
+                    'inline': true,
+                  },
+                },
+              },
+              ...menuLink((props[`item${index}`] && props[`item${index}`].typeOfRoute) || Options.INTERNAL),
+              position: {
+                title: positionIntl,
+                type: 'string',
+                enum: [Options.LEFT, Options.MIDDLE, Options.RIGHT],
+                enumNames: [leftIntl, middleIntl, rightIntl],
+                default: Options.MIDDLE,
+              },
             },
-          },
-        },
-        ...menuLink((props[`item${i}`] && props[`item${i}`].typeOfRoute) || Options.INTERNAL),
-        position: {
-          title: positionIntl,
-          type: 'string',
-          enum: [Options.LEFT, Options.MIDDLE, Options.RIGHT],
-          enumNames: [leftIntl, middleIntl, rightIntl],
-          default: Options.MIDDLE,
-        },
-      },
-    }
-  }
+          }
+        }),
+        property('key')
+      )
+
+  const dynamicProperties = props.numberOfItems && getDynamicProps(props.numberOfItems)
+
   const schema = {
     title: 'Menu',
     description: descriptionIntl,
