@@ -175,49 +175,46 @@ MenuWithIntl.getSchema = props => {
             type: 'string',
             title: externalPageTitle
           },
-        }
-      
-    const getDynamicProps = numberOfItems =>
-      keyBy(
-        map(range(1, numberOfItems + 1), index => {
-          return {
-            type: 'object',
-            title: `Item #${index}`,
-            key: `item${index}`,
-            required: ['title', 'typeOfRoute', 'position', 'page'],
-            properties: {
-              title: {
-                title: titleIntl,
-                type: 'string',
-              },
-              typeOfRoute: {
-                title: typeOfRouteIntl,
-                type: 'string',
-                enum: [Options.INTERNAL, Options.EXTERNAL],
-                enumNames: [internalIntl, externalIntl],
-                default: Options.INTERNAL,
-                widget: {
-                  'ui:widget': 'radio',
-                  'ui:options': {
-                    'inline': true,
-                  },
-                },
-              },
-              ...menuLink((props[`item${index}`] && props[`item${index}`].typeOfRoute) || Options.INTERNAL),
-              position: {
-                title: positionIntl,
-                type: 'string',
-                enum: [Options.LEFT, Options.MIDDLE, Options.RIGHT],
-                enumNames: [leftIntl, middleIntl, rightIntl],
-                default: Options.MIDDLE,
+        }  
+
+  const dynamicProperties = props.numberOfItems && keyBy(
+    map(range(1, props.numberOfItems + 1), index => {
+      return {
+        type: 'object',
+        title: `Item #${index}`,
+        key: `item${index}`,
+        required: ['title', 'typeOfRoute', 'position', 'page'],
+        properties: {
+          title: {
+            title: titleIntl,
+            type: 'string',
+          },
+          typeOfRoute: {
+            title: typeOfRouteIntl,
+            type: 'string',
+            enum: [Options.INTERNAL, Options.EXTERNAL],
+            enumNames: [internalIntl, externalIntl],
+            default: Options.INTERNAL,
+            widget: {
+              'ui:widget': 'radio',
+              'ui:options': {
+                'inline': true,
               },
             },
-          }
-        }),
-        property('key')
-      )
-
-  const dynamicProperties = props.numberOfItems && getDynamicProps(props.numberOfItems)
+          },
+          ...menuLink((props[`item${index}`] && props[`item${index}`].typeOfRoute) || Options.INTERNAL),
+          position: {
+            title: positionIntl,
+            type: 'string',
+            enum: [Options.LEFT, Options.MIDDLE, Options.RIGHT],
+            enumNames: [leftIntl, middleIntl, rightIntl],
+            default: Options.MIDDLE,
+          },
+        },
+      }
+    }),
+    property('key')
+  )
 
   const schema = {
     title: 'Menu',
