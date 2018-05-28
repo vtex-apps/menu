@@ -70,7 +70,7 @@ class Menu extends Component {
         ? <Link className={className} key={link.title} page={link.page} params={this.getParams(link.params)}>
             {link.title}
           </Link>
-        : <a className={className} href={link.page} target="_blank">
+        : <a className={className} key={link.title} href={link.page} target="_blank">
             {link.title}
           </a>
     )
