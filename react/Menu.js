@@ -18,24 +18,14 @@ const GLOBAL_PAGES = global.__RUNTIME__ && Object.keys(global.__RUNTIME__.pages)
 const MAX_ITEMS = 10
 
 /**
- * Links Menu Component. Shows a menu bar with links.
+ * Links Menu Component. 
+ * Shows a menu bar with links.
  */
 class Menu extends Component {
   constructor(props) {
     super(props)
     MenuWithIntl.intl = props.intl
     MenuWithIntl.uiSchema = MenuWithIntl.getUiSchema()
-  }
-
-  static defaultProps = {
-    numberOfItems: 0,
-  }
-
-  static propTypes = {
-    /** Number of items. */
-    numberOfItems: PropTypes.number.isRequired,
-    /** Intl instance. */
-    intl: intlShape.isRequired,
   }
 
   componentWillReceiveProps(props) {
@@ -45,6 +35,9 @@ class Menu extends Component {
     }
   }
 
+  /**
+   * Convert the string params to a js object
+   */
   getParams = params => {
     const json = {}
     if (params) {
@@ -115,6 +108,18 @@ class Menu extends Component {
   }
 }
 
+Menu.defaultProps = {
+  numberOfItems: 0,
+}
+
+Menu.propTypes = {
+  /** Number of items. */
+  numberOfItems: PropTypes.number.isRequired,
+  /** Intl instance. */
+  intl: intlShape.isRequired,
+}
+
+
 const MenuWithIntl = injectIntl(Menu)
 
 const getFormattedMessage = (messageId, defaultMessage) => {
@@ -141,41 +146,26 @@ MenuWithIntl.getUiSchema = () => {
 }
 
 MenuWithIntl.getSchema = props => {
-  const descriptionIntl = getFormattedMessage('menu.description', 'A menu bar of links')
-  const titleIntl = getFormattedMessage('menu.title', 'Title')
-  const typeOfRouteIntl = getFormattedMessage('menu.typeOfRoute', 'Type of Route')
-  const internalIntl = getFormattedMessage('menu.typeOfRoute.internal', 'Internal')
-  const externalIntl = getFormattedMessage('menu.typeOfRoute.external', 'External')
-  const internalPageTitle = getFormattedMessage('menu.typeOfRoute.internal.pageTitle', 'Target Page')
-  const internalParamsTitle = getFormattedMessage('menu.typeOfRoute.internal.paramsTitle', 'Params')
-  const internalParamsDescription = getFormattedMessage('menu.typeOfRoute.internal.paramsDescription', 'Comma separated params, e.g.: key=value,a=b,c=d')
-  const externalPageTitle = getFormattedMessage('menu.typeOfRoute.external.pageTitle', 'URL (should start with https or http)')
-  const numberOfItemsIntl = getFormattedMessage('menu.numberOfItems', 'Number of items')
-  const positionIntl = getFormattedMessage('menu.position', 'Position')
-  const leftIntl = getFormattedMessage('menu.position.left', 'Left')
-  const middleIntl = getFormattedMessage('menu.position.middle', 'Middle')
-  const rightIntl = getFormattedMessage('menu.position.right', 'Right')
-
   const menuLink = typeOfRoute => 
     typeOfRoute === Options.INTERNAL
       ? {
           page: {
             type: 'string',
             enum: GLOBAL_PAGES,
-            title: internalPageTitle,
+            title: getFormattedMessage('menu.typeOfRoute.internal.pageTitle', 'Target Page'),
           },
           params: {
             type: 'string',
-            description: internalParamsDescription,
-            title: internalParamsTitle,
+            description: getFormattedMessage('menu.typeOfRoute.internal.paramsDescription', 'Comma separated params, e.g.: key=value,a=b,c=d'),
+            title: getFormattedMessage('menu.typeOfRoute.internal.paramsTitle', 'Params'),
           },
         }
       : {
           page: {
             type: 'string',
-            title: externalPageTitle
+            title: getFormattedMessage('menu.typeOfRoute.external.pageTitle', 'URL (should start with https or http)')
           },
-        }  
+        }
 
   const dynamicProperties = props.numberOfItems && keyBy(
     map(range(1, props.numberOfItems + 1), index => {
@@ -183,17 +173,28 @@ MenuWithIntl.getSchema = props => {
         type: 'object',
         title: `Item #${index}`,
         key: `item${index}`,
-        required: ['title', 'typeOfRoute', 'position', 'page'],
+        required: [
+          'title', 
+          'typeOfRoute', 
+          'position', 
+          'page'
+        ],
         properties: {
           title: {
-            title: titleIntl,
+            title: getFormattedMessage('menu.title', 'Title'),
             type: 'string',
           },
           typeOfRoute: {
-            title: typeOfRouteIntl,
+            title: getFormattedMessage('menu.typeOfRoute', 'Type of Route'),
             type: 'string',
-            enum: [Options.INTERNAL, Options.EXTERNAL],
-            enumNames: [internalIntl, externalIntl],
+            enum: [
+              Options.INTERNAL, 
+              Options.EXTERNAL
+            ],
+            enumNames: [
+              getFormattedMessage('menu.typeOfRoute.internal', 'Internal'), 
+              getFormattedMessage('menu.typeOfRoute.external', 'External')
+            ],
             default: Options.INTERNAL,
             widget: {
               'ui:widget': 'radio',
@@ -204,10 +205,18 @@ MenuWithIntl.getSchema = props => {
           },
           ...menuLink((props[`item${index}`] && props[`item${index}`].typeOfRoute) || Options.INTERNAL),
           position: {
-            title: positionIntl,
+            title: getFormattedMessage('menu.position', 'Position'),
             type: 'string',
-            enum: [Options.LEFT, Options.MIDDLE, Options.RIGHT],
-            enumNames: [leftIntl, middleIntl, rightIntl],
+            enum: [
+              Options.LEFT, 
+              Options.MIDDLE, 
+              Options.RIGHT
+            ],
+            enumNames: [
+              getFormattedMessage('menu.position.left', 'Left'), 
+              getFormattedMessage('menu.position.middle', 'Middle'), 
+              getFormattedMessage('menu.position.right', 'Right')
+            ],
             default: Options.MIDDLE,
           },
         },
@@ -218,11 +227,11 @@ MenuWithIntl.getSchema = props => {
 
   const schema = {
     title: 'Menu',
-    description: descriptionIntl,
+    description: getFormattedMessage('menu.description', 'A menu bar of links'),
     type: 'object',
     properties: {
       numberOfItems: {
-        title: numberOfItemsIntl,
+        title: getFormattedMessage('menu.numberOfItems', 'Number of items'),
         type: 'number',
         default: 0,
         minimum: 0,
