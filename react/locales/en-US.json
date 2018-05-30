@@ -1,5 +1,12 @@
 {
   "menu.title": "Title",
+  "menu.typeOfRoute": "Type of Route",
+  "menu.typeOfRoute.internal": "Internal",
+  "menu.typeOfRoute.external": "External",
+  "menu.typeOfRoute.internal.pageTitle": "Target Page",
+  "menu.typeOfRoute.internal.paramsTitle": "Params",
+  "menu.typeOfRoute.internal.paramsDescription": "Comma separated params, e.g.: key=value,a=b,c=d",
+  "menu.typeOfRoute.external.pageTitle": "URL (should start with https or http)",
   "menu.description": "A menu bar of links",
   "menu.position": "Position",
   "menu.numberOfItems": "Number of items",

@@ -1,5 +1,12 @@
 {
   "menu.title": "Título",
+  "menu.typeOfRoute": "Tipo da Rota",
+  "menu.typeOfRoute.internal": "Interna",
+  "menu.typeOfRoute.external": "Externa",
+  "menu.typeOfRoute.internal.pageTitle": "Página Alvo",
+  "menu.typeOfRoute.internal.paramsTitle": "Parámetros",
+  "menu.typeOfRoute.internal.paramsDescription": "Parâmetros separados por vírgula, ex.: chave=valor,a=b,c=d",
+  "menu.typeOfRoute.external.pageTitle": "URL (deve começar com https ou http)",
   "menu.description": "Uma barra de menu com links",
   "menu.position": "Posição",
   "menu.numberOfItems": "Número de elementos",

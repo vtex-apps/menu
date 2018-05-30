@@ -7,9 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Support for internal and external link routes.
+
 ## [0.2.0] - 2018-5-30
+
 ### Changed
-- Hide menu on mobile mode
+- Hide menu on mobile mode.
 
 ## [0.1.1] - 2018-05-07
 
