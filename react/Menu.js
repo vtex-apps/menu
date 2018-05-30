@@ -50,6 +50,13 @@ class Menu extends Component {
     }
   }
 
+  getValidPage = page => {
+    if (!page.startsWith('http://') && !page.startsWith('https://')) {
+      page = `http://${page}`
+    }
+    return page
+  }
+
   renderLink(link) {
     let className = 'f6 link dib white dim mr3 mr4-ns'
     switch (link.position) {
@@ -65,10 +72,12 @@ class Menu extends Component {
     }
     return (
       link.typeOfRoute === Options.INTERNAL
-        ? <Link className={className} key={link.title} page={link.page} params={this.getParams(link.params)}>
+        ? <Link className={className} key={link.title} 
+            page={link.page} params={this.getParams(link.params)}>
             {link.title}
           </Link>
-        : <a className={className} key={link.title} href={link.page} target="_blank">
+        : <a className={className} key={link.title} 
+            href={this.getValidPage(link.page)} target="_blank">
             {link.title}
           </a>
     )
