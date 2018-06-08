@@ -21,18 +21,120 @@ const MAX_ITEMS = 10
  * Links Menu Component. 
  * Shows a menu bar with links.
  */
-class Menu extends Component {
-  constructor(props) {
-    super(props)
-    MenuWithIntl.intl = props.intl
-    MenuWithIntl.uiSchema = MenuWithIntl.getUiSchema()
+export default class Menu extends Component {
+  static propTypes = {
+    /** Number of items. */
+    numberOfItems: PropTypes.number.isRequired,
   }
 
-  componentWillReceiveProps(props) {
-    if (this.props.intl !== props.intl) {
-      MenuWithIntl.intl = props.intl
-      MenuWithIntl.uiSchema = MenuWithIntl.getUiSchema()
+  static defaultProps = {
+    numberOfItems: 0,
+  }
+  
+  static getSchema = props => {
+    const schema = {
+      title: 'editor.menu',
+      description: 'editor.menu.description',
+      type: 'object',
+      properties: {
+        numberOfItems: {
+          title: 'editor.menu.numberOfItems',
+          type: 'number',
+          default: 0,
+          minimum: 0,
+          maximum: MAX_ITEMS,
+          widget: {
+            'ui:widget': 'range',
+          },
+        },
+      },
     }
+
+    const menuLink = typeOfRoute => 
+      typeOfRoute === Options.INTERNAL
+        ? {
+            page: {
+              type: 'string',
+              enum: GLOBAL_PAGES,
+              title: 'editor.menu.typeOfRoute.internal.pageTitle',
+            },
+            params: {
+              type: 'string',
+              description: 'editor.menu.typeOfRoute.internal.paramsDescription',
+              title: 'editor.menu.typeOfRoute.internal.paramsTitle',
+            },
+          }
+        : {
+            page: {
+              type: 'string',
+              title: 'editor.menu.typeOfRoute.external.pageTitle',
+            },
+          }
+  
+    const dynamicProperties = props.numberOfItems && keyBy(
+      map(range(1, props.numberOfItems), index => {
+        return {
+          type: 'object',
+          title: { id: 'editor.menu.item', values: { id: index } },
+          key: `item${index}`,
+          required: [
+            'title', 
+            'typeOfRoute', 
+            'position', 
+            'page',
+          ],
+          properties: {
+            title: {
+              title: 'editor.menu.title',
+              type: 'string',
+            },
+            typeOfRoute: {
+              title: 'editor.menu.typeOfRoute',
+              type: 'string',
+              enum: [
+                Options.INTERNAL, 
+                Options.EXTERNAL,
+              ],
+              enumNames: [
+                'editor.menu.typeOfRoute.internal',
+                'editor.menu.typeOfRoute.external',
+              ],
+              default: Options.INTERNAL,
+              widget: {
+                'ui:widget': 'radio',
+                'ui:options': {
+                  'inline': true,
+                },
+              },
+            },
+            ...menuLink((props[`item${index}`] && props[`item${index}`].typeOfRoute) || Options.INTERNAL),
+            position: {
+              title: 'editor.menu.position',
+              type: 'string',
+              enum: [
+                Options.LEFT, 
+                Options.MIDDLE, 
+                Options.RIGHT,
+              ],
+              enumNames: [
+                'editor.menu.position.left',
+                'editor.menu.position.middle',
+                'editor.menu.position.right',
+              ],
+              default: Options.MIDDLE,
+            },
+          },
+        }
+      }),
+      property('key')
+    )
+  
+    schema.properties = {
+      ...schema.properties,
+      ...dynamicProperties,
+    }
+  
+    return schema
   }
 
   /**
@@ -51,7 +153,7 @@ class Menu extends Component {
   }
 
   getValidPage = page => {
-    if (!page.startsWith('http://') && !page.startsWith('https://')) {
+    if (!page || (!page.startsWith('http://') && !page.startsWith('https://'))) {
       page = `http://${page}`
     }
     return page
@@ -116,145 +218,3 @@ class Menu extends Component {
     )
   }
 }
-
-Menu.defaultProps = {
-  numberOfItems: 0,
-}
-
-Menu.propTypes = {
-  /** Number of items. */
-  numberOfItems: PropTypes.number.isRequired,
-  /** Intl instance. */
-  intl: intlShape.isRequired,
-}
-
-
-const MenuWithIntl = injectIntl(Menu)
-
-const getFormattedMessage = (messageId, defaultMessage) => {
-  const intl = MenuWithIntl.intl
-  return (intl && intl.formatMessage({ id: messageId })) || defaultMessage
-}
-
-MenuWithIntl.getUiSchema = () => {
-  const uiSchema = {
-    numberOfItems: {
-      'ui:widget': 'range',
-    },
-  }
-  for (let i = 1; i <= MAX_ITEMS; i++) {
-    uiSchema[`item${i}`] = {
-      title: { 'ui:placeholder': getFormattedMessage('menu.title', 'Title') },
-      position: {
-        'ui:widget': 'radio',
-        'ui:options': { 'inline': true },
-      },
-    }
-  }
-  return uiSchema
-}
-
-MenuWithIntl.getSchema = props => {
-  const menuLink = typeOfRoute => 
-    typeOfRoute === Options.INTERNAL
-      ? {
-          page: {
-            type: 'string',
-            enum: GLOBAL_PAGES,
-            title: getFormattedMessage('menu.typeOfRoute.internal.pageTitle', 'Target Page'),
-          },
-          params: {
-            type: 'string',
-            description: getFormattedMessage('menu.typeOfRoute.internal.paramsDescription', 'Comma separated params, e.g.: key=value,a=b,c=d'),
-            title: getFormattedMessage('menu.typeOfRoute.internal.paramsTitle', 'Params'),
-          },
-        }
-      : {
-          page: {
-            type: 'string',
-            title: getFormattedMessage('menu.typeOfRoute.external.pageTitle', 'URL (should start with https or http)')
-          },
-        }
-
-  const dynamicProperties = props.numberOfItems && keyBy(
-    map(range(1, props.numberOfItems + 1), index => {
-      return {
-        type: 'object',
-        title: `Item #${index}`,
-        key: `item${index}`,
-        required: [
-          'title', 
-          'typeOfRoute', 
-          'position', 
-          'page'
-        ],
-        properties: {
-          title: {
-            title: getFormattedMessage('menu.title', 'Title'),
-            type: 'string',
-          },
-          typeOfRoute: {
-            title: getFormattedMessage('menu.typeOfRoute', 'Type of Route'),
-            type: 'string',
-            enum: [
-              Options.INTERNAL, 
-              Options.EXTERNAL
-            ],
-            enumNames: [
-              getFormattedMessage('menu.typeOfRoute.internal', 'Internal'), 
-              getFormattedMessage('menu.typeOfRoute.external', 'External')
-            ],
-            default: Options.INTERNAL,
-            widget: {
-              'ui:widget': 'radio',
-              'ui:options': {
-                'inline': true,
-              },
-            },
-          },
-          ...menuLink((props[`item${index}`] && props[`item${index}`].typeOfRoute) || Options.INTERNAL),
-          position: {
-            title: getFormattedMessage('menu.position', 'Position'),
-            type: 'string',
-            enum: [
-              Options.LEFT, 
-              Options.MIDDLE, 
-              Options.RIGHT
-            ],
-            enumNames: [
-              getFormattedMessage('menu.position.left', 'Left'), 
-              getFormattedMessage('menu.position.middle', 'Middle'), 
-              getFormattedMessage('menu.position.right', 'Right')
-            ],
-            default: Options.MIDDLE,
-          },
-        },
-      }
-    }),
-    property('key')
-  )
-
-  const schema = {
-    title: 'Menu',
-    description: getFormattedMessage('menu.description', 'A menu bar of links'),
-    type: 'object',
-    properties: {
-      numberOfItems: {
-        title: getFormattedMessage('menu.numberOfItems', 'Number of items'),
-        type: 'number',
-        default: 0,
-        minimum: 0,
-        maximum: MAX_ITEMS,
-      },
-    },
-  }
-
-  schema.properties = {
-    ...schema.properties,
-    ...dynamicProperties,
-  }
-
-  return schema
-}
-
-export default MenuWithIntl
