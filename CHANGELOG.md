@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.3.0] - 2018-6-11
+
 ### Added
 - Support for internal and external link routes.
 - Internationalization to the schema.
