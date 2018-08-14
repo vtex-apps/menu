@@ -197,7 +197,7 @@ export default class Menu extends Component {
     const links = this.getLinksFromProps()
     return (
       <div className={`${VTEXClasses.MAIN_CLASS} w-100 dn db-ns`}>
-        <nav className="flex justify-between bb b--white-10 bg-near-black">
+        <nav className="flex justify-between bg-near-black">
           <div className="flex-grow pa3 flex items-center">
             {links.filter(link => link['position'] === Options.LEFT).map(link => {
               return this.renderLink(link)
