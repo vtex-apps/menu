@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Changed
 - remove border-bottom from `menu`.
-- height of `menu` to 1.5625rem.
+- decreased menu height.
 
 ## [0.3.0] - 2018-6-11
 
