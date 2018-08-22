@@ -160,7 +160,7 @@ export default class Menu extends Component {
   }
 
   renderLink(link) {
-    let className = 'f6 link dib white dim mr3 mr4-ns'
+    let className = 'f6 link dib dim mr3 mr4-ns'
     switch (link.position) {
       case Options.LEFT:
         className = `${VTEXClasses.LINK_LEFT} ${className}`
@@ -197,7 +197,7 @@ export default class Menu extends Component {
     const links = this.getLinksFromProps()
     return (
       <div className={`${VTEXClasses.MAIN_CLASS} w-100 dn db-ns`}>
-        <nav className="flex justify-between bg-near-black">
+        <nav className="flex justify-between">
           <div className="flex-grow pa3 flex items-center">
             {links.filter(link => link['position'] === Options.LEFT).map(link => {
               return this.renderLink(link)
