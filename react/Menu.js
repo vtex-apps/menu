@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import VTEXClasses from './constants/CSSClasses'
 import Options from './constants/Options'
-import { intlShape, injectIntl } from 'react-intl'
 
 import keyBy from 'lodash/keyBy'
 import map from 'lodash/map'
@@ -11,14 +10,12 @@ import property from 'lodash/property'
 
 import { Link } from 'render'
 
-import './global.css'
-
 const GLOBAL_PAGES = global.__RUNTIME__ && Object.keys(global.__RUNTIME__.pages)
 
 const MAX_ITEMS = 10
 
 /**
- * Links Menu Component. 
+ * Links Menu Component.
  * Shows a menu bar with links.
  */
 export default class Menu extends Component {
@@ -30,7 +27,7 @@ export default class Menu extends Component {
   static defaultProps = {
     numberOfItems: 0,
   }
-  
+
   static getSchema = props => {
     const schema = {
       title: 'editor.menu',
@@ -50,27 +47,27 @@ export default class Menu extends Component {
       },
     }
 
-    const menuLink = typeOfRoute => 
+    const menuLink = typeOfRoute =>
       typeOfRoute === Options.INTERNAL
         ? {
-            page: {
-              type: 'string',
-              enum: GLOBAL_PAGES,
-              title: 'editor.menu.typeOfRoute.internal.pageTitle',
-            },
-            params: {
-              type: 'string',
-              description: 'editor.menu.typeOfRoute.internal.paramsDescription',
-              title: 'editor.menu.typeOfRoute.internal.paramsTitle',
-            },
-          }
+          page: {
+            type: 'string',
+            enum: GLOBAL_PAGES,
+            title: 'editor.menu.typeOfRoute.internal.pageTitle',
+          },
+          params: {
+            type: 'string',
+            description: 'editor.menu.typeOfRoute.internal.paramsDescription',
+            title: 'editor.menu.typeOfRoute.internal.paramsTitle',
+          },
+        }
         : {
-            page: {
-              type: 'string',
-              title: 'editor.menu.typeOfRoute.external.pageTitle',
-            },
-          }
-  
+          page: {
+            type: 'string',
+            title: 'editor.menu.typeOfRoute.external.pageTitle',
+          },
+        }
+
     const dynamicProperties = props.numberOfItems && keyBy(
       map(range(1, props.numberOfItems), index => {
         return {
@@ -78,9 +75,9 @@ export default class Menu extends Component {
           title: { id: 'editor.menu.item', values: { id: index } },
           key: `item${index}`,
           required: [
-            'title', 
-            'typeOfRoute', 
-            'position', 
+            'title',
+            'typeOfRoute',
+            'position',
             'page',
           ],
           properties: {
@@ -92,7 +89,7 @@ export default class Menu extends Component {
               title: 'editor.menu.typeOfRoute',
               type: 'string',
               enum: [
-                Options.INTERNAL, 
+                Options.INTERNAL,
                 Options.EXTERNAL,
               ],
               enumNames: [
@@ -112,8 +109,8 @@ export default class Menu extends Component {
               title: 'editor.menu.position',
               type: 'string',
               enum: [
-                Options.LEFT, 
-                Options.MIDDLE, 
+                Options.LEFT,
+                Options.MIDDLE,
                 Options.RIGHT,
               ],
               enumNames: [
@@ -128,12 +125,12 @@ export default class Menu extends Component {
       }),
       property('key')
     )
-  
+
     schema.properties = {
       ...schema.properties,
       ...dynamicProperties,
     }
-  
+
     return schema
   }
 
@@ -174,14 +171,14 @@ export default class Menu extends Component {
     }
     return (
       link.typeOfRoute === Options.INTERNAL
-        ? <Link className={className} key={link.title} 
-            page={link.page} params={this.getParams(link.params)}>
-            {link.title}
-          </Link>
-        : <a className={className} key={link.title} 
-            href={this.getValidPage(link.page)} target="_blank">
-            {link.title}
-          </a>
+        ? <Link className={className} key={link.title}
+          page={link.page} params={this.getParams(link.params)}>
+          {link.title}
+        </Link>
+        : <a className={className} key={link.title}
+          href={this.getValidPage(link.page)} target="_blank">
+          {link.title}
+        </a>
     )
   }
 
@@ -196,7 +193,7 @@ export default class Menu extends Component {
   render() {
     const links = this.getLinksFromProps()
     return (
-      <div className={`${VTEXClasses.MAIN_CLASS} w-100 dn db-ns`}>
+      <div className={`${VTEXClasses.MAIN_CLASS} h2 gray w-100 dn db-ns`}>
         <nav className="flex justify-between">
           <div className="flex-grow pa3 flex items-center">
             {links.filter(link => link['position'] === Options.LEFT).map(link => {
