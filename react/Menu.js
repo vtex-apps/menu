@@ -1,14 +1,13 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import VTEXClasses from './constants/CSSClasses'
-import Options from './constants/Options'
-
 import keyBy from 'lodash/keyBy'
 import map from 'lodash/map'
-import range from 'lodash/range'
 import property from 'lodash/property'
-
+import range from 'lodash/range'
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import { Link } from 'render'
+
+import VTEXClasses from './constants/CSSClasses'
+import Options from './constants/Options'
 
 const GLOBAL_PAGES = global.__RUNTIME__ && Object.keys(global.__RUNTIME__.pages)
 
@@ -50,81 +49,74 @@ export default class Menu extends Component {
     const menuLink = typeOfRoute =>
       typeOfRoute === Options.INTERNAL
         ? {
-          page: {
-            type: 'string',
-            enum: GLOBAL_PAGES,
-            title: 'editor.menu.typeOfRoute.internal.pageTitle',
-          },
-          params: {
-            type: 'string',
-            description: 'editor.menu.typeOfRoute.internal.paramsDescription',
-            title: 'editor.menu.typeOfRoute.internal.paramsTitle',
-          },
-        }
-        : {
-          page: {
-            type: 'string',
-            title: 'editor.menu.typeOfRoute.external.pageTitle',
-          },
-        }
-
-    const dynamicProperties = props.numberOfItems && keyBy(
-      map(range(1, props.numberOfItems), index => {
-        return {
-          type: 'object',
-          title: { id: 'editor.menu.item', values: { id: index } },
-          key: `item${index}`,
-          required: [
-            'title',
-            'typeOfRoute',
-            'position',
-            'page',
-          ],
-          properties: {
-            title: {
-              title: 'editor.menu.title',
+            page: {
               type: 'string',
+              enum: GLOBAL_PAGES,
+              title: 'editor.menu.typeOfRoute.internal.pageTitle',
             },
-            typeOfRoute: {
-              title: 'editor.menu.typeOfRoute',
+            params: {
               type: 'string',
-              enum: [
-                Options.INTERNAL,
-                Options.EXTERNAL,
-              ],
-              enumNames: [
-                'editor.menu.typeOfRoute.internal',
-                'editor.menu.typeOfRoute.external',
-              ],
-              default: Options.INTERNAL,
-              widget: {
-                'ui:widget': 'radio',
-                'ui:options': {
-                  'inline': true,
+              description: 'editor.menu.typeOfRoute.internal.paramsDescription',
+              title: 'editor.menu.typeOfRoute.internal.paramsTitle',
+            },
+          }
+        : {
+            page: {
+              type: 'string',
+              title: 'editor.menu.typeOfRoute.external.pageTitle',
+            },
+          }
+
+    const dynamicProperties =
+      props.numberOfItems &&
+      keyBy(
+        map(range(1, props.numberOfItems), index => {
+          return {
+            type: 'object',
+            title: { id: 'editor.menu.item', values: { id: index } },
+            key: `item${index}`,
+            required: ['title', 'typeOfRoute', 'position', 'page'],
+            properties: {
+              title: {
+                title: 'editor.menu.title',
+                type: 'string',
+              },
+              typeOfRoute: {
+                title: 'editor.menu.typeOfRoute',
+                type: 'string',
+                enum: [Options.INTERNAL, Options.EXTERNAL],
+                enumNames: [
+                  'editor.menu.typeOfRoute.internal',
+                  'editor.menu.typeOfRoute.external',
+                ],
+                default: Options.INTERNAL,
+                widget: {
+                  'ui:widget': 'radio',
+                  'ui:options': {
+                    inline: true,
+                  },
                 },
               },
+              ...menuLink(
+                (props[`item${index}`] && props[`item${index}`].typeOfRoute) ||
+                  Options.INTERNAL
+              ),
+              position: {
+                title: 'editor.menu.position',
+                type: 'string',
+                enum: [Options.LEFT, Options.MIDDLE, Options.RIGHT],
+                enumNames: [
+                  'editor.menu.position.left',
+                  'editor.menu.position.middle',
+                  'editor.menu.position.right',
+                ],
+                default: Options.MIDDLE,
+              },
             },
-            ...menuLink((props[`item${index}`] && props[`item${index}`].typeOfRoute) || Options.INTERNAL),
-            position: {
-              title: 'editor.menu.position',
-              type: 'string',
-              enum: [
-                Options.LEFT,
-                Options.MIDDLE,
-                Options.RIGHT,
-              ],
-              enumNames: [
-                'editor.menu.position.left',
-                'editor.menu.position.middle',
-                'editor.menu.position.right',
-              ],
-              default: Options.MIDDLE,
-            },
-          },
-        }
-      }),
-      property('key')
-    )
+          }
+        }),
+        property('key')
+      )
 
     schema.properties = {
       ...schema.properties,
@@ -150,14 +142,17 @@ export default class Menu extends Component {
   }
 
   getValidPage = page => {
-    if (!page || (!page.startsWith('http://') && !page.startsWith('https://'))) {
+    if (
+      !page ||
+      (!page.startsWith('http://') && !page.startsWith('https://'))
+    ) {
       page = `http://${page}`
     }
     return page
   }
 
   renderLink(link) {
-    let className = 'f6 link dib dim mr3 mr4-ns'
+    let className = 'f6 link gray dib dim mr3 mr4-ns'
     switch (link.position) {
       case Options.LEFT:
         className = `${VTEXClasses.LINK_LEFT} ${className}`
@@ -169,16 +164,22 @@ export default class Menu extends Component {
         className = `${VTEXClasses.LINK_RIGHT} ${className}`
         break
     }
-    return (
-      link.typeOfRoute === Options.INTERNAL
-        ? <Link className={className} key={link.title}
-          page={link.page} params={this.getParams(link.params)}>
-          {link.title}
-        </Link>
-        : <a className={className} key={link.title}
-          href={this.getValidPage(link.page)} target="_blank">
-          {link.title}
-        </a>
+    return link.typeOfRoute === Options.INTERNAL ? (
+      <Link
+        className={className}
+        key={link.title}
+        page={link.page}
+        params={this.getParams(link.params)}>
+        {link.title}
+      </Link>
+    ) : (
+      <a
+        className={className}
+        key={link.title}
+        href={this.getValidPage(link.page)}
+        target="_blank">
+        {link.title}
+      </a>
     )
   }
 
@@ -196,19 +197,25 @@ export default class Menu extends Component {
       <div className={`${VTEXClasses.MAIN_CLASS} h2 gray w-100 dn db-ns`}>
         <nav className="flex justify-between">
           <div className="flex-grow pa3 flex items-center">
-            {links.filter(link => link['position'] === Options.LEFT).map(link => {
-              return this.renderLink(link)
-            })}
+            {links
+              .filter(link => link['position'] === Options.LEFT)
+              .map(link => {
+                return this.renderLink(link)
+              })}
           </div>
           <div className="flex-grow pa3 flex items-center">
-            {links.filter(link => link['position'] === Options.MIDDLE).map(link => {
-              return this.renderLink(link)
-            })}
+            {links
+              .filter(link => link['position'] === Options.MIDDLE)
+              .map(link => {
+                return this.renderLink(link)
+              })}
           </div>
           <div className="flex-grow pa3 flex items-center">
-            {links.filter(link => link['position'] === Options.RIGHT).map(link => {
-              return this.renderLink(link)
-            })}
+            {links
+              .filter(link => link['position'] === Options.RIGHT)
+              .map(link => {
+                return this.renderLink(link)
+              })}
           </div>
         </nav>
       </div>
