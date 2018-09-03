@@ -4,6 +4,7 @@
   "editor.menu.description": "A menu bar of links",
   "editor.menu.links": "Links",
   "editor.menu.links.link": "Link",
+  "editor.menu.links.link.text": "Link Text",
   "editor.menu.links.link.internalPage": "Target Page",
   "editor.menu.links.link.internalPage.description": "If internal",
   "editor.menu.links.link.params": "Params",
