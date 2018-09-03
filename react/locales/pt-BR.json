@@ -4,6 +4,7 @@
   "editor.menu.description": "Uma barra de menu com links",
   "editor.menu.links": "Links",
   "editor.menu.links.link": "Link",
+  "editor.menu.links.link.text": "Texto do Link",
   "editor.menu.links.link.internalPage": "Página Alvo",
   "editor.menu.links.link.internalPage.description": "Se interna",
   "editor.menu.links.link.params": "Parâmetros",

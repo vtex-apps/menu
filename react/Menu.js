@@ -17,8 +17,8 @@ export default class Menu extends Component {
   static propTypes = {
     links: PropTypes.arrayOf(
       PropTypes.shape({
-        /** Pages editor item title */
-        __editorItemTitle: PropTypes.string,
+        /** Link text */
+        text: PropTypes.string,
         /** Internal page to redirect */
         internalPage: PropTypes.string,
         /** Params to redirect to internal page */
@@ -51,6 +51,10 @@ export default class Menu extends Component {
           title: 'editor.menu.links.link',
           type: 'object',
           properties: {
+            text: {
+              title: 'editor.menu.links.link.text',
+              type: 'string',
+            },
             internalPage: {
               title: 'editor.menu.links.link.internalPage',
               description: 'editor.menu.links.link.internalPage.description',
@@ -141,29 +145,24 @@ export default class Menu extends Component {
     return link.typeOfRoute === Options.INTERNAL ? (
       <Link
         className={className}
-        key={`${link.title}-${link.position}-${index}`}
+        key={`${link.text}-${link.position}-${index}`}
         page={link.page}
         params={this.getParams(link.params)}>
-        {link.title}
+        {link.text}
       </Link>
     ) : (
       <a
         className={className}
-        key={`${link.title}-${link.position}-${index}`}
+        key={`${link.text}-${link.position}-${index}`}
         href={this.getValidPage(link.page)}
         target="_blank">
-        {link.title}
+        {link.text}
       </a>
     )
   }
 
   render() {
-    const links =
-      this.props.links &&
-      this.props.links.map(link => ({
-        ...link,
-        title: link.__editorItemTitle,
-      }))
+    const { links } = this.props
 
     return (
       links && (
