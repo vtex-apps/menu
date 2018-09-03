@@ -33,6 +33,10 @@ export default class Menu extends Component {
     ),
   }
 
+  static defaultProps = {
+    links: [],
+  }
+
   static schema = {
     title: 'editor.menu',
     description: 'editor.menu.description',
