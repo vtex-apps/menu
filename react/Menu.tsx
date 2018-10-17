@@ -1,43 +1,61 @@
 import PropTypes from 'prop-types'
-import React, { Component } from 'react'
+import React, { Component, ReactNode } from 'react'
 import { Link } from 'render'
 
 import VTEXClasses from './constants/CSSClasses'
 import Options from './constants/Options'
 
-const GLOBAL_PAGES = global.__RUNTIME__ && Object.keys(global.__RUNTIME__.pages)
+const GLOBAL_PAGES = (global as any).__RUNTIME__ && Object.keys((global as any).__RUNTIME__.pages)
 
-const MAX_ITEMS = 10
+const MAX_ITEMS: number = 10
+
+type Link = {
+  text: string
+  internalPage: string
+  params: string
+  externalPage: string
+  typeOfRoute: string
+  page: string
+  position: string
+}
+
+interface DefaultProps {
+  links: Array<Link>
+}
+
+interface Props extends DefaultProps {}
 
 /**
  * Links Menu Component.
  * Shows a menu bar with links.
  */
-export default class Menu extends Component {
-  static propTypes = {
+export default class Menu extends Component<Props> {
+  public static propTypes = {
     links: PropTypes.arrayOf(
       PropTypes.shape({
         /** Link text */
-        text: PropTypes.string,
+        text: PropTypes.string.isRequired,
         /** Internal page to redirect */
-        internalPage: PropTypes.string,
+        internalPage: PropTypes.string.isRequired,
         /** Params to redirect to internal page */
-        params: PropTypes.string,
+        params: PropTypes.string.isRequired,
         /** External page to redirect */
-        externalPage: PropTypes.string,
+        externalPage: PropTypes.string.isRequired,
         /** Type of Route (internal or external) */
-        typeOfRoute: PropTypes.string,
+        typeOfRoute: PropTypes.string.isRequired,
+        /** Page route to redirect when clicked */
+        page: PropTypes.string.isRequired,
         /** Link position */
-        position: PropTypes.string,
+        position: PropTypes.string.isRequired,
       })
     ),
   }
 
-  static defaultProps = {
+  static defaultProps: DefaultProps = {
     links: [],
   }
 
-  static schema = {
+  static schema: any = {
     title: 'editor.menu',
     description: 'editor.menu.description',
     type: 'object',
@@ -107,19 +125,19 @@ export default class Menu extends Component {
   /**
    * Convert the string params to a js object
    */
-  getParams = params => {
-    const json = {}
+  getParams = (params: string): any => {
+    const json: any = {}
     if (params) {
-      const array = params.split(',')
-      array.forEach(item => {
-        const pair = item.split('=')
+      const array: Array<string> = params.split(',')
+      array.forEach((item: string) => {
+        const pair: Array<string> = item.split('=')
         json[pair[0]] = pair[1]
       })
       return json
     }
   }
 
-  getValidPage = page => {
+  getValidPage = (page?: string): string => {
     if (
       !page ||
       (!page.startsWith('http://') && !page.startsWith('https://'))
@@ -129,8 +147,8 @@ export default class Menu extends Component {
     return page
   }
 
-  renderLink(link, index) {
-    let className = 'f6 link gray dib dim mr3 mr4-ns'
+  renderLink(link: Link, index: string | number): ReactNode {
+    let className: string = 'f6 link gray dib dim mr3 mr4-ns'
     switch (link.position) {
       case Options.LEFT:
         className = `${VTEXClasses.LINK_LEFT} ${className}`
@@ -161,37 +179,35 @@ export default class Menu extends Component {
     )
   }
 
-  render() {
+  render(): ReactNode {
     const { links } = this.props
 
     return (
-      links && (
-        <div className={`${VTEXClasses.MAIN_CLASS} h2 gray w-100 dn db-ns`}>
-          <nav className="flex justify-between">
-            <div className="flex-grow pa3 flex items-center">
-              {links
-                .filter(link => link['position'] === Options.LEFT)
-                .map((link, index) => {
-                  return this.renderLink(link, index)
-                })}
-            </div>
-            <div className="flex-grow pa3 flex items-center">
-              {links
-                .filter(link => link['position'] === Options.MIDDLE)
-                .map((link, index) => {
-                  return this.renderLink(link, index)
-                })}
-            </div>
-            <div className="flex-grow pa3 flex items-center">
-              {links
-                .filter(link => link['position'] === Options.RIGHT)
-                .map((link, index) => {
-                  return this.renderLink(link, index)
-                })}
-            </div>
-          </nav>
-        </div>
-      )
+      <div className={`${VTEXClasses.MAIN_CLASS} h2 gray w-100 dn db-ns`}>
+        <nav className="flex justify-between">
+          <div className="flex-grow pa3 flex items-center">
+            {links
+              .filter(link => link['position'] === Options.LEFT)
+              .map((link, index) => {
+                return this.renderLink(link, index)
+              })}
+          </div>
+          <div className="flex-grow pa3 flex items-center">
+            {links
+              .filter(link => link['position'] === Options.MIDDLE)
+              .map((link, index) => {
+                return this.renderLink(link, index)
+              })}
+          </div>
+          <div className="flex-grow pa3 flex items-center">
+            {links
+              .filter(link => link['position'] === Options.RIGHT)
+              .map((link, index) => {
+                return this.renderLink(link, index)
+              })}
+          </div>
+        </nav>
+      </div>
     )
   }
 }
