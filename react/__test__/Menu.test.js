@@ -9,7 +9,7 @@ describe('Menu Component', () => {
   let wrapper
 
   beforeEach(() => {
-    const messages = require('../locales/en-US')
+    const messages = require('../locales/en-US.json')
     wrapper = render(
       <IntlProvider locale="en-US" messages={messages}>
         <Menu />
