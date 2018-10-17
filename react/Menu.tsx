@@ -51,7 +51,7 @@ export default class Menu extends Component<Props> {
     ),
   }
 
-  static defaultProps: DefaultProps = {
+  public static defaultProps: DefaultProps = {
     links: [],
   }
 
