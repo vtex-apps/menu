@@ -125,16 +125,16 @@ export default class Menu extends Component<Props> {
   /**
    * Convert the string params to a js object
    */
-  getParams = (params: string): any => {
-    const json: any = {}
+  getParams = (params: string): { [key: string]: string } => {
+    const json: { [key: string]: string } = {}
     if (params) {
       const array: Array<string> = params.split(',')
       array.forEach((item: string) => {
         const pair: Array<string> = item.split('=')
         json[pair[0]] = pair[1]
       })
-      return json
     }
+    return json
   }
 
   getValidPage = (page?: string): string => {
