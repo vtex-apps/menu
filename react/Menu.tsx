@@ -4,19 +4,19 @@ import { Link } from 'render'
 
 import VTEXClasses from './constants/CSSClasses'
 import Options from './constants/Options'
-
+// This is required because is used in static schema attribute of Menu Component
 const GLOBAL_PAGES = (global as any).__RUNTIME__ && Object.keys((global as any).__RUNTIME__.pages)
 
 const MAX_ITEMS: number = 10
 
 type Link = {
-  text: string
-  internalPage: string
-  params: string
-  externalPage: string
-  typeOfRoute: string
-  page: string
-  position: string
+  text?: string
+  internalPage?: string
+  params?: string
+  externalPage?: string
+  typeOfRoute?: string
+  page?: string
+  position?: string
 }
 
 interface DefaultProps {
@@ -29,24 +29,24 @@ interface Props extends DefaultProps {}
  * Links Menu Component.
  * Shows a menu bar with links.
  */
-export default class Menu extends Component<Props> {
+class Menu extends Component<Props> {
   public static propTypes = {
     links: PropTypes.arrayOf(
       PropTypes.shape({
         /** Link text */
-        text: PropTypes.string.isRequired,
+        text: PropTypes.string,
         /** Internal page to redirect */
-        internalPage: PropTypes.string.isRequired,
+        internalPage: PropTypes.string,
         /** Params to redirect to internal page */
-        params: PropTypes.string.isRequired,
+        params: PropTypes.string,
         /** External page to redirect */
-        externalPage: PropTypes.string.isRequired,
+        externalPage: PropTypes.string,
         /** Type of Route (internal or external) */
-        typeOfRoute: PropTypes.string.isRequired,
+        typeOfRoute: PropTypes.string,
         /** Page route to redirect when clicked */
-        page: PropTypes.string.isRequired,
+        page: PropTypes.string,
         /** Link position */
-        position: PropTypes.string.isRequired,
+        position: PropTypes.string,
       })
     ),
   }
@@ -125,7 +125,7 @@ export default class Menu extends Component<Props> {
   /**
    * Convert the string params to a js object
    */
-  getParams = (params: string): { [key: string]: string } => {
+  private getParams = (params: string | undefined): { [key: string]: string } => {
     const json: { [key: string]: string } = {}
     if (params) {
       const array: Array<string> = params.split(',')
@@ -137,7 +137,7 @@ export default class Menu extends Component<Props> {
     return json
   }
 
-  getValidPage = (page?: string): string => {
+  private getValidPage = (page?: string): string => {
     if (
       !page ||
       (!page.startsWith('http://') && !page.startsWith('https://'))
@@ -147,7 +147,7 @@ export default class Menu extends Component<Props> {
     return page
   }
 
-  renderLink(link: Link, index: string | number): ReactNode {
+  private renderLink(link: Link, index: number): ReactNode {
     let className: string = 'f6 link gray dib dim mr3 mr4-ns'
     switch (link.position) {
       case Options.LEFT:
@@ -179,9 +179,8 @@ export default class Menu extends Component<Props> {
     )
   }
 
-  render(): ReactNode {
+  public render(): ReactNode {
     const { links } = this.props
-
     return (
       <div className={`${VTEXClasses.MAIN_CLASS} h2 gray w-100 dn db-ns`}>
         <nav className="flex justify-between">
@@ -211,3 +210,5 @@ export default class Menu extends Component<Props> {
     )
   }
 }
+
+export default Menu
