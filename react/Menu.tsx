@@ -125,7 +125,7 @@ class Menu extends Component<Props> {
   /**
    * Convert the string params to a js object
    */
-  private getParams = (params: string | undefined): { [key: string]: string } => {
+  private getParams = (params?: string): { [key: string]: string } => {
     const json: { [key: string]: string } = {}
     if (params) {
       const array: Array<string> = params.split(',')
