@@ -164,7 +164,7 @@ class Menu extends Component<Props> {
       <Link
         className={className}
         key={`${link.text}-${link.position}-${index}`}
-        page={link.page}
+        page={link.internalPage}
         params={this.getParams(link.params)}>
         {link.text}
       </Link>
@@ -172,7 +172,7 @@ class Menu extends Component<Props> {
       <a
         className={className}
         key={`${link.text}-${link.position}-${index}`}
-        href={this.getValidPage(link.page)}
+        href={this.getValidPage(link.externalPage)}
         target="_blank">
         {link.text}
       </a>
