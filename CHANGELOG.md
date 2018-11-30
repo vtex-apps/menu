@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 - Update link rendering to include internal/external.
 
+## [2.0.0] - 2018-11-27
+### Fixed
+- Use design tokens for typography and colors.
+
 ## [1.1.0] - 2018-10-31
 ### Changed
 - Move app to typescript.

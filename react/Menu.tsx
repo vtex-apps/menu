@@ -23,7 +23,7 @@ interface DefaultProps {
   links: Array<Link>
 }
 
-interface Props extends DefaultProps {}
+interface Props extends DefaultProps { }
 
 /**
  * Links Menu Component.
@@ -45,7 +45,7 @@ class Menu extends Component<Props> {
         typeOfRoute: PropTypes.string,
         /** Page route to redirect when clicked */
         page: PropTypes.string,
-        /** Link position */
+        /** Link position  */
         position: PropTypes.string,
       })
     ),
@@ -148,7 +148,7 @@ class Menu extends Component<Props> {
   }
 
   private renderLink(link: Link, index: number): ReactNode {
-    let className: string = 'f6 link gray dib dim mr3 mr4-ns'
+    let className: string = 't-small link c-muted-2 dib dim mr3 mr4-ns'
     switch (link.position) {
       case Options.LEFT:
         className = `${VTEXClasses.LINK_LEFT} ${className}`
@@ -176,13 +176,13 @@ class Menu extends Component<Props> {
         target="_blank">
         {link.text}
       </a>
-    )
+      )
   }
 
   public render(): ReactNode {
     const { links } = this.props
     return (
-      <div className={`${VTEXClasses.MAIN_CLASS} h2 gray w-100 dn db-ns`}>
+      <div className={`${VTEXClasses.MAIN_CLASS} h2 c-muted-2 w-100 dn db-ns`}>
         <nav className="flex justify-between">
           <div className="flex-grow pa3 flex items-center">
             {links
