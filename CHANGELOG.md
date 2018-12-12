@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Feature
+- Render nothing if there is no links to be displayed.
 
 ## [2.0.1] - 2018-11-30
 - Update link rendering to include internal/external.

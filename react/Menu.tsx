@@ -9,7 +9,7 @@ const GLOBAL_PAGES = (global as any).__RUNTIME__ && Object.keys((global as any).
 
 const MAX_ITEMS: number = 10
 
-type Link = {
+interface Link {
   text?: string
   internalPage?: string
   params?: string
@@ -20,7 +20,7 @@ type Link = {
 }
 
 interface DefaultProps {
-  links: Array<Link>
+  links: Link[]
 }
 
 interface Props extends DefaultProps { }
@@ -55,7 +55,7 @@ class Menu extends Component<Props> {
     links: [],
   }
 
-  static schema: any = {
+  public static schema: any = {
     title: 'editor.menu',
     description: 'editor.menu.description',
     type: 'object',
@@ -128,9 +128,9 @@ class Menu extends Component<Props> {
   private getParams = (params?: string): { [key: string]: string } => {
     const json: { [key: string]: string } = {}
     if (params) {
-      const array: Array<string> = params.split(',')
+      const array: string[] = params.split(',')
       array.forEach((item: string) => {
-        const pair: Array<string> = item.split('=')
+        const pair: string[] = item.split('=')
         json[pair[0]] = pair[1]
       })
     }
@@ -181,26 +181,29 @@ class Menu extends Component<Props> {
 
   public render(): ReactNode {
     const { links } = this.props
+    if (!links.length) {
+      return null
+    }
     return (
       <div className={`${VTEXClasses.MAIN_CLASS} h2 c-muted-2 w-100 dn db-ns`}>
         <nav className="flex justify-between">
           <div className="flex-grow pa3 flex items-center">
             {links
-              .filter(link => link['position'] === Options.LEFT)
+              .filter(link => link.position === Options.LEFT)
               .map((link, index) => {
                 return this.renderLink(link, index)
               })}
           </div>
           <div className="flex-grow pa3 flex items-center">
             {links
-              .filter(link => link['position'] === Options.MIDDLE)
+              .filter(link => link.position === Options.MIDDLE)
               .map((link, index) => {
                 return this.renderLink(link, index)
               })}
           </div>
           <div className="flex-grow pa3 flex items-center">
             {links
-              .filter(link => link['position'] === Options.RIGHT)
+              .filter(link => link.position === Options.RIGHT)
               .map((link, index) => {
                 return this.renderLink(link, index)
               })}
