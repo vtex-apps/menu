@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React, { Component, ReactNode } from 'react'
 import { Link } from 'render'
 
-import VTEXClasses from './constants/CSSClasses'
+import menu from './menu.css'
 import Options from './constants/Options'
 // This is required because is used in static schema attribute of Menu Component
 const GLOBAL_PAGES = (global as any).__RUNTIME__ && Object.keys((global as any).__RUNTIME__.pages)
@@ -151,13 +151,13 @@ class Menu extends Component<Props> {
     let className: string = 't-small link c-muted-2 dib dim mr3 mr4-ns'
     switch (link.position) {
       case Options.LEFT:
-        className = `${VTEXClasses.LINK_LEFT} ${className}`
+        className = `${menu.linkLeft} ${className}`
         break
       case Options.MIDDLE:
-        className = `${VTEXClasses.LINK_MIDDLE} ${className}`
+        className = `${menu.linkMiddle} ${className}`
         break
       case Options.RIGHT:
-        className = `${VTEXClasses.LINK_RIGHT} ${className}`
+        className = `${menu.linkRight} ${className}`
         break
     }
     return link.typeOfRoute === Options.INTERNAL ? (
@@ -185,7 +185,7 @@ class Menu extends Component<Props> {
       return null
     }
     return (
-      <div className={`${VTEXClasses.MAIN_CLASS} h2 c-muted-2 w-100 dn db-ns`}>
+      <div className={`${menu.container} h2 c-muted-2 w-100 dn db-ns`}>
         <nav className="flex justify-between">
           <div className="flex-grow pa3 flex items-center">
             {links
