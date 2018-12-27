@@ -3,7 +3,7 @@ import React from 'react'
 import { IntlProvider } from 'react-intl'
 import { render } from 'react-testing-library'
 
-import Menu from '../Menu'
+import Menu from '../index'
 
 describe('Menu Component', () => {
   let wrapper

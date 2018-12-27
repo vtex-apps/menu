@@ -2,6 +2,6 @@
   "menu-link": {
     "allowed": [],
     "required": [],
-    "component": "Menu"
+    "component": "index"
   }
 }

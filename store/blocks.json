@@ -1,6 +1,6 @@
 {
   "menu-link": {
     "blocks": [],
-    "component": "Menu"
+    "inheritComponent": true
   }
 }
