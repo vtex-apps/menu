@@ -23,7 +23,7 @@ interface DefaultProps {
   links: Array<Link>
 }
 
-interface Props extends DefaultProps {}
+interface Props extends DefaultProps { }
 
 /**
  * Links Menu Component.
@@ -164,19 +164,19 @@ class Menu extends Component<Props> {
       <Link
         className={className}
         key={`${link.text}-${link.position}-${index}`}
-        page={link.page}
+        page={link.internalPage}
         params={this.getParams(link.params)}>
         {link.text}
       </Link>
     ) : (
-      <a
-        className={className}
-        key={`${link.text}-${link.position}-${index}`}
-        href={this.getValidPage(link.page)}
-        target="_blank">
-        {link.text}
-      </a>
-    )
+        <a
+          className={className}
+          key={`${link.text}-${link.position}-${index}`}
+          href={this.getValidPage(link.externalPage)}
+          target="_blank">
+          {link.text}
+        </a>
+      )
   }
 
   public render(): ReactNode {
