@@ -1,0 +1,21 @@
+{
+  "editor.menu": "editor.menu",
+  "editor.menu.title": "editor.menu.title",
+  "editor.menu.description": "editor.menu.description",
+  "editor.menu.links": "editor.menu.links",
+  "editor.menu.links.link": "editor.menu.links.link",
+  "editor.menu.links.link.text": "editor.menu.links.link.text",
+  "editor.menu.links.link.internalPage": "editor.menu.links.link.internalPage",
+  "editor.menu.links.link.internalPage.description": "editor.menu.links.link.internalPage.description",
+  "editor.menu.links.link.params": "editor.menu.links.link.params",
+  "editor.menu.links.link.params.description": "editor.menu.links.link.params.description",
+  "editor.menu.links.link.externalPage": "editor.menu.links.link.externalPage",
+  "editor.menu.links.link.externalPage.description": "editor.menu.links.link.externalPage.description",
+  "editor.menu.links.link.typeOfRoute": "editor.menu.links.link.typeOfRoute",
+  "editor.menu.links.link.typeOfRoute.internal": "editor.menu.links.link.typeOfRoute.internal",
+  "editor.menu.links.link.typeOfRoute.external": "editor.menu.links.link.typeOfRoute.external",
+  "editor.menu.links.link.position": "editor.menu.links.link.position",
+  "editor.menu.links.link.position.left": "editor.menu.links.link.position.left",
+  "editor.menu.links.link.position.middle": "editor.menu.links.link.position.middle",
+  "editor.menu.links.link.position.right": "editor.menu.links.link.position.right"
+}
