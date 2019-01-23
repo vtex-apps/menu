@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { Component, ReactNode } from 'react'
-import { Link } from 'render'
+import { Link } from 'vtex.render-runtime'
 
 import menu from './menu.css'
 import Options from './constants/Options'
