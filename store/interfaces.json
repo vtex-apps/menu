@@ -1,7 +1,5 @@
 {
   "menu-link": {
-    "allowed": [],
-    "required": [],
     "component": "index"
   }
 }
