@@ -1,6 +1,10 @@
-# Menu
+# VTEX Menu
 
-A Menu Component. Shows a superior bar with links and dropdown menus.
+## Description
+
+The VTEX Menu is an app that shows a bar with links and dropdown menus and it is used by the Dreamstore product.
+
+:loudspeaker: **Disclaimer:** Don't fork this project, use, contribute, or open issue with your feature request.
 
 ## Release schedule
 | Release  | Status              | Initial Release | Maintenance LTS Start | End-of-life | Dreamstore Compatibility
@@ -15,28 +19,66 @@ A Menu Component. Shows a superior bar with links and dropdown menus.
 
 [![Build Status](https://travis-ci.org/vtex-apps/menu.svg?branch=master)](https://travis-ci.org/vtex-apps/menu)
 
+
+## Table of Contents
+- [Usage](#usage)
+  - [Blocks API](#blocks-api)
+    - [Configuration](#configuration)
+  - [Styles API](#styles-api)
+- [Troubleshooting](#troubleshooting)
+- [Tests](#tests)
+
 ## Usage
 
-Add "vtex.menu" as your app dependency.
+This app uses our store builder with the blocks architecture. To know more about Store Builder [click here.](https://help.vtex.com/en/tutorial/understanding-storebuilder-and-stylesbuilder#structuring-and-configuring-our-store-with-object-object)
 
-## Schema Properties (Used By Editor)
+To use this app, you need to add it in your `dependencies` in the `manifest.json` file.
 
-``` javascript
-/**
- * Property Here
- */
-- numberOfMenus
-  - Type: number
+```json
+  dependencies: {
+    "vtex.menu": "2.x"
+  }
 ```
 
-## CSS Classes
+Then, add the `menu-link` block into our app theme, as we do in our [Dreamstore app](https://github.com/vtex-apps/dreamstore/blob/master/store/blocks.json). 
 
-```css
-vtex-menu
-vtex-menu__link-left
-vtex-menu__link-middle
-vtex-menu__link-right
+### Blocks API
+:construction: :construction: :construction:
+
+This app has an interface that describes what rules must be implemented by a block when you want to use the menu app.
+
+```json
+{
+  "menu-link": {
+    "component": "index"
+  }
+}
 ```
+
+#### Configuration 
+Through the Storefront, you can change the behavior and interface of the menu. However, you also can make in your theme app, as Dreamstore does.
+
+| Prop name          | Type          | Description                                                            |
+| ------------------ | ------------- | ---------------------------------------------------------------------- |
+| `links`            | `Array(Link)` | Array of links that should appear in the menu                          |
+
+Link:
+
+| Prop name          | Type          | Description                                                            |
+| ------------------ | ------------- | ---------------------------------------------------------------------- |
+| `text`             | `String`      | Link text                                                              |
+| `internalPage`     | `String`      | Internal page path to redirect                                         |
+| `params`           | `String`      | Parameters to pass when redirect to an internal page                   |
+| `externalPage`     | `String`      | External page path to redirect										  |
+| `typeOfRoute`      | `String`      | The route type, it can be `internal` or `external`                     |
+| `page`             | `String`      | Page route to redirect when the link is clicked                        |
+| `position`         | `String`      | Link position 								                          |
+
+### Styles API
+:construction: :construction: :construction:
+
+## Troubleshooting
+You can check if others are passing through similar issues [here](https://github.com/vtex-apps/menu/issues). Also feel free to [open issues](https://github.com/vtex-apps/menu/issues/new) or contribute with pull requests.
 
 ## Tests
 
