@@ -13,5 +13,8 @@
     "react": "3.x",
     "messages": "1.x",
     "store": "0.x"
+  },
+  "dependencies": {
+    "vtex.store-components": "3.x"
   }
 }
