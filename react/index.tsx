@@ -23,6 +23,14 @@ interface DefaultProps {
   links: Link[]
 }
 
+interface Options {
+  LEFT: string,
+  MIDDLE: string,
+  RIGHT: string,
+  INTERNAL: string,
+  EXTERNAL: string
+}
+
 interface Props extends DefaultProps { }
 
 /**
@@ -169,13 +177,13 @@ class Menu extends Component<Props> {
         {link.text}
       </Link>
     ) : (
-      <a
-        className={className}
-        key={`${link.text}-${link.position}-${index}`}
-        href={this.getValidPage(link.externalPage)}
-        target="_blank">
-        {link.text}
-      </a>
+        <a
+          className={className}
+          key={`${link.text}-${link.position}-${index}`}
+          href={this.getValidPage(link.externalPage)}
+          target="_blank">
+          {link.text}
+        </a>
       )
   }
 

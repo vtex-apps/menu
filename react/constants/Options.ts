@@ -1,3 +1,4 @@
+
 export default {
   LEFT: 'left',
   MIDDLE: 'middle',
