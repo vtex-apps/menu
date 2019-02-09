@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "description": "A Menu Component.",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "tsc --noEmit --pretty && tslint -c tslint.json './**/*.ts'"
   },
   "author": "VTEX",
   "license": "ISC",

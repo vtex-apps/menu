@@ -6,6 +6,7 @@
   "description": "A Menu Component",
   "mustUpdateAt": "2019-04-03",
   "scripts": {
+    "prereleasy": "bash lint.sh",
     "postreleasy": "vtex publish --verbose"
   },
   "builders": {
