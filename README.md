@@ -12,6 +12,7 @@ The VTEX Menu is an app that shows a bar with links and dropdown menus and it is
 | [1.x]    | **Maintenance LTS** |  2018-08-17     | 2018-11-27            | March 2019  | 1.x
 | [2.x]    | **Current Release** |  2018-11-27     |                       |             | 2.x
 
+See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for more information.
 
 ## Continuous Integrations 
 
