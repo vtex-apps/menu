@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.6.3] - 2019-02-12
+
 ## [2.6.2] - 2019-02-09
 ### Changed
 - Add page padding in menu link.
