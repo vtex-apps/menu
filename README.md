@@ -4,7 +4,7 @@
 
 The VTEX Menu is an app that shows a bar with links and dropdown menus and it is used by the Dreamstore product.
 
-:loudspeaker: **Disclaimer:** Don't fork this project, use, contribute, or open issue with your feature request.
+:loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request.
 
 ## Release schedule
 | Release  | Status              | Initial Release | Maintenance LTS Start | End-of-life | Dreamstore Compatibility
@@ -19,7 +19,6 @@ See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for mor
 ### Travis CI 
 
 [![Build Status](https://travis-ci.org/vtex-apps/menu.svg?branch=master)](https://travis-ci.org/vtex-apps/menu)
-
 
 ## Table of Contents
 - [Usage](#usage)
@@ -74,11 +73,7 @@ Link:
 | `position`         | `String`      | Link position 								                          |
 
 ### Styles API
-This app has CSS customization through `CSS Modules`. CSS Modules is a CSS file in which all class names and animation names are scoped locally by default. You can read more about CSS Modules [here](https://github.com/css-modules/css-modules) .
-
-We use it `css-loader` to generate a CSS token on a HTML element. For example, the builder generate a CSS token based on app vendor, name and major version. Like `container` token declared in menu, generate the classname `vtex.menu-2-x-container`.
-
-Below, we describe the tokens, their explanation and the component where it is located.
+This app provides some CSS classes as an API for style customization.
 
 | Token name         | Component          | Description                                            |
 | ------------------ | ----------         |------------------------------------------------------- |
@@ -95,8 +90,25 @@ To override the default CSS, you need to import `styles` on your manifest:
   }
 ```
 
-Also, create a `vtex.menu.css` file in `styles/css` for your handlers customization.
+### Usage
 
+To use this CSS API, you must add the `styles` builder and create an app styling CSS file.
+
+1. Add the `styles` builder to your `manifest.json`:
+
+```json
+  "builders": {
+    "styles": "1.x"
+  }
+```
+
+2. Create a file called `vtex.menu.css` inside the `styles/css` folder. Add your custom styles:
+
+```css
+.container {
+  margin-top: 10px;
+}
+```
 
 ## Troubleshooting
 You can check if others are passing through similar issues [here](https://github.com/vtex-apps/menu/issues). Also feel free to [open issues](https://github.com/vtex-apps/menu/issues/new) or contribute with pull requests.
