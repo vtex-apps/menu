@@ -7,10 +7,10 @@ The VTEX Menu app is store component that shows a bar with links and drop-down m
 :loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request.
 
 ## Release schedule
-| Release  | Status              | Initial Release | Maintenance LTS Start | End-of-life | Dreamstore Compatibility
+| Release  | Status              | Initial Release | Maintenance LTS Start | End-of-life | Store Compatibility
 | :--:     | :---:               |  :---:          | :---:                 | :---:       | :---: 
-| [1.x]    | **Maintenance LTS** |  2018-08-17     | 2018-11-27            | March 2019  | 1.x
 | [2.x]    | **Current Release** |  2018-11-27     |                       |             | 2.x
+| [1.x]    | **Maintenance LTS** |  2018-08-17     | 2018-11-27            | March 2019  | 1.x
 
 See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for more information.
 
@@ -86,10 +86,8 @@ Now, you can change the behavior of the menu block that is in the store header. 
 When implementing this app as a block, various inner blocks may be available. The following interface lists the available blocks within menu and describes if they are required or optional.
 
 ```json
-{
-  "menu-link": {
-    "component": "index"
-  }
+"menu-link": {
+	"component": "index"
 }
 ```
 
@@ -107,13 +105,13 @@ Link:
 
 | Prop name          | Type          | Description                                                             | Default value |
 | ------------------ | ------------- | ---------------------------------------------------------------------- | --- |
-| `text`             | `String`      | Link text                                                              | `undefined` |
-| `internalPage`     | `String`      | Internal page path to redirect                                         | `undefined` |
-| `params`           | `String`      | Parameters to pass when redirect to an internal page                   | `undefined` |
-| `externalPage`     | `String`      | External page path to redirect										  | `undefined` |
-| `typeOfRoute`      | `String`      | The route type, it can be `internal` or `external`                     | `undefined` |
-| `page`             | `String`      | Page route to redirect when the link is clicked                        | `undefined` |
-| `position`         | `String`      | Link position 								                          | `undefined` |
+| `text`             | `String`      | Link text                                                              | N/A |
+| `internalPage`     | `String`      | Internal page path to redirect                                         | N/A |
+| `params`           | `String`      | Parameters to pass when redirect to an internal page                   | N/A |
+| `externalPage`     | `String`      | External page path to redirect										  | N/A |
+| `typeOfRoute`      | `String`      | The route type, it can be `internal` or `external`                     | N/A |
+| `page`             | `String`      | Page route to redirect when the link is clicked                        | N/A |
+| `position`         | `String`      | Link position 								                          | N/A |
 
 ### Styles API
 
