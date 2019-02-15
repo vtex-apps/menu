@@ -141,10 +141,10 @@ Below, we describe the namespaces that are defined in the menu.
 
 | Token name         | Description        | Component Source                                    |
 | ------------------ | ----------         |------------------------------------------------------- |
-| `container`         | The main container of menu                         | [index](https://github.com/vtex-apps/menu/blob/master/react/index.tsx)          |
-| `linkLeft`            |  Link container when the link is to be left aligned                                  | [index](https://github.com/vtex-apps/menu/blob/master/react/index.tsx)            |
-| `linkMiddle`            |  Link container when the link is to be center aligned         | [index](https://github.com/vtex-apps/menu/blob/master/react/index.tsx)            |
-| `linkRight`          |  Link container when the link is to be right aligned                                       | [index](https://github.com/vtex-apps/menu/blob/master/react/components/index.tsx)            |
+| `container`         | The main container of menu                         | [index](/react/index.tsx)          |
+| `linkLeft`            |  Link container when the link is to be left aligned                                  | [index](/react/index.tsx)            |
+| `linkMiddle`            |  Link container when the link is to be center aligned         | [index](/react/index.tsx)            |
+| `linkRight`          |  Link container when the link is to be right aligned                                       | [index](/react/components/index.tsx)            |
 
 ## Troubleshooting
 You can check if others are passing through similar issues [here](https://github.com/vtex-apps/menu/issues). Also feel free to [open issues](https://github.com/vtex-apps/menu/issues/new) or contribute with pull requests.
