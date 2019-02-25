@@ -157,7 +157,7 @@ class Menu extends Component<Props> {
     return page
   }
 
-  private renderLink(link: typeof Link, index: number): ReactNode {
+  private renderLink(link: Link, index: number): ReactNode {
     let className: string = 't-small link c-muted-2 dib dim mr3 mr4-ns'
     switch (link.position) {
       case Options.LEFT:

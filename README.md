@@ -7,20 +7,22 @@ The VTEX Menu app is store component that shows a bar with links and drop-down m
 :loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request.
 
 ## Release schedule
-| Release  | Status              | Initial Release | Maintenance LTS Start | End-of-life | Store Compatibility
-| :--:     | :---:               |  :---:          | :---:                 | :---:       | :---: 
-| [2.x]    | **Current Release** |  2018-11-27     |                       |             | 2.x
-| [1.x]    | **Maintenance LTS** |  2018-08-17     | 2018-11-27            | March 2019  | 1.x
+
+| Release |       Status        | Initial Release | Maintenance LTS Start | End-of-life | Store Compatibility |
+| :-----: | :-----------------: | :-------------: | :-------------------: | :---------: | :-----------------: |
+|  [2.x]  | **Current Release** |   2018-11-27    |                       |             |         2.x         |
+|  [1.x]  | **Maintenance LTS** |   2018-08-17    |      2018-11-27       | March 2019  |         1.x         |
 
 See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for more information.
 
-## Continuous Integrations 
+## Continuous Integrations
 
-### Travis CI 
+### Travis CI
 
 [![Build Status](https://travis-ci.org/vtex-apps/menu.svg?branch=master)](https://travis-ci.org/vtex-apps/menu)
 
 ## Table of Contents
+
 - [Usage](#usage)
   - [Blocks API](#blocks-api)
     - [Configuration](#configuration)
@@ -43,40 +45,21 @@ To configure or customize this app, you need to import it in your dependencies i
   }
 ```
 
-Then, add `menu-link` block into your app theme as we do in our [Store theme app](https://github.com/vtex-apps/store-theme/blob/master/store/blocks.json). 
+Then, add `menu-link` block into your app theme as we do in our [Store theme app](https://github.com/vtex-apps/store-theme/blob/master/store/blocks.json).
 
-Now, you can change the behavior of the menu block that is in the store header. See an example of how to configure: 
+Now, you can change the behavior of the menu block that is in the store header. See an example of how to configure:
 
 ```json
 "menu-link": {
     "props": {
-      "numberOfItems": 6,
-      "item1": {
-        "title": "Atendimento",
-        "typeOfRoute": "internal",
-        "page": "store/home",
-        "position": "right"
-      },
-      "item2": {
-        "title": "Programa de Afiliados",
-        "typeOfRoute": "internal",
-        "position": "middle"
-      },
-      "item3": {
-        "title": "Anuncie",
-        "typeOfRoute": "internal",
-        "position": "middle"
-      },
-      "item4": {
-        "title": "Televendas 4003-2018",
-        "typeOfRoute": "internal",
-        "position": "left"
-      },
-      "item5": {
-        "title": "Sobre",
-        "typeOfRoute": "internal",
-        "position": "right"
-      }
+      "links": [
+        {
+          "typeOfRoute": "internal",
+          "page": "store/home",
+          "position": "right",
+          "text": "Atendimento",
+        }
+      ]
     }
   }
 ```
@@ -93,25 +76,25 @@ When implementing this app as a block, various inner blocks may be available. Th
 
 The menu has no required or allowed block. So, any menu block implementation do not need any block inside of menu.
 
-#### Configuration 
+#### Configuration
 
 Through the Storefront, you can change the menu's behavior and interface. However, you also can make in your theme app, as Store theme does.
 
-| Prop name          | Type          | Description                                                            | Default value |
-| ------------------ | ------------- | ---------------------------------------------------------------------- | --- |
-| `links`            | `Array(Link)` | Array of links that should appear in the menu                          | [] |
+| Prop name | Type          | Description                                   | Default value |
+| --------- | ------------- | --------------------------------------------- | ------------- |
+| `links`   | `Array(Link)` | Array of links that should appear in the menu | []            |
 
 Link:
 
-| Prop name          | Type          | Description                                                             | Default value |
-| ------------------ | ------------- | ---------------------------------------------------------------------- | --- |
-| `text`             | `String`      | Link text                                                              | N/A |
-| `internalPage`     | `String`      | Internal page path to redirect                                         | N/A |
-| `params`           | `String`      | Parameters to pass when redirect to an internal page                   | N/A |
-| `externalPage`     | `String`      | External page path to redirect										  | N/A |
-| `typeOfRoute`      | `String`      | The route type, it can be `internal` or `external`                     | N/A |
-| `page`             | `String`      | Page route to redirect when the link is clicked                        | N/A |
-| `position`         | `String`      | Link position 								                          | N/A |
+| Prop name      | Type     | Description                                          | Default value |
+| -------------- | -------- | ---------------------------------------------------- | ------------- |
+| `text`         | `String` | Link text                                            | N/A           |
+| `internalPage` | `String` | Internal page path to redirect                       | N/A           |
+| `params`       | `String` | Parameters to pass when redirect to an internal page | N/A           |
+| `externalPage` | `String` | External page path to redirect                       | N/A           |
+| `typeOfRoute`  | `String` | The route type, it can be `internal` or `external`   | N/A           |
+| `page`         | `String` | Page route to redirect when the link is clicked      | N/A           |
+| `position`     | `String` | Link position                                        | N/A           |
 
 ### Styles API
 
@@ -139,15 +122,17 @@ To use this CSS API, you must add the `styles` builder and create an app styling
 
 Below, we describe the namespaces that are defined in the menu.
 
-| Token name         | Description        | Component Source                                    |
-| ------------------ | ----------         |------------------------------------------------------- |
-| `container`         | The main container of menu                         | [index](/react/index.tsx)          |
-| `linkLeft`            |  Link container when the link is to be left aligned                                  | [index](/react/index.tsx)            |
-| `linkMiddle`            |  Link container when the link is to be center aligned         | [index](/react/index.tsx)            |
-| `linkRight`          |  Link container when the link is to be right aligned                                       | [index](/react/components/index.tsx)            |
+| Token name   | Description                                          | Component Source                     |
+| ------------ | ---------------------------------------------------- | ------------------------------------ |
+| `container`  | The main container of menu                           | [index](/react/index.tsx)            |
+| `linkLeft`   | Link container when the link is to be left aligned   | [index](/react/index.tsx)            |
+| `linkMiddle` | Link container when the link is to be center aligned | [index](/react/index.tsx)            |
+| `linkRight`  | Link container when the link is to be right aligned  | [index](/react/components/index.tsx) |
 
 ## Troubleshooting
+
 You can check if others are passing through similar issues [here](https://github.com/vtex-apps/menu/issues). Also feel free to [open issues](https://github.com/vtex-apps/menu/issues/new) or contribute with pull requests.
 
 ## Tests
-To execute our tests go to `react/` folder and run `npm test` 
+
+To execute our tests go to `react/` folder and run `npm test`
