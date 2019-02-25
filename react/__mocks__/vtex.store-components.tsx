@@ -13,6 +13,6 @@ export class Container extends Component<Props> {
     children: PropTypes.node,
   }
   render(): ReactNode {
-    return <a href="#">{this.props.children}</a>
+    return <section>{this.props.children}</section>
   }
 }

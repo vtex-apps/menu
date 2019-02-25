@@ -1,27 +1,33 @@
-/* eslint-env jest */
 import React from 'react'
-import { IntlProvider } from 'react-intl'
-import { render } from 'react-testing-library'
+import { render } from 'test-utils'
 
 import Menu from '../index'
 
 describe('Menu Component', () => {
-  let wrapper
+  function renderComponent() {
+    const props = {
+      links: [
+        {
+          text: 'text',
+          internalPage: 'internalPage',
+          params: 'params',
+          externalPage: 'externalPage',
+          typeOfRoute: 'typeOfRoute',
+          page: 'page',
+          position: 'position',
+        },
+      ],
+    }
 
-  beforeEach(() => {
-    const messages = require('../../messages/en-US.json')
-    wrapper = render(
-      <IntlProvider locale="en-US" messages={messages}>
-        <Menu />
-      </IntlProvider>
-    )
-  })
+    return render(<Menu {...props} />)
+  }
 
   it('should be rendered', () => {
-    expect(wrapper).toBeDefined()
+    expect(renderComponent()).toBeDefined()
   })
 
-  it('should render nothing', () => {
-    expect(wrapper.container.querySelectorAll('a').length).toBe(0)
+  it('should match the snapshot', () => {
+    const { asFragment } = renderComponent()
+    expect(asFragment()).toMatchSnapshot()
   })
 })

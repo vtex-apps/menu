@@ -6,7 +6,8 @@ import { Container } from 'vtex.store-components'
 import Options from './constants/Options'
 import menu from './menu.css'
 // This is required because is used in static schema attribute of Menu Component
-const GLOBAL_PAGES = (global as any).__RUNTIME__ && Object.keys((global as any).__RUNTIME__.pages)
+const GLOBAL_PAGES =
+  (global as any).__RUNTIME__ && Object.keys((global as any).__RUNTIME__.pages)
 
 const MAX_ITEMS: number = 10
 
@@ -25,14 +26,14 @@ interface DefaultProps {
 }
 
 interface Options {
-  LEFT: string,
-  MIDDLE: string,
-  RIGHT: string,
-  INTERNAL: string,
+  LEFT: string
+  MIDDLE: string
+  RIGHT: string
+  INTERNAL: string
   EXTERNAL: string
 }
 
-interface Props extends DefaultProps { }
+interface Props extends DefaultProps {}
 
 /**
  * Links Menu Component.
@@ -174,18 +175,20 @@ class Menu extends Component<Props> {
         className={className}
         key={`${link.text}-${link.position}-${index}`}
         page={link.internalPage}
-        params={this.getParams(link.params)}>
+        params={this.getParams(link.params)}
+      >
         {link.text}
       </Link>
     ) : (
-        <a
-          className={className}
-          key={`${link.text}-${link.position}-${index}`}
-          href={this.getValidPage(link.externalPage)}
-          target="_blank">
-          {link.text}
-        </a>
-      )
+      <a
+        className={className}
+        key={`${link.text}-${link.position}-${index}`}
+        href={this.getValidPage(link.externalPage)}
+        target="_blank"
+      >
+        {link.text}
+      </a>
+    )
   }
 
   public render(): ReactNode {
