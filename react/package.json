@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "A Menu Component.",
   "scripts": {
+    "pretest": "yarn",
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "tsc --noEmit --pretty && tslint -c tslint.json './**/*.ts'"

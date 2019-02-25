@@ -4,7 +4,7 @@ import { render } from 'test-utils'
 import Menu from '../index'
 
 describe('Menu Component', () => {
-  function renderComponent(customProps) {
+  function renderComponent() {
     const props = {
       links: [
         {
@@ -27,6 +27,7 @@ describe('Menu Component', () => {
   })
 
   it('should match the snapshot', () => {
-    expect(renderComponent()).toMatchSnapshot()
+    const { asFragment } = renderComponent()
+    expect(asFragment()).toMatchSnapshot()
   })
 })

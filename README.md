@@ -15,12 +15,6 @@ The VTEX Menu app is store component that shows a bar with links and drop-down m
 
 See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for more information.
 
-## Continuous Integrations
-
-### Travis CI
-
-[![Build Status](https://travis-ci.org/vtex-apps/menu.svg?branch=master)](https://travis-ci.org/vtex-apps/menu)
-
 ## Table of Contents
 
 - [Usage](#usage)
@@ -135,4 +129,8 @@ You can check if others are passing through similar issues [here](https://github
 
 ## Tests
 
-To execute our tests go to `react/` folder and run `npm test`
+To execute our tests go to `react/` folder and run `yarn test`
+
+### Travis CI
+
+[![Build Status](https://travis-ci.org/vtex-apps/menu.svg?branch=master)](https://travis-ci.org/vtex-apps/menu)
