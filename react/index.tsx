@@ -197,7 +197,7 @@ class Menu extends Component<Props> {
       return null
     }
     return (
-      <div className={`${menu.container} h2 c-muted-2 w-100 dn db-ns`}>
+      <div className={`${menu.container} bg-base h2 c-muted-2 w-100 dn db-ns`}>
         <Container>
           <nav className="flex justify-between">
             <div className="flex-grow pa3 flex items-center">
