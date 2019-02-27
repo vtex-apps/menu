@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.6.6] - 2019-02-27
+
 ### Added
 
 - Token `bg-base` on container
