@@ -10,9 +10,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - Token `bg-base` on container
-
-### Added
-
 - Snapshot tests with react-testing-library.
 
 ## [2.6.5] - 2019-02-14
