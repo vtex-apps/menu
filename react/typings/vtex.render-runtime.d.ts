@@ -1,6 +1,6 @@
 /* Typings for `render-runtime` */
 declare module 'vtex.render-runtime' {
-  import { Component, ReactElement, ReactType } from 'react'
+  import { Component, ComponentType, ReactElement, ReactType } from 'react'
 
   export interface NavigationOptions {
     page: string
@@ -13,7 +13,12 @@ declare module 'vtex.render-runtime' {
     }
   }
 
-  export const ExtensionPoint: ReactElement
+  interface ExtensionPointProps {
+    id: string
+    [key: string]: any
+  }
+
+  export const ExtensionPoint: ComponentType<ExtensionPointProps>
   export const Helmet: ReactElement
   export const Link: ReactType
   export const NoSSR: ReactElement

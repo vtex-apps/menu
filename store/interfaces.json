@@ -1,5 +1,43 @@
 {
   "menu-link": {
     "component": "index"
+  },
+  "menu": {
+    "component": "Menu",
+    "layoutMode": "dynamic",
+    "allowed": [
+      "menu-item"
+    ]
+  },
+  "menu-item": {
+    "component": "MenuItem",
+    "allowed": [
+      "submenu"
+    ]
+  },
+  "submenu": {
+    "component": "Submenu",
+    "layoutMode": "dynamic",
+    "allowed": [
+      "second-level-menu",
+      "col"
+    ]
+  },
+  "col": {
+    "component": "Column",
+    "layoutMode": "dynamic",
+    "allowed": [
+      "second-level-menu"
+    ]
+  },
+  "second-level-menu": {
+    "component": "Menu",
+    "layoutMode": "dynamic",
+    "allowed": [
+      "second-level-menu-item"
+    ]
+  },
+  "second-level-menu-item": {
+    "component": "MenuItem"
   }
 }
