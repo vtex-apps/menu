@@ -5,7 +5,7 @@
 README.md
 react/**/node_modules/**
 react/**/__tests__/**
+react/**/__snapshots__/**
 react/**/__mocks__/**
 react/**/*.test.js
-react/testUtils/**/*
-react/.babelrc
+react/setupTests.js

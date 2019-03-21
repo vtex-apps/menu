@@ -4,7 +4,7 @@ import React, { Component, ReactNode } from 'react'
 import { Link } from 'vtex.render-runtime'
 import { Container } from 'vtex.store-components'
 import Options from './constants/Options'
-import menu from './menu.css'
+import style from './MenuLink.css'
 // This is required because is used in static schema attribute of Menu Component
 const GLOBAL_PAGES =
   (global as any).__RUNTIME__ && Object.keys((global as any).__RUNTIME__.pages)
@@ -36,10 +36,10 @@ interface Options {
 interface Props extends DefaultProps {}
 
 /**
- * Links Menu Component.
+ * Links MenuLink Component.
  * Shows a menu bar with links.
  */
-class Menu extends Component<Props> {
+class MenuLink extends Component<Props> {
   public static propTypes = {
     links: PropTypes.arrayOf(
       PropTypes.shape({
@@ -161,13 +161,13 @@ class Menu extends Component<Props> {
     let className: string = 't-small link c-muted-2 dib dim mr3 mr4-ns'
     switch (link.position) {
       case Options.LEFT:
-        className = `${menu.linkLeft} ${className}`
+        className = `${style.linkLeft} ${className}`
         break
       case Options.MIDDLE:
-        className = `${menu.linkMiddle} ${className}`
+        className = `${style.linkMiddle} ${className}`
         break
       case Options.RIGHT:
-        className = `${menu.linkRight} ${className}`
+        className = `${style.linkRight} ${className}`
         break
     }
     return link.typeOfRoute === Options.INTERNAL ? (
@@ -197,7 +197,7 @@ class Menu extends Component<Props> {
       return null
     }
     return (
-      <div className={`${menu.container} bg-base h2 c-muted-2 w-100 dn db-ns`}>
+      <div className={`${style.container} bg-base h2 c-muted-2 w-100 dn db-ns`}>
         <Container>
           <nav className="flex justify-between">
             <div className="flex-grow pa3 flex items-center">
@@ -228,4 +228,4 @@ class Menu extends Component<Props> {
   }
 }
 
-export default Menu
+export default MenuLink
