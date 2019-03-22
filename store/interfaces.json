@@ -4,7 +4,7 @@
   },
   "menu": {
     "component": "Menu",
-    "layoutMode": "dynamic",
+    "unstable__layoutMode": "dynamic",
     "allowed": [
       "menu-item"
     ]
@@ -17,7 +17,7 @@
   },
   "submenu": {
     "component": "Submenu",
-    "layoutMode": "dynamic",
+    "unstable__layoutMode": "dynamic",
     "allowed": [
       "second-level-menu",
       "col"
@@ -25,14 +25,14 @@
   },
   "col": {
     "component": "Column",
-    "layoutMode": "dynamic",
+    "unstable__layoutMode": "dynamic",
     "allowed": [
       "second-level-menu"
     ]
   },
   "second-level-menu": {
     "component": "Menu",
-    "layoutMode": "dynamic",
+    "unstable__layoutMode": "dynamic",
     "allowed": [
       "second-level-menu-item"
     ]
