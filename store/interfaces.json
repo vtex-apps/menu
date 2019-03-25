@@ -2,42 +2,42 @@
   "menu-link": {
     "component": "index"
   },
-  "menu": {
+  "unstable--menu": {
     "component": "Menu",
     "unstable__layoutMode": "dynamic",
     "allowed": [
-      "menu-item"
+      "unstable--menu-item"
     ]
   },
-  "menu-item": {
+  "unstable--menu-item": {
     "component": "MenuItem",
     "allowed": [
-      "submenu"
+      "unstable--submenu"
     ]
   },
-  "submenu": {
+  "unstable--submenu": {
     "component": "Submenu",
     "unstable__layoutMode": "dynamic",
     "allowed": [
-      "second-level-menu",
-      "col"
+      "unstable--second-level-menu",
+      "unstable--col"
     ]
   },
-  "col": {
+  "unstable--col": {
     "component": "Column",
     "unstable__layoutMode": "dynamic",
     "allowed": [
-      "second-level-menu"
+      "unstable--second-level-menu"
     ]
   },
-  "second-level-menu": {
+  "unstable--second-level-menu": {
     "component": "Menu",
     "unstable__layoutMode": "dynamic",
     "allowed": [
-      "second-level-menu-item"
+      "unstable--second-level-menu-item"
     ]
   },
-  "second-level-menu-item": {
+  "unstable--second-level-menu-item": {
     "component": "MenuItem"
   }
 }
