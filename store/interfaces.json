@@ -4,7 +4,7 @@
   },
   "unstable--menu": {
     "component": "Menu",
-    "unstable__layoutMode": "dynamic",
+    "composition": "children",
     "allowed": [
       "unstable--menu-item"
     ]
@@ -17,7 +17,7 @@
   },
   "unstable--submenu": {
     "component": "Submenu",
-    "unstable__layoutMode": "dynamic",
+    "composition": "children",
     "allowed": [
       "unstable--second-level-menu",
       "unstable--col"
@@ -25,14 +25,14 @@
   },
   "unstable--col": {
     "component": "Column",
-    "unstable__layoutMode": "dynamic",
+    "composition": "children",
     "allowed": [
       "unstable--second-level-menu"
     ]
   },
   "unstable--second-level-menu": {
     "component": "Menu",
-    "unstable__layoutMode": "dynamic",
+    "composition": "children",
     "allowed": [
       "unstable--second-level-menu-item"
     ]
