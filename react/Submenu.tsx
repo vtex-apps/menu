@@ -10,7 +10,7 @@ const Submenu : StorefrontComponent<SubmenuProps> = (props) => {
         'flex': props.isHovered,
         'w-100': props.width === '100%',
         'w-auto ml6': props.width === 'auto',
-      })} style={{}}>
+      })}>
         <section className="w-100 flex justify-center">
           {props.children}
         </section>
