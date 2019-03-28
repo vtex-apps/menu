@@ -1,5 +1,5 @@
-import React from 'react'
 import { render } from '@vtex/test-tools/react'
+import React from 'react'
 
 import Menu from './index'
 
@@ -8,13 +8,13 @@ describe('Menu Component', () => {
     const props = {
       links: [
         {
-          text: 'text',
-          internalPage: 'internalPage',
-          params: 'params',
           externalPage: 'externalPage',
-          typeOfRoute: 'typeOfRoute',
+          internalPage: 'internalPage',
           page: 'page',
+          params: 'params',
           position: 'position',
+          text: 'text',
+          typeOfRoute: 'typeOfRoute',
         },
       ],
     }

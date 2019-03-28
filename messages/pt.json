@@ -1,0 +1,21 @@
+{
+  "editor.menu-link": "Menu",
+  "editor.menu-link.title": "Título",
+  "editor.menu-link.description": "Uma barra de menu com links",
+  "editor.menu-link.links": "Links",
+  "editor.menu-link.links.link": "Link",
+  "editor.menu-link.links.link.text": "Texto do Link",
+  "editor.menu-link.links.link.internalPage": "Página Alvo",
+  "editor.menu-link.links.link.internalPage.description": "Se interna",
+  "editor.menu-link.links.link.params": "Parâmetros",
+  "editor.menu-link.links.link.params.description": "Parâmetros separados por vírgula, e.g.: chave=valor,a=b,c=d",
+  "editor.menu-link.links.link.externalPage": "URL (deve começar com https ou http)",
+  "editor.menu-link.links.link.externalPage.description": "Se externa",
+  "editor.menu-link.links.link.typeOfRoute": "Tipo da Rota",
+  "editor.menu-link.links.link.typeOfRoute.internal": "Interna",
+  "editor.menu-link.links.link.typeOfRoute.external": "Externa",
+  "editor.menu-link.links.link.position": "Posição",
+  "editor.menu-link.links.link.position.left": "Esquerda",
+  "editor.menu-link.links.link.position.middle": "Centro",
+  "editor.menu-link.links.link.position.right": "Direita"
+}

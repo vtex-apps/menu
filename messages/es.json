@@ -1,0 +1,21 @@
+{
+  "editor.menu-link": "Menú",
+  "editor.menu-link.title": "Título",
+  "editor.menu-link.description": "Una barra de menú de enlaces",
+  "editor.menu-link.links": "Enlace",
+  "editor.menu-link.links.link": "Enlace",
+  "editor.menu-link.links.link.text": "Texto del Enlace",
+  "editor.menu-link.links.link.internalPage": "Página de destino",
+  "editor.menu-link.links.link.internalPage.description": "Si es interna",
+  "editor.menu-link.links.link.params": "Parámetros",
+  "editor.menu-link.links.link.params.description": "Parámetros separados por coma, e.g.: chave=valor,a=b,c=d",
+  "editor.menu-link.links.link.externalPage": "URL (debería comenzar con https o http)",
+  "editor.menu-link.links.link.externalPage.description": "Si es externo",
+  "editor.menu-link.links.link.typeOfRoute": "Tipo da Rota",
+  "editor.menu-link.links.link.typeOfRoute.internal": "Interna",
+  "editor.menu-link.links.link.typeOfRoute.external": "Externo",
+  "editor.menu-link.links.link.position": "Posición",
+  "editor.menu-link.links.link.position.left": "Izquierda",
+  "editor.menu-link.links.link.position.middle": "Medio",
+  "editor.menu-link.links.link.position.right": "Derecha"
+}
