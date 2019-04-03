@@ -1,10 +1,10 @@
 import classNames from 'classnames'
 import { path } from 'ramda'
 import React, { useState } from 'react'
+import { defineMessages } from 'react-intl'
 import { ExtensionPoint } from 'vtex.render-runtime'
-import CategoryItem, { CategoryItemProps } from './components/CategoryItem'
-import CustomItem, { CustomItemProps } from './components/CustomItem'
-import messages from './modules/messages'
+import CategoryItem, { CategoryItemProps, CategoryItemSchema } from './components/CategoryItem'
+import CustomItem, { CustomItemProps, CustomItemSchema } from './components/CustomItem'
 
 type ItemComponent = (
   props: CategoryItemProps | CustomItemProps
@@ -15,7 +15,7 @@ const menuItemTypes = {
   custom: CustomItem,
 }
 
-const MenuItem: StorefrontComponent<MenuItemProps> = props => {
+const MenuItem: StorefrontFunctionComponent<MenuItemProps> = props => {
   const [isHovered, setHover] = useState(false)
 
   const Item = menuItemTypes[props.type] as ItemComponent
@@ -26,18 +26,12 @@ const MenuItem: StorefrontComponent<MenuItemProps> = props => {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      <span
-        className={classNames('pointer', {
-          'c-emphasis': props.highlight,
-          'c-on-base': !props.highlight,
-        })}
-      >
-        <Item
-          {...props.itemProps}
-          typography={props.typography}
-          isHovered={isHovered}
-        />
-      </span>
+      <Item
+        {...props.itemProps}
+        typography={props.typography}
+        highlight={props.highlight}
+        isHovered={isHovered}
+      />
       <ExtensionPoint id="unstable--submenu" isHovered={isHovered} />
     </li>
   )
@@ -46,6 +40,81 @@ const MenuItem: StorefrontComponent<MenuItemProps> = props => {
 interface MenuItemProps extends MenuItemSchema {
   typography?: string,
 }
+
+interface MenuItemSchema {
+  id: string
+  type: 'category' | 'custom'
+  iconId: string
+  highlight: boolean
+  itemProps: CategoryItemSchema  | CustomItemSchema
+}
+
+const messages = defineMessages({
+  categoryIdTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.item.params.categoryId.title',
+  },
+  categoryTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.item.category.title',
+  },
+  customTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.item.custom.title',
+  },
+  customTypeTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.item.params.type.title',
+  },
+  externalTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.item.params.external.title',
+  },
+  highlightTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.item.highlight.title',
+  },
+  hrefTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.item.params.href.title',
+  },
+  iconIdTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.item.iconId.title',
+  },
+  internalTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.item.params.internal.title',
+  },
+  itemIdTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.item.id.title',
+  },
+  itemsTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.items.title',
+  },
+  noFollowTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.item.params.noFollow.title',
+  },
+  paramsTextTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.item.params.text.title',
+  },
+  paramsTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.item.params.title',
+  },
+  tagTitleTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.item.params.tagTitle.title',
+  },
+  typeTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.item.type.title',
+  },
+})
 
 MenuItem.getSchema = ({ id, type, ...props }) => {
   const text = path(['itemProps', 'text'], props)

@@ -4,6 +4,7 @@ import StyledLink from './StyledLink'
 const CustomItem : FunctionComponent<CustomItemProps> = (props) => {
   return (
     <StyledLink
+      highlight={props.highlight}
       isHovered={props.isHovered}
       typography={props.typography}
       to={props.href}
@@ -23,7 +24,16 @@ const CustomItem : FunctionComponent<CustomItemProps> = (props) => {
 
 export interface CustomItemProps extends CustomItemSchema {
   isHovered: boolean
+  highlight: boolean
   typography?: string
+}
+
+export interface CustomItemSchema {
+  type: 'internal' | 'external'
+  href: string
+  noFollow: boolean
+  tagTitle: string
+  text: string
 }
 
 export default CustomItem

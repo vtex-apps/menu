@@ -1,8 +1,8 @@
 import classNames from 'classnames'
 import React from 'react'
-import messages from './modules/messages'
+import { defineMessages } from 'react-intl'
 
-const Submenu : StorefrontComponent<SubmenuProps> = (props) => {
+const Submenu : StorefrontFunctionComponent<SubmenuProps> = (props) => {
   return (
     <div className={`${props.width === '100%' ? '' : 'relative'}`}>
       <div className={classNames('absolute left-0 bg-base pv4 bw1 bb b--muted-3 z-2', {
@@ -24,19 +24,32 @@ interface SubmenuProps extends SubmenuSchema {
   positionTop: string
 }
 
-Submenu.getSchema = () => {
-  // tslint:disable: object-literal-sort-keys
-  return {
-    title: messages.submenuTitle.id,
-    type: 'object',
-    properties: {
-      submenuWidth: {
-        title: messages.submenuWidthTitle.id,
-        enum: ['100%', 'auto'],
-        default: 'auto',
-      },
+interface SubmenuSchema {
+  width: '100%' | 'auto'
+}
+
+const messages = defineMessages({
+  submenuTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.submenu.title',
+  },
+  submenuWidthTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.item.submenuWidth.title',
+  },
+})
+
+// tslint:disable: object-literal-sort-keys
+Submenu.schema = {
+  title: messages.submenuTitle.id,
+  type: 'object',
+  properties: {
+    submenuWidth: {
+      title: messages.submenuWidthTitle.id,
+      enum: ['100%', 'auto'],
+      default: 'auto',
     },
-  }
+  },
 }
 
 export default Submenu
