@@ -3,7 +3,7 @@ import React from 'react'
 
 import Menu from './index'
 
-describe('Menu Component', () => {
+describe('MenuLink Component', () => {
   function renderComponent() {
     const props = {
       links: [

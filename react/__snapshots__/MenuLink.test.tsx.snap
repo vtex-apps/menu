@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Menu Component should match the snapshot 1`] = `
+exports[`MenuLink Component should match the snapshot 1`] = `
 <DocumentFragment>
   <div
     class="container bg-base h2 c-muted-2 w-100 dn db-ns"
