@@ -3,9 +3,14 @@ query category($id: Int) {
     cacheId
     id
     href
-    slug
     name
     titleTag
     hasChildren
+    children {
+      id
+      name
+      href
+      titleTag
+    }
   }
 }

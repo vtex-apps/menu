@@ -1,0 +1,7 @@
+# import category from "category.gql"
+
+query categoryWithChildren($id: Int){
+    category(id: $id)
+    hasChildren
+    children
+}

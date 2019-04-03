@@ -104,9 +104,9 @@ MenuItem.getSchema = props => {
 
   // tslint:disable: object-literal-sort-keys
   return {
-    title: text ? text : messages.itemsTitle.id,
+    title: [text, id, messages.itemsTitle.id].find(e => !!e),
     type: 'object',
-
+    required: ['type'],
     properties: {
       id: {
         default: id,
@@ -117,6 +117,7 @@ MenuItem.getSchema = props => {
         title: messages.typeTitle.id,
         type: 'string',
         enum: ['category', 'custom'],
+        default: 'custom',
         enumNames: [messages.categoryTitle.id, messages.customTitle.id],
       },
       iconId: {
@@ -136,6 +137,10 @@ MenuItem.getSchema = props => {
               title: messages.categoryIdTitle.id,
               type: 'string',
             },
+            showChildren: {
+              title: 'Show Children',
+              type: 'boolean',
+            }
           }),
           ...(type === 'custom' && {
             type: {
