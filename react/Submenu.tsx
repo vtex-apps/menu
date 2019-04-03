@@ -2,17 +2,17 @@ import classNames from 'classnames'
 import React from 'react'
 import { defineMessages } from 'react-intl'
 
-const Submenu : StorefrontFunctionComponent<SubmenuProps> = (props) => {
+const Submenu : StorefrontFunctionComponent<SubmenuProps> = ({isHovered, width, children}) => {
   return (
-    <div className={`${props.width === '100%' ? '' : 'relative'}`}>
+    <div className={`${width === '100%' ? '' : 'relative'}`}>
       <div className={classNames('absolute left-0 bg-base pv4 bw1 bb b--muted-3 z-2', {
-        'dn': !props.isHovered,
-        'flex': props.isHovered,
-        'w-100': props.width === '100%',
-        'w-auto ml6': props.width === 'auto',
+        'dn': !isHovered,
+        'flex': isHovered,
+        'w-100': width === '100%',
+        'w-auto ml6': width === 'auto',
       })}>
         <section className="w-100 flex justify-center">
-          {props.children}
+          {children}
         </section>
       </div>
     </div>
@@ -21,7 +21,6 @@ const Submenu : StorefrontFunctionComponent<SubmenuProps> = (props) => {
 
 interface SubmenuProps extends SubmenuSchema {
   isHovered: boolean
-  positionTop: string
 }
 
 interface SubmenuSchema {
