@@ -9,7 +9,7 @@ const defaultTypography : Record<number, string> = {
   3: 't-small',
 }
 
-const StyledLink : FunctionComponent<any> = ({ isHovered, ...props}) => {
+const StyledLink : FunctionComponent<StyledLink> = ({ isHovered, ...props}) => {
   const level = useContext(LevelContext)
 
   const typography = props.typography
@@ -17,7 +17,7 @@ const StyledLink : FunctionComponent<any> = ({ isHovered, ...props}) => {
     : defaultTypography[level]
 
   return (
-    <div className={classNames('no-underline bb bw1 mh6', {
+    <div className={classNames('bb bw1 mh6', {
       'b--action-primary': level === 1 && isHovered,
       'b--transparent': level === 1 && !isHovered || level > 1,
       'dim': level > 1 && isHovered,
@@ -25,10 +25,20 @@ const StyledLink : FunctionComponent<any> = ({ isHovered, ...props}) => {
       'pv5': level === 1,
     })}>
       <Link
-        className={`${typography} c-on-base no-underline`}
-        {...props} />
+        {...props}
+        className={classNames('pointer no-underline', {
+          [typography]: true,
+          'c-emphasis': props.highlight,
+          'c-on-base': !props.highlight,
+        })} />
     </div>
   )
+}
+
+interface StyledLink {
+  isHovered: boolean
+  highlight: boolean
+  [key: string]: any
 }
 
 export default StyledLink

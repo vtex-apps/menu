@@ -1,9 +1,9 @@
 import classNames from 'classnames'
 import React, { useContext } from 'react'
+import { defineMessages } from 'react-intl'
 import LevelContext from './components/LevelContext'
-import messages from './modules/messages'
 
-const Typography : Record<string, string> = {
+const TypographyMap : Record<string, string> = {
   body: 't-body',
   heading1: 't-heading-1',
   heading2: 't-heading-2',
@@ -14,7 +14,7 @@ const Typography : Record<string, string> = {
   small: 't-small',
 }
 
-const Menu : StorefrontComponent<MenuSchema> = ({
+const Menu : StorefrontFunctionComponent<MenuSchema> = ({
   orientation = 'horizontal',
   textType,
   ...props
@@ -30,7 +30,7 @@ const Menu : StorefrontComponent<MenuSchema> = ({
         })}>
           {React.Children.map(props.children, child =>
             React.cloneElement(child as React.ReactElement<any>, {
-              typography: textType ? Typography[textType] : undefined,
+              typography: textType ? TypographyMap[textType] : undefined,
             })
           )}
         </ul>
@@ -38,6 +38,45 @@ const Menu : StorefrontComponent<MenuSchema> = ({
     </LevelContext.Provider>
   )
 }
+
+interface MenuSchema {
+  orientation?: 'vertical' | 'horizontal'
+  textType?: Typography
+}
+
+enum Typography {
+  heading1 = 't-heading-1',
+  heading2 = 't-heading-2',
+  heading3 = 't-heading-3',
+  heading4 = 't-heading-4',
+  heading5 = 't-heading-5',
+  body = 't-body',
+  small = 't-small',
+  mini = 't-mini',
+}
+
+const messages = defineMessages({
+  horizontalLabel: {
+    defaultMessage: '',
+    id: 'editor.menu.orientation.horizontal.label',
+  },
+  menuTitle: {
+    defaultMessage: '',
+    id: 'editor.future-menu.title',
+  },
+  orientationTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.orientation.title',
+  },
+  typographyTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.typography.title',
+  },
+  verticalLabel: {
+    defaultMessage: '',
+    id: 'editor.menu.orientation.vertical.label',
+  },
+})
 
 Menu.getSchema = () => {
   const typographyValues = Object.values(Typography)
