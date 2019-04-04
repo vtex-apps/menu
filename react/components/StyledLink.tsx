@@ -9,12 +9,16 @@ const defaultTypography : Record<number, string> = {
   3: 't-small',
 }
 
-const StyledLink : FunctionComponent<StyledLink> = ({ isHovered, ...props}) => {
+const StyledLink : FunctionComponent<StyledLinkProps> = (props) => {
   const level = useContext(LevelContext)
 
-  const typography = props.typography
-    ? props.typography
-    : defaultTypography[level]
+  const {
+    typography = defaultTypography[level],
+    highlight,
+    isHovered,
+    isTitle,
+    ...rest
+  } = props
 
   return (
     <div className={classNames('bb bw1 mh6', {
@@ -25,7 +29,7 @@ const StyledLink : FunctionComponent<StyledLink> = ({ isHovered, ...props}) => {
       'pv5': level === 1,
     })}>
       <Link
-        {...props}
+        {...rest}
         className={classNames('pointer no-underline', {
           [typography]: true,
           'c-emphasis': props.highlight,
@@ -35,10 +39,18 @@ const StyledLink : FunctionComponent<StyledLink> = ({ isHovered, ...props}) => {
   )
 }
 
-interface StyledLink {
-  isHovered: boolean
+export interface StyledLinkProps extends LinkProps {
   highlight: boolean
-  [key: string]: any
+  isHovered?: boolean
+  isTitle?: boolean
+  typography?: string
+}
+
+interface LinkProps {
+  to?: any
+  title?: string
+  target?: string
+  rel?: string
 }
 
 export default StyledLink

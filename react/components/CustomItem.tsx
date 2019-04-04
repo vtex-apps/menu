@@ -1,19 +1,19 @@
 import React, { FunctionComponent } from 'react'
-import StyledLink from './StyledLink'
+import StyledLink, { StyledLinkProps } from './StyledLink'
 
 const CustomItem : FunctionComponent<CustomItemProps> = (props) => {
+  const { type, noFollow, tagTitle, text, href, ...rest } = props
+
   return (
     <StyledLink
-      highlight={props.highlight}
-      isHovered={props.isHovered}
-      typography={props.typography}
-      to={props.href}
-      title={props.tagTitle}
-      {...props.type === 'external'
+      {...rest}
+      to={href}
+      title={tagTitle}
+      {...type === 'external'
         ? { target: '_blank' }
         : {}
       }
-      {...props.noFollow
+      {...noFollow
         ? { rel: 'nofollow noopener' }
         : {}
       }>
@@ -22,11 +22,7 @@ const CustomItem : FunctionComponent<CustomItemProps> = (props) => {
   )
 }
 
-export interface CustomItemProps extends CustomItemSchema {
-  isHovered: boolean
-  highlight: boolean
-  typography?: string
-}
+export interface CustomItemProps extends CustomItemSchema, StyledLinkProps {}
 
 export interface CustomItemSchema {
   type: 'internal' | 'external'
