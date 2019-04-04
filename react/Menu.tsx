@@ -27,7 +27,7 @@ const Menu : StorefrontFunctionComponent<MenuSchema> = ({
   return (
     <LevelContext.Provider value={level + 1}>
       <nav>
-        {title && <Item {...title} highlight={true} />}
+        {title && <Item {...title} isTitle />}
         <ul className={classNames('list flex pl0 mv0', {
           'flex-column': orientation === 'vertical',
           'flex-row': orientation === 'horizontal',
