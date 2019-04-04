@@ -1,7 +1,9 @@
 import classNames from 'classnames'
 import React, { useContext } from 'react'
 import { defineMessages } from 'react-intl'
+import Item from './components/Item'
 import LevelContext from './components/LevelContext'
+import MenuItem, { MenuItemProps } from './MenuItem'
 
 const TypographyMap : Record<string, string> = {
   body: 't-body',
@@ -17,6 +19,7 @@ const TypographyMap : Record<string, string> = {
 const Menu : StorefrontFunctionComponent<MenuSchema> = ({
   orientation = 'horizontal',
   textType,
+  title,
   ...props
 }) => {
   const level = useContext(LevelContext)
@@ -24,6 +27,7 @@ const Menu : StorefrontFunctionComponent<MenuSchema> = ({
   return (
     <LevelContext.Provider value={level + 1}>
       <nav>
+        {title && <Item {...title} highlight={true} />}
         <ul className={classNames('list flex pl0 mv0', {
           'flex-column': orientation === 'vertical',
           'flex-row': orientation === 'horizontal',
@@ -42,6 +46,7 @@ const Menu : StorefrontFunctionComponent<MenuSchema> = ({
 interface MenuSchema {
   orientation?: 'vertical' | 'horizontal'
   textType?: Typography
+  title?: MenuItemProps
 }
 
 enum Typography {
@@ -78,7 +83,7 @@ const messages = defineMessages({
   },
 })
 
-Menu.getSchema = () => {
+Menu.getSchema = (props: MenuSchema) => {
   const typographyValues = Object.values(Typography)
 
   // tslint:disable: object-literal-sort-keys
@@ -93,6 +98,7 @@ Menu.getSchema = () => {
         enumNames: typographyValues,
         default: Typography.body,
       },
+      title: MenuItem.getSchema(props.title),
       orientation: {
         title: messages.orientationTitle.id,
         type: 'string',
