@@ -3,11 +3,13 @@ import StyledLink, { StyledLinkProps } from './StyledLink'
 
 const CustomItem : FunctionComponent<CustomItemProps> = (props) => {
   const { type, noFollow, tagTitle, text, href, ...rest } = props
+  const disabled = !href || href === '#'
 
   return (
     <StyledLink
       {...rest}
-      to={href}
+      disabled={disabled}
+      to={!disabled && href}
       title={tagTitle}
       {...type === 'external'
         ? { target: '_blank' }
@@ -17,7 +19,7 @@ const CustomItem : FunctionComponent<CustomItemProps> = (props) => {
         ? { rel: 'nofollow noopener' }
         : {}
       }>
-      {props.text}
+      {text}
     </StyledLink>
   )
 }
