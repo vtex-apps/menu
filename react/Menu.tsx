@@ -5,7 +5,7 @@ import Item from './components/Item'
 import LevelContext from './components/LevelContext'
 import MenuItem, { MenuItemProps } from './MenuItem'
 
-const TypographyMap : Record<string, string> = {
+const TypographyMap: Record<string, string> = {
   body: 't-body',
   heading1: 't-heading-1',
   heading2: 't-heading-2',
@@ -16,7 +16,7 @@ const TypographyMap : Record<string, string> = {
   small: 't-small',
 }
 
-const Menu : StorefrontFunctionComponent<MenuSchema> = ({
+const Menu: StorefrontFunctionComponent<MenuSchema> = ({
   orientation = 'horizontal',
   textType,
   title,
@@ -28,10 +28,12 @@ const Menu : StorefrontFunctionComponent<MenuSchema> = ({
     <LevelContext.Provider value={level + 1}>
       <nav>
         {title && <Item {...title} isTitle />}
-        <ul className={classNames('list flex pl0 mv0', {
-          'flex-column': orientation === 'vertical',
-          'flex-row': orientation === 'horizontal',
-        })}>
+        <ul
+          className={classNames('list flex pl0 mv0', {
+            'flex-column': orientation === 'vertical',
+            'flex-row': orientation === 'horizontal',
+          })}
+        >
           {React.Children.map(props.children, child =>
             React.cloneElement(child as React.ReactElement<any>, {
               typography: textType ? TypographyMap[textType] : undefined,
