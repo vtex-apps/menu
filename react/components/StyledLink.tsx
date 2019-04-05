@@ -24,7 +24,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
   const linkClassNames = classNames('no-underline', {
     [typography]: true,
     'c-emphasis': highlight || isTitle,
-    'c-on-base': !highlight,
+    'c-on-base': !highlight && !isTitle,
     'fw7': isTitle,
     'pointer': !disabled,
   })
