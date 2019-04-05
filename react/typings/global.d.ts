@@ -6,12 +6,12 @@ declare global {
   }
 
   interface StorefrontComponent<P = {}, S = {}> extends Component<P, S> {
-    getSchema?(props: P): object
     schema?: object
+    getSchema?(props: P): object
   }
 
   interface StorefrontElement extends ReactElement {
-    getSchema?(props: P): object
     schema?: object
+    getSchema?(props: P): object
   }
 }
