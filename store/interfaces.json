@@ -20,14 +20,14 @@
     "composition": "children",
     "allowed": [
       "menu",
-      "col"
+      "submenu-col"
     ]
   },
   "submenu-col": {
     "component": "Column",
     "composition": "children",
     "allowed": [
-      "submenu-menu"
+      "menu"
     ]
   }
 }
