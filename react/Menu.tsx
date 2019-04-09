@@ -1,9 +1,10 @@
 import classNames from 'classnames'
-import React, { useContext } from 'react'
+import React, { useContext, useMemo } from 'react'
 import { defineMessages } from 'react-intl'
 import Item from './components/Item'
 import LevelContext from './components/LevelContext'
-import MenuItem, { MenuItemProps } from './MenuItem'
+import MenuContext from './components/MenuContext'
+import MenuItem, { MenuItemSchema } from './MenuItem'
 
 const TypographyMap: Record<string, string> = {
   body: 't-body',
@@ -23,24 +24,30 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
   ...props
 }) => {
   const level = useContext(LevelContext)
+  const menuContext = useMemo(
+    () => ({
+      hasTitle: title ? true : false,
+      orientation,
+      textType: textType ? TypographyMap[textType] : TypographyMap.body,
+    }),
+    [orientation, textType]
+  )
 
   return (
     <LevelContext.Provider value={level + 1}>
-      <nav>
-        {title && <Item {...title} isTitle />}
-        <ul
-          className={classNames('list flex pl0 mv0', {
-            'flex-column': orientation === 'vertical',
-            'flex-row': orientation === 'horizontal',
-          })}
-        >
-          {React.Children.map(props.children, child =>
-            React.cloneElement(child as React.ReactElement<any>, {
-              typography: textType ? TypographyMap[textType] : undefined,
-            })
-          )}
-        </ul>
-      </nav>
+      <MenuContext.Provider value={menuContext}>
+        <nav>
+          {title && <Item {...title} isTitle />}
+          <ul
+            className={classNames('list flex pl0 mv0', {
+              'flex-column': orientation === 'vertical',
+              'flex-row': orientation === 'horizontal',
+            })}
+          >
+            {props.children}
+          </ul>
+        </nav>
+      </MenuContext.Provider>
     </LevelContext.Provider>
   )
 }
@@ -48,7 +55,7 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
 interface MenuSchema {
   orientation?: 'vertical' | 'horizontal'
   textType?: Typography
-  title?: MenuItemProps
+  title?: MenuItemSchema
 }
 
 enum Typography {

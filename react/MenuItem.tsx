@@ -1,4 +1,3 @@
-
 import { path } from 'ramda'
 import React, { useState } from 'react'
 import { defineMessages } from 'react-intl'
@@ -7,7 +6,7 @@ import { CategoryItemSchema } from './components/CategoryItem'
 import { CustomItemSchema } from './components/CustomItem'
 import Item from './components/Item'
 
-const MenuItem: StorefrontFunctionComponent<MenuItemProps> = props => {
+const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = props => {
   const [isHovered, setHover] = useState(false)
 
   return (
@@ -22,16 +21,12 @@ const MenuItem: StorefrontFunctionComponent<MenuItemProps> = props => {
   )
 }
 
-export interface MenuItemProps extends MenuItemSchema {
-  typography?: string,
-}
-
 export interface MenuItemSchema {
   id: string
   type: 'category' | 'custom'
   iconId: string
   highlight: boolean
-  itemProps: CategoryItemSchema  | CustomItemSchema
+  itemProps: CategoryItemSchema | CustomItemSchema
 }
 
 const messages = defineMessages({
@@ -101,7 +96,7 @@ const messages = defineMessages({
   },
 })
 
-MenuItem.getSchema = (props) => {
+MenuItem.getSchema = props => {
   const text = path(['itemProps', 'text'], props)
   const type = props && props.type ? props.type : 'custom'
   const id = props && props.id ? props.id : ''
