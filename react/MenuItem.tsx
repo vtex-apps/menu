@@ -1,24 +1,13 @@
-import classNames from 'classnames'
 import { path } from 'ramda'
 import React, { useState } from 'react'
 import { defineMessages } from 'react-intl'
 import { ExtensionPoint } from 'vtex.render-runtime'
-import CategoryItem, { CategoryItemProps, CategoryItemSchema } from './components/CategoryItem'
-import CustomItem, { CustomItemProps, CustomItemSchema } from './components/CustomItem'
+import { CategoryItemSchema } from './components/CategoryItem'
+import { CustomItemSchema } from './components/CustomItem'
+import Item from './components/Item'
 
-type ItemComponent = (
-  props: CategoryItemProps | CustomItemProps
-) => React.ReactElement
-
-const menuItemTypes = {
-  category: CategoryItem,
-  custom: CustomItem,
-}
-
-const MenuItem: StorefrontFunctionComponent<MenuItemProps> = props => {
+const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = props => {
   const [isHovered, setHover] = useState(false)
-
-  const Item = menuItemTypes[props.type] as ItemComponent
 
   return (
     <li
@@ -26,27 +15,18 @@ const MenuItem: StorefrontFunctionComponent<MenuItemProps> = props => {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      <Item
-        {...props.itemProps}
-        typography={props.typography}
-        highlight={props.highlight}
-        isHovered={isHovered}
-      />
+      <Item {...props} isHovered={isHovered} />
       <ExtensionPoint id="unstable--submenu" isHovered={isHovered} />
     </li>
   )
 }
 
-interface MenuItemProps extends MenuItemSchema {
-  typography?: string,
-}
-
-interface MenuItemSchema {
+export interface MenuItemSchema {
   id: string
   type: 'category' | 'custom'
   iconId: string
   highlight: boolean
-  itemProps: CategoryItemSchema  | CustomItemSchema
+  itemProps: CategoryItemSchema | CustomItemSchema
 }
 
 const messages = defineMessages({
@@ -116,8 +96,10 @@ const messages = defineMessages({
   },
 })
 
-MenuItem.getSchema = ({ id, type, ...props }) => {
+MenuItem.getSchema = props => {
   const text = path(['itemProps', 'text'], props)
+  const type = props && props.type ? props.type : 'custom'
+  const id = props && props.id ? props.id : ''
 
   // tslint:disable: object-literal-sort-keys
   return {
@@ -138,11 +120,11 @@ MenuItem.getSchema = ({ id, type, ...props }) => {
       },
       iconId: {
         title: messages.iconIdTitle.id,
-        type: 'string'
+        type: 'string',
       },
       highlight: {
         title: messages.highlightTitle.id,
-        type: 'boolean'
+        type: 'boolean',
       },
       itemProps: {
         title: messages.paramsTitle.id,

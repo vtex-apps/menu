@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.8.0] - 2019-04-09
+
+### Added
+
+- Add to `unstable--menu` and `unstable-second-level-menu` the `title` property.
+
 ## [2.7.0] - 2019-03-28
 
 ## [2.6.6] - 2019-02-27

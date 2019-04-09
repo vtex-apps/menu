@@ -40,7 +40,7 @@ const messages = defineMessages({
 })
 
 // tslint:disable: object-literal-sort-keys
-Submenu.schema = {
+Submenu.getSchema = () => ({
   title: messages.submenuTitle.id,
   type: 'object',
   properties: {
@@ -50,6 +50,6 @@ Submenu.schema = {
       default: 'auto',
     },
   },
-}
+})
 
 export default Submenu

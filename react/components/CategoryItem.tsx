@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Query } from 'react-apollo'
 import category from '../graphql/category.graphql'
-import StyledLink from './StyledLink'
+import StyledLink, { StyledLinkProps } from './StyledLink'
 
 class CategoryItem extends Component<CategoryItemProps, State> {
   public static getDerivedStateFromError() {
@@ -15,7 +15,7 @@ class CategoryItem extends Component<CategoryItemProps, State> {
   }
 
   public render() {
-    const { categoryId, text, typography, isHovered, highlight } = this.props
+    const { categoryId, text, ...rest } = this.props
 
     if (this.state.hasError) {
       return null
@@ -34,10 +34,8 @@ class CategoryItem extends Component<CategoryItemProps, State> {
           }
 
           return (
-            <StyledLink 
-              highlight={highlight}
-              isHovered={isHovered}
-              typography={typography}
+            <StyledLink
+              {...rest}
               to={data.category.href}>
               {text ? text : data.category.name}
             </StyledLink>
@@ -48,11 +46,7 @@ class CategoryItem extends Component<CategoryItemProps, State> {
   }
 }
 
-export interface CategoryItemProps extends CategoryItemSchema {
-  isHovered: boolean
-  highlight: boolean
-  typography?: string
-}
+export interface CategoryItemProps extends CategoryItemSchema, StyledLinkProps {}
 
 export interface CategoryItemSchema {
   categoryId: number

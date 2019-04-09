@@ -1,9 +1,12 @@
 import classNames from 'classnames'
-import React, { useContext } from 'react'
+import React, { useContext, useMemo } from 'react'
 import { defineMessages } from 'react-intl'
+import Item from './components/Item'
 import LevelContext from './components/LevelContext'
+import MenuContext from './components/MenuContext'
+import MenuItem, { MenuItemSchema } from './MenuItem'
 
-const TypographyMap : Record<string, string> = {
+const TypographyMap: Record<string, string> = {
   body: 't-body',
   heading1: 't-heading-1',
   heading2: 't-heading-2',
@@ -14,27 +17,37 @@ const TypographyMap : Record<string, string> = {
   small: 't-small',
 }
 
-const Menu : StorefrontFunctionComponent<MenuSchema> = ({
+const Menu: StorefrontFunctionComponent<MenuSchema> = ({
   orientation = 'horizontal',
   textType,
+  title,
   ...props
 }) => {
   const level = useContext(LevelContext)
+  const menuContext = useMemo(
+    () => ({
+      hasTitle: title ? true : false,
+      orientation,
+      textType: textType ? TypographyMap[textType] : TypographyMap.body,
+    }),
+    [orientation, textType]
+  )
 
   return (
     <LevelContext.Provider value={level + 1}>
-      <nav>
-        <ul className={classNames('list flex pl0 mv0', {
-          'flex-column': orientation === 'vertical',
-          'flex-row': orientation === 'horizontal',
-        })}>
-          {React.Children.map(props.children, child =>
-            React.cloneElement(child as React.ReactElement<any>, {
-              typography: textType ? TypographyMap[textType] : undefined,
-            })
-          )}
-        </ul>
-      </nav>
+      <MenuContext.Provider value={menuContext}>
+        <nav>
+          {title && <Item {...title} isTitle />}
+          <ul
+            className={classNames('list flex pl0 mv0', {
+              'flex-column': orientation === 'vertical',
+              'flex-row': orientation === 'horizontal',
+            })}
+          >
+            {props.children}
+          </ul>
+        </nav>
+      </MenuContext.Provider>
     </LevelContext.Provider>
   )
 }
@@ -42,6 +55,7 @@ const Menu : StorefrontFunctionComponent<MenuSchema> = ({
 interface MenuSchema {
   orientation?: 'vertical' | 'horizontal'
   textType?: Typography
+  title?: MenuItemSchema
 }
 
 enum Typography {
@@ -78,7 +92,7 @@ const messages = defineMessages({
   },
 })
 
-Menu.getSchema = () => {
+Menu.getSchema = (props: MenuSchema) => {
   const typographyValues = Object.values(Typography)
 
   // tslint:disable: object-literal-sort-keys
@@ -93,6 +107,7 @@ Menu.getSchema = () => {
         enumNames: typographyValues,
         default: Typography.body,
       },
+      title: MenuItem.getSchema(props.title),
       orientation: {
         title: messages.orientationTitle.id,
         type: 'string',
