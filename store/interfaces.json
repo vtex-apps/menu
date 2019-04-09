@@ -2,42 +2,32 @@
   "menu-link": {
     "component": "index"
   },
-  "unstable--menu": {
+  "menu": {
     "component": "Menu",
     "composition": "children",
     "allowed": [
-      "unstable--menu-item"
+      "menu-item"
     ]
   },
-  "unstable--menu-item": {
+  "menu-item": {
     "component": "MenuItem",
     "allowed": [
-      "unstable--submenu"
+      "submenu"
     ]
   },
-  "unstable--submenu": {
+  "submenu": {
     "component": "Submenu",
     "composition": "children",
     "allowed": [
-      "unstable--second-level-menu",
-      "unstable--col"
+      "menu",
+      "col"
     ]
   },
-  "unstable--col": {
+  "submenu-col": {
     "component": "Column",
     "composition": "children",
     "allowed": [
-      "unstable--second-level-menu"
+      "submenu-menu"
     ]
-  },
-  "unstable--second-level-menu": {
-    "component": "Menu",
-    "composition": "children",
-    "allowed": [
-      "unstable--second-level-menu-item"
-    ]
-  },
-  "unstable--second-level-menu-item": {
-    "component": "MenuItem"
   }
 }
