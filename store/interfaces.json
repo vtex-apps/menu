@@ -19,7 +19,7 @@
     "component": "Submenu",
     "composition": "children",
     "allowed": [
-      "unstable--second-level-menu",
+      "unstable--menu",
       "unstable--col"
     ]
   },
@@ -27,17 +27,7 @@
     "component": "Column",
     "composition": "children",
     "allowed": [
-      "unstable--second-level-menu"
+      "unstable--menu"
     ]
-  },
-  "unstable--second-level-menu": {
-    "component": "Menu",
-    "composition": "children",
-    "allowed": [
-      "unstable--second-level-menu-item"
-    ]
-  },
-  "unstable--second-level-menu-item": {
-    "component": "MenuItem"
   }
 }
