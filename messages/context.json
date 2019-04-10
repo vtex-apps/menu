@@ -35,7 +35,6 @@
   "editor.menu.item.custom.title": "'custom' item type title",
   "editor.menu.item.iconId.title": "iconId title",
   "editor.menu.item.highlight.title": "highlight title",
-  "editor.menu.item.hasSubMenu.title": "hasSubMenu title",
   "editor.menu.item.submenuWidth.title": "subMenuWidth title",
   "editor.menu.item.params.title": "params Title",
   "editor.menu.item.params.categoryId.title": "Category id title",

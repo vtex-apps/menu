@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Add missing translations for Portuguese and Spanish.
+
 ## [2.8.0] - 2019-04-09
 
 ### Added

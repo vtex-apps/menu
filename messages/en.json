@@ -34,8 +34,7 @@
   "editor.menu.item.category.title": "Category",
   "editor.menu.item.custom.title": "Custom",
   "editor.menu.item.iconId.title": "Icon ID",
-  "editor.menu.item.highlight.title": "Hightlight",
-  "editor.menu.item.hasSubMenu.title": "Has submenu",
+  "editor.menu.item.highlight.title": "Highlight",
   "editor.menu.item.submenuWidth.title": "Submenu Width",
   "editor.menu.item.params.title": "Params",
   "editor.menu.item.params.categoryId.title": "Category ID",
@@ -44,7 +43,7 @@
   "editor.menu.item.params.internal.title": "Internal",
   "editor.menu.item.params.external.title": "External",
   "editor.menu.item.params.href.title": "href",
-  "editor.menu.item.params.noFollow.title": "No follow",
-  "editor.menu.item.params.tagTitle.title": "Tag title",
+  "editor.menu.item.params.noFollow.title": "nofollow attribute",
+  "editor.menu.item.params.tagTitle.title": "title attribute",
   "editor.menu.submenu.title": "Submenu"
 }

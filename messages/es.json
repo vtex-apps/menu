@@ -17,5 +17,33 @@
   "editor.menu-link.links.link.position": "Posición",
   "editor.menu-link.links.link.position.left": "Izquierda",
   "editor.menu-link.links.link.position.middle": "Medio",
-  "editor.menu-link.links.link.position.right": "Derecha"
+  "editor.menu-link.links.link.position.right": "Derecha",
+
+  "editor.future-menu.title": "Menú",
+  "editor.future-menu.description": "Menú de navegación",
+  "editor.menu.typography.title": "Tipografía",
+  "editor.menu.typography.description": "Permite elegir la clase de tipografía para ser utilizada por los elementos del menú",
+
+  "editor.menu.orientation.title": "Dirección",
+  "editor.menu.orientation.vertical.label": "vertical",
+  "editor.menu.orientation.horizontal.label": "horizontal",
+
+  "editor.menu.items.title": "Elemento del menú",
+  "editor.menu.item.id.title": "ID",
+  "editor.menu.item.type.title": "Tipo",
+  "editor.menu.item.category.title": "Categoría",
+  "editor.menu.item.custom.title": "Personalizado",
+  "editor.menu.item.iconId.title": "ID de icono",
+  "editor.menu.item.highlight.title": "Destacado",
+  "editor.menu.item.submenuWidth.title": "Ancho del submenú",
+  "editor.menu.item.params.title": "Parámetros",
+  "editor.menu.item.params.categoryId.title": "ID de la categoría",
+  "editor.menu.item.params.text.title": "Texto",
+  "editor.menu.item.params.type.title": "Tipo de enlace",
+  "editor.menu.item.params.internal.title": "Interno",
+  "editor.menu.item.params.external.title": "Externo",
+  "editor.menu.item.params.href.title": "href",
+  "editor.menu.item.params.noFollow.title": "Atributo nofollow",
+  "editor.menu.item.params.tagTitle.title": "Atributo title",
+  "editor.menu.submenu.title": "Submenú"
 }
