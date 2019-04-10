@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Changed
 - Removed `unstable` flags from new menu models.
+- Renamed `col` to `submenu-col`.
 
 ## [2.8.1] - 2019-04-10
 
