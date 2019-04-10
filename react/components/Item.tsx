@@ -17,6 +17,8 @@ const Item : FunctionComponent<ItemProps> = (props) => {
 
   const Comp = menuItemTypes[type] as ItemComponent
 
+  if (!Comp) { return null }
+
   return (
     <Comp {...itemProps} {...rest} />
   )
