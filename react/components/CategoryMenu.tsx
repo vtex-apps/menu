@@ -4,51 +4,63 @@ import { Query } from 'react-apollo'
 import categoryWithChildren from '../graphql/categoryWithChildren.graphql'
 import StyledLink from './StyledLink'
 
-const CategoryLink: FunctionComponent<any> = ({ category: { name, href, titleTag } }: {category: Category }, isTitle) => (
-  <StyledLink
-    title={titleTag}
-    to={href}
-    isTitle={isTitle}
-  >
-    {name}
-  </StyledLink>
-)
+const CategoryLink: FunctionComponent<CategoryProps> = ({
+  name,
+  href,
+  titleTag,
+  isTitle,
+}: CategoryProps) => {
+  return (
+    <StyledLink title={titleTag} to={href} isTitle={isTitle}>
+      {name}
+    </StyledLink>
+  )
+}
 
-const CategoryMenu: FunctionComponent<CategoryMenuProps> = ({ categoryId }: CategoryMenuProps) => {
-
+const CategoryMenu: FunctionComponent<CategoryMenuProps> = ({
+  categoryId,
+}: CategoryMenuProps) => {
   return (
     <Query query={categoryWithChildren} variables={{ id: categoryId }}>
-      {({ data, loading, error }) => {
-        if(error || loading){
-          //TODO add loader and error message
+      {({ data, loading, error }: any) => {
+        if (error || loading) {
+          // TODO add loader and error message
           return null
         }
 
-        const { category, category: { children } } : { category: Category } = data
-        return <>
-          <CategoryLink category={category} isTitle/>
-          {children.map((child: Category) => 
-            <li key={child.id}>
-                <CategoryLink category={child}/>
-            </li>
-          )}
-        </>
+        const {
+          category,
+          category: { children },
+        }: { category: Category } = data
+        return (
+          <>
+            <CategoryLink {...category} isTitle />
+            {children.map((child: Category) => (
+              <li key={child.id}>
+                <CategoryLink {...child} />
+              </li>
+            ))}
+          </>
+        )
       }}
     </Query>
   )
 }
 
-interface CategoryMenuProps{
-    categoryId: number
+interface CategoryMenuProps {
+  categoryId: number
 }
 
-
-interface Category{
+interface Category {
   id: number
   titleTag: string
   href: string
   name: string
   children: Category[]
+}
+
+interface CategoryProps extends Category {
+  isTitle?: boolean
 }
 
 export default CategoryMenu

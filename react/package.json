@@ -14,7 +14,6 @@
     "@types/ramda": "^0.26.5",
     "classnames": "^2.2.6",
     "graphql": "^14.1.1",
-    "graphql-import": "^0.7.1",
     "ramda": "^0.26.1",
     "react": "^16.3.1",
     "react-apollo": "^2.5.2",

@@ -2495,14 +2495,6 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.15.tgz#ffb703e1066e8a0eeaa4c8b80ba9253eeefbfb00"
   integrity sha512-6uHUhOPEBgQ24HM+r6b/QwWfZq+yiFcipKFrOFiBEnWdy5sdzYoi+pJeQaPI5qOLRFqWmAXUPQNsielzdLoecA==
 
-graphql-import@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.7.1.tgz#4add8d91a5f752d764b0a4a7a461fcd93136f223"
-  integrity sha512-YpwpaPjRUVlw2SN3OPljpWbVRWAhMAyfSba5U47qGMOSsPLi2gYeJtngGpymjm9nk57RFWEpjqwh4+dpYuFAPw==
-  dependencies:
-    lodash "^4.17.4"
-    resolve-from "^4.0.0"
-
 graphql-tag@~2.8.0:
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.8.0.tgz#52cdea07a842154ec11a2e840c11b977f9b835ce"

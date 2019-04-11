@@ -41,10 +41,7 @@ class CategoryItem extends Component<CategoryItemProps, State> {
           } = data
 
           return (
-            <StyledLink
-              {...rest}
-              title={titleTag}
-              to={href}>
+            <StyledLink {...rest} title={titleTag} to={href}>
               {text ? text : name}
             </StyledLink>
           )
@@ -54,7 +51,9 @@ class CategoryItem extends Component<CategoryItemProps, State> {
   }
 }
 
-export interface CategoryItemProps extends CategoryItemSchema, StyledLinkProps {}
+export interface CategoryItemProps
+  extends CategoryItemSchema,
+    StyledLinkProps {}
 
 export interface CategoryItemSchema {
   categoryId: number

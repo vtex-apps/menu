@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import StyledLink, { StyledLinkProps } from './StyledLink'
 
-const CustomItem : FunctionComponent<CustomItemProps> = (props) => {
+const CustomItem: FunctionComponent<CustomItemProps> = props => {
   const { type, noFollow, tagTitle, text, href, ...rest } = props
   const disabled = !href || href === '#'
 
@@ -11,14 +11,9 @@ const CustomItem : FunctionComponent<CustomItemProps> = (props) => {
       disabled={disabled}
       to={!disabled && href}
       title={tagTitle}
-      {...type === 'external'
-        ? { target: '_blank' }
-        : {}
-      }
-      {...noFollow
-        ? { rel: 'nofollow noopener' }
-        : {}
-      }>
+      {...(type === 'external' ? { target: '_blank', rel: 'noopener' } : {})}
+      {...(noFollow ? { rel: 'nofollow noopener' } : {})}
+    >
       {text}
     </StyledLink>
   )

@@ -45,9 +45,9 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
               'flex-column': orientation === 'vertical',
               'flex-row': orientation === 'horizontal',
             })}
-            >
+          >
             {title && <Item {...title} isTitle />}
-            {categoryId && <CategoryMenu categoryId={categoryId}/>}
+            {categoryId && <CategoryMenu categoryId={categoryId} />}
             {props.children}
           </ul>
         </nav>

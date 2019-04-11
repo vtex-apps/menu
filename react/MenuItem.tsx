@@ -140,7 +140,7 @@ MenuItem.getSchema = props => {
             showChildren: {
               title: 'Show Children',
               type: 'boolean',
-            }
+            },
           }),
           ...(type === 'custom' && {
             type: {
