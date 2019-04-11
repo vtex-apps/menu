@@ -1,7 +1,15 @@
-# import category from "category.gql"
-
-query categoryWithChildren($id: Int){
-    category(id: $id)
-    hasChildren
-    children
+query category($id: Int) {
+  category(id: $id) {
+    cacheId
+    id
+    href
+    name
+    titleTag
+    children {
+      id
+      href
+      name
+      titleTag
+    }
+  }
 }

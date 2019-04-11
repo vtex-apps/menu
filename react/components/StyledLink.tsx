@@ -49,7 +49,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
 }
 
 export interface StyledLinkProps extends LinkProps {
-  highlight: boolean
+  highlight?: boolean
   isHovered?: boolean
   isTitle?: boolean
   typography?: string

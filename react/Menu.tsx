@@ -1,6 +1,8 @@
 import classNames from 'classnames'
 import React, { useContext, useMemo } from 'react'
 import { defineMessages } from 'react-intl'
+
+import CategoryMenu from './components/CategoryMenu'
 import Item from './components/Item'
 import LevelContext from './components/LevelContext'
 import MenuContext from './components/MenuContext'
@@ -21,12 +23,13 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
   orientation = 'horizontal',
   textType,
   title,
+  categoryId,
   ...props
 }) => {
   const level = useContext(LevelContext)
   const menuContext = useMemo(
     () => ({
-      hasTitle: title ? true : false,
+      hasTitle: title || categoryId ? true : false,
       orientation,
       textType: textType ? TypographyMap[textType] : TypographyMap.body,
     }),
@@ -37,13 +40,14 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
     <LevelContext.Provider value={level + 1}>
       <MenuContext.Provider value={menuContext}>
         <nav>
-          {title && <Item {...title} isTitle />}
           <ul
             className={classNames('list flex pl0 mv0', {
               'flex-column': orientation === 'vertical',
               'flex-row': orientation === 'horizontal',
             })}
-          >
+            >
+            {title && <Item {...title} isTitle />}
+            {categoryId && <CategoryMenu categoryId={categoryId}/>}
             {props.children}
           </ul>
         </nav>
@@ -54,6 +58,7 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
 
 interface MenuSchema {
   orientation?: 'vertical' | 'horizontal'
+  categoryId?: number
   textType?: Typography
   title?: MenuItemSchema
 }

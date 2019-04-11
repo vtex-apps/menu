@@ -2,14 +2,7 @@ import React, { Component } from 'react'
 import { Query } from 'react-apollo'
 
 import category from '../graphql/category.graphql'
-<<<<<<< HEAD
 import StyledLink, { StyledLinkProps } from './StyledLink'
-=======
-import MenuItem from '../MenuItem'
-import SubMenu from '../Submenu'
-import StyledLink from './StyledLink'
-import Menu from '../Menu';
->>>>>>> Use categoryId to decide when to render children
 
 class CategoryItem extends Component<CategoryItemProps, State> {
   public static getDerivedStateFromError() {
@@ -23,18 +16,7 @@ class CategoryItem extends Component<CategoryItemProps, State> {
   }
 
   public render() {
-<<<<<<< HEAD
     const { categoryId, text, ...rest } = this.props
-=======
-    const {
-      categoryId,
-      text,
-      typography,
-      isHovered,
-      highlight,
-      showChildrenCategory = 16,
-    } = this.props
->>>>>>> Use categoryId to decide when to render children
 
     if (this.state.hasError) {
       return null
@@ -76,7 +58,7 @@ export interface CategoryItemProps extends CategoryItemSchema, StyledLinkProps {
 
 export interface CategoryItemSchema {
   categoryId: number
-  text: string
+  text?: string
 }
 
 interface State {
