@@ -47,6 +47,7 @@
     "component": "Submenu",
     "composition": "children",
     "allowed": [
+      "unstable--second-level-menu",
       "unstable--menu",
       "unstable--col"
     ]
@@ -55,6 +56,7 @@
     "component": "Column",
     "composition": "children",
     "allowed": [
+      "unstable--second-level-menu",
       "unstable--menu"
     ]
   },
