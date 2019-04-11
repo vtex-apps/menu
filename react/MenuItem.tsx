@@ -17,6 +17,7 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = props => {
     >
       <Item {...props} isHovered={isHovered} />
       <ExtensionPoint id="submenu" isHovered={isHovered} />
+      <ExtensionPoint id="unstable--submenu" isHovered={isHovered} />
     </li>
   )
 }
