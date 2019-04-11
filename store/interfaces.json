@@ -57,15 +57,15 @@
     "allowed": [
       "unstable--menu"
     ]
-  },	
-  "unstable--second-level-menu": {	
-    "component": "Menu",	
-    "composition": "children",	
-    "allowed": [	
-      "unstable--second-level-menu-item"	
-    ]	
-  },	
-  "unstable--second-level-menu-item": {	
-    "component": "MenuItem"	
+  },
+  "unstable--second-level-menu": {
+    "component": "Menu",
+    "composition": "children",
+    "allowed": [
+      "unstable--second-level-menu-item"
+    ]
+  },
+  "unstable--second-level-menu-item": {
+    "component": "MenuItem"
   }
 }
