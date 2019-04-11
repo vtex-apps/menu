@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.9.0] - 2019-04-11
+### Changed
+- Removed `unstable` flags from new menu models.
+- Renamed `col` to `submenu-col`.
+
+### Deprecated
+- The blocks with `unstable--` flags are deprecated and will be removed soon.
+
 ## [2.8.1] - 2019-04-10
 
 ### Fixed

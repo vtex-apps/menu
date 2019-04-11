@@ -2,6 +2,34 @@
   "menu-link": {
     "component": "index"
   },
+  "menu": {
+    "component": "Menu",
+    "composition": "children",
+    "allowed": [
+      "menu-item"
+    ]
+  },
+  "menu-item": {
+    "component": "MenuItem",
+    "allowed": [
+      "submenu"
+    ]
+  },
+  "submenu": {
+    "component": "Submenu",
+    "composition": "children",
+    "allowed": [
+      "menu",
+      "submenu-col"
+    ]
+  },
+  "submenu-col": {
+    "component": "Column",
+    "composition": "children",
+    "allowed": [
+      "menu"
+    ]
+  },
   "unstable--menu": {
     "component": "Menu",
     "composition": "children",
@@ -20,6 +48,7 @@
     "composition": "children",
     "allowed": [
       "unstable--second-level-menu",
+      "unstable--menu",
       "unstable--col"
     ]
   },
@@ -27,7 +56,8 @@
     "component": "Column",
     "composition": "children",
     "allowed": [
-      "unstable--second-level-menu"
+      "unstable--second-level-menu",
+      "unstable--menu"
     ]
   },
   "unstable--second-level-menu": {

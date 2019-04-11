@@ -16,6 +16,7 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = props => {
       onMouseLeave={() => setHover(false)}
     >
       <Item {...props} isHovered={isHovered} />
+      <ExtensionPoint id="submenu" isHovered={isHovered} />
       <ExtensionPoint id="unstable--submenu" isHovered={isHovered} />
     </li>
   )
