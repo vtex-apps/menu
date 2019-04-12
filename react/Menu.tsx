@@ -24,6 +24,7 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
   textType,
   title,
   categoryId,
+  customText,
   ...props
 }) => {
   const level = useContext(LevelContext)
@@ -35,6 +36,11 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
     }),
     [orientation, textType]
   )
+  if (title && categoryId) {
+    const msg = "Cannot use title and categoryId, if you want to use a custom text for a category menu, pass a customText prop to this menu"
+    console.error(msg)
+    throw new Error(msg)
+  }
 
   return (
     <LevelContext.Provider value={level + 1}>
@@ -47,7 +53,7 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
             })}
           >
             {title && <Item {...title} isTitle />}
-            {categoryId && <CategoryMenu categoryId={categoryId} />}
+            {categoryId && <CategoryMenu categoryId={categoryId} customText={customText} />}
             {props.children}
           </ul>
         </nav>
@@ -59,8 +65,9 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
 interface MenuSchema {
   orientation?: 'vertical' | 'horizontal'
   categoryId?: number
+  customText?: string
   textType?: Typography
-  title?: MenuItemSchema
+  title?: MenuItemSchema,
 }
 
 enum Typography {

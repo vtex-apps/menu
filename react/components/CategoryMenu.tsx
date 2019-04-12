@@ -4,12 +4,12 @@ import { Query } from 'react-apollo'
 import categoryWithChildren from '../graphql/categoryWithChildren.graphql'
 import StyledLink from './StyledLink'
 
-const CategoryLink: FunctionComponent<CategoryProps> = ({
-  name,
+const CategoryLink: FunctionComponent<CategoryLinkProps> = ({
   href,
   titleTag,
   isTitle,
-}: CategoryProps) => {
+  name
+}: CategoryLinkProps) => {
   return (
     <StyledLink title={titleTag} to={href} isTitle={isTitle}>
       {name}
@@ -19,6 +19,7 @@ const CategoryLink: FunctionComponent<CategoryProps> = ({
 
 const CategoryMenu: FunctionComponent<CategoryMenuProps> = ({
   categoryId,
+  customText,
 }: CategoryMenuProps) => {
   return (
     <Query query={categoryWithChildren} variables={{ id: categoryId }}>
@@ -30,11 +31,11 @@ const CategoryMenu: FunctionComponent<CategoryMenuProps> = ({
 
         const {
           category,
-          category: { children },
+          category: { children, name },
         }: { category: Category } = data
         return (
           <>
-            <CategoryLink {...category} isTitle />
+            <CategoryLink {...category} isTitle name={customText ? customText : name}/>
             {children.map((child: Category) => (
               <li key={child.id}>
                 <CategoryLink {...child} />
@@ -49,6 +50,7 @@ const CategoryMenu: FunctionComponent<CategoryMenuProps> = ({
 
 interface CategoryMenuProps {
   categoryId: number
+  customText?: string
 }
 
 interface Category {
@@ -59,7 +61,7 @@ interface Category {
   children: Category[]
 }
 
-interface CategoryProps extends Category {
+interface CategoryLinkProps extends Category {
   isTitle?: boolean
 }
 
