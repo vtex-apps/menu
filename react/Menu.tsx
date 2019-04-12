@@ -37,8 +37,7 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
     [orientation, textType]
   )
   if (title && categoryId) {
-    const msg = "Cannot use title and categoryId, if you want to use a custom text for a category menu, pass a customText prop to this menu"
-    console.error(msg)
+    const msg = "Cannot use title and categoryId, if you want to use a custom text for a category menu, pass a customText prop instead"
     throw new Error(msg)
   }
 
