@@ -137,10 +137,6 @@ MenuItem.getSchema = props => {
               title: messages.categoryIdTitle.id,
               type: 'string',
             },
-            showChildren: {
-              title: 'Show Children',
-              type: 'boolean',
-            },
           }),
           ...(type === 'custom' && {
             type: {

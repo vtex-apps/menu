@@ -36,7 +36,8 @@
     "component": "Menu",
     "composition": "children",
     "allowed": [
-      "unstable--menu-item"
+      "unstable--menu-item",
+      "menu-item"
     ]
   },
   "unstable--menu-item": {
