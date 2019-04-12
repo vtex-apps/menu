@@ -19,7 +19,6 @@ const CategoryLink: FunctionComponent<CategoryLinkProps> = ({
 
 const CategoryMenu: FunctionComponent<CategoryMenuProps> = ({
   categoryId,
-  customText,
 }: CategoryMenuProps) => {
   return (
     <Query query={categoryWithChildren} variables={{ id: categoryId }}>
@@ -31,11 +30,11 @@ const CategoryMenu: FunctionComponent<CategoryMenuProps> = ({
 
         const {
           category,
-          category: { children, name },
+          category: { children },
         }: { category: Category } = data
         return (
           <>
-            <CategoryLink {...category} isTitle name={customText ? customText : name}/>
+            <CategoryLink {...category} isTitle/>
             {children.map((child: Category) => (
               <li key={child.id}>
                 <CategoryLink {...child} />
