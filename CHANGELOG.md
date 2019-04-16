@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.10.0] - 2019-04-16
+
 ### Added
 - Allow `info-card` inside `submenu` and `submenu-col`.
 
