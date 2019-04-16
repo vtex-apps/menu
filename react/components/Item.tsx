@@ -1,5 +1,8 @@
 import React, { FunctionComponent } from 'react'
-import CategoryItem, { CategoryItemProps, CategoryItemSchema } from './CategoryItem'
+import CategoryItem, {
+  CategoryItemProps,
+  CategoryItemSchema,
+} from './CategoryItem'
 import CustomItem, { CustomItemProps, CustomItemSchema } from './CustomItem'
 import { StyledLinkProps } from './StyledLink'
 
@@ -12,16 +15,16 @@ const menuItemTypes = {
   custom: CustomItem,
 }
 
-const Item : FunctionComponent<ItemProps> = (props) => {
-  const { type, itemProps, ...rest} = props
+const Item: FunctionComponent<ItemProps> = props => {
+  const { type, itemProps, ...rest } = props
 
   const Comp = menuItemTypes[type] as ItemComponent
 
-  if (!Comp) { return null }
+  if (!Comp) {
+    return null
+  }
 
-  return (
-    <Comp {...itemProps} {...rest} />
-  )
+  return <Comp {...itemProps} {...rest} />
 }
 
 interface ItemProps extends StyledLinkProps {

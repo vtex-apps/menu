@@ -1,6 +1,8 @@
 import classNames from 'classnames'
 import React, { useContext, useMemo } from 'react'
 import { defineMessages } from 'react-intl'
+
+import CategoryMenu from './components/CategoryMenu'
 import Item from './components/Item'
 import LevelContext from './components/LevelContext'
 import MenuContext from './components/MenuContext'
@@ -21,29 +23,31 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
   orientation = 'horizontal',
   textType,
   title,
+  categoryId,
   ...props
 }) => {
   const level = useContext(LevelContext)
   const menuContext = useMemo(
     () => ({
-      hasTitle: title ? true : false,
+      hasTitle: title || categoryId ? true : false,
       orientation,
       textType: textType ? TypographyMap[textType] : TypographyMap.body,
     }),
     [orientation, textType]
-  )
+  ) 
 
   return (
     <LevelContext.Provider value={level + 1}>
       <MenuContext.Provider value={menuContext}>
         <nav>
-          {title && <Item {...title} isTitle />}
           <ul
             className={classNames('list flex pl0 mv0', {
               'flex-column': orientation === 'vertical',
               'flex-row': orientation === 'horizontal',
             })}
           >
+            {!categoryId && title && <Item {...title} isTitle />}
+            {categoryId && <CategoryMenu categoryId={categoryId} />}
             {props.children}
           </ul>
         </nav>
@@ -54,8 +58,10 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
 
 interface MenuSchema {
   orientation?: 'vertical' | 'horizontal'
+  categoryId?: number
   textType?: Typography
-  title?: MenuItemSchema
+  title?: MenuItemSchema,
+  additionalDef?: string
 }
 
 enum Typography {
@@ -90,11 +96,30 @@ const messages = defineMessages({
     defaultMessage: '',
     id: 'editor.menu.orientation.vertical.label',
   },
+  defTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.additionalDef.title',
+  },
+  noneDef: {
+    defaultMessage: '',
+    id: 'editor.menu.def.none',
+  },
+  titleDef: {
+    defaultMessage: '',
+    id: 'editor.menu.def.title',
+  },
+  categoryDef: {
+    defaultMessage: '',
+    id: 'editor.menu.def.category',
+  },
+  categoryIdTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.categoryId.title',
+  },
 })
 
-Menu.getSchema = (props: MenuSchema) => {
+Menu.getSchema = ({ additionalDef, title }: MenuSchema) => {
   const typographyValues = Object.values(Typography)
-
   // tslint:disable: object-literal-sort-keys
   return {
     title: messages.menuTitle.id,
@@ -107,7 +132,24 @@ Menu.getSchema = (props: MenuSchema) => {
         enumNames: typographyValues,
         default: Typography.body,
       },
-      title: MenuItem.getSchema(props.title),
+      additionalDef: {
+        title: messages.defTitle.id,
+        enum: ['none', 'title', 'category'],
+        type: 'string',
+        enumNames: [messages.noneDef, messages.titleDef, messages.categoryDef],
+        widget: {
+          'ui:widget': 'radio',
+        }
+      },
+      ...(additionalDef === 'category' && {
+        categoryId: {
+          type: 'integer',
+          title: messages.categoryIdTitle,
+        }
+      }),
+      ...(additionalDef === 'title' && {
+        title: MenuItem.getSchema(title),
+      }),
       orientation: {
         title: messages.orientationTitle.id,
         type: 'string',

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 
-const Column : FunctionComponent<Props> = (props) => {
+const Column: FunctionComponent<Props> = props => {
   return <div>{props.children}</div>
 }
 

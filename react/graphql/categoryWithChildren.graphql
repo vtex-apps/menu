@@ -5,5 +5,11 @@ query category($id: Int) {
     href
     name
     titleTag
+    children {
+      id
+      href
+      name
+      titleTag
+    }
   }
 }

@@ -45,5 +45,11 @@
   "editor.menu.item.params.href.title": "href",
   "editor.menu.item.params.noFollow.title": "Atributo nofollow",
   "editor.menu.item.params.tagTitle.title": "Atributo title",
-  "editor.menu.submenu.title": "Submenu"
+  "editor.menu.submenu.title": "Submenu",
+
+  "editor.menu.additionalDef.title": "Definições adicionais",
+  "editor.menu.def.none": "Nenhuma",
+  "editor.menu.def.title": "Título",
+  "editor.menu.def.category": "Categoria",
+  "editor.menu.categoryId.title": "Id da Categoria"
 }
