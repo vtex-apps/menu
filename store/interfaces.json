@@ -20,6 +20,7 @@
     "composition": "children",
     "allowed": [
       "menu",
+      "info-card",
       "submenu-col"
     ]
   },
@@ -27,7 +28,8 @@
     "component": "Column",
     "composition": "children",
     "allowed": [
-      "menu"
+      "menu",
+      "info-card"
     ]
   },
   "unstable--menu": {

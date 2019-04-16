@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Allow `info-card` inside `submenu` and `submenu-col`.
+
 ## [2.9.0] - 2019-04-11
 ### Changed
 - Removed `unstable` flags from new menu models.
