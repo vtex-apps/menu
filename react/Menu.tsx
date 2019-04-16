@@ -34,11 +34,7 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
       textType: textType ? TypographyMap[textType] : TypographyMap.body,
     }),
     [orientation, textType]
-  )
-  if (title && categoryId) {
-    const msg = "Cannot use title and categoryId"
-    throw new Error(msg)
-  }
+  ) 
 
   return (
     <LevelContext.Provider value={level + 1}>
@@ -50,8 +46,8 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
               'flex-row': orientation === 'horizontal',
             })}
           >
-            {title && <Item {...title} isTitle />}
-            {categoryId && <CategoryMenu categoryId={categoryId}/>}
+            {!categoryId && title && <Item {...title} isTitle />}
+            {categoryId && <CategoryMenu categoryId={categoryId} />}
             {props.children}
           </ul>
         </nav>
@@ -65,6 +61,7 @@ interface MenuSchema {
   categoryId?: number
   textType?: Typography
   title?: MenuItemSchema,
+  additionalDef?: string
 }
 
 enum Typography {
@@ -99,11 +96,30 @@ const messages = defineMessages({
     defaultMessage: '',
     id: 'editor.menu.orientation.vertical.label',
   },
+  defTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.additionalDef.title',
+  },
+  noneDef: {
+    defaultMessage: '',
+    id: 'editor.menu.def.none',
+  },
+  titleDef: {
+    defaultMessage: '',
+    id: 'editor.menu.def.title',
+  },
+  categoryDef: {
+    defaultMessage: '',
+    id: 'editor.menu.def.category',
+  },
+  categoryIdTitle: {
+    defaultMessage: '',
+    id: 'editor.menu.categoryId.title',
+  },
 })
 
-Menu.getSchema = (props: MenuSchema) => {
+Menu.getSchema = ({ additionalDef, title }: MenuSchema) => {
   const typographyValues = Object.values(Typography)
-
   // tslint:disable: object-literal-sort-keys
   return {
     title: messages.menuTitle.id,
@@ -116,7 +132,24 @@ Menu.getSchema = (props: MenuSchema) => {
         enumNames: typographyValues,
         default: Typography.body,
       },
-      title: MenuItem.getSchema(props.title),
+      additionalDef: {
+        title: messages.defTitle.id,
+        enum: ['none', 'title', 'category'],
+        type: 'string',
+        enumNames: [messages.noneDef, messages.titleDef, messages.categoryDef],
+        widget: {
+          'ui:widget': 'radio',
+        }
+      },
+      ...(additionalDef === 'category' && {
+        categoryId: {
+          type: 'integer',
+          title: messages.categoryIdTitle,
+        }
+      }),
+      ...(additionalDef === 'title' && {
+        title: MenuItem.getSchema(title),
+      }),
       orientation: {
         title: messages.orientationTitle.id,
         type: 'string',

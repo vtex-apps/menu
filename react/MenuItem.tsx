@@ -119,6 +119,7 @@ MenuItem.getSchema = props => {
         enum: ['category', 'custom'],
         default: 'custom',
         enumNames: [messages.categoryTitle.id, messages.customTitle.id],
+        widget: { 'ui:widget': 'radio' },
       },
       iconId: {
         title: messages.iconIdTitle.id,

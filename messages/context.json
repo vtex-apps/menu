@@ -45,5 +45,11 @@
   "editor.menu.item.params.href.title": "params href title",
   "editor.menu.item.params.noFollow.title": "params noFollow title",
   "editor.menu.item.params.tagTitle.title": "params tagTitle title",
-  "editor.menu.submenu.title": "Submenu's title"
+  "editor.menu.submenu.title": "Submenu's title",
+
+  "editor.menu.additionalDef.title": "Additional Definition title",
+  "editor.menu.def.none": "None value used in radio button",
+  "editor.menu.def.title": "Title value used in radio button",
+  "editor.menu.def.category": "Category value used in radio button",
+  "editor.menu.categoryId.title": "Category ID title"
 }
