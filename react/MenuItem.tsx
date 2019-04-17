@@ -6,7 +6,9 @@ import { CategoryItemSchema } from './components/CategoryItem'
 import { CustomItemSchema } from './components/CustomItem'
 import Item from './components/Item'
 
-const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = props => {
+const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
+  ...props
+}: MenuItemSchema) => {
   const [isHovered, setHover] = useState(false)
 
   return (

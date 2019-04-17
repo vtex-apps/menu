@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import React, { FunctionComponent, useContext } from 'react'
 import { Link } from 'vtex.render-runtime'
+import { Icon } from 'vtex.store-icons'
 import LevelContext from './LevelContext'
 import MenuContext from './MenuContext'
 
@@ -20,6 +21,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
     isHovered,
     isTitle,
     disabled,
+    iconId,
     ...rest
   } = props
 
@@ -34,11 +36,12 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
 
   return (
     <div
-      className={classNames('mh6', {
+      className={classNames('mh6 flex', {
         pv2: orientation === 'vertical',
         pv5: orientation === 'horizontal' && level === 1,
       })}
     >
+      {iconId && <Icon id={iconId} />}
       {disabled ? (
         <span className={linkClassNames}>{props.children}</span>
       ) : (
@@ -54,6 +57,7 @@ export interface StyledLinkProps extends LinkProps {
   isTitle?: boolean
   typography?: string
   disabled?: boolean
+  iconId?: string
 }
 
 interface LinkProps {

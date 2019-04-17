@@ -15,7 +15,9 @@
     "store": "0.x"
   },
   "dependencies": {
+    "vtex.store-icons": "0.x",
     "vtex.store-components": "3.x",
-    "vtex.store-graphql": "2.x"
+    "vtex.store-graphql": "2.x",
+    "vtex.use-svg": "0.x"
   }
 }
