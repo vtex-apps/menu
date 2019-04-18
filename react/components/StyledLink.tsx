@@ -25,7 +25,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
     ...rest
   } = props
 
-  const linkClassNames = classNames('no-underline', {
+  const linkClassNames = classNames('no-underline flex', {
     [typography]: true,
     'c-emphasis': highlight,
     'c-muted-1 dim': !highlight && hasTitle && !isTitle,
@@ -34,19 +34,22 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
     pointer: !disabled,
   })
 
+  const icon = iconId && <span className="mr2"><Icon id={iconId}/></span>
+
   return (
     <div
-      className={classNames('mh6 flex', {
+      className={classNames('mh6', {
         pv2: orientation === 'vertical',
         pv5: orientation === 'horizontal' && level === 1,
       })}
     >
-      {iconId && <Icon id={iconId} />}
       {disabled ? (
-        <span className={linkClassNames}>{props.children}</span>
+        <span className={linkClassNames}>{[icon, props.children]}</span>
       ) : (
-        <Link {...rest} className={linkClassNames} />
-      )}
+          <Link {...rest} className={linkClassNames}>
+            {[icon, props.children]}
+          </Link>
+        )}
     </div>
   )
 }
