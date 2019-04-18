@@ -1,23 +1,35 @@
 import { path } from 'ramda'
 import React, { useState } from 'react'
 import { defineMessages } from 'react-intl'
-import { ExtensionPoint } from 'vtex.render-runtime'
+import { ExtensionPoint, useChildBlock } from 'vtex.render-runtime'
 import { CategoryItemSchema } from './components/CategoryItem'
 import { CustomItemSchema } from './components/CustomItem'
 import Item from './components/Item'
+import { SubmenuMode, SubmenuProps } from './Submenu'
 
 const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = props => {
   const [isHovered, setHover] = useState(false)
+  const [isActive, setActive] = useState(false)
+
+  const submenuData = useChildBlock<SubmenuProps>({ id : 'submenu' })
+
+  const isCollapsible = submenuData && submenuData.props.mode === SubmenuMode.collapsible
+
+  const isSubmenuOpen = isCollapsible ? isActive : isHovered
 
   return (
     <li
       className="list"
+      onClick={event => {
+        setActive(!isActive)
+        event.stopPropagation()
+      }}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
       <Item {...props} isHovered={isHovered} />
-      <ExtensionPoint id="submenu" isHovered={isHovered} />
-      <ExtensionPoint id="unstable--submenu" isHovered={isHovered} />
+      <ExtensionPoint id="submenu" isOpen={isSubmenuOpen} />
+      <ExtensionPoint id="unstable--submenu" isOpen={isSubmenuOpen} />
     </li>
   )
 }
@@ -170,3 +182,4 @@ MenuItem.getSchema = props => {
 }
 
 export default MenuItem
+

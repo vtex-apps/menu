@@ -1,20 +1,32 @@
 import classNames from 'classnames'
 import React from 'react'
 import { defineMessages } from 'react-intl'
+import SubmenuCollapsible from './components/SubmenuCollapsible'
 
 const Submenu: StorefrontFunctionComponent<SubmenuProps> = ({
-  isHovered,
+  isOpen,
   width,
+  mode,
   children,
 }) => {
+  const isCollapsible = mode === SubmenuMode.collapsible
+
+  if (isCollapsible) {
+    return (
+      <SubmenuCollapsible isOpen={isOpen}>
+        {children}
+      </SubmenuCollapsible>
+    )
+  }
+
   return (
     <div className={`${width === '100%' ? '' : 'relative'}`}>
       <div
         className={classNames(
-          'absolute left-0 bg-base pv4 bw1 bb b--muted-3 z-2',
+          isCollapsible ? 'pv4 pl2' : 'absolute left-0 bg-base pv4 bw1 bb b--muted-3 z-2',
           {
-            dn: !isHovered,
-            flex: isHovered,
+            dn: !isOpen,
+            flex: isOpen,
             'w-100': width === '100%',
             'w-auto ml6': width === 'auto',
           }
@@ -26,8 +38,14 @@ const Submenu: StorefrontFunctionComponent<SubmenuProps> = ({
   )
 }
 
-interface SubmenuProps extends SubmenuSchema {
-  isHovered: boolean
+export enum SubmenuMode {
+  regular = 'regular',
+  collapsible = 'collapsible',
+}
+
+export interface SubmenuProps extends SubmenuSchema {
+  isOpen: boolean
+  mode: SubmenuMode
 }
 
 interface SubmenuSchema {
