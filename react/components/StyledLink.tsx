@@ -25,7 +25,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
     ...rest
   } = props
 
-  const linkClassNames = classNames('no-underline flex', {
+  const linkClassNames = classNames('no-underline flex items-center', {
     [typography]: true,
     'c-emphasis': highlight,
     'c-muted-1 dim': !highlight && hasTitle && !isTitle,
