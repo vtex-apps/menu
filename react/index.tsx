@@ -66,46 +66,46 @@ class MenuLink extends Component<Props> {
   }
 
   public static schema: any = {
-    title: 'editor.menu-link',
-    description: 'editor.menu-link.description',
+    title: 'admin/editor.menu-link',
+    description: 'admin/editor.menu-link.description',
     type: 'object',
     properties: {
       links: {
-        title: 'editor.menu-link.links',
+        title: 'admin/editor.menu-link.links',
         type: 'array',
         minItems: 0,
         maxItems: MAX_ITEMS,
         items: {
-          title: 'editor.menu-link.links.link',
+          title: 'admin/editor.menu-link.links.link',
           type: 'object',
           properties: {
             text: {
-              title: 'editor.menu-link.links.link.text',
+              title: 'admin/editor.menu-link.links.link.text',
               type: 'string',
             },
             internalPage: {
-              title: 'editor.menu-link.links.link.internalPage',
-              description: 'editor.menu-link.links.link.internalPage.description',
+              title: 'admin/editor.menu-link.links.link.internalPage',
+              description: 'admin/editor.menu-link.links.link.internalPage.description',
               type: 'string',
               enum: GLOBAL_PAGES,
             },
             params: {
-              title: 'editor.menu-link.links.link.params',
-              description: 'editor.menu-link.links.link.params.description',
+              title: 'admin/editor.menu-link.links.link.params',
+              description: 'admin/editor.menu-link.links.link.params.description',
               type: 'string',
             },
             externalPage: {
-              title: 'editor.menu-link.links.link.externalPage',
-              description: 'editor.menu-link.links.link.externalPage.description',
+              title: 'admin/editor.menu-link.links.link.externalPage',
+              description: 'admin/editor.menu-link.links.link.externalPage.description',
               type: 'string',
             },
             typeOfRoute: {
-              title: 'editor.menu-link.links.link.typeOfRoute',
+              title: 'admin/editor.menu-link.links.link.typeOfRoute',
               type: 'string',
               enum: [Options.INTERNAL, Options.EXTERNAL],
               enumNames: [
-                'editor.menu-link.links.link.typeOfRoute.internal',
-                'editor.menu-link.links.link.typeOfRoute.external',
+                'admin/editor.menu-link.links.link.typeOfRoute.internal',
+                'admin/editor.menu-link.links.link.typeOfRoute.external',
               ],
               default: Options.INTERNAL,
               widget: {
@@ -116,13 +116,13 @@ class MenuLink extends Component<Props> {
               },
             },
             position: {
-              title: 'editor.menu-link.links.link.position',
+              title: 'admin/editor.menu-link.links.link.position',
               type: 'string',
               enum: [Options.LEFT, Options.MIDDLE, Options.RIGHT],
               enumNames: [
-                'editor.menu-link.links.link.position.left',
-                'editor.menu-link.links.link.position.middle',
-                'editor.menu-link.links.link.position.right',
+                'admin/editor.menu-link.links.link.position.left',
+                'admin/editor.menu-link.links.link.position.middle',
+                'admin/editor.menu-link.links.link.position.right',
               ],
               default: Options.MIDDLE,
             },

@@ -33,67 +33,67 @@ export interface MenuItemSchema {
 const messages = defineMessages({
   categoryIdTitle: {
     defaultMessage: '',
-    id: 'editor.menu.item.params.categoryId.title',
+    id: 'admin/editor.menu.item.params.categoryId.title',
   },
   categoryTitle: {
     defaultMessage: '',
-    id: 'editor.menu.item.category.title',
+    id: 'admin/editor.menu.item.category.title',
   },
   customTitle: {
     defaultMessage: '',
-    id: 'editor.menu.item.custom.title',
+    id: 'admin/editor.menu.item.custom.title',
   },
   customTypeTitle: {
     defaultMessage: '',
-    id: 'editor.menu.item.params.type.title',
+    id: 'admin/editor.menu.item.params.type.title',
   },
   externalTitle: {
     defaultMessage: '',
-    id: 'editor.menu.item.params.external.title',
+    id: 'admin/editor.menu.item.params.external.title',
   },
   highlightTitle: {
     defaultMessage: '',
-    id: 'editor.menu.item.highlight.title',
+    id: 'admin/editor.menu.item.highlight.title',
   },
   hrefTitle: {
     defaultMessage: '',
-    id: 'editor.menu.item.params.href.title',
+    id: 'admin/editor.menu.item.params.href.title',
   },
   iconIdTitle: {
     defaultMessage: '',
-    id: 'editor.menu.item.iconId.title',
+    id: 'admin/editor.menu.item.iconId.title',
   },
   internalTitle: {
     defaultMessage: '',
-    id: 'editor.menu.item.params.internal.title',
+    id: 'admin/editor.menu.item.params.internal.title',
   },
   itemIdTitle: {
     defaultMessage: '',
-    id: 'editor.menu.item.id.title',
+    id: 'admin/editor.menu.item.id.title',
   },
   itemsTitle: {
     defaultMessage: '',
-    id: 'editor.menu.items.title',
+    id: 'admin/editor.menu.items.title',
   },
   noFollowTitle: {
     defaultMessage: '',
-    id: 'editor.menu.item.params.noFollow.title',
+    id: 'admin/editor.menu.item.params.noFollow.title',
   },
   paramsTextTitle: {
     defaultMessage: '',
-    id: 'editor.menu.item.params.text.title',
+    id: 'admin/editor.menu.item.params.text.title',
   },
   paramsTitle: {
     defaultMessage: '',
-    id: 'editor.menu.item.params.title',
+    id: 'admin/editor.menu.item.params.title',
   },
   tagTitleTitle: {
     defaultMessage: '',
-    id: 'editor.menu.item.params.tagTitle.title',
+    id: 'admin/editor.menu.item.params.tagTitle.title',
   },
   typeTitle: {
     defaultMessage: '',
-    id: 'editor.menu.item.type.title',
+    id: 'admin/editor.menu.item.type.title',
   },
 })
 

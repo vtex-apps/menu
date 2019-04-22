@@ -78,43 +78,43 @@ enum Typography {
 const messages = defineMessages({
   horizontalLabel: {
     defaultMessage: '',
-    id: 'editor.menu.orientation.horizontal.label',
+    id: 'admin/editor.menu.orientation.horizontal.label',
   },
   menuTitle: {
     defaultMessage: '',
-    id: 'editor.future-menu.title',
+    id: 'admin/editor.future-menu.title',
   },
   orientationTitle: {
     defaultMessage: '',
-    id: 'editor.menu.orientation.title',
+    id: 'admin/editor.menu.orientation.title',
   },
   typographyTitle: {
     defaultMessage: '',
-    id: 'editor.menu.typography.title',
+    id: 'admin/editor.menu.typography.title',
   },
   verticalLabel: {
     defaultMessage: '',
-    id: 'editor.menu.orientation.vertical.label',
+    id: 'admin/editor.menu.orientation.vertical.label',
   },
   defTitle: {
     defaultMessage: '',
-    id: 'editor.menu.additionalDef.title',
+    id: 'admin/editor.menu.additionalDef.title',
   },
   noneDef: {
     defaultMessage: '',
-    id: 'editor.menu.def.none',
+    id: 'admin/editor.menu.def.none',
   },
   titleDef: {
     defaultMessage: '',
-    id: 'editor.menu.def.title',
+    id: 'admin/editor.menu.def.title',
   },
   categoryDef: {
     defaultMessage: '',
-    id: 'editor.menu.def.category',
+    id: 'admin/editor.menu.def.category',
   },
   categoryIdTitle: {
     defaultMessage: '',
-    id: 'editor.menu.categoryId.title',
+    id: 'admin/editor.menu.categoryId.title',
   },
 })
 

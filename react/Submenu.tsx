@@ -37,11 +37,11 @@ interface SubmenuSchema {
 const messages = defineMessages({
   submenuTitle: {
     defaultMessage: '',
-    id: 'editor.menu.submenu.title',
+    id: 'admin/editor.menu.submenu.title',
   },
   submenuWidthTitle: {
     defaultMessage: '',
-    id: 'editor.menu.item.submenuWidth.title',
+    id: 'admin/editor.menu.item.submenuWidth.title',
   },
 })
 
