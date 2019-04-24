@@ -1,7 +1,7 @@
 import React, { RefObject } from 'react'
 
 interface Props {
-  isOpen: boolean
+  open: boolean
 }
 
 interface State {
@@ -29,7 +29,7 @@ class Collapsible extends React.Component<Props, State> {
   }
 
   public componentDidUpdate(prevProps: Props) {
-    if (!prevProps.isOpen && this.props.isOpen) {
+    if (!prevProps.open && this.props.open) {
       if (!this.container.current) {
         return
       }
@@ -45,7 +45,7 @@ class Collapsible extends React.Component<Props, State> {
       this.setState({
         height: childrenHeight,
       })
-    } else if (prevProps.isOpen && !this.props.isOpen) {
+    } else if (prevProps.open && !this.props.open) {
       this.setState({ height: 0 })
     }
 
