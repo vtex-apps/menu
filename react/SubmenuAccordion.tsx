@@ -11,19 +11,15 @@ const SubmenuAccordion: StorefrontFunctionComponent<Props> = ({
   children,
 }) => (
   <Collapsible open={isOpen}>
-    <div className="pl4 flex">
-      <section
-        className="w-100 flex"
-        style={{
-          WebkitOverflowScrolling: 'touch',
-          maxHeight: 400,
-          overflowY: 'scroll',
-        }}>
-        <div>
-          {children}
-        </div>
-      </section>
-    </div>
+    <section
+      className="w-100 flex pl4 flex"
+      style={{
+        WebkitOverflowScrolling: 'touch',
+        maxHeight: 400,
+        overflowY: 'scroll',
+      }}>
+      {children}
+    </section>
   </Collapsible>
 )
 
