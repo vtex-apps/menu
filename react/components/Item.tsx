@@ -29,6 +29,7 @@ const Item: FunctionComponent<ItemProps> = props => {
 
 interface ItemProps extends StyledLinkProps {
   type: 'category' | 'custom'
+  collapsible?: boolean
   itemProps: CategoryItemSchema | CustomItemSchema
 }
 

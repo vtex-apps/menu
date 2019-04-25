@@ -16,6 +16,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
 
   const {
     typography = defaultTypography[level],
+    collapsible,
     highlight,
     isHovered,
     isTitle,
@@ -42,7 +43,12 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
       {disabled ? (
         <span className={linkClassNames}>{props.children}</span>
       ) : (
-        <Link {...rest} className={linkClassNames} />
+        <Link to={to} {...rest} className={linkClassNames} />
+      )}
+      {collapsible && (
+      <div className="ml4">
+        {active ? '-' : '+'}
+      </div>
       )}
     </div>
   )
@@ -54,6 +60,7 @@ export interface StyledLinkProps extends LinkProps {
   isTitle?: boolean
   typography?: string
   disabled?: boolean
+  collapsible?: boolean
 }
 
 interface LinkProps {
