@@ -2,7 +2,7 @@ import { useRuntime, useTreePath } from 'vtex.render-runtime'
 
 /** This is a throwaway function, while useChildBlock doesn't return
  * the "implements" block info, or which specialization of the block
- * is being used (i.e. whether its `submenu` or `submenu.collapsible`)
+ * is being used (i.e. whether its `submenu` or `submenu.accordion`)
  */
 const useSubmenuExtension = () => {
   const runtime = useRuntime()

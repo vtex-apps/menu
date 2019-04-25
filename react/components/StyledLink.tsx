@@ -16,7 +16,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
 
   const {
     typography = defaultTypography[level],
-    collapsible,
+    accordion,
     highlight,
     isHovered,
     active,
@@ -49,7 +49,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
       ) : (
         <Link to={to} {...rest} className={linkClassNames} />
       )}
-      {collapsible && (
+      {accordion && (
       <div className="ml4">
         {active ? '-' : '+'}
       </div>
@@ -65,7 +65,7 @@ export interface StyledLinkProps extends LinkProps {
   isTitle?: boolean
   typography?: string
   disabled?: boolean
-  collapsible?: boolean
+  accordion?: boolean
 }
 
 interface LinkProps {

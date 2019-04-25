@@ -24,8 +24,8 @@
       "submenu-col"
     ]
   },
-  "submenu.collapsible": {
-    "component": "SubmenuCollapsible",
+  "submenu.accordion": {
+    "component": "SubmenuAccordion",
     "composition": "children",
     "allowed": [
       "menu"

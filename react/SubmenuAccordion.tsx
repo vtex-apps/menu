@@ -6,7 +6,7 @@ interface Props {
   isOpen: boolean
 }
 
-const SubmenuCollapsible: StorefrontFunctionComponent<Props> = ({
+const SubmenuAccordion: StorefrontFunctionComponent<Props> = ({
   isOpen,
   children,
 }) => (
@@ -34,9 +34,9 @@ const messages = defineMessages({
   },
 })
 
-SubmenuCollapsible.getSchema = () => ({
+SubmenuAccordion.getSchema = () => ({
   title: messages.submenuTitle.id,
   type: 'object',
 })
 
-export default SubmenuCollapsible
+export default SubmenuAccordion

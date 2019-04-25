@@ -15,7 +15,7 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = props => {
    * in the future. */
   const submenuExtension = useSubmenuExtension()
   const submenuComponent = submenuExtension.component
-  const isCollapsible = submenuComponent && submenuComponent.indexOf('Collapsible') > -1
+  const isCollapsible = submenuComponent && submenuComponent.indexOf('SubmenuAccordion') > -1
 
   if (isCollapsible) {
     return (
@@ -25,7 +25,7 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = props => {
             setActive(!isActive)
             event.stopPropagation()
           }}>
-          <Item {...props} collapsible active={isActive} />
+          <Item {...props} accordion active={isActive} />
         </div>
         <ExtensionPoint id="submenu" isOpen={isActive} />
         <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
