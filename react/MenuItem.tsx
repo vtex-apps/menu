@@ -10,7 +10,7 @@ import useSubmenuExtension from './hooks/useSubmenuExtension'
 const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = props => {
   const [isActive, setActive] = useState(false)
 
-  /* This is a temporary verification of which kind of submenu is being
+  /* This is a temporary check of which kind of submenu is being
    * inserted. This will be replaced by new functionality of useChildBlocks
    * in the future. */
   const submenuExtension = useSubmenuExtension()
