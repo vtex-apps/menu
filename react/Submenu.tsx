@@ -23,14 +23,8 @@ const Submenu: StorefrontFunctionComponent<SubmenuProps> = ({
   </div>
 )
 
-export enum SubmenuMode {
-  regular = 'regular',
-  collapsible = 'collapsible',
-}
-
 export interface SubmenuProps extends SubmenuSchema {
   isOpen: boolean
-  mode: SubmenuMode
 }
 
 interface SubmenuSchema {
