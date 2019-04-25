@@ -1,4 +1,4 @@
-import React, { RefObject } from 'react'
+import React from 'react'
 
 interface Props {
   open: boolean
@@ -15,16 +15,12 @@ class Collapsible extends React.Component<Props, State> {
     transition: 200,
   }
 
-  private container: RefObject<HTMLDivElement>
+  private container = React.createRef<HTMLDivElement>()
 
   public state = {
     height: 0,
   }
 
-  constructor(props: Props) {
-    super(props)
-    this.container = React.createRef()
-  }
   private forceLayout(element: HTMLElement) {
     /** Uses any function that triggers a page layout.
      * Could be any function or property from here:
