@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Added
-- Add `submenu.accordion` block.
+- New `submenu.accordion` block.
 
 ## [2.12.0] - 2019-04-24
 ### Changed
