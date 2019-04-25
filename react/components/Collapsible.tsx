@@ -2,6 +2,7 @@ import React, { RefObject } from 'react'
 
 interface Props {
   open: boolean
+  transition: number
 }
 
 interface State {
@@ -10,6 +11,10 @@ interface State {
 
 class Collapsible extends React.Component<Props, State> { 
   /*tslint:disable member-ordering */
+  public static defaultProps = {
+    transition: 200,
+  }
+
   private container: RefObject<HTMLDivElement>
 
   public state = {
@@ -55,7 +60,7 @@ class Collapsible extends React.Component<Props, State> {
   }
 
   public render() {
-    const { children } = this.props
+    const { children, transition } = this.props
     const { height } = this.state
 
     return (
@@ -64,7 +69,7 @@ class Collapsible extends React.Component<Props, State> {
         ref={this.container}
         style={{
           height,
-          transition: 'height 200ms ease-out',
+          transition: `height ${transition}ms ease-out`,
         }}>
           {children}
       </div>
