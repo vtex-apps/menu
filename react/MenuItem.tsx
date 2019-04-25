@@ -1,35 +1,47 @@
 import { path } from 'ramda'
 import React, { useState } from 'react'
 import { defineMessages } from 'react-intl'
-import { ExtensionPoint, useChildBlock } from 'vtex.render-runtime'
+import { ExtensionPoint } from 'vtex.render-runtime'
 import { CategoryItemSchema } from './components/CategoryItem'
 import { CustomItemSchema } from './components/CustomItem'
 import Item from './components/Item'
-import { SubmenuMode, SubmenuProps } from './Submenu'
+import useSubmenuExtension from './hooks/useSubmenuExtension'
 
 const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = props => {
-  const [isHovered, setHover] = useState(false)
   const [isActive, setActive] = useState(false)
 
-  const submenuData = useChildBlock<SubmenuProps>({ id : 'submenu' })
+  /* This is a temporary verification of which kind of submenu is being
+   * inserted. This will be replaced by new functionality of useChildBlocks
+   * in the future. */
+  const submenuExtension = useSubmenuExtension()
+  const submenuComponent = submenuExtension.component
+  const isCollapsible = submenuComponent && submenuComponent.indexOf('Collapsible') > -1
 
-  const isCollapsible = submenuData && submenuData.props.mode === SubmenuMode.collapsible
-
-  const isSubmenuOpen = isCollapsible ? isActive : isHovered
+  if (isCollapsible) {
+    return (
+      <li className="list">
+        <div
+          onClick={event => {
+            setActive(!isActive)
+            event.stopPropagation()
+          }}>
+          <Item {...props} collapsible active={isActive} />
+        </div>
+        <ExtensionPoint id="submenu" isOpen={isActive} />
+        <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
+      </li>
+    )
+  }
 
   return (
     <li
       className="list"
-      onClick={event => {
-        setActive(!isActive)
-        event.stopPropagation()
-      }}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-    >
-      <Item {...props} isHovered={isHovered} />
-      <ExtensionPoint id="submenu" isOpen={isSubmenuOpen} />
-      <ExtensionPoint id="unstable--submenu" isOpen={isSubmenuOpen} />
+      onClick={() => setActive(true)}
+      onMouseEnter={() => setActive(true)}
+      onMouseLeave={() => setActive(false)}>
+      <Item {...props} active={isActive} />
+      <ExtensionPoint id="submenu" isOpen={isActive} />
+      <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
     </li>
   )
 }
