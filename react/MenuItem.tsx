@@ -36,7 +36,6 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = props => {
   return (
     <li
       className="list"
-      onClick={() => setActive(true)}
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}>
       <Item {...props} active={isActive} />
