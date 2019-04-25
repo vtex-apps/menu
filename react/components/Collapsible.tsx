@@ -30,17 +30,20 @@ class Collapsible extends React.Component<Props, State> {
 
   public componentDidUpdate(prevProps: Props) {
     if (!prevProps.open && this.props.open) {
-      if (!this.container.current) {
+      const element = this.container.current
+      if (!element) {
         return
       }
-      this.container.current.style.height = 'auto'
-      const childrenHeight = this.container.current.offsetHeight
-      this.container.current.style.height = '0'
+
+      element.style.height = 'auto'
+      const childrenHeight = element.offsetHeight
+
+      element.style.height = '0'
 
       /** Forces layout in order to make the transition
        * to the new height work.
        */
-      this.forceLayout(this.container.current)
+      this.forceLayout(element)
 
       this.setState({
         height: childrenHeight,
