@@ -4,7 +4,7 @@ import { useRuntime, useTreePath } from 'vtex.render-runtime'
  * the "implements" block info, or which specialization of the block
  * is being used (i.e. whether its `submenu` or `submenu.accordion`)
  */
-const useSubmenuExtension = () => {
+const useSubmenuImplementation = () => {
   const runtime = useRuntime()
   const treePathContext = useTreePath()
 
@@ -12,14 +12,23 @@ const useSubmenuExtension = () => {
   const { extensions } = runtime
 
   if (!extensions || !treePath) {
-    return {}
+    return null
   }
 
   const submenuTreePath = `${treePath}/submenu`
 
   const extension = extensions[submenuTreePath]
 
-  return extension || {}
+  if (!extension) {
+    return null
+  }
+
+  const { component } = extension
+
+  if (component.indexOf('SubmenuAccordion') > -1) {
+    return 'submenu.accordion'
+  }
+  return 'submenu'
 }
 
-export default useSubmenuExtension
+export default useSubmenuImplementation

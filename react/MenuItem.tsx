@@ -5,7 +5,7 @@ import { ExtensionPoint } from 'vtex.render-runtime'
 import { CategoryItemSchema } from './components/CategoryItem'
 import { CustomItemSchema } from './components/CustomItem'
 import Item from './components/Item'
-import useSubmenuExtension from './hooks/useSubmenuExtension'
+import useSubmenuImplementation from './hooks/useSubmenuImplementation'
 
 const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = props => {
   const [isActive, setActive] = useState(false)
@@ -13,9 +13,8 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = props => {
   /* This is a temporary check of which kind of submenu is being
    * inserted. This will be replaced by new functionality of useChildBlocks
    * in the future. */
-  const submenuExtension = useSubmenuExtension()
-  const submenuComponent = submenuExtension.component
-  const isCollapsible = submenuComponent && submenuComponent.indexOf('SubmenuAccordion') > -1
+  const submenuImplementation = useSubmenuImplementation()
+  const isCollapsible = submenuImplementation === 'submenu.accordion'
 
   if (isCollapsible) {
     return (
