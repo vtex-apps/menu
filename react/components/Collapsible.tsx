@@ -56,7 +56,6 @@ class Collapsible extends React.Component<Props, State> {
     } else if (prevProps.open && !this.props.open) {
       this.setState({ height: 0 })
     }
-
   }
 
   public render() {
