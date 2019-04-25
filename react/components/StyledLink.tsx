@@ -23,6 +23,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
     isTitle,
     disabled,
     to,
+    children,
     ...rest
   } = props
 
@@ -37,22 +38,33 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
     'pointer': !disabled,
   })
 
+
+  const content = (
+    <div className="flex justify-between nowrap">
+      {children}
+      {accordion && (
+        <div className="ml3 c-muted-2">
+          {active ? '-' : '+'}
+        </div>
+      )}
+    </div>
+  )
+
   return (
     <div
-      className={classNames('mh6 flex justify-between nowrap', {
+      className={classNames('mh6', {
         pv2: orientation === 'vertical',
         pv5: orientation === 'horizontal' && level === 1,
       })}
     >
       {(disabled || !hasLink) ? (
-        <span className={linkClassNames}>{props.children}</span>
+        <span className={linkClassNames}>
+          {content}
+        </span>
       ) : (
-        <Link to={to} {...rest} className={linkClassNames} />
-      )}
-      {accordion && (
-      <div className="ml4">
-        {active ? '-' : '+'}
-      </div>
+        <Link to={to} {...rest} className={linkClassNames}>
+          {content}
+        </Link>
       )}
     </div>
   )
