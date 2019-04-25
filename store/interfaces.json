@@ -24,6 +24,13 @@
       "submenu-col"
     ]
   },
+  "submenu.collapsible": {
+    "component": "SubmenuCollapsible",
+    "composition": "children",
+    "allowed": [
+      "menu"
+    ]
+  },
   "submenu-col": {
     "component": "Column",
     "composition": "children",
