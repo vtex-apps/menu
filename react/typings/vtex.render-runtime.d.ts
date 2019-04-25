@@ -18,11 +18,19 @@ declare module 'vtex.render-runtime' {
     [key: string]: any
   }
 
+  interface ChildBlock<BlockProps> {
+    props: BlockProps
+  }
+
   export const ExtensionPoint: ComponentType<ExtensionPointProps>
+  export const useChildBlock: <BlockProps>({id}: {id: string}) => ChildBlock<BlockProps> | null
   export const Helmet: ReactElement
   export const Link: ReactType
   export const NoSSR: ReactElement
-  export const RenderContextConsumer: ReactElement
+  export const RenderContextConsumer: any
+  export const TreePathContextConsumer: any
+  export const useTreePath: any
+  export const useRuntime: any
   export const canUseDOM: boolean
   export const withRuntimeContext: <TOriginalProps extends {}>(
     Component: ComponentType<TOriginalProps & RenderContextProps>

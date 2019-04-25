@@ -3,31 +3,28 @@ import React from 'react'
 import { defineMessages } from 'react-intl'
 
 const Submenu: StorefrontFunctionComponent<SubmenuProps> = ({
-  isHovered,
+  isOpen,
   width,
   children,
-}) => {
-  return (
-    <div className={`${width === '100%' ? '' : 'relative'}`}>
-      <div
-        className={classNames(
-          'absolute left-0 bg-base pv4 bw1 bb b--muted-3 z-2',
-          {
-            dn: !isHovered,
-            flex: isHovered,
-            'w-100': width === '100%',
-            'w-auto ml6': width === 'auto',
-          }
-        )}
-      >
-        <section className="w-100 flex justify-center">{children}</section>
-      </div>
+}) => (
+  <div className={`${width === '100%' ? '' : 'relative'}`}>
+    <div
+      className={classNames('absolute left-0 bg-base pv4 bw1 bb b--muted-3 z-2',
+        {
+          dn: !isOpen,
+          flex: isOpen,
+          'w-100': width === '100%',
+          'w-auto ml6': width === 'auto',
+        }
+      )}
+    >
+      <section className="w-100 flex justify-center">{children}</section>
     </div>
-  )
-}
+  </div>
+)
 
-interface SubmenuProps extends SubmenuSchema {
-  isHovered: boolean
+export interface SubmenuProps extends SubmenuSchema {
+  isOpen: boolean
 }
 
 interface SubmenuSchema {

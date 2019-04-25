@@ -5,19 +5,41 @@ import { ExtensionPoint } from 'vtex.render-runtime'
 import { CategoryItemSchema } from './components/CategoryItem'
 import { CustomItemSchema } from './components/CustomItem'
 import Item from './components/Item'
+import useSubmenuImplementation from './hooks/useSubmenuImplementation'
 
 const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = props => {
-  const [isHovered, setHover] = useState(false)
+  const [isActive, setActive] = useState(false)
+
+  /* This is a temporary check of which kind of submenu is being
+   * inserted. This will be replaced by new functionality of useChildBlocks
+   * in the future. */
+  const submenuImplementation = useSubmenuImplementation()
+  const isCollapsible = submenuImplementation === 'submenu.accordion'
+
+  if (isCollapsible) {
+    return (
+      <li className="list">
+        <div
+          onClick={event => {
+            setActive(!isActive)
+            event.stopPropagation()
+          }}>
+          <Item {...props} accordion active={isActive} />
+        </div>
+        <ExtensionPoint id="submenu" isOpen={isActive} />
+        <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
+      </li>
+    )
+  }
 
   return (
     <li
       className="list"
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-    >
-      <Item {...props} isHovered={isHovered} />
-      <ExtensionPoint id="submenu" isHovered={isHovered} />
-      <ExtensionPoint id="unstable--submenu" isHovered={isHovered} />
+      onMouseEnter={() => setActive(true)}
+      onMouseLeave={() => setActive(false)}>
+      <Item {...props} active={isActive} />
+      <ExtensionPoint id="submenu" isOpen={isActive} />
+      <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
     </li>
   )
 }
@@ -170,3 +192,4 @@ MenuItem.getSchema = props => {
 }
 
 export default MenuItem
+

@@ -1,5 +1,6 @@
-import classNames from 'classnames'
 import React, { useContext, useMemo } from 'react'
+
+import classNames from 'classnames'
 import { defineMessages } from 'react-intl'
 
 import CategoryMenu from './components/CategoryMenu'

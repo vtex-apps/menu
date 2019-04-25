@@ -16,21 +16,39 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
 
   const {
     typography = defaultTypography[level],
+    accordion,
     highlight,
     isHovered,
+    active,
     isTitle,
     disabled,
+    to,
+    children,
     ...rest
   } = props
 
-  const linkClassNames = classNames('no-underline', {
+  const hasLink = to && to !== '#'
+
+  const linkClassNames = classNames('no-underline pointer', {
     [typography]: true,
     'c-emphasis': highlight,
-    'c-muted-1 dim': !highlight && hasTitle && !isTitle,
-    'c-on-base dim': !highlight && !hasTitle,
+    'c-muted-1': !highlight && hasTitle && !isTitle,
+    'c-on-base': !highlight && !hasTitle,
     'fw5 c-on-base': !highlight && isTitle,
-    pointer: !disabled,
+    'pointer': !disabled,
   })
+
+
+  const content = (
+    <div className="flex justify-between nowrap">
+      {children}
+      {accordion && (
+        <div className="ml3 c-muted-2">
+          {active ? '-' : '+'}
+        </div>
+      )}
+    </div>
+  )
 
   return (
     <div
@@ -39,10 +57,14 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
         pv5: orientation === 'horizontal' && level === 1,
       })}
     >
-      {disabled ? (
-        <span className={linkClassNames}>{props.children}</span>
+      {(disabled || !hasLink) ? (
+        <span className={linkClassNames}>
+          {content}
+        </span>
       ) : (
-        <Link {...rest} className={linkClassNames} />
+        <Link to={to} {...rest} className={linkClassNames}>
+          {content}
+        </Link>
       )}
     </div>
   )
@@ -51,9 +73,11 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
 export interface StyledLinkProps extends LinkProps {
   highlight?: boolean
   isHovered?: boolean
+  active?: boolean
   isTitle?: boolean
   typography?: string
   disabled?: boolean
+  accordion?: boolean
 }
 
 interface LinkProps {

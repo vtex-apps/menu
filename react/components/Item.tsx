@@ -18,17 +18,18 @@ const menuItemTypes = {
 const Item: FunctionComponent<ItemProps> = props => {
   const { type, itemProps, ...rest } = props
 
-  const Comp = menuItemTypes[type] as ItemComponent
+  const Component = menuItemTypes[type] as ItemComponent
 
-  if (!Comp) {
+  if (!Component) {
     return null
   }
 
-  return <Comp {...itemProps} {...rest} />
+  return <Component {...itemProps} {...rest} />
 }
 
 interface ItemProps extends StyledLinkProps {
   type: 'category' | 'custom'
+  accordion?: boolean
   itemProps: CategoryItemSchema | CustomItemSchema
 }
 

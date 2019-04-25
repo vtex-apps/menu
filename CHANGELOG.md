@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.13.0] - 2019-04-25
+
+### Added
+- New `submenu.accordion` block.
+
 ## [2.12.0] - 2019-04-24
 ### Changed
 - Scopes messages by domain
