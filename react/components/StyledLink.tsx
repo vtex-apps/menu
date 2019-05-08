@@ -35,20 +35,17 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
     'c-muted-1': !highlight && hasTitle && !isTitle,
     'c-on-base': !highlight && !hasTitle,
     'fw5 c-on-base': !highlight && isTitle,
-    'pointer': !disabled,
+    pointer: !disabled,
   })
-
 
   const content = (
     <div className="flex justify-between nowrap">
       {children}
-      {accordion && (
-        <div className="ml3 c-muted-2">
-          {active ? '-' : '+'}
-        </div>
-      )}
+      {accordion && <div className="ml3 c-muted-2">{active ? '-' : '+'}</div>}
     </div>
   )
+
+  const [path, query] = (to || '').split('?')
 
   return (
     <div
@@ -57,12 +54,15 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
         pv5: orientation === 'horizontal' && level === 1,
       })}
     >
-      {(disabled || !hasLink) ? (
-        <span className={linkClassNames}>
-          {content}
-        </span>
+      {disabled || !hasLink ? (
+        <span className={linkClassNames}>{content}</span>
       ) : (
-        <Link to={to} {...rest} className={linkClassNames}>
+        <Link
+          to={path}
+          {...rest}
+          query={query}
+          className={linkClassNames}
+        >
           {content}
         </Link>
       )}
