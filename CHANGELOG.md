@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Fixed
-- Pass query params to its prop on `Link` component.
+- `StyledLink` passing query parameters to `Link`'s `to` prop, instead of to `query`.
 
 ## [2.13.0] - 2019-04-25
 
