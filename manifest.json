@@ -1,7 +1,7 @@
 {
   "name": "menu",
   "vendor": "vtex",
-  "version": "2.13.1",
+  "version": "2.13.2",
   "title": "VTEX Menu",
   "description": "A Menu Component",
   "mustUpdateAt": "2019-04-03",
@@ -17,5 +17,6 @@
   "dependencies": {
     "vtex.store-components": "3.x",
     "vtex.store-graphql": "2.x"
-  }
+  },
+  "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }
