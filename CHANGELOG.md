@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Added CSS override classes at menu and styled link.
+
 ## [2.13.2] - 2019-05-23
 ### Fixed
 - Fixes bug where CategoryMenu would break if `children` was null.
