@@ -4,7 +4,7 @@ exports[`Menu Component should match the snapshot 1`] = `
 <DocumentFragment>
   <nav>
     <ul
-      class="list flex pl0 mv0 flex-row"
+      class="menuContainer list flex pl0 mv0 flex-row"
     />
   </nav>
 </DocumentFragment>

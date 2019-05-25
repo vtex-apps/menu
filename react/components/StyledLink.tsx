@@ -4,6 +4,8 @@ import { Link } from 'vtex.render-runtime'
 import LevelContext from './LevelContext'
 import MenuContext from './MenuContext'
 
+import styles from './StyledLink.css'
+
 const defaultTypography: Record<number, string> = {
   1: 't-body',
   2: 't-small',
@@ -29,7 +31,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
 
   const hasLink = to && to !== '#'
 
-  const linkClassNames = classNames('no-underline pointer', {
+  const linkClassNames = classNames(styles.styledLink, 'no-underline pointer', {
     [typography]: true,
     'c-emphasis': highlight,
     'c-muted-1': !highlight && hasTitle && !isTitle,
@@ -49,7 +51,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
 
   return (
     <div
-      className={classNames('mh6', {
+      className={classNames(styles.styledLinkContainer, 'mh6', {
         pv2: orientation === 'vertical',
         pv5: orientation === 'horizontal' && level === 1,
       })}

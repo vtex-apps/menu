@@ -9,6 +9,8 @@ import LevelContext from './components/LevelContext'
 import MenuContext from './components/MenuContext'
 import MenuItem, { MenuItemSchema } from './MenuItem'
 
+import styles from './Menu.css'
+
 const TypographyMap: Record<string, string> = {
   body: 't-body',
   heading1: 't-heading-1',
@@ -42,7 +44,7 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
       <MenuContext.Provider value={menuContext}>
         <nav>
           <ul
-            className={classNames('list flex pl0 mv0', {
+            className={classNames(styles.menuContainer, 'list flex pl0 mv0', {
               'flex-column': orientation === 'vertical',
               'flex-row': orientation === 'horizontal',
             })}
