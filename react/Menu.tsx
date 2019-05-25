@@ -44,7 +44,7 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
       <MenuContext.Provider value={menuContext}>
         <nav>
           <ul
-            className={classNames(`${styles.menuContainer} list flex pl0 mv0`, {
+            className={classNames(styles.menuContainer, 'list flex pl0 mv0', {
               'flex-column': orientation === 'vertical',
               'flex-row': orientation === 'horizontal',
             })}

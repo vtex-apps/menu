@@ -31,7 +31,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
 
   const hasLink = to && to !== '#'
 
-  const linkClassNames = classNames(`${styles.styledLink} no-underline pointer`, {
+  const linkClassNames = classNames(styles.styledLink, 'no-underline pointer', {
     [typography]: true,
     'c-emphasis': highlight,
     'c-muted-1': !highlight && hasTitle && !isTitle,
@@ -51,7 +51,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
 
   return (
     <div
-      className={classNames(`${styles.styledLinkContainer} mh6`, {
+      className={classNames(styles.styledLinkContainer, 'mh6', {
         pv2: orientation === 'vertical',
         pv5: orientation === 'horizontal' && level === 1,
       })}
