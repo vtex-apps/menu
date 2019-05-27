@@ -26,6 +26,8 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
     disabled,
     to,
     children,
+    iconId,
+    treePath,
     ...rest
   } = props
 
@@ -80,6 +82,8 @@ export interface StyledLinkProps extends LinkProps {
   typography?: string
   disabled?: boolean
   accordion?: boolean
+  iconId?: string
+  treePath?: string
 }
 
 interface LinkProps {
