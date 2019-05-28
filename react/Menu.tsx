@@ -139,7 +139,7 @@ Menu.getSchema = ({ additionalDef, title }: MenuSchema) => {
         title: messages.defTitle.id,
         enum: ['none', 'title', 'category'],
         type: 'string',
-        enumNames: [messages.noneDef, messages.titleDef, messages.categoryDef],
+        enumNames: [messages.noneDef.id, messages.titleDef.id, messages.categoryDef.id],
         widget: {
           'ui:widget': 'radio',
         }
@@ -147,7 +147,7 @@ Menu.getSchema = ({ additionalDef, title }: MenuSchema) => {
       ...(additionalDef === 'category' && {
         categoryId: {
           type: 'integer',
-          title: messages.categoryIdTitle,
+          title: messages.categoryIdTitle.id,
         }
       }),
       ...(additionalDef === 'title' && {
