@@ -1,14 +1,14 @@
 import React, { FunctionComponent } from 'react'
 import CategoryItem, {
-  CategoryItemProps,
   CategoryItemSchema,
 } from './CategoryItem'
-import CustomItem, { CustomItemProps, CustomItemSchema } from './CustomItem'
+import CustomItem, { CustomItemSchema } from './CustomItem'
 import { StyledLinkProps } from './StyledLink'
 
-type ItemComponent = (
-  props: CategoryItemProps | CustomItemProps
-) => React.ReactElement
+// TODO use this
+// type ItemComponent = (
+//   props: CategoryItemProps | CustomItemProps
+// ) => React.ReactElement
 
 const menuItemTypes = {
   category: CategoryItem,
@@ -18,7 +18,8 @@ const menuItemTypes = {
 const Item: FunctionComponent<ItemProps> = props => {
   const { type, itemProps, ...rest } = props
 
-  const Component = menuItemTypes[type] as ItemComponent
+  // TODO: fix
+  const Component = menuItemTypes[type] as any
 
   if (!Component) {
     return null
