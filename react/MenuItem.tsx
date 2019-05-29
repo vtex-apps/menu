@@ -132,7 +132,6 @@ const messages = defineMessages({
 
 MenuItem.getSchema = props => {
   const text = path(['itemProps', 'text'], props)
-  const type = props && props.type ? props.type : 'custom'
   const id = props && props.id ? props.id : ''
 
   // tslint:disable: object-literal-sort-keys
@@ -145,58 +144,6 @@ MenuItem.getSchema = props => {
         default: id,
         title: messages.itemIdTitle.id,
         type: 'string',
-      },
-      type: {
-        title: messages.typeTitle.id,
-        type: 'string',
-        enum: ['category', 'custom'],
-        default: 'custom',
-        enumNames: [messages.categoryTitle.id, messages.customTitle.id],
-        widget: { 'ui:widget': 'radio' },
-      },
-      iconId: {
-        title: messages.iconIdTitle.id,
-        type: 'string',
-      },
-      highlight: {
-        title: messages.highlightTitle.id,
-        type: 'boolean',
-      },
-      itemProps: {
-        title: messages.paramsTitle.id,
-        type: 'object',
-        properties: {
-          ...(type === 'category' && {
-            categoryId: {
-              title: messages.categoryIdTitle.id,
-              type: 'string',
-            },
-          }),
-          ...(type === 'custom' && {
-            type: {
-              title: messages.customTypeTitle.id,
-              type: 'string',
-              enum: ['internal', 'external'],
-              enumNames: [messages.internalTitle.id, messages.externalTitle.id],
-            },
-            href: {
-              title: messages.hrefTitle.id,
-              type: 'string',
-            },
-            noFollow: {
-              title: messages.noFollowTitle.id,
-              type: 'boolean',
-            },
-            tagTitle: {
-              title: messages.tagTitleTitle.id,
-              type: 'string',
-            },
-          }),
-          text: {
-            title: messages.paramsTextTitle.id,
-            type: 'string',
-          },
-        },
       },
     },
   }
