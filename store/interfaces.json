@@ -21,7 +21,9 @@
     "allowed": [
       "menu",
       "info-card",
-      "submenu-col"
+      "submenu-col",
+      "flex-layout",
+      "notification"
     ]
   },
   "submenu.accordion": {
