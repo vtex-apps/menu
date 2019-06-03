@@ -1,5 +1,4 @@
 import classNames from 'classnames'
-import { range } from 'ramda'
 import React from 'react'
 import { defineMessages } from 'react-intl'
 
@@ -14,19 +13,16 @@ const parseTachyonsValue = (value: TachyonsScaleInput, name?: string) => {
     return 0
   }
 
-  const supportedValues = range(0, MAX_TACHYONS_SCALE + 1).map(String)
+  const parsedValue = typeof value === 'string' ? parseInt(value, 10) : value
 
-  if (!supportedValues.includes(String(value))) {
+  if (isNaN(parsedValue) || String(parsedValue) !== String(value) || parsedValue < 0 || parsedValue > MAX_TACHYONS_SCALE) {
     if (name) {
-      console.warn(
-        `Invalid ${name} value ("${value}"). It should be an integer between 0 and ${MAX_TACHYONS_SCALE}.`
-      )
+      console.warn(`Invalid ${name} value. It should be an integer between 0 and ${MAX_TACHYONS_SCALE}.`)
     }
-
     return 0
   }
 
-  return typeof value === 'string' ? parseInt(value, 10) : value
+  return parsedValue
 }
 
 const Submenu: StorefrontFunctionComponent<SubmenuProps> = ({
@@ -39,7 +35,7 @@ const Submenu: StorefrontFunctionComponent<SubmenuProps> = ({
 }) => (
   <div className={`${width === '100%' ? '' : 'relative'}`}>
     <div
-      className={classNames(`absolute left-0 bg-base pt${parseTachyonsValue(paddingTop)} pb${parseTachyonsValue(paddingBottom)} bw1 bb b--muted-3 z-2`,
+      className={classNames(`absolute left-0 bg-base pt${parseTachyonsValue(paddingTop, 'paddingTop')} pb${parseTachyonsValue(paddingBottom, 'paddingBottom')} bw1 bb b--muted-3 z-2`,
         {
           dn: !isOpen,
           flex: isOpen,
