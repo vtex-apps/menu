@@ -7,7 +7,10 @@
     "composition": "children",
     "allowed": [
       "menu-item"
-    ]
+    ],
+    "content": {
+      "ref": "app:vtex.menu#/definitions/Menu"
+    }
   },
   "menu-item": {
     "component": "MenuItem",
@@ -15,80 +18,7 @@
       "submenu"
     ],
     "content": {
-      "dependencies": {
-        "type": {
-          "oneOf": [
-            {
-              "properties": {
-                "type": {
-                  "enum": ["category"]
-                },
-                "itemProps": {
-                  "type": "object",
-                  "properties": {
-                    "categoryId": {
-                      "title": "admin/editor.menu.item.params.categoryId.title",
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "properties": {
-                "type": {
-                  "enum": ["custom"]
-                },
-                "itemProps": {
-                  "type": "object",
-                  "properties": {
-                    "type": {
-                      "title": "admin/editor.menu.item.params.type.title",
-                      "type": "string",
-                      "enum": ["internal", "external"],
-                      "enumNames": ["admin/editor.menu.item.params.internal.title", "admin/editor.menu.item.params.external.title"]
-                    },
-                    "text": {
-                      "title": "admin/editor.menu.item.params.text.title",
-                      "$ref": "app:vtex.native-types#/definitions/text"
-                    },
-                    "href": {
-                      "title": "admin/editor.menu.item.params.href.title",
-                      "$ref": "app:vtex.native-types#/definitions/text"
-                    },
-                    "noFollow": {
-                      "title": "admin/editor.menu.item.params.noFollow.title",
-                      "type": "boolean"
-                    },
-                    "tagTitle": {
-                      "title": "admin/editor.menu.item.params.tagTitle.title",
-                      "$ref": "app:vtex.native-types#/definitions/text"
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        }
-      },
-      "properties": {
-        "highlight": {
-          "title": "admin/editor.menu.item.highlight.title",
-          "type": "boolean"
-        },
-        "type": {
-          "title": "admin/editor.menu.item.type.title",
-          "type": "string",
-          "enum": ["category", "custom"],
-          "default": "custom",
-          "enumNames": ["admin/editor.menu.item.category.title", "admin/editor.menu.item.custom.title"],
-          "widget": { "ui:widget": "radio" }
-        },
-        "iconId": {
-          "title": "admin/editor.menu.item.iconId.title",
-          "type": "string"
-        }
-      }
+      "$ref": "app:vtex.menu#/definitions/MenuItem"
     }
   },
   "submenu": {

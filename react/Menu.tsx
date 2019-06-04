@@ -7,7 +7,7 @@ import CategoryMenu from './components/CategoryMenu'
 import Item from './components/Item'
 import LevelContext from './components/LevelContext'
 import MenuContext from './components/MenuContext'
-import MenuItem, { MenuItemSchema } from './MenuItem'
+import { MenuItemSchema } from './MenuItem'
 import { generateBlockClass } from '@vtex/css-handles'
 
 import styles from './Menu.css'
@@ -126,46 +126,10 @@ const messages = defineMessages({
   },
 })
 
-Menu.getSchema = ({ additionalDef, title }: MenuSchema) => {
-  const typographyValues = Object.values(Typography)
+Menu.getSchema = () => {
   // tslint:disable: object-literal-sort-keys
   return {
     title: messages.menuTitle.id,
-    type: 'object',
-    properties: {
-      textType: {
-        title: messages.typographyTitle.id,
-        type: 'string',
-        enum: typographyValues,
-        enumNames: typographyValues,
-        default: Typography.body,
-      },
-      additionalDef: {
-        title: messages.defTitle.id,
-        enum: ['none', 'title', 'category'],
-        type: 'string',
-        enumNames: [messages.noneDef.id, messages.titleDef.id, messages.categoryDef.id],
-        widget: {
-          'ui:widget': 'radio',
-        }
-      },
-      ...(additionalDef === 'category' && {
-        categoryId: {
-          type: 'integer',
-          title: messages.categoryIdTitle.id,
-        }
-      }),
-      ...(additionalDef === 'title' && {
-        title: MenuItem.getSchema(title),
-      }),
-      orientation: {
-        title: messages.orientationTitle.id,
-        type: 'string',
-        enum: ['vertical', 'horizontal'],
-        enumNames: [messages.verticalLabel.id, messages.horizontalLabel.id],
-        default: 'horizontal',
-      },
-    },
   }
 }
 
