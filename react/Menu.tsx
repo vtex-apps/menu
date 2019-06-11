@@ -8,6 +8,7 @@ import Item from './components/Item'
 import LevelContext from './components/LevelContext'
 import MenuContext from './components/MenuContext'
 import MenuItem, { MenuItemSchema } from './MenuItem'
+import { generateBlockClass } from '@vtex/css-handles'
 
 import styles from './Menu.css'
 
@@ -27,6 +28,7 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
   textType,
   title,
   categoryId,
+  blockClass,
   ...props
 }) => {
   const level = useContext(LevelContext)
@@ -39,12 +41,14 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
     [orientation, textType]
   ) 
 
+  const classes = generateBlockClass(styles.CustomMenu, blockClass)
+
   return (
     <LevelContext.Provider value={level + 1}>
       <MenuContext.Provider value={menuContext}>
         <nav>
           <ul
-            className={classNames(styles.menuContainer, 'list flex pl0 mv0', {
+            className={classNames(classes, styles.menuContainer, 'list flex pl0 mv0', {
               'flex-column': orientation === 'vertical',
               'flex-row': orientation === 'horizontal',
             })}
@@ -64,7 +68,8 @@ interface MenuSchema {
   categoryId?: number
   textType?: Typography
   title?: MenuItemSchema,
-  additionalDef?: string
+  additionalDef?: string,
+  blockClass?: string
 }
 
 enum Typography {
@@ -128,6 +133,12 @@ Menu.getSchema = ({ additionalDef, title }: MenuSchema) => {
     title: messages.menuTitle.id,
     type: 'object',
     properties: {
+      blockClass: {
+        title: 'admin/editor.blockClass.title',
+        description: 'admin/editor.blockClass.description',
+        type: 'string',
+        isLayout: true,
+      },
       textType: {
         title: messages.typographyTitle.id,
         type: 'string',
