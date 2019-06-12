@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.16.0] - 2019-06-12
+### Added
+- Blockclass prop.
+
 ## [2.15.0] - 2019-06-03
 ### Added
 - Support for vertical orientation and different paddings on Submenu.

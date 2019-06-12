@@ -41,14 +41,14 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
     [orientation, textType]
   ) 
 
-  const classes = generateBlockClass(styles.CustomMenu, blockClass)
+  const classes = generateBlockClass(styles.menuContainer, blockClass)
 
   return (
     <LevelContext.Provider value={level + 1}>
       <MenuContext.Provider value={menuContext}>
         <nav>
           <ul
-            className={classNames(classes, styles.menuContainer, 'list flex pl0 mv0', {
+            className={classNames(classes, 'list flex pl0 mv0', {
               'flex-column': orientation === 'vertical',
               'flex-row': orientation === 'horizontal',
             })}

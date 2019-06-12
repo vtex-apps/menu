@@ -24,7 +24,7 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
    * in the future. */
   const submenuImplementation = useSubmenuImplementation()
   const isCollapsible = submenuImplementation === 'submenu.accordion'
-  const classes = generateBlockClass(styles.CustomMenuItem, blockClass)
+  const classes = generateBlockClass(styles.menuItem, blockClass)
 
   if (isCollapsible) {
     return (

@@ -17,9 +17,9 @@ const SubmenuAccordion: StorefrontFunctionComponent<Props> = ({
   children,
   blockClass
 }) => {
-  const classes = generateBlockClass(styles.CustomSubmenuAccordion, blockClass)
+  const classes = generateBlockClass(styles.submenuAccordion, blockClass)
 
-  return(
+  return (
     <Collapsible open={isOpen}>
       <section
         className={classNames(classes, "w-100 flex pl4 flex")}

@@ -39,9 +39,9 @@ const Submenu: StorefrontFunctionComponent<SubmenuProps> = ({
   paddingTop = 4,
   paddingBottom = 4,
 }) => {
-  const classes = generateBlockClass(styles.CustomSubmenu, blockClass)
+  const classes = generateBlockClass(styles.submenu, blockClass)
 
-  return(
+  return (
     <div className={`${width === '100%' ? '' : 'relative'}`}>
       <div
         className={classNames(`absolute left-0 bg-base pt${parseTachyonsValue(paddingTop, 'paddingTop')} pb${parseTachyonsValue(paddingBottom, 'paddingBottom')} bw1 bb b--muted-3 z-2`,
