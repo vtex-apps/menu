@@ -7,7 +7,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [2.16.0] - 2019-06-12
 ### Added
 - Blockclass prop.
 
