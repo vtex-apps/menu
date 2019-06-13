@@ -141,12 +141,6 @@ MenuItem.getSchema = props => {
     type: 'object',
     required: ['type'],
     properties: {
-      blockClass: {
-        title: 'admin/editor.blockClass.title',
-        description: 'admin/editor.blockClass.description',
-        type: 'string',
-        isLayout: true,
-      },
       id: {
         default: id,
         title: messages.itemIdTitle.id,

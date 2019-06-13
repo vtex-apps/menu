@@ -44,14 +44,6 @@ const messages = defineMessages({
 SubmenuAccordion.getSchema = () => ({
   title: messages.submenuTitle.id,
   type: 'object',
-  properties: {
-    blockClass: {
-      title: 'admin/editor.blockClass.title',
-      description: 'admin/editor.blockClass.description',
-      type: 'string',
-      isLayout: true,
-    }
-  }
 })
 
 export default SubmenuAccordion

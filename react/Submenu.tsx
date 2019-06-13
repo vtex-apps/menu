@@ -93,12 +93,6 @@ Submenu.getSchema = () => ({
   title: messages.submenuTitle.id,
   type: 'object',
   properties: {
-    blockClass: {
-      title: 'admin/editor.blockClass.title',
-      description: 'admin/editor.blockClass.description',
-      type: 'string',
-      isLayout: true,
-    },
     submenuWidth: {
       title: messages.submenuWidthTitle.id,
       enum: ['100%', 'auto'],

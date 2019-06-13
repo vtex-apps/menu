@@ -133,12 +133,6 @@ Menu.getSchema = ({ additionalDef, title }: MenuSchema) => {
     title: messages.menuTitle.id,
     type: 'object',
     properties: {
-      blockClass: {
-        title: 'admin/editor.blockClass.title',
-        description: 'admin/editor.blockClass.description',
-        type: 'string',
-        isLayout: true,
-      },
       textType: {
         title: messages.typographyTitle.id,
         type: 'string',
