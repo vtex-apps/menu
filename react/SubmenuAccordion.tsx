@@ -3,9 +3,9 @@ import React from 'react'
 import { defineMessages } from 'react-intl'
 import Collapsible from './components/Collapsible'
 
-import { generateBlockClass } from '@vtex/css-handles' 
+import { generateBlockClass } from '@vtex/css-handles'
 
-import styles from './SubmenuAccordion.css' 
+import styles from './SubmenuAccordion.css'
 
 interface Props {
   isOpen: boolean,

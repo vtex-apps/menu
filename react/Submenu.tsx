@@ -2,9 +2,9 @@ import classNames from 'classnames'
 import React from 'react'
 import { defineMessages } from 'react-intl'
 
-import { generateBlockClass } from '@vtex/css-handles' 
+import { generateBlockClass } from '@vtex/css-handles'
 
-import styles from './Submenu.css' 
+import styles from './Submenu.css'
 
 const MAX_TACHYONS_SCALE = 11
 export type TachyonsScaleInput = string | number | undefined
@@ -55,7 +55,7 @@ const Submenu: StorefrontFunctionComponent<SubmenuProps> = ({
       >
         <section className={classNames(classes, 'w-100 flex justify-center', { 'flex-column': orientation === Orientation.vertical })}>{children}</section>
       </div>
-    </div>  
+    </div>
   )
 }
 

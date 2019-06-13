@@ -9,9 +9,9 @@ import { CategoryItemSchema } from './components/CategoryItem'
 import { CustomItemSchema } from './components/CustomItem'
 import Item from './components/Item'
 import useSubmenuImplementation from './hooks/useSubmenuImplementation'
-import { generateBlockClass } from '@vtex/css-handles' 
+import { generateBlockClass } from '@vtex/css-handles'
 
-import styles from './MenuItem.css' 
+import styles from './MenuItem.css'
 
 const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
   blockClass,
