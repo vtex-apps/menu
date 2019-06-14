@@ -1,13 +1,22 @@
 import { path } from 'ramda'
 import React, { useState } from 'react'
+
+import classNames from 'classnames'
+
 import { defineMessages } from 'react-intl'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import { CategoryItemSchema } from './components/CategoryItem'
 import { CustomItemSchema } from './components/CustomItem'
 import Item from './components/Item'
 import useSubmenuImplementation from './hooks/useSubmenuImplementation'
+import { generateBlockClass } from '@vtex/css-handles'
 
-const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = props => {
+import styles from './MenuItem.css'
+
+const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
+  blockClass,
+  ...props
+}) => {
   const [isActive, setActive] = useState(false)
 
   /* This is a temporary check of which kind of submenu is being
@@ -15,10 +24,11 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = props => {
    * in the future. */
   const submenuImplementation = useSubmenuImplementation()
   const isCollapsible = submenuImplementation === 'submenu.accordion'
+  const classes = generateBlockClass(styles.menuItem, blockClass)
 
   if (isCollapsible) {
     return (
-      <li className="list">
+      <li className={classNames(classes, 'list')}>
         <div
           onClick={event => {
             setActive(!isActive)
@@ -34,7 +44,7 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = props => {
 
   return (
     <li
-      className="list"
+      className={classNames(classes, 'list')}
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}>
       <Item {...props} active={isActive} />
@@ -50,6 +60,7 @@ export interface MenuItemSchema {
   iconId: string
   highlight: boolean
   itemProps: CategoryItemSchema | CustomItemSchema
+  blockClass?: string
 }
 
 const messages = defineMessages({

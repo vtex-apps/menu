@@ -2,6 +2,10 @@ import classNames from 'classnames'
 import React from 'react'
 import { defineMessages } from 'react-intl'
 
+import { generateBlockClass } from '@vtex/css-handles'
+
+import styles from './Submenu.css'
+
 const MAX_TACHYONS_SCALE = 11
 export type TachyonsScaleInput = string | number | undefined
 
@@ -25,29 +29,35 @@ const parseTachyonsValue = (value: TachyonsScaleInput, name?: string) => {
   return parsedValue
 }
 
+
 const Submenu: StorefrontFunctionComponent<SubmenuProps> = ({
   isOpen,
   width,
   children,
+  blockClass,
   orientation = Orientation.horizontal,
   paddingTop = 4,
   paddingBottom = 4,
-}) => (
-  <div className={`${width === '100%' ? '' : 'relative'}`}>
-    <div
-      className={classNames(`absolute left-0 bg-base pt${parseTachyonsValue(paddingTop, 'paddingTop')} pb${parseTachyonsValue(paddingBottom, 'paddingBottom')} bw1 bb b--muted-3 z-2`,
-        {
-          dn: !isOpen,
-          flex: isOpen,
-          'w-100': width === '100%',
-          'w-auto ml6': width === 'auto',
-        }
-      )}
-    >
-      <section className={classNames('w-100 flex justify-center', { 'flex-column': orientation === Orientation.vertical })}>{children}</section>
+}) => {
+  const classes = generateBlockClass(styles.submenu, blockClass)
+
+  return (
+    <div className={`${width === '100%' ? '' : 'relative'}`}>
+      <div
+        className={classNames(`absolute left-0 bg-base pt${parseTachyonsValue(paddingTop, 'paddingTop')} pb${parseTachyonsValue(paddingBottom, 'paddingBottom')} bw1 bb b--muted-3 z-2`,
+          {
+            dn: !isOpen,
+            flex: isOpen,
+            'w-100': width === '100%',
+            'w-auto ml6': width === 'auto',
+          }
+        )}
+      >
+        <section className={classNames(classes, 'w-100 flex justify-center', { 'flex-column': orientation === Orientation.vertical })}>{children}</section>
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 enum Orientation {
   horizontal = 'horizontal',
@@ -60,6 +70,7 @@ export interface SubmenuProps extends SubmenuSchema {
   orientation: Orientation
   paddingTop: number | string
   paddingBottom: number | string
+  blockClass?: string
 }
 
 interface SubmenuSchema {
