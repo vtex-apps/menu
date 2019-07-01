@@ -23,7 +23,8 @@
       "info-card",
       "submenu-col",
       "flex-layout",
-      "notification"
+      "notification",
+      "image"
     ]
   },
   "submenu.accordion": {
