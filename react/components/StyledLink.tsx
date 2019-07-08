@@ -58,7 +58,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
         pv5: orientation === 'horizontal' && level === 1,
       })}
     >
-      {disabled || !hasLink ? (
+      {disabled || !hasLink || accordion ? (
         <span className={linkClassNames}>{content}</span>
       ) : (
         <Link
