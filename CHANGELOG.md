@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Changed
-- Menu links on accordion mode don't have links anymore.
+- Menu items that are in accordion mode expand instead of going to a link.
 
 ## [2.16.2] - 2019-07-02
 
