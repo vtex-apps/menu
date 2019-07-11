@@ -1,7 +1,7 @@
 {
   "definitions": {
-    "type": "object",
     "Menu": {
+      "type": "object",
       "dependencies": {
         "additionalDef": {
           "oneOf": [
@@ -38,6 +38,7 @@
         "additionalDef": {
           "title": "admin/editor.menu.additionalDef.title",
           "enum": ["none", "category", "title"],
+          "enumNames": ["admin/editor.menu.def.none", "admin/editor.menu.def.category", "admin/editor.menu.def.title"],
           "widget": {
             "ui:widget": "radio"
           },
