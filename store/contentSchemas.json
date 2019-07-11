@@ -121,7 +121,8 @@
         },
         "iconId": {
           "title": "admin/editor.menu.item.iconId.title",
-          "type": "string"
+          "type": "string",
+          "nullable": true
         }
       }
     }
