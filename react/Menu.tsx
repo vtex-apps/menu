@@ -3,12 +3,12 @@ import React, { useContext, useMemo } from 'react'
 import classNames from 'classnames'
 import { defineMessages } from 'react-intl'
 
+import { generateBlockClass } from '@vtex/css-handles'
 import CategoryMenu from './components/CategoryMenu'
 import Item from './components/Item'
 import LevelContext from './components/LevelContext'
 import MenuContext from './components/MenuContext'
 import { MenuItemSchema } from './MenuItem'
-import { generateBlockClass } from '@vtex/css-handles'
 
 import styles from './Menu.css'
 
@@ -84,6 +84,18 @@ enum Typography {
 }
 
 const messages = defineMessages({
+  categoryDef: {
+    defaultMessage: '',
+    id: 'admin/editor.menu.def.category',
+  },
+  categoryIdTitle: {
+    defaultMessage: '',
+    id: 'admin/editor.menu.categoryId.title',
+  },
+  defTitle: {
+    defaultMessage: '',
+    id: 'admin/editor.menu.additionalDef.title',
+  },
   horizontalLabel: {
     defaultMessage: '',
     id: 'admin/editor.menu.orientation.horizontal.label',
@@ -92,9 +104,17 @@ const messages = defineMessages({
     defaultMessage: '',
     id: 'admin/editor.future-menu.title',
   },
+  noneDef: {
+    defaultMessage: '',
+    id: 'admin/editor.menu.def.none',
+  },
   orientationTitle: {
     defaultMessage: '',
     id: 'admin/editor.menu.orientation.title',
+  },
+  titleDef: {
+    defaultMessage: '',
+    id: 'admin/editor.menu.def.title',
   },
   typographyTitle: {
     defaultMessage: '',
@@ -103,26 +123,6 @@ const messages = defineMessages({
   verticalLabel: {
     defaultMessage: '',
     id: 'admin/editor.menu.orientation.vertical.label',
-  },
-  defTitle: {
-    defaultMessage: '',
-    id: 'admin/editor.menu.additionalDef.title',
-  },
-  noneDef: {
-    defaultMessage: '',
-    id: 'admin/editor.menu.def.none',
-  },
-  titleDef: {
-    defaultMessage: '',
-    id: 'admin/editor.menu.def.title',
-  },
-  categoryDef: {
-    defaultMessage: '',
-    id: 'admin/editor.menu.def.category',
-  },
-  categoryIdTitle: {
-    defaultMessage: '',
-    id: 'admin/editor.menu.categoryId.title',
   },
 })
 

@@ -9,7 +9,7 @@
       "menu-item"
     ],
     "content": {
-      "ref": "app:vtex.menu#/definitions/Menu"
+      "$ref": "app:vtex.menu#/definitions/Menu"
     }
   },
   "menu-item": {

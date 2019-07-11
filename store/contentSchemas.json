@@ -1,5 +1,6 @@
 {
   "definitions": {
+    "type": "object",
     "Menu": {
       "dependencies": {
         "additionalDef": {
@@ -22,16 +23,25 @@
                 },
                 "title": { "$ref": "app:vtex.menu#/definitions/MenuItem" }
               }
+            },
+            {
+              "properties": {
+                "additionalDef": {
+                  "enum": ["enum"]
+                }
+              }              
             }
-          ],
-          "widget": {
-            "ui:widget": "radio"
-          }
+          ]
         }
       },
       "properties": {
         "additionalDef": {
-          "enum": ["category", "title"]
+          "title": "admin/editor.menu.additionalDef.title",
+          "enum": ["none", "category", "title"],
+          "widget": {
+            "ui:widget": "radio"
+          },
+          "default": "none"
         },
         "textType": {
           "title": "admin/editor.menu.typography.title",
