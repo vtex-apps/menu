@@ -3,12 +3,12 @@ import React, { useContext, useMemo } from 'react'
 import classNames from 'classnames'
 import { defineMessages } from 'react-intl'
 
+import { generateBlockClass } from '@vtex/css-handles'
 import CategoryMenu from './components/CategoryMenu'
 import Item from './components/Item'
 import LevelContext from './components/LevelContext'
 import MenuContext from './components/MenuContext'
-import MenuItem, { MenuItemSchema } from './MenuItem'
-import { generateBlockClass } from '@vtex/css-handles'
+import { MenuItemSchema } from './MenuItem'
 
 import styles from './Menu.css'
 
@@ -84,6 +84,18 @@ enum Typography {
 }
 
 const messages = defineMessages({
+  categoryDef: {
+    defaultMessage: '',
+    id: 'admin/editor.menu.def.category',
+  },
+  categoryIdTitle: {
+    defaultMessage: '',
+    id: 'admin/editor.menu.categoryId.title',
+  },
+  defTitle: {
+    defaultMessage: '',
+    id: 'admin/editor.menu.additionalDef.title',
+  },
   horizontalLabel: {
     defaultMessage: '',
     id: 'admin/editor.menu.orientation.horizontal.label',
@@ -92,9 +104,17 @@ const messages = defineMessages({
     defaultMessage: '',
     id: 'admin/editor.future-menu.title',
   },
+  noneDef: {
+    defaultMessage: '',
+    id: 'admin/editor.menu.def.none',
+  },
   orientationTitle: {
     defaultMessage: '',
     id: 'admin/editor.menu.orientation.title',
+  },
+  titleDef: {
+    defaultMessage: '',
+    id: 'admin/editor.menu.def.title',
   },
   typographyTitle: {
     defaultMessage: '',
@@ -104,68 +124,12 @@ const messages = defineMessages({
     defaultMessage: '',
     id: 'admin/editor.menu.orientation.vertical.label',
   },
-  defTitle: {
-    defaultMessage: '',
-    id: 'admin/editor.menu.additionalDef.title',
-  },
-  noneDef: {
-    defaultMessage: '',
-    id: 'admin/editor.menu.def.none',
-  },
-  titleDef: {
-    defaultMessage: '',
-    id: 'admin/editor.menu.def.title',
-  },
-  categoryDef: {
-    defaultMessage: '',
-    id: 'admin/editor.menu.def.category',
-  },
-  categoryIdTitle: {
-    defaultMessage: '',
-    id: 'admin/editor.menu.categoryId.title',
-  },
 })
 
-Menu.getSchema = ({ additionalDef, title }: MenuSchema) => {
-  const typographyValues = Object.values(Typography)
+Menu.getSchema = () => {
   // tslint:disable: object-literal-sort-keys
   return {
     title: messages.menuTitle.id,
-    type: 'object',
-    properties: {
-      textType: {
-        title: messages.typographyTitle.id,
-        type: 'string',
-        enum: typographyValues,
-        enumNames: typographyValues,
-        default: Typography.body,
-      },
-      additionalDef: {
-        title: messages.defTitle.id,
-        enum: ['none', 'title', 'category'],
-        type: 'string',
-        enumNames: [messages.noneDef.id, messages.titleDef.id, messages.categoryDef.id],
-        widget: {
-          'ui:widget': 'radio',
-        }
-      },
-      ...(additionalDef === 'category' && {
-        categoryId: {
-          type: 'integer',
-          title: messages.categoryIdTitle.id,
-        }
-      }),
-      ...(additionalDef === 'title' && {
-        title: MenuItem.getSchema(title),
-      }),
-      orientation: {
-        title: messages.orientationTitle.id,
-        type: 'string',
-        enum: ['vertical', 'horizontal'],
-        enumNames: [messages.verticalLabel.id, messages.horizontalLabel.id],
-        default: 'horizontal',
-      },
-    },
   }
 }
 

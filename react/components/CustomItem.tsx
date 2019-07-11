@@ -1,18 +1,20 @@
 import React, { FunctionComponent } from 'react'
+import { injectIntl, InjectedIntlProps } from 'react-intl'
 import StyledLink, { StyledLinkProps } from './StyledLink'
+import { formatIOMessage } from 'vtex.native-types'
 
-const CustomItem: FunctionComponent<CustomItemProps> = props => {
-  const { type, noFollow, tagTitle, text, href, ...rest } = props
+const CustomItem: FunctionComponent<CustomItemProps & InjectedIntlProps> = props => {
+  const { type, noFollow, tagTitle, text, href, intl, ...rest } = props
 
   return (
     <StyledLink
       {...rest}
       to={href}
-      title={tagTitle}
+      title={formatIOMessage({ id: tagTitle, intl })}
       {...(type === 'external' ? { target: '_blank', rel: 'noopener' } : {})}
       {...(noFollow ? { rel: 'nofollow noopener' } : {})}
     >
-      {text}
+      {formatIOMessage({ id: text, intl })}
     </StyledLink>
   )
 }
@@ -27,4 +29,4 @@ export interface CustomItemSchema {
   text: string
 }
 
-export default CustomItem
+export default injectIntl(CustomItem)

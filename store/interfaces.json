@@ -7,17 +7,26 @@
     "composition": "children",
     "allowed": [
       "menu-item"
-    ]
+    ],
+    "content": {
+      "$ref": "app:vtex.menu#/definitions/Menu"
+    }
   },
   "menu-item": {
     "component": "MenuItem",
     "allowed": [
       "submenu"
-    ]
+    ],
+    "content": {
+      "$ref": "app:vtex.menu#/definitions/MenuItem"
+    }
   },
   "submenu": {
     "component": "Submenu",
     "composition": "children",
+    "content": {
+      "$ref": "app:vtex.menu#/definitions/Submenu"
+    },
     "allowed": [
       "menu",
       "info-card",

@@ -91,14 +91,6 @@ const messages = defineMessages({
 // tslint:disable: object-literal-sort-keys
 Submenu.getSchema = () => ({
   title: messages.submenuTitle.id,
-  type: 'object',
-  properties: {
-    submenuWidth: {
-      title: messages.submenuWidthTitle.id,
-      enum: ['100%', 'auto'],
-      default: 'auto',
-    },
-  },
 })
 
 export default Submenu
