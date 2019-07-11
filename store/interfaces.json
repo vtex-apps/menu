@@ -24,6 +24,9 @@
   "submenu": {
     "component": "Submenu",
     "composition": "children",
+    "content": {
+      "$ref": "app:vtex.menu#/definitions/Submenu"
+    },
     "allowed": [
       "menu",
       "info-card",

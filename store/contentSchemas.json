@@ -135,6 +135,16 @@
           "nullable": true
         }
       }
+    },
+    "Submenu": {
+      "type": "object",
+      "properties": {
+        "submenuWidth": {
+          "title": "admin/editor.menu.item.submenuWidth.title",
+          "enum": ["100%", "auto"],
+          "default": "auto"
+        }
+      }
     }
   }
 }
