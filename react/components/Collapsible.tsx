@@ -1,122 +1,89 @@
-import React, { FunctionComponent, Ref, RefForwardingComponent, PropsWithChildren } from 'react'
+import React, { useState, useRef, useEffect, useContext, FunctionComponent, useMemo } from 'react'
 
 const TRANSITION_DELAY = 200
 
-interface Props {
-  open: boolean
-  updateParentHeight?: (offset?: number) => void
+function isFunction(value: any): value is (...rest: any) => any {
+  return typeof value === 'function'
 }
 
-interface State {
-  height: number | string
+interface Props {
+  open: boolean
 }
 
 interface CollapsibleContextValue {
-  updateParentHeight?: (offset?: number) => void
+  updateHeight?: (height: number) => void
 }
 
 const CollapsibleContext = React.createContext<CollapsibleContextValue>({})
 
-class Collapsible extends React.Component<Props, State> {
-  /*tslint:disable member-ordering */
-  private container = React.createRef<HTMLDivElement>()
+const Collapsible: FunctionComponent<Props> = ({ children, open }) => {
+  const { updateHeight: updateParentHeight } = useContext(CollapsibleContext)
 
-  public state = {
-    height: 0,
-  }
+  const [height, setHeight] = useState(0)
 
-  private forceLayout(element: HTMLElement) {
-    /** Uses any function that triggers a page layout.
-     * Could be any function or property from here:
-     * https://gist.github.com/paulirish/5d52fb081b3570c81e3a
+  const contextValue = useMemo(() => ({
+    updateHeight: (heightDelta: number) => {
+      setHeight(height + heightDelta)
+      if (isFunction(updateParentHeight)) {
+        updateParentHeight(heightDelta)
+      }
+    },
+  }), [ updateParentHeight, height ])
+
+  return (
+    <CollapsibleContext.Provider value={contextValue}>
+      <CollapsibleContainer open={open} height={height}>
+        {children}
+      </CollapsibleContainer>
+    </CollapsibleContext.Provider>
+  )
+}
+
+interface ContainerProps {
+  open: boolean
+  height: number
+}
+
+const CollapsibleContainer: FunctionComponent<ContainerProps> = ({ children, open, height }) => {
+  const { updateHeight } = useContext(CollapsibleContext)
+
+  const container = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const element = container.current
+
+    /** The second verification here prevents it from trying to close
+     * the menu on initialization (because `open` inits as `false`)
      */
-    element.getBoundingClientRect()
-  }
-
-  public componentDidUpdate(prevProps: Props) {
-    if (!prevProps.open && this.props.open) {
-      if (typeof this.props.updateParentHeight === 'function') {
-        const childrenHeight = this.updateHeight()
-        this.props.updateParentHeight(childrenHeight)
-      } else {
-        this.updateHeight()
-      }
-    } else if (prevProps.open && !this.props.open) {
-      const childrenHeight = this.updateHeight()
-      if (typeof this.props.updateParentHeight === 'function') {
-        this.props.updateParentHeight(-childrenHeight)
-      }
-    }
-  }
-
-  public updateHeight = (offset?: number) => {
-    const element = this.container.current
-    if (!element) {
-      return 0
+    if (!element || (!open && height === 0)) {
+      return
     }
 
     const initialHeight = element.offsetHeight
+    const initialMaxHeight = element.style.maxHeight
 
     element.style.height = 'auto'
+    element.style.maxHeight = 'none'
+
     const childrenHeight = element.offsetHeight
 
     element.style.height = `${initialHeight}px`
+    element.style.maxHeight = initialMaxHeight
 
-    /** Forces layout in order to make the transition
-     * to the new height work.
+    /** Runs `getBoundingClientRect` to trigger a layout event
+     *  in order to make the transition to the new height work.
      */
-    this.forceLayout(element)
+    element.getBoundingClientRect()
 
-    const targetHeight = Math.max(
-      0,
-      (this.props.open ? childrenHeight : 0) + (offset || 0)
-    )
-
-    this.setState({ height: targetHeight })
-
-    return childrenHeight
-  }
-
-  public updateHeightFromChildren = (offset?: number) => {
-    this.updateHeight(offset)
-  }
-
-  private handleUpdateParentHeight = (updateParentHeight: CollapsibleContextValue['updateParentHeight']) => (offset?: number) => {
-    this.updateHeightFromChildren(offset)
-    if (typeof updateParentHeight === 'function') {
-      updateParentHeight(offset)
+    if (isFunction(updateHeight)) {
+      updateHeight(open ? childrenHeight : -childrenHeight)
     }
-  }
+  }, [open])
 
-  public render() {
-    const { children } = this.props
-    const { height } = this.state
-
-    return (
-      <CollapsibleContext.Consumer>
-        {({ updateParentHeight }) => (
-          <CollapsibleContext.Provider
-            value={{ updateParentHeight: this.handleUpdateParentHeight(updateParentHeight) }}
-          >
-            <CollapsibleContainer height={height} ref={this.container}>
-              {children}
-            </CollapsibleContainer>
-          </CollapsibleContext.Provider>
-        )}
-      </CollapsibleContext.Consumer>
-    )
-  }
-}
-
-type CollapsibleContainerProps = PropsWithChildren<{
-  height: number 
-}>
-
-const CollapsibleContainer = React.forwardRef(
-  (({ children, height }, ref) => (
+  return (
     <div
       className="overflow-hidden"
-      ref={ref}
+      ref={container}
       style={{
         height,
         transition: `height ${TRANSITION_DELAY}ms ease-out`,
@@ -124,11 +91,7 @@ const CollapsibleContainer = React.forwardRef(
     >
       {children}
     </div>
-  )) as RefForwardingComponent<HTMLDivElement, CollapsibleContainerProps>
-) 
+  )
+}
 
 export default Collapsible
-
-const CollapsibleContextConsumer = CollapsibleContext.Consumer
-
-export { CollapsibleContextConsumer }

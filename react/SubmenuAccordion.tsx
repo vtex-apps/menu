@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import React from 'react'
 import { defineMessages } from 'react-intl'
-import Collapsible, { CollapsibleContextConsumer } from './components/Collapsible'
+import Collapsible from './components/Collapsible'
 
 import { generateBlockClass } from '@vtex/css-handles'
 
@@ -20,15 +20,11 @@ const SubmenuAccordion: StorefrontFunctionComponent<Props> = ({
   const classes = generateBlockClass(styles.submenuAccordion, blockClass)
 
   return (
-    <CollapsibleContextConsumer>
-      {({ updateParentHeight }) => (
-        <Collapsible open={isOpen} updateParentHeight={updateParentHeight}>
-          <section className={classNames(classes, 'w-100 flex pl4 flex')}>
-            {children}
-          </section>
-        </Collapsible>
-      )}
-    </CollapsibleContextConsumer>
+    <Collapsible open={isOpen} >
+      <section className={classNames(classes, 'w-100 flex pl4 flex')}>
+        {children}
+      </section>
+    </Collapsible>
   )
 }
 
