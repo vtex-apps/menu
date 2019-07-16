@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.17.2] - 2019-07-16
+
 ### Fixed
 - Menu items href must be an IO message
 
