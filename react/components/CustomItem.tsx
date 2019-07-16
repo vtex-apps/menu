@@ -9,7 +9,7 @@ const CustomItem: FunctionComponent<CustomItemProps & InjectedIntlProps> = props
   return (
     <StyledLink
       {...rest}
-      to={href}
+      to={formatIOMessage({ id: href, intl })}
       title={formatIOMessage({ id: tagTitle, intl })}
       {...(type === 'external' ? { target: '_blank', rel: 'noopener' } : {})}
       {...(noFollow ? { rel: 'nofollow noopener' } : {})}
