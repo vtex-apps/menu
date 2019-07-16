@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useContext, FunctionComponent, useMemo } from 'react'
 
-const TRANSITION_DELAY = 200
+const TRANSITION_DELAY = 250
 
 function isFunction(value: any): value is (...rest: any) => any {
   return typeof value === 'function'
