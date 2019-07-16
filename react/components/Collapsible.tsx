@@ -1,76 +1,97 @@
-import React from 'react'
+import React, { useState, useRef, useEffect, useContext, FunctionComponent, useMemo } from 'react'
+
+const TRANSITION_DELAY = 250
+
+function isFunction(value: any): value is (...rest: any) => any {
+  return typeof value === 'function'
+}
 
 interface Props {
   open: boolean
-  transition: number
 }
 
-interface State {
-  height: number | string
+interface CollapsibleContextValue {
+  updateHeight?: (height: number) => void
 }
 
-class Collapsible extends React.Component<Props, State> { 
-  /*tslint:disable member-ordering */
-  public static defaultProps = {
-    transition: 200,
-  }
+const CollapsibleContext = React.createContext<CollapsibleContextValue>({})
 
-  private container = React.createRef<HTMLDivElement>()
+const Collapsible: FunctionComponent<Props> = ({ children, open }) => {
+  const { updateHeight: updateParentHeight } = useContext(CollapsibleContext)
 
-  public state = {
-    height: 0,
-  }
+  const [height, setHeight] = useState(0)
 
-  private forceLayout(element: HTMLElement) {
-    /** Uses any function that triggers a page layout.
-     * Could be any function or property from here:
-     * https://gist.github.com/paulirish/5d52fb081b3570c81e3a
+  const contextValue = useMemo(() => ({
+    updateHeight: (heightDelta: number) => {
+      setHeight(height + heightDelta)
+      if (isFunction(updateParentHeight)) {
+        updateParentHeight(heightDelta)
+      }
+    },
+  }), [ updateParentHeight, height ])
+
+  return (
+    <CollapsibleContext.Provider value={contextValue}>
+      <CollapsibleContainer open={open} height={height}>
+        {children}
+      </CollapsibleContainer>
+    </CollapsibleContext.Provider>
+  )
+}
+
+interface ContainerProps {
+  open: boolean
+  height: number
+}
+
+const CollapsibleContainer: FunctionComponent<ContainerProps> = ({ children, open, height }) => {
+  const { updateHeight } = useContext(CollapsibleContext)
+
+  const container = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const element = container.current
+
+    /** The second verification here prevents it from trying to close
+     * the menu on initialization (because `open` inits as `false`)
+     */
+    if (!element || (!open && height === 0)) {
+      return
+    }
+
+    const initialHeight = element.offsetHeight
+    const initialMaxHeight = element.style.maxHeight
+
+    element.style.height = 'auto'
+    element.style.maxHeight = 'none'
+
+    const childrenHeight = element.offsetHeight
+
+    element.style.height = `${initialHeight}px`
+    element.style.maxHeight = initialMaxHeight
+
+    /** Runs `getBoundingClientRect` to trigger a layout event
+     *  in order to make the transition to the new height work.
      */
     element.getBoundingClientRect()
-  }
 
-  public componentDidUpdate(prevProps: Props) {
-    if (!prevProps.open && this.props.open) {
-      const element = this.container.current
-      if (!element) {
-        return
-      }
-
-      element.style.height = 'auto'
-      const childrenHeight = element.offsetHeight
-
-      element.style.height = '0'
-
-      /** Forces layout in order to make the transition
-       * to the new height work.
-       */
-      this.forceLayout(element)
-
-      this.setState({
-        height: childrenHeight,
-      })
-    } else if (prevProps.open && !this.props.open) {
-      this.setState({ height: 0 })
+    if (isFunction(updateHeight)) {
+      updateHeight(open ? childrenHeight : -childrenHeight)
     }
-  }
+  }, [open])
 
-  public render() {
-    const { children, transition } = this.props
-    const { height } = this.state
-
-    return (
-      <div
-        className="overflow-hidden"
-        ref={this.container}
-        style={{
-          height,
-          transition: `height ${transition}ms ease-out`,
-        }}>
-          {children}
-      </div>
-    )
-  }
+  return (
+    <div
+      className="overflow-hidden"
+      ref={container}
+      style={{
+        height,
+        transition: `height ${TRANSITION_DELAY}ms ease-out`,
+      }}
+    >
+      {children}
+    </div>
+  )
 }
 
 export default Collapsible
-
