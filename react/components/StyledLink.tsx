@@ -3,7 +3,6 @@ import React, { FunctionComponent, useContext } from 'react'
 import { Link } from 'vtex.render-runtime'
 import LevelContext from './LevelContext'
 import MenuContext from './MenuContext'
-import { Icon } from 'vtex.store-icons'
 
 import styles from './StyledLink.css'
 
@@ -45,7 +44,6 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
 
   const content = (
     <div className="flex justify-between nowrap">
-      <Icon id={iconId} />
       {children}
       {accordion && <div className="ml3 c-muted-2">{active ? '-' : '+'}</div>}
     </div>
