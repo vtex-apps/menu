@@ -43,7 +43,6 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
     pointer: !disabled,
   })
 
-  //testing git
   const content = (
     <div className="flex justify-between nowrap">
       <Icon id={iconId} />
