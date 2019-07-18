@@ -27,7 +27,8 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
     disabled,
     to,
     children,
-    iconId,
+    iconProps,
+    iconToTheRight,
     treePath,
     ...rest
   } = props
@@ -43,10 +44,23 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
     pointer: !disabled,
   })
 
+  const iconComponent = iconProps ?
+    <span className="mh2">
+      <Icon 
+        id={iconProps.id} 
+        isActive={iconProps.isActive}
+        size={iconProps.size}
+        viewBox={iconProps.viewBox}
+        activeClassName={iconProps.activeClassName}
+        mutedClassName={iconProps.mutedClassName}
+      />
+    </span> : null 
+
   const content = (
     <div className="flex justify-between nowrap">
-      <Icon id={iconId} />
+      {!iconToTheRight && iconComponent}
       {children}
+      {iconToTheRight && iconComponent}
       {accordion && <div className="ml3 c-muted-2">{active ? '-' : '+'}</div>}
     </div>
   )
@@ -84,8 +98,18 @@ export interface StyledLinkProps extends LinkProps {
   typography?: string
   disabled?: boolean
   accordion?: boolean
-  iconId?: string
   treePath?: string
+  iconProps?: IconProps
+  iconToTheRight?: boolean
+}
+
+interface IconProps {
+  id: string
+  isActive?: boolean
+  size?: number
+  viewBox?: string
+  activeClassName?: string
+  mutedClassName?: string
 }
 
 interface LinkProps {
