@@ -46,7 +46,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
 
   const iconTestId = `icon-${iconToTheRight ? 'right' : 'left'}`
   const iconComponent = iconProps ?
-    <span className="mh2" data-testid={iconTestId}>
+    <span className={`${styles.styledLinkIcon} mh2`} data-testid={iconTestId}>
       <Icon 
         id={iconProps.id} 
         isActive={iconProps.isActive}

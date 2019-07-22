@@ -1,3 +1,3 @@
 declare module 'vtex.store-icons' {
-    export const Icon
+  export const Icon
 } 

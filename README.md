@@ -47,32 +47,32 @@ Now, you can change the behavior of the menu block that is in the store. See an 
 
 ```json
 "vtex.menu@2.x:menu#websites": {
-    "children": [
-      "menu-item#shop",
-      "menu-item#about-us"
-    ]
-  },
+  "children": [
+    "menu-item#shop",
+    "menu-item#about-us"
+  ]
+},
 "menu-item#shop": {
-    "props": {
-      "id": "menu-item-shop",
-      "type": "custom",
-      "highlight": false,
-      "itemProps": {
-        "type": "internal",
-        "href": "#",
-        "noFollow": false,
-        "tagTitle": "Shop",
-        "text": "Shop"
-      },
-      "iconProps": {
-        "id": "bnd-logo",
-        "size": 16,
-        "viewBox": "0 0 16 16",
-        "activeClassName": "rebel-pink",
-        "mutedClassName": "c-action-primary"
-      },
-      "iconToTheRight": true
-    }
+  "props": {
+    "id": "menu-item-shop",
+    "type": "custom",
+    "highlight": false,
+    "itemProps": {
+      "type": "internal",
+      "href": "#",
+      "noFollow": false,
+      "tagTitle": "Shop",
+      "text": "Shop"
+    },
+    "iconProps": {
+      "id": "bnd-logo",
+      "size": 16,
+      "viewBox": "0 0 16 16",
+      "activeClassName": "rebel-pink",
+      "mutedClassName": "c-action-primary"
+    },
+    "iconToTheRight": true
+  }
 }
 ```
 
@@ -97,7 +97,7 @@ Through the Storefront, you can change the menu's behavior and interface. Howeve
 | `type`         | `String` | the type of the menu item. Can be `category` or `custom`                                            | `caterogy`           |
 | `id`         | `String` | the ID of the menu item                                            | N/A           |
 | `highlight`         | `boolean` | if the item should have highlight                                            | N/A           |
-| `iconToTheRight`         | `boolean` | if the icon should be on the right or on the left of the menu text                                           | N/A           |
+| `iconToTheRight`         | `boolean` | if the icon should be on the right or on the left of the menu text                                           | `false`          |
 | `iconProps`         | `IconProps` | props of the icon                                           | N/A           |
 | `itemProps`         | `CategoryItem` or `CustomItem` | props of the item                                           | N/A           |
 
@@ -163,6 +163,13 @@ Below, we describe the namespaces that are defined in the menu.
 | `linkLeft`   | Link container when the link is to be left aligned   | [index](/react/index.tsx)            |
 | `linkMiddle` | Link container when the link is to be center aligned | [index](/react/index.tsx)            |
 | `linkRight`  | Link container when the link is to be right aligned  | [index](/react/components/index.tsx) |
+| `submenuAccordion`  | The sub menu accordion | [SubmenuAccordion](/react/SubmenuAccordion.tsx) |
+| `submenu`  | The sub menu | [Submenu](/react/Submenu.tsx) |
+| `menuItem`  | The menu item | [MenuItem](/react/MenuItem.tsx) |
+| `menuContainer`  | The menu container | [Menu](/react/Menu.tsx) |
+| `styledLink`  | Link to the StyledLink | [StyledLink](/react/components/StyledLink.tsx) |
+| `styledLinkContainer`  | Link container of the StyledLink | [StyledLink](/react/components/StyledLink.tsx) |
+| `styledLinkIcon`  | Link to the icons in the StyledLink | [StyledLink](/react/components/StyledLink.tsx) |
 
 ## Troubleshooting
 

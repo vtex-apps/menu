@@ -5,62 +5,60 @@ import StyledLink from '../components/StyledLink'
 
 
 describe('Icon should appear at the left', () => {
-    function renderComponent(toTheRight: boolean) {
-        const props = {
-            active: false,
-            children: "Shop",
-            highlight: false,
-            iconProps: {
-                activeClassName: "rebel-pink",
-                id: "bnd-logo",
-                mutedClassName: "c-action-primary",
-                size: 16,
-                viewBox: "0 0 16 16",
-            },
-            iconToTheRight: toTheRight,
-            id: "menu-item-shop",
-            params: undefined,
-            query: undefined,
-            title: "Shop",
-            to: "#",
-            treePath: "store.home/$before_header.full/header-layout.desktop/header-row#3-desktop/vtex.menu@2.x:menu#websites/menu-item#shop"
-        }
+  function renderComponent(toTheRight: boolean) {
+    const props = {
+      active: false,
+      children: "Shop",
+      highlight: false,
+      iconProps: {
+        activeClassName: "rebel-pink",
+        id: "bnd-logo",
+        mutedClassName: "c-action-primary",
+        size: 16,
+        viewBox: "0 0 16 16",
+      },
+      iconToTheRight: toTheRight,
+      id: "menu-item-shop",
+      params: undefined,
+      query: undefined,
+      title: "Shop",
+      to: "#",
+      treePath: "store.home/$before_header.full/header-layout.desktop/header-row#3-desktop/vtex.menu@2.x:menu#websites/menu-item#shop"
+    }
+    return render(<StyledLink {...props} />)
+  }
 
-        return render(<StyledLink {...props} />)
+  it('should be rendered', () => {
+    expect(renderComponent(false)).toBeDefined()
+  })
+
+  it('should not have icon', () => {
+    const props = {
+      active: false,
+      children: "Shop",
+      highlight: false,
+      iconToTheRight: false,
+      id: "menu-item-shop",
+      params: undefined,
+      query: undefined,
+      title: "Shop",
+      to: "#",
+      treePath: "store.home/$before_header.full/header-layout.desktop/header-row#3-desktop/vtex.menu@2.x:menu#websites/menu-item#shop"
     }
 
-    it('should be rendered', () => {
-        expect(renderComponent(false)).toBeDefined()
-    })
+    const {queryByTestId} = render(<StyledLink {...props} />)
+    expect(queryByTestId('icon-right')).toBeNull()
+    expect(queryByTestId('icon-left')).toBeNull()
+  })
 
-    it('should not have icon', () => {
-        const props = {
-            active: false,
-            children: "Shop",
-            highlight: false,
-            iconToTheRight: false,
-            id: "menu-item-shop",
-            params: undefined,
-            query: undefined,
-            title: "Shop",
-            to: "#",
-            treePath: "store.home/$before_header.full/header-layout.desktop/header-row#3-desktop/vtex.menu@2.x:menu#websites/menu-item#shop"
-        }
+  it('should have icon to the left', () => {
+    const {getByTestId} = renderComponent(false)
+    expect(getByTestId('icon-left'))
+  })
 
-        const {queryByTestId} = render(<StyledLink {...props} />)
-        expect(queryByTestId('icon-right')).toBeNull()
-        expect(queryByTestId('icon-left')).toBeNull()
-    })
+  it('should have icon to the right', () => {
+    const {getByTestId} = renderComponent(true)
+    expect(getByTestId('icon-right'))
+  })
 
-    it('should have icon to the left', () => {
-        const {getByTestId} = renderComponent(false)
-        expect(getByTestId('icon-left'))
-    })
-
-    it('should have icon to the right', () => {
-        const {getByTestId} = renderComponent(true)
-        expect(getByTestId('icon-right'))
-    })
-
-    
 })
