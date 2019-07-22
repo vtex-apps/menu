@@ -6,6 +6,7 @@ import classNames from 'classnames'
 import { defineMessages } from 'react-intl'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import { CategoryItemSchema } from './components/CategoryItem'
+import { IconProps} from './components/StyledLink'
 import { CustomItemSchema } from './components/CustomItem'
 import Item from './components/Item'
 import useSubmenuImplementation from './hooks/useSubmenuImplementation'
@@ -57,7 +58,8 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
 export interface MenuItemSchema {
   id: string
   type: 'category' | 'custom'
-  iconId: string
+  iconProps: IconProps
+  iconToTheRight: boolean
   highlight: boolean
   itemProps: CategoryItemSchema | CustomItemSchema
   blockClass?: string

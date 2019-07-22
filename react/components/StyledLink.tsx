@@ -104,7 +104,7 @@ export interface StyledLinkProps extends LinkProps {
   iconToTheRight?: boolean
 }
 
-interface IconProps {
+export interface IconProps {
   id: string
   isActive?: boolean
   size?: number
