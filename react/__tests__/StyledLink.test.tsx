@@ -5,7 +5,7 @@ import StyledLink from '../components/StyledLink'
 
 
 describe('Icon should appear at the left', () => {
-  function renderComponent(toTheRight: boolean) {
+  function renderComponent(iconPos: String) {
     const props = {
       active: false,
       children: "Shop",
@@ -17,7 +17,7 @@ describe('Icon should appear at the left', () => {
         size: 16,
         viewBox: "0 0 16 16",
       },
-      iconToTheRight: toTheRight,
+      iconPosition: iconPos,
       id: "menu-item-shop",
       params: undefined,
       query: undefined,
@@ -29,7 +29,7 @@ describe('Icon should appear at the left', () => {
   }
 
   it('should be rendered', () => {
-    expect(renderComponent(false)).toBeDefined()
+    expect(renderComponent('left')).toBeDefined()
   })
 
   it('should not have icon', () => {
@@ -52,12 +52,12 @@ describe('Icon should appear at the left', () => {
   })
 
   it('should have icon to the left', () => {
-    const {getByTestId} = renderComponent(false)
+    const {getByTestId} = renderComponent('left')
     expect(getByTestId('icon-left'))
   })
 
   it('should have icon to the right', () => {
-    const {getByTestId} = renderComponent(true)
+    const {getByTestId} = renderComponent('right')
     expect(getByTestId('icon-right'))
   })
 

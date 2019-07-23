@@ -97,7 +97,7 @@ Through the Storefront, you can change the menu's behavior and interface. Howeve
 | `type`         | `String` | the type of the menu item. Can be `category` or `custom`                                            | `caterogy`           |
 | `id`         | `String` | the ID of the menu item                                            | N/A           |
 | `highlight`         | `boolean` | if the item should have highlight                                            | N/A           |
-| `iconToTheRight`         | `boolean` | if the icon should be on the right or on the left of the menu text                                           | `false`          |
+| `iconPosition`         | `String` | the icon position relative to the menu item text. Can be `left` or `right`                                           | `left`          |
 | `iconProps`         | `IconProps` | props of the icon                                           | N/A           |
 | `itemProps`         | `CategoryItem` or `CustomItem` | props of the item                                           | N/A           |
 

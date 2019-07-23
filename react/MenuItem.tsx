@@ -59,7 +59,7 @@ export interface MenuItemSchema {
   id: string
   type: 'category' | 'custom'
   iconProps: IconProps
-  iconToTheRight: boolean
+  iconPosition: 'left' | 'right'
   highlight: boolean
   itemProps: CategoryItemSchema | CustomItemSchema
   blockClass?: string
