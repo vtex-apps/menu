@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- MenuItems can have icon now by receiving the `iconProps` and `iconToTheRight` props
+
 ## [2.17.2] - 2019-07-16
 
 ### Fixed

@@ -3,6 +3,7 @@ import React, { FunctionComponent, useContext } from 'react'
 import { Link } from 'vtex.render-runtime'
 import LevelContext from './LevelContext'
 import MenuContext from './MenuContext'
+import { Icon } from 'vtex.store-icons'
 
 import styles from './StyledLink.css'
 
@@ -26,7 +27,8 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
     disabled,
     to,
     children,
-    iconId,
+    iconProps,
+    iconPosition,
     treePath,
     ...rest
   } = props
@@ -42,9 +44,24 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
     pointer: !disabled,
   })
 
+  const iconTestId = `icon-${iconPosition}`
+  const iconComponent = iconProps ?
+    <span className={`${styles.styledLinkIcon} mh2`} data-testid={iconTestId}>
+      <Icon 
+        id={iconProps.id} 
+        isActive={iconProps.isActive}
+        size={iconProps.size}
+        viewBox={iconProps.viewBox}
+        activeClassName={iconProps.activeClassName}
+        mutedClassName={iconProps.mutedClassName}
+      />
+    </span> : null 
+
   const content = (
     <div className="flex justify-between nowrap">
+      {iconPosition === 'left' && iconComponent}
       {children}
+      {iconPosition === 'right' && iconComponent}
       {accordion && <div className="ml3 c-muted-2">{active ? '-' : '+'}</div>}
     </div>
   )
@@ -82,8 +99,18 @@ export interface StyledLinkProps extends LinkProps {
   typography?: string
   disabled?: boolean
   accordion?: boolean
-  iconId?: string
   treePath?: string
+  iconProps?: IconProps
+  iconPosition?: 'left' | 'right'
+}
+
+export interface IconProps {
+  id: string
+  isActive?: boolean
+  size?: number
+  viewBox?: string
+  activeClassName?: string
+  mutedClassName?: string
 }
 
 interface LinkProps {
@@ -91,6 +118,10 @@ interface LinkProps {
   title?: string
   target?: string
   rel?: string
+}
+
+StyledLink.defaultProps = {
+  iconPosition: 'left'
 }
 
 export default StyledLink

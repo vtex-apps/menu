@@ -1,7 +1,7 @@
 import { render } from '@vtex/test-tools/react'
 import React from 'react'
 
-import Menu from './index'
+import Menu from '../index'
 
 describe('MenuLink Component', () => {
   function renderComponent() {
