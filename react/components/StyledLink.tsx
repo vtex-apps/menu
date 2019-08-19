@@ -66,8 +66,6 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
     </div>
   )
 
-  const [path, query] = (to || '').split('?')
-
   return (
     <div
       className={classNames(styles.styledLinkContainer, 'mh6', {
@@ -79,9 +77,8 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
         <span className={linkClassNames}>{content}</span>
       ) : (
         <Link
-          to={path}
+          to={to}
           {...rest}
-          query={query}
           className={linkClassNames}
         >
           {content}

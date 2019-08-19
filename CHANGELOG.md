@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- StyledLink's href when it had a question mark
+
 ## [2.18.0] - 2019-07-23
 
 ### Added
