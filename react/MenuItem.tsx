@@ -1,5 +1,5 @@
 import { path } from 'ramda'
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 
 import classNames from 'classnames'
 
@@ -21,24 +21,6 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
   const [isActive, setActive] = useState(false)
   const [lazyMount, setLazyMount] = useState(false)
 
-  const handleClick = useCallback<React.MouseEventHandler>(
-    event => {
-      setLazyMount(true)
-      setActive(!isActive)
-      event.stopPropagation()
-    },
-    [setLazyMount, setActive, isActive]
-  )
-
-  const handleMouseEnter = useCallback(() => {
-    setActive(true)
-    setLazyMount(true)
-  }, [setActive, setLazyMount])
-
-  const handleMouseLeave = useCallback(() => {
-    setActive(false)
-  }, [setActive])
-
   /* This is a temporary check of which kind of submenu is being
    * inserted. This will be replaced by new functionality of useChildBlocks
    * in the future. */
@@ -49,7 +31,13 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
   if (isCollapsible) {
     return (
       <li className={classNames(classes, 'list')}>
-        <div onClick={handleClick}>
+        <div
+          onClick={event => {
+            setLazyMount(true)
+            setActive(!isActive)
+            event.stopPropagation()
+          }}
+        >
           <Item {...props} accordion active={isActive} />
         </div>
         {lazyMount ? (
@@ -65,8 +53,13 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
   return (
     <li
       className={classNames(classes, 'list')}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={() => {
+        setActive(true)
+        setLazyMount(true)
+      }}
+      onMouseLeave={() => {
+        setActive(false)
+      }}
     >
       <Item {...props} active={isActive} />
       {lazyMount ? (
