@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.19.0-beta] - 2019-08-27
+
 ### Changed
 
 - Make sub-menu inside `MenuItem` lazy.
