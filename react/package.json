@@ -6,7 +6,7 @@
     "pretest": "yarn",
     "test": "vtex-test-tools test",
     "test:watch": "vtex-test-tools test --watch",
-    "lint": "exit 0"
+    "lint": "tsc --noEmit --pretty && tslint -c tslint.json './**/*.ts'"
   },
   "author": "VTEX",
   "license": "ISC",
