@@ -1,5 +1,5 @@
 import { path } from 'ramda'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import classNames from 'classnames'
 
@@ -20,6 +20,27 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
 }) => {
   const [isActive, setActive] = useState(false)
   const [lazyMount, setLazyMount] = useState(!canUseDOM)
+  let handle: number
+  useEffect(() => {
+    if (window && window.requestIdleCallback) {
+      handle = window.requestIdleCallback(() => {
+        setLazyMount(true)
+      })
+    } else {
+      handle = window.setTimeout(() => {
+        setLazyMount(true)
+      }, 3000)
+    }
+  }, [])
+
+  function setLazyMountHandler() {
+    if ('requestIdleCallback' in window && handle) {
+      window.cancelIdleCallback(handle)
+    } else if (handle) {
+      clearTimeout(handle)
+    }
+    setLazyMount(true)
+  }
 
   /* This is a temporary check of which kind of submenu is being
    * inserted. This will be replaced by new functionality of useChildBlocks
@@ -33,7 +54,7 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
       <li className={classNames(classes, 'list')}>
         <div
           onClick={event => {
-            setLazyMount(true)
+            setLazyMountHandler()
             setActive(!isActive)
             event.stopPropagation()
           }}
@@ -55,7 +76,7 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
       className={classNames(classes, 'list')}
       onMouseEnter={() => {
         setActive(true)
-        setLazyMount(true)
+        setLazyMountHandler()
       }}
       onMouseLeave={() => {
         setActive(false)
