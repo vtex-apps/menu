@@ -1,16 +1,16 @@
 import { path } from 'ramda'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 
 import classNames from 'classnames'
 
+import { generateBlockClass } from '@vtex/css-handles'
 import { defineMessages } from 'react-intl'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import { CategoryItemSchema } from './components/CategoryItem'
-import { IconProps} from './components/StyledLink'
 import { CustomItemSchema } from './components/CustomItem'
 import Item from './components/Item'
+import { IconProps } from './components/StyledLink'
 import useSubmenuImplementation from './hooks/useSubmenuImplementation'
-import { generateBlockClass } from '@vtex/css-handles'
 
 import styles from './MenuItem.css'
 
@@ -19,6 +19,25 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
   ...props
 }) => {
   const [isActive, setActive] = useState(false)
+  const [lazyMount, setLazyMount] = useState(false)
+
+  const handleClick = useCallback<React.MouseEventHandler>(
+    event => {
+      setLazyMount(true)
+      setActive(!isActive)
+      event.stopPropagation()
+    },
+    [setLazyMount, setActive, isActive]
+  )
+
+  const handleMouseEnter = useCallback(() => {
+    setActive(true)
+    setLazyMount(true)
+  }, [setActive, setLazyMount])
+
+  const handleMouseLeave = useCallback(() => {
+    setActive(false)
+  }, [setActive])
 
   /* This is a temporary check of which kind of submenu is being
    * inserted. This will be replaced by new functionality of useChildBlocks
@@ -30,15 +49,15 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
   if (isCollapsible) {
     return (
       <li className={classNames(classes, 'list')}>
-        <div
-          onClick={event => {
-            setActive(!isActive)
-            event.stopPropagation()
-          }}>
+        <div onClick={handleClick}>
           <Item {...props} accordion active={isActive} />
         </div>
-        <ExtensionPoint id="submenu" isOpen={isActive} />
-        <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
+        {lazyMount ? (
+          <>
+            <ExtensionPoint id="submenu" isOpen={isActive} />
+            <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
+          </>
+        ) : null}
       </li>
     )
   }
@@ -46,11 +65,16 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
   return (
     <li
       className={classNames(classes, 'list')}
-      onMouseEnter={() => setActive(true)}
-      onMouseLeave={() => setActive(false)}>
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <Item {...props} active={isActive} />
-      <ExtensionPoint id="submenu" isOpen={isActive} />
-      <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
+      {lazyMount ? (
+        <>
+          <ExtensionPoint id="submenu" isOpen={isActive} />
+          <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
+        </>
+      ) : null}
     </li>
   )
 }
@@ -152,4 +176,3 @@ MenuItem.getSchema = props => {
 }
 
 export default MenuItem
-

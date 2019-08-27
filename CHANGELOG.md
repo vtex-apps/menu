@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- Make sub-menu inside `MenuItem` lazy.
+- Memoize event handlers using `useCallback` hook.
+
 ## [2.18.1] - 2019-08-19
 
 ### Fixed
