@@ -5,7 +5,7 @@ import classNames from 'classnames'
 
 import { generateBlockClass } from '@vtex/css-handles'
 import { defineMessages } from 'react-intl'
-import { ExtensionPoint } from 'vtex.render-runtime'
+import { canUseDOM, ExtensionPoint } from 'vtex.render-runtime'
 import { CategoryItemSchema } from './components/CategoryItem'
 import { CustomItemSchema } from './components/CustomItem'
 import Item from './components/Item'
@@ -19,7 +19,7 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
   ...props
 }) => {
   const [isActive, setActive] = useState(false)
-  const [lazyMount, setLazyMount] = useState(false)
+  const [lazyMount, setLazyMount] = useState(!canUseDOM)
 
   /* This is a temporary check of which kind of submenu is being
    * inserted. This will be replaced by new functionality of useChildBlocks
