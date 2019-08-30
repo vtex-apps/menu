@@ -5,7 +5,7 @@ import StyledLink from '../components/StyledLink'
 
 
 describe('Icon should appear at the left', () => {
-  function renderComponent(iconPos: String) {
+  function renderComponent(iconPos: "left" | "right" | undefined) {
     const props = {
       active: false,
       children: "Shop",
