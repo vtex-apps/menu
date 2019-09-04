@@ -1,9 +1,10 @@
 import classNames from 'classnames'
 import React, { FunctionComponent, useContext } from 'react'
 import { Link } from 'vtex.render-runtime'
+import { Icon } from 'vtex.store-icons'
+
 import LevelContext from './LevelContext'
 import MenuContext from './MenuContext'
-import { Icon } from 'vtex.store-icons'
 
 import styles from './StyledLink.css'
 
@@ -27,6 +28,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
     disabled,
     to,
     children,
+    iconId,
     iconProps,
     iconPosition,
     treePath,
@@ -97,6 +99,7 @@ export interface StyledLinkProps extends LinkProps {
   disabled?: boolean
   accordion?: boolean
   treePath?: string
+  iconId?: string,
   iconProps?: IconProps
   iconPosition?: 'left' | 'right'
 }

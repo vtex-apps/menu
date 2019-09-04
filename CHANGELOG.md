@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix iconId DOM warning from Link
+
 ## [2.18.3] - 2019-08-30
 
 ## [2.18.2] - 2019-08-29
