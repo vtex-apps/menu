@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import React, { Component, ReactNode } from 'react'
 
 import { Link } from 'vtex.render-runtime'
-import { Container } from 'vtex.store-components'
 import Options from './constants/Options'
 import style from './MenuLink.css'
 // This is required because is used in static schema attribute of Menu Component
@@ -198,31 +197,29 @@ class MenuLink extends Component<Props> {
     }
     return (
       <div className={`${style.container} bg-base h2 c-muted-2 w-100 dn db-ns`}>
-        <Container>
-          <nav className="flex justify-between">
-            <div className="flex-grow pa3 flex items-center">
-              {links
-                .filter(link => link.position === Options.LEFT)
-                .map((link, index) => {
-                  return this.renderLink(link, index)
-                })}
-            </div>
-            <div className="flex-grow pa3 flex items-center">
-              {links
-                .filter(link => link.position === Options.MIDDLE)
-                .map((link, index) => {
-                  return this.renderLink(link, index)
-                })}
-            </div>
-            <div className="flex-grow pa3 flex items-center">
-              {links
-                .filter(link => link.position === Options.RIGHT)
-                .map((link, index) => {
-                  return this.renderLink(link, index)
-                })}
-            </div>
-          </nav>
-        </Container>
+        <nav className="flex justify-between">
+          <div className="flex-grow pa3 flex items-center">
+            {links
+              .filter(link => link.position === Options.LEFT)
+              .map((link, index) => {
+                return this.renderLink(link, index)
+              })}
+          </div>
+          <div className="flex-grow pa3 flex items-center">
+            {links
+              .filter(link => link.position === Options.MIDDLE)
+              .map((link, index) => {
+                return this.renderLink(link, index)
+              })}
+          </div>
+          <div className="flex-grow pa3 flex items-center">
+            {links
+              .filter(link => link.position === Options.RIGHT)
+              .map((link, index) => {
+                return this.renderLink(link, index)
+              })}
+          </div>
+        </nav>
       </div>
     )
   }
