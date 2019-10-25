@@ -1,6 +1,6 @@
 {
   "name": "vtex.menu",
-  "version": "0.1.0",
+  "version": "2.18.5",
   "description": "A Menu Component.",
   "scripts": {
     "pretest": "yarn",
