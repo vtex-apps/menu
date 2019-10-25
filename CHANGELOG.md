@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Chore
+- New release to trigger a rebuild enabling lazy evaluation of menu entrypoints
 
 ## [2.18.4] - 2019-09-04
 
@@ -51,7 +53,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [2.16.1] - 2019-07-02
 
 ### Added
-- Allowed `image` component on sub-menus. 
+- Allowed `image` component on sub-menus.
 
 ## [2.16.0] - 2019-06-14
 
