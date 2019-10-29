@@ -4,11 +4,12 @@ import classNames from 'classnames'
 import { defineMessages } from 'react-intl'
 
 import { generateBlockClass } from '@vtex/css-handles'
+import { ListContextProvider, useListContext } from 'vtex.list-context'
 import CategoryMenu from './components/CategoryMenu'
 import Item from './components/Item'
 import LevelContext from './components/LevelContext'
 import MenuContext from './components/MenuContext'
-import { MenuItemSchema } from './MenuItem'
+import MenuItem, { MenuItemSchema } from './MenuItem'
 
 import styles from './Menu.css'
 
@@ -29,9 +30,11 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
   title,
   categoryId,
   blockClass,
-  ...props
+  menuItems: menuItemsProps = [],
+  children,
 }) => {
   const level = useContext(LevelContext)
+  const { list } = useListContext() || []
   const menuContext = useMemo(
     () => ({
       hasTitle: title || categoryId ? true : false,
@@ -39,25 +42,33 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
       textType: textType ? TypographyMap[textType] : TypographyMap.body,
     }),
     [orientation, textType]
-  ) 
+  )
+
+  const menuListContent = list.concat(menuItemsProps.map(
+    ({ itemProps: { text }, itemProps, ...rest }) => (
+      <MenuItem key={text} itemProps={itemProps} {...rest} />
+    )
+  ))
 
   const classes = generateBlockClass(styles.menuContainer, blockClass)
 
   return (
     <LevelContext.Provider value={level + 1}>
       <MenuContext.Provider value={menuContext}>
-        <nav>
-          <ul
-            className={classNames(classes, 'list flex pl0 mv0', {
-              'flex-column': orientation === 'vertical',
-              'flex-row': orientation === 'horizontal',
-            })}
-          >
-            {!categoryId && title && <Item {...title} isTitle />}
-            {categoryId && <CategoryMenu categoryId={categoryId} />}
-            {props.children}
-          </ul>
-        </nav>
+        <ListContextProvider list={menuListContent}>
+          <nav>
+            <ul
+              className={classNames(classes, 'list flex pl0 mv0', {
+                'flex-column': orientation === 'vertical',
+                'flex-row': orientation === 'horizontal',
+              })}
+            >
+              {!categoryId && title && <Item {...title} isTitle />}
+              {categoryId && <CategoryMenu categoryId={categoryId} />}
+              {children}
+            </ul>
+          </nav>
+        </ListContextProvider>
       </MenuContext.Provider>
     </LevelContext.Provider>
   )
@@ -67,9 +78,10 @@ interface MenuSchema {
   orientation?: 'vertical' | 'horizontal'
   categoryId?: number
   textType?: Typography
-  title?: MenuItemSchema,
-  additionalDef?: string,
+  title?: MenuItemSchema
+  additionalDef?: string
   blockClass?: string
+  menuItems?: MenuItemSchema[]
 }
 
 enum Typography {
