@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Query } from 'react-apollo'
+import { Query, QueryResult } from 'react-apollo'
 
 import category from '../graphql/category.graphql'
 import StyledLink, { StyledLinkProps } from './StyledLink'
@@ -24,7 +24,7 @@ class CategoryItem extends Component<CategoryItemProps, State> {
 
     return (
       <Query query={category} variables={{ id: categoryId }}>
-        {({ data, loading, error }) => {
+        {({ data, loading, error }: QueryResult) => {
           if (error) {
             throw new Error(
               `GraphQL error while rendering Menu rendered Category id ${categoryId}`
@@ -53,7 +53,7 @@ class CategoryItem extends Component<CategoryItemProps, State> {
 
 export interface CategoryItemProps
   extends CategoryItemSchema,
-    StyledLinkProps {}
+  StyledLinkProps { }
 
 export interface CategoryItemSchema {
   categoryId: number

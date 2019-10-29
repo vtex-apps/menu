@@ -8,7 +8,9 @@
             {
               "properties": {
                 "additionalDef": {
-                  "enum": ["category"]
+                  "enum": [
+                    "category"
+                  ]
                 },
                 "categoryId": {
                   "type": "integer",
@@ -19,17 +21,23 @@
             {
               "properties": {
                 "additionalDef": {
-                  "enum": ["title"]
+                  "enum": [
+                    "title"
+                  ]
                 },
-                "title": { "$ref": "app:vtex.menu#/definitions/MenuItem" }
+                "title": {
+                  "$ref": "app:vtex.menu#/definitions/MenuItem"
+                }
               }
             },
             {
               "properties": {
                 "additionalDef": {
-                  "enum": ["enum"]
+                  "enum": [
+                    "enum"
+                  ]
                 }
-              }              
+              }
             }
           ]
         }
@@ -37,8 +45,16 @@
       "properties": {
         "additionalDef": {
           "title": "admin/editor.menu.additionalDef.title",
-          "enum": ["none", "category", "title"],
-          "enumNames": ["admin/editor.menu.def.none", "admin/editor.menu.def.category", "admin/editor.menu.def.title"],
+          "enum": [
+            "none",
+            "category",
+            "title"
+          ],
+          "enumNames": [
+            "admin/editor.menu.def.none",
+            "admin/editor.menu.def.category",
+            "admin/editor.menu.def.title"
+          ],
           "widget": {
             "ui:widget": "radio"
           },
@@ -47,16 +63,48 @@
         "textType": {
           "title": "admin/editor.menu.typography.title",
           "type": "string",
-          "enum": ["t-heading-1", "t-heading-2", "t-heading-3", "t-heading-4", "t-heading-5", "t-body", "t-small", "t-mini"],
-          "enumNames": ["t-heading-1", "t-heading-2", "t-heading-3", "t-heading-4", "t-heading-5", "t-body", "t-small", "t-mini"],
+          "enum": [
+            "t-heading-1",
+            "t-heading-2",
+            "t-heading-3",
+            "t-heading-4",
+            "t-heading-5",
+            "t-body",
+            "t-small",
+            "t-mini"
+          ],
+          "enumNames": [
+            "t-heading-1",
+            "t-heading-2",
+            "t-heading-3",
+            "t-heading-4",
+            "t-heading-5",
+            "t-body",
+            "t-small",
+            "t-mini"
+          ],
           "default": "t-body"
         },
         "orientation": {
           "title": "admin/editor.menu.orientation.title",
           "type": "string",
-          "enum": ["vertical", "horizontal"],
-          "enumNames": ["admin/editor.menu.orientation.vertical.label", "admin/editor.menu.orientation.horizontal.label"],
+          "enum": [
+            "vertical",
+            "horizontal"
+          ],
+          "enumNames": [
+            "admin/editor.menu.orientation.vertical.label",
+            "admin/editor.menu.orientation.horizontal.label"
+          ],
           "default": "horizontal"
+        },
+        "menuItems": {
+          "minItems": 0,
+          "type": "array",
+          "title": "Menu Items",
+          "items": {
+            "$ref": "app:vtex.menu#/definitions/MenuItem"
+          }
         }
       }
     },
@@ -67,7 +115,9 @@
             {
               "properties": {
                 "type": {
-                  "enum": ["category"]
+                  "enum": [
+                    "category"
+                  ]
                 },
                 "itemProps": {
                   "type": "object",
@@ -83,7 +133,9 @@
             {
               "properties": {
                 "type": {
-                  "enum": ["custom"]
+                  "enum": [
+                    "custom"
+                  ]
                 },
                 "itemProps": {
                   "type": "object",
@@ -91,8 +143,14 @@
                     "type": {
                       "title": "admin/editor.menu.item.params.type.title",
                       "type": "string",
-                      "enum": ["internal", "external"],
-                      "enumNames": ["admin/editor.menu.item.params.internal.title", "admin/editor.menu.item.params.external.title"]
+                      "enum": [
+                        "internal",
+                        "external"
+                      ],
+                      "enumNames": [
+                        "admin/editor.menu.item.params.internal.title",
+                        "admin/editor.menu.item.params.external.title"
+                      ]
                     },
                     "text": {
                       "title": "admin/editor.menu.item.params.text.title",
@@ -125,10 +183,18 @@
         "type": {
           "title": "admin/editor.menu.item.type.title",
           "type": "string",
-          "enum": ["category", "custom"],
+          "enum": [
+            "category",
+            "custom"
+          ],
           "default": "custom",
-          "enumNames": ["admin/editor.menu.item.category.title", "admin/editor.menu.item.custom.title"],
-          "widget": { "ui:widget": "radio" }
+          "enumNames": [
+            "admin/editor.menu.item.category.title",
+            "admin/editor.menu.item.custom.title"
+          ],
+          "widget": {
+            "ui:widget": "radio"
+          }
         },
         "iconId": {
           "title": "admin/editor.menu.item.iconId.title",
@@ -142,7 +208,10 @@
       "properties": {
         "submenuWidth": {
           "title": "admin/editor.menu.item.submenuWidth.title",
-          "enum": ["100%", "auto"],
+          "enum": [
+            "100%",
+            "auto"
+          ],
           "default": "auto"
         }
       }
