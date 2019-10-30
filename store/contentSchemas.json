@@ -98,7 +98,7 @@
           ],
           "default": "horizontal"
         },
-        "menuItems": {
+        "items": {
           "minItems": 0,
           "type": "array",
           "title": "Menu Items",

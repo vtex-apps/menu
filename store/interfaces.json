@@ -6,15 +6,11 @@
     "component": "Menu",
     "composition": "children",
     "allowed": [
-      "menu-item",
-      "list-context.menu-item-list"
+      "menu-item"
     ],
     "content": {
       "$ref": "app:vtex.menu#/definitions/Menu"
     }
-  },
-  "list-context.menu-item-list": {
-    "component": "MenuItemList"
   },
   "menu-item": {
     "component": "MenuItem",

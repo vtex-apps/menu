@@ -6,9 +6,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-### Added
-- `menu-item-list` block.
-
 ### Changed
 - The `Menu` component is now using the list context and it receive link from site editor now
 
