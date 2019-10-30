@@ -4,7 +4,6 @@ import classNames from 'classnames'
 import { defineMessages } from 'react-intl'
 
 import { generateBlockClass } from '@vtex/css-handles'
-import { ListContextProvider, useListContext } from 'vtex.list-context'
 import CategoryMenu from './components/CategoryMenu'
 import Item from './components/Item'
 import LevelContext from './components/LevelContext'
@@ -30,11 +29,10 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
   title,
   categoryId,
   blockClass,
-  menuItems: menuItemsProps = [],
+  items: itemsProps = [],
   children,
 }) => {
   const level = useContext(LevelContext)
-  const { list } = useListContext() || []
   const menuContext = useMemo(
     () => ({
       hasTitle: title || categoryId ? true : false,
@@ -44,18 +42,17 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
     [orientation, textType]
   )
 
-  const menuListContent = list.concat(menuItemsProps.map(
+  const menuItems = itemsProps.map(
     ({ itemProps: { text }, itemProps, ...rest }) => (
       <MenuItem key={text} itemProps={itemProps} {...rest} />
     )
-  ))
+  )
 
   const classes = generateBlockClass(styles.menuContainer, blockClass)
 
   return (
     <LevelContext.Provider value={level + 1}>
       <MenuContext.Provider value={menuContext}>
-        <ListContextProvider list={menuListContent}>
           <nav>
             <ul
               className={classNames(classes, 'list flex pl0 mv0', {
@@ -66,9 +63,9 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
               {!categoryId && title && <Item {...title} isTitle />}
               {categoryId && <CategoryMenu categoryId={categoryId} />}
               {children}
+              {menuItems}
             </ul>
           </nav>
-        </ListContextProvider>
       </MenuContext.Provider>
     </LevelContext.Provider>
   )
@@ -81,7 +78,7 @@ interface MenuSchema {
   title?: MenuItemSchema
   additionalDef?: string
   blockClass?: string
-  menuItems?: MenuItemSchema[]
+  items?: MenuItemSchema[]
 }
 
 enum Typography {

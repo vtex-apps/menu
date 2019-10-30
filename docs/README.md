@@ -92,6 +92,8 @@ The menu has no required or allowed block. So, any menu block implementation do 
 
 Through the Storefront, you can change the menu's behavior and interface. However, you also can make in your theme app, as Store theme does. The menu have `menu-item` as children. The props of the `menu-item` are as it follows:
 
+MenuItem:
+
 | Prop name      | Type     | Description                                          | Default value |
 | -------------- | -------- | ---------------------------------------------------- | ------------- |
 | `type`         | `String` | the type of the menu item. Can be `category` or `custom`                                            | `caterogy`           |
@@ -101,6 +103,11 @@ Through the Storefront, you can change the menu's behavior and interface. Howeve
 | `iconProps`         | `IconProps` | props of the icon                                           | N/A           |
 | `itemProps`         | `CategoryItem` or `CustomItem` | props of the item                                           | N/A           |
 
+Menu:
+
+| Prop name      | Type     | Description                                          | Default value |
+| -------------- | -------- | ---------------------------------------------------- | ------------- |
+| `items`| `MenuItemProps[]` | It receives an array of props of `MenuItem`s and render them, you can pass this through the site editor | `[]` | 
 
 IconProps:
 
