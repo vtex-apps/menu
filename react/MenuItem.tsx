@@ -18,7 +18,24 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
   blockClass,
   ...props
 }) => {
-  const [isActive, setActive] = useState(false)
+  const [{ isActive, hasBeenActive }, dispatch] = useReducer((state, action) => {
+    switch (action.type) {
+      case 'SHOW_SUBMENU':
+        return {
+          hasBeenActive: true,
+          isActive: true,
+        }
+      case 'HIDE_SUBMENU':
+        return {
+          ...state,
+          isActive: false,
+        }
+    }
+  }, { isActive: false, hasBeenActive: false })
+
+  const setActive = (value: boolean) => {
+    dispatch({ type: value ? 'SHOW_SUBMENU' : 'HIDE_SUBMENU' })
+  }
 
   /* This is a temporary check of which kind of submenu is being
    * inserted. This will be replaced by new functionality of useChildBlocks
@@ -37,8 +54,13 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
           }}>
           <Item {...props} accordion active={isActive} />
         </div>
+        {hasBeenActive && ( /* Collapsible menus need to still persist after being open,
+                             * to make the closing transition work properly */
+          <>
         <ExtensionPoint id="submenu" isOpen={isActive} />
         <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
+          </>
+        )}
       </li>
     )
   }
@@ -49,8 +71,12 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}>
       <Item {...props} active={isActive} />
+      {isActive && (
+        <>
       <ExtensionPoint id="submenu" isOpen={isActive} />
       <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
+        </>
+      )}
     </li>
   )
 }
