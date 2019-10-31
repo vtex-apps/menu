@@ -1,24 +1,56 @@
 import { path } from 'ramda'
-import React, { useState } from 'react'
+import React, { Reducer, useReducer } from 'react'
 
 import classNames from 'classnames'
 
+import { generateBlockClass } from '@vtex/css-handles'
 import { defineMessages } from 'react-intl'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import { CategoryItemSchema } from './components/CategoryItem'
-import { IconProps} from './components/StyledLink'
 import { CustomItemSchema } from './components/CustomItem'
 import Item from './components/Item'
+import { IconProps} from './components/StyledLink'
 import useSubmenuImplementation from './hooks/useSubmenuImplementation'
-import { generateBlockClass } from '@vtex/css-handles'
 
 import styles from './MenuItem.css'
+
+const submenuInitialState = {
+  hasBeenActive: false,
+  isActive: false,
+}
+
+type SubmenuState = typeof submenuInitialState
+
+type SubmenuAction = 
+  | {type: 'SHOW_SUBMENU'}
+  | {type: 'HIDE_SUBMENU'}
+
+const submenuReducer: Reducer<SubmenuState, SubmenuAction> =  (state, action) => {
+  switch (action.type) {
+    case 'SHOW_SUBMENU':
+      return {
+        hasBeenActive: true,
+        isActive: true,
+      }
+    case 'HIDE_SUBMENU':
+      return {
+        ...state,
+        isActive: false,
+      }
+    default:
+      return state
+  }
+}
 
 const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
   blockClass,
   ...props
 }) => {
-  const [isActive, setActive] = useState(false)
+  const [{ isActive, hasBeenActive }, dispatch] = useReducer(submenuReducer, submenuInitialState)
+
+  const setActive = (value: boolean) => {
+    dispatch({ type: value ? 'SHOW_SUBMENU' : 'HIDE_SUBMENU' })
+  }
 
   /* This is a temporary check of which kind of submenu is being
    * inserted. This will be replaced by new functionality of useChildBlocks
@@ -37,8 +69,13 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
           }}>
           <Item {...props} accordion active={isActive} />
         </div>
-        <ExtensionPoint id="submenu" isOpen={isActive} />
-        <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
+        {hasBeenActive && ( /* Collapsible menus need to still persist after being open,
+                             * to make the closing transition work properly */
+          <>
+            <ExtensionPoint id="submenu" isOpen={isActive} />
+            <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
+          </>
+        )}
       </li>
     )
   }
@@ -49,8 +86,12 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}>
       <Item {...props} active={isActive} />
-      <ExtensionPoint id="submenu" isOpen={isActive} />
-      <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
+      {isActive && (
+        <>
+          <ExtensionPoint id="submenu" isOpen={isActive} />
+          <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
+        </>
+      )}
     </li>
   )
 }
