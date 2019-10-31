@@ -1,5 +1,5 @@
 import { path } from 'ramda'
-import React, { useReducer } from 'react'
+import React, { Reducer, useReducer } from 'react'
 
 import classNames from 'classnames'
 
@@ -14,24 +14,39 @@ import useSubmenuImplementation from './hooks/useSubmenuImplementation'
 
 import styles from './MenuItem.css'
 
+const submenuInitialState = {
+  hasBeenActive: false,
+  isActive: false,
+}
+
+type SubmenuState = typeof submenuInitialState
+
+type SubmenuAction = 
+  | {type: 'SHOW_SUBMENU'}
+  | {type: 'HIDE_SUBMENU'}
+
+const submenuReducer: Reducer<SubmenuState, SubmenuAction> =  (state, action) => {
+  switch (action.type) {
+    case 'SHOW_SUBMENU':
+      return {
+        hasBeenActive: true,
+        isActive: true,
+      }
+    case 'HIDE_SUBMENU':
+      return {
+        ...state,
+        isActive: false,
+      }
+    default:
+      return state
+  }
+}
+
 const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
   blockClass,
   ...props
 }) => {
-  const [{ isActive, hasBeenActive }, dispatch] = useReducer((state, action) => {
-    switch (action.type) {
-      case 'SHOW_SUBMENU':
-        return {
-          hasBeenActive: true,
-          isActive: true,
-        }
-      case 'HIDE_SUBMENU':
-        return {
-          ...state,
-          isActive: false,
-        }
-    }
-  }, { isActive: false, hasBeenActive: false })
+  const [{ isActive, hasBeenActive }, dispatch] = useReducer(submenuReducer, submenuInitialState)
 
   const setActive = (value: boolean) => {
     dispatch({ type: value ? 'SHOW_SUBMENU' : 'HIDE_SUBMENU' })
