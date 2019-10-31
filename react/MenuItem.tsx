@@ -1,16 +1,16 @@
 import { path } from 'ramda'
-import React, { useState } from 'react'
+import React, { useReducer } from 'react'
 
 import classNames from 'classnames'
 
+import { generateBlockClass } from '@vtex/css-handles'
 import { defineMessages } from 'react-intl'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import { CategoryItemSchema } from './components/CategoryItem'
-import { IconProps} from './components/StyledLink'
 import { CustomItemSchema } from './components/CustomItem'
 import Item from './components/Item'
+import { IconProps} from './components/StyledLink'
 import useSubmenuImplementation from './hooks/useSubmenuImplementation'
-import { generateBlockClass } from '@vtex/css-handles'
 
 import styles from './MenuItem.css'
 
@@ -57,8 +57,8 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
         {hasBeenActive && ( /* Collapsible menus need to still persist after being open,
                              * to make the closing transition work properly */
           <>
-        <ExtensionPoint id="submenu" isOpen={isActive} />
-        <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
+            <ExtensionPoint id="submenu" isOpen={isActive} />
+            <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
           </>
         )}
       </li>
@@ -73,8 +73,8 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
       <Item {...props} active={isActive} />
       {isActive && (
         <>
-      <ExtensionPoint id="submenu" isOpen={isActive} />
-      <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
+          <ExtensionPoint id="submenu" isOpen={isActive} />
+          <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
         </>
       )}
     </li>
