@@ -50,34 +50,40 @@ const CollapsibleContainer: FunctionComponent<ContainerProps> = ({ children, ope
   const container = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const element = container.current
-
-    /** The second verification here prevents it from trying to close
-     * the menu on initialization (because `open` inits as `false`)
+    /** Calculates the content size on the next browser render tick,
+     * because the content might not exist right at the time of
+     * changing the open prop
      */
-    if (!element || (!open && height === 0)) {
-      return
-    }
+    requestAnimationFrame(() => {
+      const element = container.current
 
-    const initialHeight = element.offsetHeight
-    const initialMaxHeight = element.style.maxHeight
+      /** The second verification here prevents it from trying to close
+       * the menu on initialization (because `open` inits as `false`)
+       */
+      if (!element || (!open && height === 0)) {
+        return
+      }
 
-    element.style.height = 'auto'
-    element.style.maxHeight = 'none'
+      const initialHeight = element.offsetHeight
+      const initialMaxHeight = element.style.maxHeight
 
-    const childrenHeight = element.offsetHeight
+      element.style.height = 'auto'
+      element.style.maxHeight = 'none'
 
-    element.style.height = `${initialHeight}px`
-    element.style.maxHeight = initialMaxHeight
+      const childrenHeight = element.offsetHeight
 
-    /** Runs `getBoundingClientRect` to trigger a layout event
-     *  in order to make the transition to the new height work.
-     */
-    element.getBoundingClientRect()
+      element.style.height = `${initialHeight}px`
+      element.style.maxHeight = initialMaxHeight
 
-    if (isFunction(updateHeight)) {
-      updateHeight(open ? childrenHeight : -childrenHeight)
-    }
+      /** Runs `getBoundingClientRect` to trigger a layout event
+       *  in order to make the transition to the new height work.
+       */
+      element.getBoundingClientRect()
+
+      if (isFunction(updateHeight)) {
+        updateHeight(open ? childrenHeight : -childrenHeight)
+      }
+    })
   }, [open])
 
   return (
