@@ -56,7 +56,7 @@ _Example:_
 
 ### `menu-item` as props
 
-_Examplo:_
+_Example:_
 
 ```
 "vtex.menu@2.x:menu#websites": {
