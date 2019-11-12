@@ -1,4 +1,4 @@
-query category($id: Int) {
+query categoryWithChildren($id: Int) {
   category(id: $id) {
     cacheId
     id
