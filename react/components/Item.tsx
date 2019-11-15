@@ -25,7 +25,7 @@ const Item: FunctionComponent<ItemProps> = props => {
     return null
   }
 
-  return <Component {...itemProps} {...rest} />
+  return <Component {...rest} {...itemProps} />
 }
 
 interface ItemProps extends StyledLinkProps {
