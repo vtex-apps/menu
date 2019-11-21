@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-- Allow `rich-text` in `submenu`.
+- Allow `info-card`, `flex-layout`, `notification`, `rich-text`, and `image` in `submenu`.
 
 ## [2.19.5] - 2019-11-21
 
