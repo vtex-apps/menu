@@ -7,11 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- `Item`'s `itemProps` was being overwritten by `{...rest}`, this caused an issue where links modified in the site editor weren't clickable in the menu.
+
 ## [2.19.4] - 2019-11-12
 
 ## [2.19.3] - 2019-11-12
 ### Fixed
-- Duplicate query name `category`. 
+- Duplicate query name `category`.
 
 ## [2.19.2] - 2019-11-04
 ### Fixed
