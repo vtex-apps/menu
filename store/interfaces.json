@@ -33,6 +33,7 @@
       "submenu-col",
       "flex-layout",
       "notification",
+      "rich-text",
       "image"
     ]
   },
@@ -40,7 +41,12 @@
     "component": "SubmenuAccordion",
     "composition": "children",
     "allowed": [
-      "menu"
+      "menu",
+      "info-card",
+      "flex-layout",
+      "notification",
+      "rich-text",
+      "image"
     ]
   },
   "submenu-col": {
@@ -48,7 +54,11 @@
     "composition": "children",
     "allowed": [
       "menu",
-      "info-card"
+      "info-card",
+      "flex-layout",
+      "notification",
+      "rich-text",
+      "image"
     ]
   },
   "unstable--menu": {
