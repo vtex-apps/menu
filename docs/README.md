@@ -137,7 +137,7 @@ The available `menu-item` block props are as follows:
 | `tagTitle`         | `String` | Menu item tag  | N/A          |
 | `text`         | `String` | Menu item text  | N/A          |
 
-#### Customization
+## Customization
 
 | CSS Handle   | Description                                          | Component Source                     |
 | ------------ | ---------------------------------------------------- | ------------------------------------ |
