@@ -1,53 +1,33 @@
+📢 Don't fork this project. Use, contribute, or open issues through [Store Discussion](https://github.com/vtex-apps/store-discussion).
+
 # VTEX Menu
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
-## Description
+VTEX Menu is a store component responsible for displaying a bar containing links and drop-down sub-menus. 
 
-The VTEX Menu app is store component that shows a bar with links and drop-down menus, and this app is used by store theme.
+![menu-app](https://user-images.githubusercontent.com/52087100/68619014-5af1c680-04a9-11ea-9cdc-23468bd55c23.png)
 
-:loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request.
+## Configuration
 
-## Release schedule
+1. Import the menu's app to your dependencies as `manifest.json`, for example:
 
-| Release |       Status        | Initial Release | Maintenance LTS Start | End-of-life | Store Compatibility |
-| :-----: | :-----------------: | :-------------: | :-------------------: | :---------: | :-----------------: |
-|  [2.x]  | **Current Release** |   2018-11-27    |                       |             |         2.x         |
-|  [1.x]  | **Maintenance LTS** |   2018-08-17    |      2018-11-27       | March 2019  |         1.x         |
-
-See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for more information.
-
-## Table of Contents
-
-- [Usage](#usage)
-  - [Blocks API](#blocks-api)
-    - [Configuration](#configuration)
-  - [Styles API](#styles-api)
-    - [CSS namespaces](#css-namespaces)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [Tests](#tests)
-
-## Usage
-
-This app uses our store builder with the blocks architecture. To know more about Store Builder [click here.](https://help.vtex.com/en/tutorial/understanding-storebuilder-and-stylesbuilder#structuring-and-configuring-our-store-with-object-object)
-
-We add the menu as a block in our [Store Header](https://github.com/vtex-apps/store-header/blob/master/store/interfaces.json).
-
-To configure or customize this app, you need to import it in your dependencies in `manifest.json`.
-
-```json
+```
   dependencies: {
     "vtex.menu": "2.x"
   }
 ```
+2. Add the `vtex.menu@2.x:menu` block to the [store header](https://github.com/vtex-apps/store-header/blob/master/store/interfaces.json) template.
 
-Then, add `vtex.menu@2.x:menu` block into your app theme as we do in our [Store theme app](https://github.com/vtex-apps/store-theme/blob/master/store/blocks.json). Since the menu block is composed by a list of `menu-item` you should also add them to the app theme.
+3. To build the store's menu options, you need to configure the `menu-item` blocks. These can be declared in two different ways in `vtex.menu@2.x:menu`: as children or as props. The advantage of this latest `menu-item` configuration compared is that Site Editor can be used to edit the blocks. 
 
-Now, you can change the behavior of the menu block that is in the store. See an example of how to configure:
+### `menu-item` as child 
+
+_Example:_
 
 ```json
 "vtex.menu@2.x:menu#websites": {
-  "children": [
+  "child": [
     "menu-item#shop",
     "menu-item#about-us"
   ]
@@ -76,123 +56,102 @@ Now, you can change the behavior of the menu block that is in the store. See an 
 }
 ```
 
-### Blocks API
+### `menu-item` as props
 
-When implementing this app as a block, various inner blocks may be available. The following interface lists the available blocks within menu and describes if they are required or optional.
+_Example:_
 
-```json
-"menu-link": {
-	"component": "index"
+```
+"vtex.menu@2.x:menu#websites": {
+    "props": {
+      "items": [
+        {
+          "id": "menu-item-shop",
+          "type": "custom",
+          "iconId": null,
+          "highlight": false,
+          "itemProps": {
+            "type": "internal",
+            "href": "#",
+            "noFollow": false,
+            "tagTitle": "Shop",
+            "text": "Shop"
+          }
+        },
+        {
+          "id": "menu-item-about-us",
+          "type": "custom",
+          "iconId": null,
+          "highlight": false,
+          "itemProps": {
+            "type": "internal",
+            "href": "/about-us",
+            "noFollow": false,
+            "tagTitle": "about-us",
+            "text": "About Us"
+          }
+        }
+    ]
+    }
 }
 ```
 
-The menu has no required or allowed block. So, any menu block implementation do not need any block inside of menu.
+<div class="alert alert-info">
+The Menu block has no prerequisite children. Therefore, any menu block implementation does not need to have any blocks declared within it to properly function. 
+</div>
 
-#### Configuration
-
-Through the Storefront, you can change the menu's behavior and interface. However, you also can make in your theme app, as Store theme does. The menu have `menu-item` as children. The props of the `menu-item` are as it follows:
-
-MenuItem:
+The available `menu-item` block props are as follows:
 
 | Prop name      | Type     | Description                                          | Default value |
 | -------------- | -------- | ---------------------------------------------------- | ------------- |
-| `type`         | `String` | the type of the menu item. Can be `category` or `custom`                                            | `caterogy`           |
-| `id`         | `String` | the ID of the menu item                                            | N/A           |
-| `highlight`         | `boolean` | if the item should have highlight                                            | N/A           |
-| `iconPosition`         | `String` | the icon position relative to the menu item text. Can be `left` or `right`                                           | `left`          |
-| `iconProps`         | `IconProps` | props of the icon                                           | N/A           |
-| `itemProps`         | `CategoryItem` or `CustomItem` | props of the item                                           | N/A           |
-
-Menu:
-
-| Prop name      | Type     | Description                                          | Default value |
-| -------------- | -------- | ---------------------------------------------------- | ------------- |
-| `items`| `MenuItemProps[]` | It receives an array of props of `MenuItem`s and render them, you can pass this through the site editor | `[]` | 
-
-IconProps:
+| `type`         | `String` | Menu item type, either `category` or `custom`                                            | `caterogy`           |
+| `id`         | `String` | menu item ID                                           | N/A           |
+| `highlight`         | `boolean` | Whether the item has highlight                                            | N/A           |
+| `iconPosition`         | `String` | Icon position relative to the menu item text. Either to the `left` or `right`                                           | `left`          |
+| `iconProps`         | `IconProps` | Icon props                                           | N/A           |
+| `itemProps`         | `CategoryItem` or `CustomItem` | Item props                                           | N/A           |
+- For icons in the menu items:
 
 | Prop name      | Type     | Description                                          | Default value |
 | -------------- | -------- | ---------------------------------------------------- | ------------- |
-| `id`         | `String` | the id of the icon  | N/A           |
-| `isActive`         | `boolean` | if the item is active  | `true`          |
-| `size`         | `number` | the icon size | 16           |
-| `viewBox`         | `String` | the viewbox of the icon  | `0 0 16 16`           |
-| `activeClassName`         | `String` | the classname of the icon when `isActive` is true  | N/A           |
-| `mutedClassName`         | `String` | the classname of the icon when `isActive` is false  | N/A           |
+| `id`         | `String` | Icon ID  | N/A           |
+| `isActive`         | `boolean` | Whether the item is active or not | `true`          |
+| `size`         | `number` | Icon size | 16           |
+| `viewBox`         | `String` | Icon view box   | `0 0 16 16`           |
+| `activeClassName`         | `String` | Icon classname when `isActive` is true  | N/A           |
+| `mutedClassName`         | `String` | Icon classname when `isActive` is false  | N/A           |
 
-CategoryItem:
-
-| Prop name      | Type     | Description                                          | Default value |
-| -------------- | -------- | ---------------------------------------------------- | ------------- |
-| `categoryId`         | `number` | the id of the category of the item  | N/A           |
-| `text`         | `String` | the text of the menu item  | N/A          |
-
-
-CustomItem:
+- For category related menu items:
 
 | Prop name      | Type     | Description                                          | Default value |
 | -------------- | -------- | ---------------------------------------------------- | ------------- |
-| `type`         | `String` | the type of the menu item. Can be `internal` or `external` | `internal`           |
-| `href`         | `String` | the link where the menu item will lead to  | N/A |
-| `noFollow`         | `boolean` | no follow attribute  | N/A          |
-| `tagTitle`         | `String` | tag of the menu item  | N/A          |
-| `text`         | `String` | text of the menu item  | N/A          |
+| `categoryId`         | `number` | Item category ID  | N/A           |
+| `text`         | `String` | Menu item text  | N/A          |
 
-### Styles API
+- For customized items:
 
-This app provides some CSS classes as an API for style customization.
+| Prop name      | Type     | Description                                          | Default value |
+| -------------- | -------- | ---------------------------------------------------- | ------------- |
+| `type`         | `String` | Menu item type, either `internal` or `external` | `internal`           |
+| `href`         | `String` |  Link to where the menu item leads  | N/A |
+| `noFollow`         | `boolean` | No follow attribute  | N/A          |
+| `tagTitle`         | `String` | Menu item tag  | N/A          |
+| `text`         | `String` | Menu item text  | N/A          |
 
-To use this CSS API, you must add the `styles` builder and create an app styling CSS file.
+#### Customization
 
-1. Add the `styles` builder to your `manifest.json`:
-
-```json
-  "builders": {
-    "styles": "1.x"
-  }
-```
-
-2. Create a file called `vtex.menu.css` inside the `styles/css` folder. Add your custom styles:
-
-```css
-.container {
-  margin-top: 10px;
-}
-```
-
-#### CSS namespaces
-
-Below, we describe the namespaces that are defined in the menu.
-
-| Token name   | Description                                          | Component Source                     |
+| CSS Handle   | Description                                          | Component Source                     |
 | ------------ | ---------------------------------------------------- | ------------------------------------ |
-| `container`  | The main container of menu                           | [index](/react/index.tsx)            |
-| `linkLeft`   | Link container when the link is to be left aligned   | [index](/react/index.tsx)            |
-| `linkMiddle` | Link container when the link is to be center aligned | [index](/react/index.tsx)            |
-| `linkRight`  | Link container when the link is to be right aligned  | [index](/react/components/index.tsx) |
-| `submenuAccordion`  | The sub menu accordion | [SubmenuAccordion](/react/SubmenuAccordion.tsx) |
-| `submenu`  | The sub menu | [Submenu](/react/Submenu.tsx) |
-| `menuItem`  | The menu item | [MenuItem](/react/MenuItem.tsx) |
-| `menuContainer`  | The menu container | [Menu](/react/Menu.tsx) |
-| `styledLink`  | Link to the StyledLink | [StyledLink](/react/components/StyledLink.tsx) |
-| `styledLinkContainer`  | Link container of the StyledLink | [StyledLink](/react/components/StyledLink.tsx) |
-| `styledLinkIcon`  | Link to the icons in the StyledLink | [StyledLink](/react/components/StyledLink.tsx) |
-
-## Troubleshooting
-
-You can check if others are passing through similar issues [here](https://github.com/vtex-apps/menu/issues). Also feel free to [open issues](https://github.com/vtex-apps/menu/issues/new) or contribute with pull requests.
-
-## Contributing
-
-Check it out [how to contribute](https://github.com/vtex-apps/awesome-io#contributing) with this project. 
-
-## Tests
-
-To execute our tests go to `react/` folder and run `yarn test`
-
-### Travis CI
-
-[![Build Status](https://travis-ci.org/vtex-apps/menu.svg?branch=master)](https://travis-ci.org/vtex-apps/menu)
+| `container`  | Menu's main container                           | [index](/react/index.tsx)            |
+| `linkLeft`   | Link container when link is aligned to the left  | [index](/react/index.tsx)            |
+| `linkMiddle` | Link container when link is center-aligned | [index](/react/index.tsx)            |
+| `linkRight`  | Link container when link is aligned to the right | [index](/react/components/index.tsx) |
+| `submenuAccordion`  |  Sub menu accordion | [SubmenuAccordion](/react/SubmenuAccordion.tsx) |
+| `submenu`  |  Sub menu | [Submenu](/react/Submenu.tsx) |
+| `menuItem`  |  Menu item | [MenuItem](/react/MenuItem.tsx) |
+| `menuContainer`  | Menu container | [Menu](/react/Menu.tsx) |
+| `styledLink`  | Link to StyledLink | [StyledLink](/react/components/StyledLink.tsx) |
+| `styledLinkContainer`  | Link StyledLink container | [StyledLink](/react/components/StyledLink.tsx) |
+| `styledLinkIcon`  | Link to StyledLink icons | [StyledLink](/react/components/StyledLink.tsx) |
 
 ## Contributors
 
