@@ -21,13 +21,13 @@ VTEX Menu is a store component responsible for displaying a bar containing links
 
 3. To build the store's menu options, you need to configure the `menu-item` blocks. These can be declared in two different ways in `vtex.menu@2.x:menu`: as children or as props. The advantage of this latest `menu-item` configuration compared is that Site Editor can be used to edit the blocks. 
 
-### `menu-item` as child 
+### `menu-item` as children 
 
 _Example:_
 
 ```json
 "vtex.menu@2.x:menu#websites": {
-  "child": [
+  "children": [
     "menu-item#shop",
     "menu-item#about-us"
   ]
@@ -54,6 +54,22 @@ _Example:_
     "iconToTheRight": true
   }
 }
+ "menu-item#about-us": {
+   "props":
+      {
+        "id": "menu-item-about-us",
+        "type": "custom",
+        "iconId": null,
+        "highlight": false,
+        "itemProps": {
+          "type": "internal",
+          "href": "/about-us",
+          "noFollow": false,
+          "tagTitle": "about-us",
+          "text": "About Us"
+        }
+      }
+    }
 ```
 
 ### `menu-item` as props
