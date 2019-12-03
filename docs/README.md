@@ -103,7 +103,7 @@ The available `menu-item` block props are as follows:
 
 | Prop name      | Type     | Description                                          | Default value |
 | -------------- | -------- | ---------------------------------------------------- | ------------- |
-| `type`         | `String` | Menu item type, either `category` or `custom`                                            | `caterogy`           |
+| `type`         | `String` | Menu item type, either `category` or `custom`                                            | `category`           |
 | `id`         | `String` | menu item ID                                           | N/A           |
 | `highlight`         | `boolean` | Whether the item has highlight                                            | N/A           |
 | `iconPosition`         | `String` | Icon position relative to the menu item text. Either to the `left` or `right`                                           | `left`          |
