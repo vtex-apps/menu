@@ -8,7 +8,7 @@ const CategoryLink: FunctionComponent<CategoryLinkProps> = ({
   href,
   titleTag,
   isTitle,
-  name
+  name,
 }: CategoryLinkProps) => {
   return (
     <StyledLink title={titleTag} to={href} isTitle={isTitle}>

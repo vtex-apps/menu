@@ -3,14 +3,15 @@ import React, { useContext, useMemo } from 'react'
 import classNames from 'classnames'
 import { defineMessages } from 'react-intl'
 
-import { generateBlockClass } from '@vtex/css-handles'
 import CategoryMenu from './components/CategoryMenu'
 import Item from './components/Item'
 import LevelContext from './components/LevelContext'
 import MenuContext from './components/MenuContext'
 import MenuItem, { MenuItemSchema } from './MenuItem'
 
-import styles from './Menu.css'
+import { useCssHandles } from 'vtex.css-handles'
+
+const CSS_HANDLES = ['menuContainer'] as const
 
 const TypographyMap: Record<string, string> = {
   body: 't-body',
@@ -28,11 +29,11 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
   textType,
   title,
   categoryId,
-  blockClass,
   items: itemsProps = [],
   children,
 }) => {
   const level = useContext(LevelContext)
+  const handles = useCssHandles(CSS_HANDLES)
   const menuContext = useMemo(
     () => ({
       hasTitle: title || categoryId ? true : false,
@@ -48,14 +49,12 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
     )
   )
 
-  const classes = generateBlockClass(styles.menuContainer, blockClass)
-
   return (
     <LevelContext.Provider value={level + 1}>
       <MenuContext.Provider value={menuContext}>
           <nav>
             <ul
-              className={classNames(classes, 'list flex pl0 mv0', {
+              className={classNames(handles.menuContainer, 'list flex pl0 mv0', {
                 'flex-column': orientation === 'vertical',
                 'flex-row': orientation === 'horizontal',
               })}

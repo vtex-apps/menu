@@ -3,9 +3,9 @@ import React from 'react'
 import { defineMessages } from 'react-intl'
 import Collapsible from './components/Collapsible'
 
-import { generateBlockClass } from '@vtex/css-handles'
+import { useCssHandles } from 'vtex.css-handles'
 
-import styles from './SubmenuAccordion.css'
+const CSS_HANDLES = ['submenuAccordion'] as const
 
 interface Props {
   isOpen: boolean
@@ -15,13 +15,12 @@ interface Props {
 const SubmenuAccordion: StorefrontFunctionComponent<Props> = ({
   isOpen,
   children,
-  blockClass,
 }) => {
-  const classes = generateBlockClass(styles.submenuAccordion, blockClass)
+  const handles = useCssHandles(CSS_HANDLES)
 
   return (
     <Collapsible open={isOpen} >
-      <section className={classNames(classes, 'w-100 flex pl4 flex')}>
+      <section className={classNames(handles.submenuAccordion, 'w-100 flex pl4 flex')}>
         {children}
       </section>
     </Collapsible>
