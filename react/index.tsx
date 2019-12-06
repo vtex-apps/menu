@@ -12,7 +12,17 @@ const GLOBAL_PAGES =
 
 const MAX_ITEMS: number = 10
 
-const CSS_HANDLES = ['container', 'linkLeft', 'linkMiddle', 'linkRight']
+const CSS_HANDLES = [
+  'container',
+  'linkLeft',
+  'linkMiddle',
+  'linkRight',
+  'menuLinkNav',
+  'menuLinkDivLeft',
+  'menuLinkDivMiddle',
+  'menuLinkDivRight',
+  'renderLink',
+] as const
 
 interface Link {
   text?: string | null
@@ -52,25 +62,21 @@ const getParams = (params?: string | null): { [key: string]: string } => {
 }
 
 const getValidPage = (page?: string | null): string => {
-  if (
-    !page ||
-    (!page.startsWith('http://') && !page.startsWith('https://'))
-  ) {
+  if (!page || (!page.startsWith('http://') && !page.startsWith('https://'))) {
     page = `http://${page}`
   }
   return page
 }
 
-
 /**
  * Links MenuLink Component.
  * Shows a menu bar with links.
  */
-const MenuLink: StorefrontFunctionComponent<Props> = ({links = []}) =>{
+const MenuLink: StorefrontFunctionComponent<Props> = ({ links = [] }) => {
   const handles = useCssHandles(CSS_HANDLES)
 
   const renderLink = (link: Link, index: number): ReactNode => {
-    let className: string = 't-small link c-muted-2 dib dim mr3 mr4-ns'
+    let className: string = `${handles.renderLink} t-small link c-muted-2 dib dim mr3 mr4-ns`
     switch (link.position) {
       case Options.LEFT:
         className = `${handles.linkLeft} ${className}`
@@ -109,22 +115,22 @@ const MenuLink: StorefrontFunctionComponent<Props> = ({links = []}) =>{
   return (
     <div className={`${handles.container} bg-base h2 c-muted-2 w-100 dn db-ns`}>
       <Container>
-        <nav className="flex justify-between">
-          <div className="flex-grow pa3 flex items-center">
+        <nav className={`${handles.menuLinkNav} flex justify-between`}>
+          <div className={`${handles.menuLinkDivLeft} flex-grow pa3 flex items-center`}>
             {links
               .filter(link => link.position === Options.LEFT)
               .map((link, index) => {
                 return renderLink(link, index)
               })}
           </div>
-          <div className="flex-grow pa3 flex items-center">
+          <div className={`${handles.menuLinkDivMiddle} flex-grow pa3 flex items-center`}>
             {links
               .filter(link => link.position === Options.MIDDLE)
               .map((link, index) => {
                 return renderLink(link, index)
               })}
           </div>
-          <div className="flex-grow pa3 flex items-center">
+          <div className={`${handles.menuLinkDivRight} flex-grow pa3 flex items-center`}>
             {links
               .filter(link => link.position === Options.RIGHT)
               .map((link, index) => {
@@ -186,8 +192,7 @@ MenuLink.schema = {
           },
           params: {
             title: 'admin/editor.menu-link.links.link.params',
-            description:
-              'admin/editor.menu-link.links.link.params.description',
+            description: 'admin/editor.menu-link.links.link.params.description',
             type: 'string',
           },
           externalPage: {

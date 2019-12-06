@@ -139,19 +139,29 @@ The available `menu-item` block props are as follows:
 
 #### Customization
 
-| CSS Handle   | Description                                          | Component Source                     |
-| ------------ | ---------------------------------------------------- | ------------------------------------ |
-| `container`  | Menu's main container                           | [index](/react/index.tsx)            |
-| `linkLeft`   | Link container when link is aligned to the left  | [index](/react/index.tsx)            |
-| `linkMiddle` | Link container when link is center-aligned | [index](/react/index.tsx)            |
-| `linkRight`  | Link container when link is aligned to the right | [index](/react/components/index.tsx) |
-| `submenuAccordion`  |  Sub menu accordion | [SubmenuAccordion](/react/SubmenuAccordion.tsx) |
-| `submenu`  |  Sub menu | [Submenu](/react/Submenu.tsx) |
-| `menuItem`  |  Menu item | [MenuItem](/react/MenuItem.tsx) |
-| `menuContainer`  | Menu container | [Menu](/react/Menu.tsx) |
-| `styledLink`  | Link to StyledLink | [StyledLink](/react/components/StyledLink.tsx) |
-| `styledLinkContainer`  | Link StyledLink container | [StyledLink](/react/components/StyledLink.tsx) |
-| `styledLinkIcon`  | Link to StyledLink icons | [StyledLink](/react/components/StyledLink.tsx) |
+| CSS Handle             |
+| -----------------------|
+| `container`            |
+| `linkLeft`             |
+| `linkMiddle`           |
+| `linkRight`            |
+| `submenuAccordion`     |
+| `submenu`              |
+| `menuItem`             |
+| `menuContainer`        |
+| `styledLink`           |
+| `styledLinkContainer`  |
+| `styledLinkIcon`       |
+| `menuLinkNav`          |
+| `menuLinkDivLeft`      |
+| `menuLinkDivMiddle`    |
+| `menuLinkDivRight`     |
+| `renderLink`           |
+| `menuContainerNav`     |
+| `menuItemInnerDiv`     |
+| `submenuContainer`     |
+
+In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization). 
 
 ## Contributors
 

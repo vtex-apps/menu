@@ -11,7 +11,7 @@ import MenuItem, { MenuItemSchema } from './MenuItem'
 
 import { useCssHandles } from 'vtex.css-handles'
 
-const CSS_HANDLES = ['menuContainer'] as const
+const CSS_HANDLES = ['menuContainer', 'menuContainerNav'] as const
 
 const TypographyMap: Record<string, string> = {
   body: 't-body',
@@ -52,7 +52,7 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
   return (
     <LevelContext.Provider value={level + 1}>
       <MenuContext.Provider value={menuContext}>
-          <nav>
+          <nav className={handles.menuContainerNav}>
             <ul
               className={classNames(handles.menuContainer, 'list flex pl0 mv0', {
                 'flex-column': orientation === 'vertical',

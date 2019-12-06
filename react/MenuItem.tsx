@@ -13,7 +13,7 @@ import useSubmenuImplementation from './hooks/useSubmenuImplementation'
 
 import { useCssHandles } from 'vtex.css-handles'
 
-const CSS_HANDLES = ['menuItem']
+const CSS_HANDLES = ['menuItem', 'menuItemInnerDiv']
 
 const submenuInitialState = {
   hasBeenActive: false,
@@ -62,7 +62,7 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
   if (isCollapsible) {
     return (
       <li className={classNames(handles.menuItem, 'list')}>
-        <div
+        <div className={handles.menuItemInnerDiv}
           onClick={event => {
             setActive(!isActive)
             event.stopPropagation()
