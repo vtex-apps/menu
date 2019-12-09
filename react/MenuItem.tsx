@@ -3,7 +3,6 @@ import React, { Reducer, useReducer } from 'react'
 
 import classNames from 'classnames'
 
-import { generateBlockClass } from '@vtex/css-handles'
 import { defineMessages } from 'react-intl'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import { CategoryItemSchema } from './components/CategoryItem'
@@ -12,7 +11,9 @@ import Item from './components/Item'
 import { IconProps} from './components/StyledLink'
 import useSubmenuImplementation from './hooks/useSubmenuImplementation'
 
-import styles from './MenuItem.css'
+import { useCssHandles } from 'vtex.css-handles'
+
+const CSS_HANDLES = ['menuItem', 'menuItemInnerDiv']
 
 const submenuInitialState = {
   hasBeenActive: false,
@@ -43,10 +44,10 @@ const submenuReducer: Reducer<SubmenuState, SubmenuAction> =  (state, action) =>
 }
 
 const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
-  blockClass,
   ...props
 }) => {
   const [{ isActive, hasBeenActive }, dispatch] = useReducer(submenuReducer, submenuInitialState)
+  const handles = useCssHandles(CSS_HANDLES)
 
   const setActive = (value: boolean) => {
     dispatch({ type: value ? 'SHOW_SUBMENU' : 'HIDE_SUBMENU' })
@@ -57,12 +58,11 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
    * in the future. */
   const submenuImplementation = useSubmenuImplementation()
   const isCollapsible = submenuImplementation === 'submenu.accordion'
-  const classes = generateBlockClass(styles.menuItem, blockClass)
 
   if (isCollapsible) {
     return (
-      <li className={classNames(classes, 'list')}>
-        <div
+      <li className={classNames(handles.menuItem, 'list')}>
+        <div className={handles.menuItemInnerDiv}
           onClick={event => {
             setActive(!isActive)
             event.stopPropagation()
@@ -82,7 +82,7 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
 
   return (
     <li
-      className={classNames(classes, 'list')}
+      className={classNames(handles.menuItem, 'list')}
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}>
       <Item {...props} active={isActive} />

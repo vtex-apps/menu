@@ -21,7 +21,8 @@
     "vtex.flex-layout": "0.x",
     "vtex.native-types": "0.x",
     "vtex.store-icons": "0.x",
-    "vtex.rich-text": "0.x"
+    "vtex.rich-text": "0.x",
+    "vtex.css-handles": "0.x"
   },
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }

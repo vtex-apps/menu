@@ -2,9 +2,9 @@ import classNames from 'classnames'
 import React from 'react'
 import { defineMessages } from 'react-intl'
 
-import { generateBlockClass } from '@vtex/css-handles'
+import { useCssHandles } from 'vtex.css-handles'
 
-import styles from './Submenu.css'
+const CSS_HANDLES = ['submenu', 'submenuContainer'] as const
 
 const MAX_TACHYONS_SCALE = 11
 export type TachyonsScaleInput = string | number | undefined
@@ -34,15 +34,14 @@ const Submenu: StorefrontFunctionComponent<SubmenuProps> = ({
   isOpen,
   width,
   children,
-  blockClass,
   orientation = Orientation.horizontal,
   paddingTop = 4,
   paddingBottom = 4,
 }) => {
-  const classes = generateBlockClass(styles.submenu, blockClass)
+  const handles = useCssHandles(CSS_HANDLES)
 
   return (
-    <div className={`${width === '100%' ? '' : 'relative'}`}>
+    <div className={`${handles.submenuContainer} ${width === '100%' ? '' : 'relative'}`}>
       <div
         className={classNames(`absolute left-0 bg-base pt${parseTachyonsValue(paddingTop, 'paddingTop')} pb${parseTachyonsValue(paddingBottom, 'paddingBottom')} bw1 bb b--muted-3 z-2`,
           {
@@ -53,7 +52,7 @@ const Submenu: StorefrontFunctionComponent<SubmenuProps> = ({
           }
         )}
       >
-        <section className={classNames(classes, 'w-100 flex justify-center', { 'flex-column': orientation === Orientation.vertical })}>{children}</section>
+        <section className={classNames(handles.submenu, 'w-100 flex justify-center', { 'flex-column': orientation === Orientation.vertical })}>{children}</section>
       </div>
     </div>
   )

@@ -1,12 +1,13 @@
 import classNames from 'classnames'
 import React, { FunctionComponent, useContext } from 'react'
+import { useCssHandles } from 'vtex.css-handles'
 import { Link } from 'vtex.render-runtime'
 import { Icon } from 'vtex.store-icons'
 
 import LevelContext from './LevelContext'
 import MenuContext from './MenuContext'
 
-import styles from './StyledLink.css'
+const CSS_HANDLES = ['styledLink', 'styledLinkIcon', 'styledLinkContainer'] as const
 
 const defaultTypography: Record<number, string> = {
   1: 't-body',
@@ -17,6 +18,7 @@ const defaultTypography: Record<number, string> = {
 const StyledLink: FunctionComponent<StyledLinkProps> = props => {
   const level = useContext(LevelContext)
   const { orientation, hasTitle } = useContext(MenuContext)
+  const handles = useCssHandles(CSS_HANDLES)
 
   const {
     typography = defaultTypography[level],
@@ -37,7 +39,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
 
   const hasLink = to && to !== '#'
 
-  const linkClassNames = classNames(styles.styledLink, 'no-underline pointer', {
+  const linkClassNames = classNames(handles.styledLink, 'no-underline pointer', {
     [typography]: true,
     'c-emphasis': highlight,
     'c-muted-1': !highlight && hasTitle && !isTitle,
@@ -48,7 +50,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
 
   const iconTestId = `icon-${iconPosition}`
   const iconComponent = iconProps ?
-    <span className={`${styles.styledLinkIcon} mh2`} data-testid={iconTestId}>
+    <span className={`${handles.styledLinkIcon} mh2`} data-testid={iconTestId}>
       <Icon 
         id={iconProps.id} 
         isActive={iconProps.isActive}
@@ -70,7 +72,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
 
   return (
     <div
-      className={classNames(styles.styledLinkContainer, 'mh6', {
+      className={classNames(handles.styledLinkContainer, 'mh6', {
         pv2: orientation === 'vertical',
         pv5: orientation === 'horizontal' && level === 1,
       })}

@@ -7,16 +7,16 @@ exports[`MenuLink Component should match the snapshot 1`] = `
   >
     <section>
       <nav
-        class="flex justify-between"
+        class="menuLinkNav flex justify-between"
       >
         <div
-          class="flex-grow pa3 flex items-center"
+          class="menuLinkDivLeft flex-grow pa3 flex items-center"
         />
         <div
-          class="flex-grow pa3 flex items-center"
+          class="menuLinkDivMiddle flex-grow pa3 flex items-center"
         />
         <div
-          class="flex-grow pa3 flex items-center"
+          class="menuLinkDivRight flex-grow pa3 flex items-center"
         />
       </nav>
     </section>
