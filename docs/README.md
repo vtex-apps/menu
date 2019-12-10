@@ -97,7 +97,7 @@ _Example:_
 
 You can define a submenu for a menu-item:
 
-```json
+```jsonc
 "menu-item#shop": {
   "props": {
     "type": "custom",
