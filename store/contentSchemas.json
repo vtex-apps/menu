@@ -158,7 +158,7 @@
                     },
                     "href": {
                       "title": "admin/editor.menu.item.params.href.title",
-                      "$ref": "app:vtex.native-types#/definitions/text"
+                      "type": "string"
                     },
                     "noFollow": {
                       "title": "admin/editor.menu.item.params.noFollow.title",
