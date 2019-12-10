@@ -21,13 +21,13 @@ VTEX Menu is a store component responsible for displaying a bar containing links
 
 3. To build the store's menu options, you need to configure the `menu-item` blocks. These can be declared in two different ways in `vtex.menu@2.x:menu`: as children or as props. The advantage of this latest `menu-item` configuration compared is that Site Editor can be used to edit the blocks. 
 
-### `menu-item` as child 
+### `menu-item` as children
 
 _Example:_
 
 ```json
 "vtex.menu@2.x:menu#websites": {
-  "child": [
+  "children": [
     "menu-item#shop",
     "menu-item#about-us"
   ]
@@ -94,6 +94,36 @@ _Example:_
     }
 }
 ```
+
+You can define a submenu for a menu-item:
+
+```json
+"menu-item#shop": {
+  "props": {
+    "type": "custom",
+    "highlight": false,
+    "itemProps": {
+      "type": "internal",
+      "href": "#",
+      "noFollow": false,
+      "tagTitle": "Shop",
+      "text": "Shop"
+    },
+  },
+  "blocks": ["vtex.menu@2.x:submenu#shop"] // Defining a submenu
+},
+"vtex.menu@2.x:submenu#shop": {
+  "children": [
+    "vtex.menu@2.x:menu#submenushop"
+  ]
+},
+"vtex.menu@2.x:menu#submenushop": {
+  "children": [
+    "menu-item#shop"
+  ]
+}
+    
+
 
 <div class="alert alert-info">
 The Menu block has no prerequisite children. Therefore, any menu block implementation does not need to have any blocks declared within it to properly function. 
