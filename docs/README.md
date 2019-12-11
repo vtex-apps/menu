@@ -60,38 +60,38 @@ _Example:_
 
 _Example:_
 
-```
+```json
 "vtex.menu@2.x:menu#websites": {
-    "props": {
-      "items": [
-        {
-          "id": "menu-item-shop",
-          "type": "custom",
-          "iconId": null,
-          "highlight": false,
-          "itemProps": {
-            "type": "internal",
-            "href": "#",
-            "noFollow": false,
-            "tagTitle": "Shop",
-            "text": "Shop"
-          }
-        },
-        {
-          "id": "menu-item-about-us",
-          "type": "custom",
-          "iconId": null,
-          "highlight": false,
-          "itemProps": {
-            "type": "internal",
-            "href": "/about-us",
-            "noFollow": false,
-            "tagTitle": "about-us",
-            "text": "About Us"
-          }
+  "props": {
+    "items": [
+      {
+        "id": "menu-item-shop",
+        "type": "custom",
+        "iconId": null,
+        "highlight": false,
+        "itemProps": {
+          "type": "internal",
+          "href": "#",
+          "noFollow": false,
+          "tagTitle": "Shop",
+          "text": "Shop"
         }
+      },
+      {
+        "id": "menu-item-about-us",
+        "type": "custom",
+        "iconId": null,
+        "highlight": false,
+        "itemProps": {
+          "type": "internal",
+          "href": "/about-us",
+          "noFollow": false,
+          "tagTitle": "about-us",
+          "text": "About Us"
+        }
+      }
     ]
-    }
+  }
 }
 ```
 
@@ -122,7 +122,7 @@ You can define a submenu for a menu-item:
     "menu-item#shop"
   ]
 }
-    
+```
 
 
 <div class="alert alert-info">
