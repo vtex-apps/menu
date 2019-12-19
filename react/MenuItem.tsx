@@ -1,5 +1,5 @@
 import { path } from 'ramda'
-import React, { Reducer, useReducer } from 'react'
+import React, { Reducer, useReducer, useContext } from 'react'
 
 import classNames from 'classnames'
 
@@ -12,6 +12,7 @@ import { IconProps} from './components/StyledLink'
 import useSubmenuImplementation from './hooks/useSubmenuImplementation'
 
 import { useCssHandles } from 'vtex.css-handles'
+import MenuContext from './components/MenuContext'
 
 const CSS_HANDLES = ['menuItem', 'menuItemInnerDiv']
 
@@ -46,6 +47,7 @@ const submenuReducer: Reducer<SubmenuState, SubmenuAction> =  (state, action) =>
 const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
   ...props
 }) => {
+  const { optimizeRendering } = useContext(MenuContext)
   const [{ isActive, hasBeenActive }, dispatch] = useReducer(submenuReducer, submenuInitialState)
   const handles = useCssHandles(CSS_HANDLES)
 
@@ -69,7 +71,7 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
           }}>
           <Item {...props} accordion active={isActive} />
         </div>
-        {hasBeenActive && ( /* Collapsible menus need to still persist after being open,
+        {(hasBeenActive || !optimizeRendering) && ( /* Collapsible menus need to still persist after being open,
                              * to make the closing transition work properly */
           <>
             <ExtensionPoint id="submenu" isOpen={isActive} />
@@ -86,7 +88,7 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}>
       <Item {...props} active={isActive} />
-      {isActive && (
+      {(isActive || !optimizeRendering) && (
         <>
           <ExtensionPoint id="submenu" isOpen={isActive} />
           <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
@@ -104,6 +106,7 @@ export interface MenuItemSchema {
   highlight: boolean
   itemProps: CategoryItemSchema | CustomItemSchema
   blockClass?: string
+  optimizeRendering?: boolean
 }
 
 const messages = defineMessages({

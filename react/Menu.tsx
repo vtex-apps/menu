@@ -31,12 +31,14 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
   categoryId,
   items: itemsProps = [],
   children,
+  optimizeRendering = false,
 }) => {
   const level = useContext(LevelContext)
   const handles = useCssHandles(CSS_HANDLES)
   const menuContext = useMemo(
     () => ({
       hasTitle: title || categoryId ? true : false,
+      optimizeRendering,
       orientation,
       textType: textType ? TypographyMap[textType] : TypographyMap.body,
     }),
@@ -78,6 +80,7 @@ interface MenuSchema {
   additionalDef?: string
   blockClass?: string
   items?: MenuItemSchema[]
+  optimizeRendering?: boolean
 }
 
 enum Typography {
