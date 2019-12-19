@@ -1,8 +1,8 @@
 import { createContext } from 'react'
 
 const MenuContext = createContext<MenuContextValue>({
+  experimentalOptimizeRendering: false,
   hasTitle: false,
-  optimizeRendering: false,
   orientation: 'horizontal',
   textType: 't-body',
 })
@@ -11,7 +11,7 @@ interface MenuContextValue {
   hasTitle: boolean
   orientation: 'horizontal' | 'vertical'
   textType: string
-  optimizeRendering?: boolean
+  experimentalOptimizeRendering?: boolean
 }
 
 export default MenuContext

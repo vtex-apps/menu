@@ -47,7 +47,7 @@ const submenuReducer: Reducer<SubmenuState, SubmenuAction> =  (state, action) =>
 const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
   ...props
 }) => {
-  const { optimizeRendering } = useContext(MenuContext)
+  const { experimentalOptimizeRendering } = useContext(MenuContext)
   const [{ isActive, hasBeenActive }, dispatch] = useReducer(submenuReducer, submenuInitialState)
   const handles = useCssHandles(CSS_HANDLES)
 
@@ -71,7 +71,7 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
           }}>
           <Item {...props} accordion active={isActive} />
         </div>
-        {(hasBeenActive || !optimizeRendering) && ( /* Collapsible menus need to still persist after being open,
+        {(hasBeenActive || !experimentalOptimizeRendering) && ( /* Collapsible menus need to still persist after being open,
                              * to make the closing transition work properly */
           <>
             <ExtensionPoint id="submenu" isOpen={isActive} />
@@ -88,7 +88,7 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}>
       <Item {...props} active={isActive} />
-      {(isActive || !optimizeRendering) && (
+      {(isActive || !experimentalOptimizeRendering) && (
         <>
           <ExtensionPoint id="submenu" isOpen={isActive} />
           <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
@@ -106,7 +106,7 @@ export interface MenuItemSchema {
   highlight: boolean
   itemProps: CategoryItemSchema | CustomItemSchema
   blockClass?: string
-  optimizeRendering?: boolean
+  experimentalOptimizeRendering?: boolean
 }
 
 const messages = defineMessages({
