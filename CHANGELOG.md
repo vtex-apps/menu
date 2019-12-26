@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Changed
-- Does submenu rendering optimization--preventing unopened submenus from rendering--only under a prop (`experimentalOptimizeRendering`), instead of doing it by deafult.
+- Does submenu rendering optimization--preventing unopened submenus from rendering--only under a prop (`experimentalOptimizeRendering`), instead of doing it by default.
 
 ## [2.20.6] - 2019-12-11
 ### Fixed
