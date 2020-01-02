@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Does submenu rendering optimization--preventing unopened submenus from rendering--only under a prop (`experimentalOptimizeRendering`), instead of doing it by default.
 
 ## [2.20.6] - 2019-12-11
 ### Fixed
