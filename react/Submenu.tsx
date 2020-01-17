@@ -43,7 +43,7 @@ const Submenu: StorefrontFunctionComponent<SubmenuProps> = ({
   return (
     <div className={`${handles.submenuContainer} ${width === '100%' ? '' : 'relative'}`}>
       <div
-        className={classNames(handles.submenuWrapper,`absolute left-0 bg-base pt${parseTachyonsValue(paddingTop, 'paddingTop')} pb${parseTachyonsValue(paddingBottom, 'paddingBottom')} bw1 bb b--muted-3 z-2`,
+        className={classNames(handles.submenuWrapper, `absolute left-0 bg-base pt${parseTachyonsValue(paddingTop, 'paddingTop')} pb${parseTachyonsValue(paddingBottom, 'paddingBottom')} bw1 bb b--muted-3 z-2`,
           {
             dn: !isOpen,
             flex: isOpen,
