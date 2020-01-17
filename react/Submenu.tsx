@@ -4,7 +4,7 @@ import { defineMessages } from 'react-intl'
 
 import { useCssHandles } from 'vtex.css-handles'
 
-const CSS_HANDLES = ['submenu', 'submenuContainer'] as const
+const CSS_HANDLES = ['submenu', 'submenuWrapper', 'submenuContainer'] as const
 
 const MAX_TACHYONS_SCALE = 11
 export type TachyonsScaleInput = string | number | undefined
@@ -43,7 +43,7 @@ const Submenu: StorefrontFunctionComponent<SubmenuProps> = ({
   return (
     <div className={`${handles.submenuContainer} ${width === '100%' ? '' : 'relative'}`}>
       <div
-        className={classNames(`absolute left-0 bg-base pt${parseTachyonsValue(paddingTop, 'paddingTop')} pb${parseTachyonsValue(paddingBottom, 'paddingBottom')} bw1 bb b--muted-3 z-2`,
+        className={classNames(handles.submenuWrapper, `absolute left-0 bg-base pt${parseTachyonsValue(paddingTop, 'paddingTop')} pb${parseTachyonsValue(paddingBottom, 'paddingBottom')} bw1 bb b--muted-3 z-2`,
           {
             dn: !isOpen,
             flex: isOpen,
