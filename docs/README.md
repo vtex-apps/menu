@@ -4,7 +4,7 @@
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
-VTEX Menu is a store component responsible for displaying a bar containing links and drop-down sub-menus. 
+VTEX Menu is a store component responsible for displaying a bar containing links and drop-down sub-menus.
 
 ![menu-app](https://user-images.githubusercontent.com/52087100/68619014-5af1c680-04a9-11ea-9cdc-23468bd55c23.png)
 
@@ -19,7 +19,7 @@ VTEX Menu is a store component responsible for displaying a bar containing links
 ```
 2. Add the `vtex.menu@2.x:menu` block to the [store header](https://github.com/vtex-apps/store-header/blob/master/store/interfaces.json) template.
 
-3. To build the store's menu options, you need to configure the `menu-item` blocks. These can be declared in two different ways in `vtex.menu@2.x:menu`: as children or as props. The advantage of this latest `menu-item` configuration compared is that Site Editor can be used to edit the blocks. 
+3. To build the store's menu options, you need to configure the `menu-item` blocks. These can be declared in two different ways in `vtex.menu@2.x:menu`: as children or as props. The advantage of this latest `menu-item` configuration compared is that Site Editor can be used to edit the blocks.
 
 ### `menu-item` as children
 
@@ -126,7 +126,7 @@ You can define a submenu for a menu-item:
 
 
 <div class="alert alert-info">
-The Menu block has no prerequisite children. Therefore, any menu block implementation does not need to have any blocks declared within it to properly function. 
+The Menu block has no prerequisite children. Therefore, any menu block implementation does not need to have any blocks declared within it to properly function.
 </div>
 
 The available `menu-item` block props are as follows:
@@ -169,7 +169,7 @@ The available `menu-item` block props are as follows:
 
 #### Customization
 
-In order to apply CSS customizations on this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization). 
+In order to apply CSS customizations on this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
 
 | CSS Handle             |
 | -----------------------|
@@ -177,20 +177,21 @@ In order to apply CSS customizations on this and other blocks, follow the instru
 | `linkLeft`             |
 | `linkMiddle`           |
 | `linkRight`            |
-| `submenuAccordion`     |
-| `submenu`              |
-| `menuItem`             |
 | `menuContainer`        |
-| `styledLink`           |
-| `styledLinkContainer`  |
-| `styledLinkIcon`       |
-| `menuLinkNav`          |
+| `menuContainerNav`     |
+| `menuItem`             |
+| `menuItemInnerDiv`     |
 | `menuLinkDivLeft`      |
 | `menuLinkDivMiddle`    |
 | `menuLinkDivRight`     |
+| `menuLinkNav`          |
 | `renderLink`           |
-| `menuContainerNav`     |
-| `menuItemInnerDiv`     |
+| `styledLink`           |
+| `styledLinkContainer`  |
+| `styledLinkIcon`       |
+| `submenu`              |
+| `submenuWrapper`       |
+| `submenuAccordion`     |
 | `submenuContainer`     |
 
 ## Contributors
