@@ -7,7 +7,7 @@ import { Icon } from 'vtex.store-icons'
 import LevelContext from './LevelContext'
 import MenuContext from './MenuContext'
 
-const CSS_HANDLES = ['styledLink', 'styledLinkIcon', 'styledLinkContainer'] as const
+const CSS_HANDLES = ['styledLink', 'styledLinkIcon', 'styledLinkContainer', 'accordionIcon'] as const
 
 const defaultTypography: Record<number, string> = {
   1: 't-body',
@@ -66,7 +66,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
       {iconPosition === 'left' && iconComponent}
       {children}
       {iconPosition === 'right' && iconComponent}
-      {accordion && <div className="ml3 c-muted-2">{active ? '-' : '+'}</div>}
+      {accordion && <div className={`${handles.accordionIcon} ml3 c-muted-2`}>{active ? '-' : '+'}</div>}
     </div>
   )
 
