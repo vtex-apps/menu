@@ -172,29 +172,31 @@ The available `menu-item` block props are as follows:
 
 In order to apply CSS customizations on this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
 
-| CSS Handle             |
-| -----------------------|
-| `accordionIcon`        |
-| `container`            |
-| `linkLeft`             |
-| `linkMiddle`           |
-| `linkRight`            |
-| `menuContainer`        |
-| `menuContainerNav`     |
-| `menuItem`             |
-| `menuItemInnerDiv`     |
-| `menuLinkDivLeft`      |
-| `menuLinkDivMiddle`    |
-| `menuLinkDivRight`     |
-| `menuLinkNav`          |
-| `renderLink`           |
-| `styledLink`           |
-| `styledLinkContainer`  |
-| `styledLinkIcon`       |
-| `submenu`              |
-| `submenuWrapper`       |
-| `submenuAccordion`     |
-| `submenuContainer`     |
+| CSS Handle                |
+| ------------------------- |
+| `accordionIcon`           |
+| `accordionIcon--active`   |
+| `accordionIcon--inactive` |
+| `container`               |
+| `linkLeft`                |
+| `linkMiddle`              |
+| `linkRight`               |
+| `menuContainer`           |
+| `menuContainerNav`        |
+| `menuItem`                |
+| `menuItemInnerDiv`        |
+| `menuLinkDivLeft`         |
+| `menuLinkDivMiddle`       |
+| `menuLinkDivRight`        |
+| `menuLinkNav`             |
+| `renderLink`              |
+| `styledLink`              |
+| `styledLinkContainer`     |
+| `styledLinkIcon`          |
+| `submenu`                 |
+| `submenuWrapper`          |
+| `submenuAccordion`        |
+| `submenuContainer`        |
 
 ## Contributors
 
