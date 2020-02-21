@@ -12,6 +12,7 @@
   "menu-item": {
     "component": "MenuItem",
     "composition": "children",
+    "allowed": ["submenu"],
     "content": {
       "$ref": "app:vtex.menu#/definitions/MenuItem"
     }
