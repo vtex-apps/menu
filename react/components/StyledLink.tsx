@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import React, { FunctionComponent, useContext } from 'react'
-import { useCssHandles } from 'vtex.css-handles'
+import { useCssHandles, applyModifiers } from 'vtex.css-handles'
 import { Link } from 'vtex.render-runtime'
 import { Icon } from 'vtex.store-icons'
 
@@ -66,7 +66,16 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
       {iconPosition === 'left' && iconComponent}
       {children}
       {iconPosition === 'right' && iconComponent}
-      {accordion && <div className={`${handles.accordionIcon} ml3 c-muted-2`}>{active ? '-' : '+'}</div>}
+      {accordion && (
+        <div
+          className={`${applyModifiers(
+            handles.accordionIcon,
+            active ? 'active' : 'inactive'
+          )} ml3 c-muted-2`}
+        >
+          {active ? '-' : '+'}
+        </div>
+      )}
     </div>
   )
 
