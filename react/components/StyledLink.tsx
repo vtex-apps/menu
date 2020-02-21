@@ -7,7 +7,12 @@ import { Icon } from 'vtex.store-icons'
 import LevelContext from './LevelContext'
 import MenuContext from './MenuContext'
 
-const CSS_HANDLES = ['styledLink', 'styledLinkIcon', 'styledLinkContainer', 'accordionIcon'] as const
+const CSS_HANDLES = [
+  'styledLink',
+  'styledLinkIcon',
+  'styledLinkContainer',
+  'accordionIcon',
+] as const
 
 const defaultTypography: Record<number, string> = {
   1: 't-body',
@@ -39,27 +44,32 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
 
   const hasLink = to && to !== '#'
 
-  const linkClassNames = classNames(handles.styledLink, 'no-underline pointer', {
-    [typography]: true,
-    'c-emphasis': highlight,
-    'c-muted-1': !highlight && hasTitle && !isTitle,
-    'c-on-base': !highlight && !hasTitle,
-    'fw5 c-on-base': !highlight && isTitle,
-    pointer: !disabled,
-  })
+  const linkClassNames = classNames(
+    handles.styledLink,
+    'no-underline pointer',
+    {
+      [typography]: true,
+      'c-emphasis': highlight,
+      'c-muted-1': !highlight && hasTitle && !isTitle,
+      'c-on-base': !highlight && !hasTitle,
+      'fw5 c-on-base': !highlight && isTitle,
+      pointer: !disabled,
+    }
+  )
 
   const iconTestId = `icon-${iconPosition}`
-  const iconComponent = iconProps ?
+  const iconComponent = iconProps ? (
     <span className={`${handles.styledLinkIcon} mh2`} data-testid={iconTestId}>
-      <Icon 
-        id={iconProps.id} 
+      <Icon
+        id={iconProps.id}
         isActive={iconProps.isActive}
         size={iconProps.size}
         viewBox={iconProps.viewBox}
         activeClassName={iconProps.activeClassName}
         mutedClassName={iconProps.mutedClassName}
       />
-    </span> : null 
+    </span>
+  ) : null
 
   const content = (
     <div className="flex justify-between nowrap">
@@ -89,11 +99,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
       {disabled || !hasLink || accordion ? (
         <span className={linkClassNames}>{content}</span>
       ) : (
-        <Link
-          to={to}
-          {...rest}
-          className={linkClassNames}
-        >
+        <Link to={to} {...rest} className={linkClassNames}>
           {content}
         </Link>
       )}
@@ -110,7 +116,7 @@ export interface StyledLinkProps extends LinkProps {
   disabled?: boolean
   accordion?: boolean
   treePath?: string
-  iconId?: string,
+  iconId?: string
   iconProps?: IconProps
   iconPosition?: 'left' | 'right'
 }
@@ -132,7 +138,7 @@ interface LinkProps {
 }
 
 StyledLink.defaultProps = {
-  iconPosition: 'left'
+  iconPosition: 'left',
 }
 
 export default StyledLink
