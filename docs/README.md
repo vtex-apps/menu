@@ -12,11 +12,12 @@ VTEX Menu is a store component responsible for displaying a bar containing links
 
 1. Import the menu's app to your dependencies as `manifest.json`, for example:
 
-```
-  dependencies: {
+```json
+  "dependencies": {
     "vtex.menu": "2.x"
   }
 ```
+
 2. Add the `vtex.menu@2.x:menu` block to the [store header](https://github.com/vtex-apps/store-header/blob/master/store/interfaces.json) template.
 
 3. To build the store's menu options, you need to configure the `menu-item` blocks. These can be declared in two different ways in `vtex.menu@2.x:menu`: as children or as props. The advantage of this latest `menu-item` configuration compared is that Site Editor can be used to edit the blocks.
@@ -124,7 +125,6 @@ You can define a submenu for a menu-item:
 }
 ```
 
-
 <div class="alert alert-info">
 The Menu block has no prerequisite children. Therefore, any menu block implementation does not need to have any blocks declared within it to properly function.
 </div>
@@ -133,12 +133,13 @@ The available `menu-item` block props are as follows:
 
 | Prop name      | Type     | Description                                          | Default value |
 | -------------- | -------- | ---------------------------------------------------- | ------------- |
-| `type`         | `String` | Menu item type, either `category` or `custom`                                            | `caterogy`           |
+| `type`         | `String` | Menu item type, either `category` or `custom`                                            | `category`           |
 | `id`         | `String` | menu item ID                                           | N/A           |
 | `highlight`         | `boolean` | Whether the item has highlight                                            | N/A           |
 | `iconPosition`         | `String` | Icon position relative to the menu item text. Either to the `left` or `right`                                           | `left`          |
 | `iconProps`         | `IconProps` | Icon props                                           | N/A           |
 | `itemProps`         | `CategoryItem` or `CustomItem` | Item props                                           | N/A           |
+
 - For icons in the menu items:
 
 | Prop name      | Type     | Description                                          | Default value |
