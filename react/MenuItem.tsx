@@ -8,7 +8,7 @@ import { ExtensionPoint } from 'vtex.render-runtime'
 import { CategoryItemSchema } from './components/CategoryItem'
 import { CustomItemSchema } from './components/CustomItem'
 import Item from './components/Item'
-import { IconProps} from './components/StyledLink'
+import { IconProps } from './components/StyledLink'
 import useSubmenuImplementation from './hooks/useSubmenuImplementation'
 
 import { useCssHandles } from 'vtex.css-handles'
@@ -23,11 +23,12 @@ const submenuInitialState = {
 
 type SubmenuState = typeof submenuInitialState
 
-type SubmenuAction = 
-  | {type: 'SHOW_SUBMENU'}
-  | {type: 'HIDE_SUBMENU'}
+type SubmenuAction = { type: 'SHOW_SUBMENU' } | { type: 'HIDE_SUBMENU' }
 
-const submenuReducer: Reducer<SubmenuState, SubmenuAction> =  (state, action) => {
+const submenuReducer: Reducer<SubmenuState, SubmenuAction> = (
+  state,
+  action
+) => {
   switch (action.type) {
     case 'SHOW_SUBMENU':
       return {
@@ -45,10 +46,14 @@ const submenuReducer: Reducer<SubmenuState, SubmenuAction> =  (state, action) =>
 }
 
 const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
+  children,
   ...props
 }) => {
   const { experimentalOptimizeRendering } = useContext(MenuContext)
-  const [{ isActive, hasBeenActive }, dispatch] = useReducer(submenuReducer, submenuInitialState)
+  const [{ isActive, hasBeenActive }, dispatch] = useReducer(
+    submenuReducer,
+    submenuInitialState
+  )
   const handles = useCssHandles(CSS_HANDLES)
 
   const setActive = (value: boolean) => {
@@ -64,18 +69,21 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
   if (isCollapsible) {
     return (
       <li className={classNames(handles.menuItem, 'list')}>
-        <div className={handles.menuItemInnerDiv}
+        <div
+          className={handles.menuItemInnerDiv}
           onClick={event => {
             setActive(!isActive)
             event.stopPropagation()
-          }}>
+          }}
+        >
           <Item {...props} accordion active={isActive} />
         </div>
-        {(hasBeenActive || !experimentalOptimizeRendering) && ( /* Collapsible menus need to still persist after being open,
-                             * to make the closing transition work properly */
-          <>
+        {(hasBeenActive || !experimentalOptimizeRendering) && (
+          /* Collapsible menus need to still persist after being open,
+           * to make the closing transition work properly */ <>
             <ExtensionPoint id="submenu" isOpen={isActive} />
             <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
+            {children}
           </>
         )}
       </li>
@@ -86,12 +94,14 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
     <li
       className={classNames(handles.menuItem, 'list')}
       onMouseEnter={() => setActive(true)}
-      onMouseLeave={() => setActive(false)}>
+      onMouseLeave={() => setActive(false)}
+    >
       <Item {...props} active={isActive} />
       {(isActive || !experimentalOptimizeRendering) && (
         <>
           <ExtensionPoint id="submenu" isOpen={isActive} />
           <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
+          {children}
         </>
       )}
     </li>
@@ -196,4 +206,3 @@ MenuItem.getSchema = props => {
 }
 
 export default MenuItem
-

@@ -5,18 +5,15 @@
   "menu": {
     "component": "Menu",
     "composition": "children",
-    "allowed": [
-      "menu-item"
-    ],
+    "allowed": ["menu-item"],
     "content": {
       "$ref": "app:vtex.menu#/definitions/Menu"
     }
   },
   "menu-item": {
     "component": "MenuItem",
-    "allowed": [
-      "submenu"
-    ],
+    "allowed": ["submenu"],
+    "composition": "children",
     "content": {
       "$ref": "app:vtex.menu#/definitions/MenuItem"
     }
@@ -64,16 +61,11 @@
   "unstable--menu": {
     "component": "Menu",
     "composition": "children",
-    "allowed": [
-      "unstable--menu-item",
-      "menu-item"
-    ]
+    "allowed": ["unstable--menu-item", "menu-item"]
   },
   "unstable--menu-item": {
     "component": "MenuItem",
-    "allowed": [
-      "unstable--submenu"
-    ]
+    "allowed": ["unstable--submenu"]
   },
   "unstable--submenu": {
     "component": "Submenu",
@@ -87,17 +79,12 @@
   "unstable--col": {
     "component": "Column",
     "composition": "children",
-    "allowed": [
-      "unstable--second-level-menu",
-      "unstable--menu"
-    ]
+    "allowed": ["unstable--second-level-menu", "unstable--menu"]
   },
   "unstable--second-level-menu": {
     "component": "Menu",
     "composition": "children",
-    "allowed": [
-      "unstable--second-level-menu-item"
-    ]
+    "allowed": ["unstable--second-level-menu-item"]
   },
   "unstable--second-level-menu-item": {
     "component": "MenuItem"
