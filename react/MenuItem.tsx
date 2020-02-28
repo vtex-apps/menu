@@ -1,5 +1,5 @@
 import { path } from 'ramda'
-import React, { Reducer, useReducer, useContext } from 'react'
+import React, { Reducer, useReducer, useContext, useRef, useEffect } from 'react'
 
 import classNames from 'classnames'
 
@@ -55,9 +55,24 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
     submenuInitialState
   )
   const handles = useCssHandles(CSS_HANDLES)
+  const timeout = useRef(null)
 
+  // useEffect(() => {
+  //   window?.document?.addEventListener('mousemove', (event) => {
+
+  //   })
+  // })
   const setActive = (value: boolean) => {
-    dispatch({ type: value ? 'SHOW_SUBMENU' : 'HIDE_SUBMENU' })
+    if (timeout.current) {
+      clearTimeout(timeout.current)
+      timeout.current = null
+    }
+
+    timeout.current = setTimeout(() => {
+      if (value !== isActive) {
+        dispatch({ type: value ? 'SHOW_SUBMENU' : 'HIDE_SUBMENU' })
+      }
+    }, 200)
   }
 
   /* This is a temporary check of which kind of submenu is being
