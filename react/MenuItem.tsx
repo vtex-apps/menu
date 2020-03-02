@@ -52,6 +52,9 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
     submenuReducer,
     submenuInitialState
   )
+  /* Prevents submenus from closing if the mouse is moving within a certain speed.
+   * This makes it easier for the user to click on a submenu item without it closing on
+   * them if they hover another menu item by accident. */
   const setActive = useMouseSpeedDebouncer(
     (value: boolean) => {
       if (value !== isActive) {
