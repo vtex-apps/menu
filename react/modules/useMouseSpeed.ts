@@ -17,7 +17,7 @@ const handleMouseMove = (e: MouseEvent) => {
   currentPosition.y = e.pageY
 
   if (lastPosition.x != null && lastPosition.y != null) {
-    const now = Date.now()
+    const now = e.timeStamp
     const distance = Math.sqrt(
       (currentPosition.x - lastPosition.x) ** 2 +
         (currentPosition.y - lastPosition.y) ** 2
