@@ -1,5 +1,6 @@
-import { useMouseSpeed } from './useMouseSpeed'
 import { useRef } from 'react'
+
+import { useMouseSpeed } from './useMouseSpeed'
 
 // Max mouse speed in pixels/second to allow the debounced method to be called
 const MAX_MOUSE_SPEED = 450
