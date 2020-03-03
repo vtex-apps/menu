@@ -53,7 +53,7 @@ export const useMouseSpeed = () => {
       currentPosition.y = null
       window.removeEventListener('mousemove', handleMouseMove)
     }
-  })
+  }, [])
 
   return {
     // Can return NaN for tiny variations
