@@ -5,18 +5,14 @@
   "menu": {
     "component": "Menu",
     "composition": "children",
-    "allowed": [
-      "menu-item"
-    ],
     "content": {
       "$ref": "app:vtex.menu#/definitions/Menu"
     }
   },
   "menu-item": {
     "component": "MenuItem",
-    "allowed": [
-      "submenu"
-    ],
+    "composition": "children",
+    "allowed": ["submenu"],
     "content": {
       "$ref": "app:vtex.menu#/definitions/MenuItem"
     }
@@ -26,78 +22,35 @@
     "composition": "children",
     "content": {
       "$ref": "app:vtex.menu#/definitions/Submenu"
-    },
-    "allowed": [
-      "menu",
-      "info-card",
-      "submenu-col",
-      "flex-layout",
-      "notification",
-      "rich-text",
-      "image"
-    ]
+    }
   },
   "submenu.accordion": {
     "component": "SubmenuAccordion",
-    "composition": "children",
-    "allowed": [
-      "menu",
-      "info-card",
-      "flex-layout",
-      "notification",
-      "rich-text",
-      "image"
-    ]
+    "composition": "children"
   },
   "submenu-col": {
     "component": "Column",
-    "composition": "children",
-    "allowed": [
-      "menu",
-      "info-card",
-      "flex-layout",
-      "notification",
-      "rich-text",
-      "image"
-    ]
+    "composition": "children"
   },
   "unstable--menu": {
     "component": "Menu",
-    "composition": "children",
-    "allowed": [
-      "unstable--menu-item",
-      "menu-item"
-    ]
+    "composition": "children"
   },
   "unstable--menu-item": {
     "component": "MenuItem",
-    "allowed": [
-      "unstable--submenu"
-    ]
+    "allowed": ["unstable--submenu"]
   },
   "unstable--submenu": {
     "component": "Submenu",
-    "composition": "children",
-    "allowed": [
-      "unstable--second-level-menu",
-      "unstable--menu",
-      "unstable--col"
-    ]
+    "composition": "children"
   },
   "unstable--col": {
     "component": "Column",
-    "composition": "children",
-    "allowed": [
-      "unstable--second-level-menu",
-      "unstable--menu"
-    ]
+    "composition": "children"
   },
   "unstable--second-level-menu": {
     "component": "Menu",
-    "composition": "children",
-    "allowed": [
-      "unstable--second-level-menu-item"
-    ]
+    "composition": "children"
   },
   "unstable--second-level-menu-item": {
     "component": "MenuItem"
