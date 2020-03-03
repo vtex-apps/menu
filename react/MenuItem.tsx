@@ -1,18 +1,16 @@
-import { path } from 'ramda'
 import React, { Reducer, useReducer, useContext } from 'react'
-
 import classNames from 'classnames'
-
 import { defineMessages } from 'react-intl'
 import { ExtensionPoint } from 'vtex.render-runtime'
+import { useCssHandles } from 'vtex.css-handles'
+
 import { CategoryItemSchema } from './components/CategoryItem'
 import { CustomItemSchema } from './components/CustomItem'
 import Item from './components/Item'
 import { IconProps } from './components/StyledLink'
 import useSubmenuImplementation from './hooks/useSubmenuImplementation'
-
-import { useCssHandles } from 'vtex.css-handles'
 import MenuContext from './components/MenuContext'
+import { useMouseSpeedDebouncer } from './modules/useMouseSpeedDebouncer'
 
 const CSS_HANDLES = ['menuItem', 'menuItemInnerDiv']
 
@@ -54,11 +52,21 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
     submenuReducer,
     submenuInitialState
   )
+  /* Prevents submenus from closing if the mouse is moving within a certain speed.
+   * This makes it easier for the user to click on a submenu item without it closing on
+   * them if they hover another menu item by accident. */
+  const setActive = useMouseSpeedDebouncer(
+    (value: boolean) => {
+      if (value !== isActive) {
+        dispatch({ type: value ? 'SHOW_SUBMENU' : 'HIDE_SUBMENU' })
+      }
+    },
+    {
+      delay: 200,
+      maxSpeed: 450,
+    }
+  )
   const handles = useCssHandles(CSS_HANDLES)
-
-  const setActive = (value: boolean) => {
-    dispatch({ type: value ? 'SHOW_SUBMENU' : 'HIDE_SUBMENU' })
-  }
 
   /* This is a temporary check of which kind of submenu is being
    * inserted. This will be replaced by new functionality of useChildBlocks
@@ -187,8 +195,8 @@ const messages = defineMessages({
 })
 
 MenuItem.getSchema = props => {
-  const text = path(['itemProps', 'text'], props)
-  const id = props && props.id ? props.id : ''
+  const text = props?.itemProps?.text
+  const id = props?.id ? props.id : ''
 
   // tslint:disable: object-literal-sort-keys
   return {
