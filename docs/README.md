@@ -173,10 +173,10 @@ The available `menu-item` block props are as follows:
 In order to apply CSS customizations on this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
 
 | CSS Handle                |
-| ------------------------- |
+| --------------------------|
 | `accordionIcon`           |
-| `accordionIcon--active`   |
-| `accordionIcon--inactive` |
+| `accordionIcon--isOpen`   |
+| `accordionIcon--isClosed` |
 | `container`               |
 | `linkLeft`                |
 | `linkMiddle`              |

@@ -80,7 +80,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
         <div
           className={`${applyModifiers(
             handles.accordionIcon,
-            active ? 'active' : 'inactive'
+            active ? 'isOpen' : 'isClosed'
           )} ml3 c-muted-2`}
         >
           {active ? '-' : '+'}
