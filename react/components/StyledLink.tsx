@@ -11,6 +11,7 @@ const CSS_HANDLES = [
   'styledLink',
   'styledLinkIcon',
   'styledLinkContainer',
+  'styledLinkContent',
   'accordionIcon',
 ] as const
 
@@ -72,7 +73,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
   ) : null
 
   const content = (
-    <div className="flex justify-between nowrap">
+    <div className={`${handles.styledLinkContent} flex justify-between nowrap`}>
       {iconPosition === 'left' && iconComponent}
       {children}
       {iconPosition === 'right' && iconComponent}

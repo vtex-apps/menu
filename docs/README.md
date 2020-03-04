@@ -192,6 +192,7 @@ In order to apply CSS customizations on this and other blocks, follow the instru
 | `renderLink`              |
 | `styledLink`              |
 | `styledLinkContainer`     |
+| `styledLinkContent`       |
 | `styledLinkIcon`          |
 | `submenu`                 |
 | `submenuWrapper`          |
