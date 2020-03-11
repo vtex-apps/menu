@@ -1,9 +1,14 @@
 {
+  "projectName": "menu",
+  "projectOwner": "vtex-apps",
+  "repoType": "github",
+  "repoHost": "https://github.com",
   "files": [
     "docs/README.md"
   ],
   "imageSize": 100,
   "commit": false,
+  "commitConvention": "none",
   "contributors": [
     {
       "login": "giovanapereira",
@@ -15,9 +20,5 @@
       ]
     }
   ],
-  "contributorsPerLine": 7,
-  "projectName": "menu",
-  "projectOwner": "vtex-apps",
-  "repoType": "github",
-  "repoHost": "https://github.com"
+  "contributorsPerLine": 7
 }
