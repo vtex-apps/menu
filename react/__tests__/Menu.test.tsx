@@ -11,13 +11,4 @@ describe('Menu Component', () => {
   it('should be rendered', () => {
     expect(renderComponent()).toBeDefined()
   })
-
-  it('should match the snapshot', () => {
-    const { asFragment } = renderComponent()
-    expect(asFragment()).toMatchSnapshot()
-  })
-
-  it('should be editable through storefront', () => {
-    expect(Menu.getSchema({})).toHaveProperty('title')
-  })
 })

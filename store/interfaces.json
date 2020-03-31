@@ -1,58 +1,6 @@
 {
-  "menu-link": {
-    "component": "index"
-  },
   "menu": {
     "component": "Menu",
-    "composition": "children",
-    "content": {
-      "$ref": "app:vtex.menu#/definitions/Menu"
-    }
-  },
-  "menu-item": {
-    "component": "MenuItem",
-    "composition": "children",
-    "allowed": ["submenu"],
-    "content": {
-      "$ref": "app:vtex.menu#/definitions/MenuItem"
-    }
-  },
-  "submenu": {
-    "component": "Submenu",
-    "composition": "children",
-    "content": {
-      "$ref": "app:vtex.menu#/definitions/Submenu"
-    }
-  },
-  "submenu.accordion": {
-    "component": "SubmenuAccordion",
     "composition": "children"
-  },
-  "submenu-col": {
-    "component": "Column",
-    "composition": "children"
-  },
-  "unstable--menu": {
-    "component": "Menu",
-    "composition": "children"
-  },
-  "unstable--menu-item": {
-    "component": "MenuItem",
-    "allowed": ["unstable--submenu"]
-  },
-  "unstable--submenu": {
-    "component": "Submenu",
-    "composition": "children"
-  },
-  "unstable--col": {
-    "component": "Column",
-    "composition": "children"
-  },
-  "unstable--second-level-menu": {
-    "component": "Menu",
-    "composition": "children"
-  },
-  "unstable--second-level-menu-item": {
-    "component": "MenuItem"
   }
 }
