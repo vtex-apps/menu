@@ -25,7 +25,10 @@ const useSubmenuImplementation = () => {
 
   const { component } = extension
 
-  if (typeof component === 'string' && component.indexOf('SubmenuAccordion') > -1) {
+  if (
+    typeof component === 'string' &&
+    component.indexOf('SubmenuAccordion') > -1
+  ) {
     return 'submenu.accordion'
   }
   return 'submenu'

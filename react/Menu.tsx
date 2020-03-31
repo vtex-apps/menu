@@ -1,15 +1,13 @@
 import React, { useContext, useMemo } from 'react'
-
 import classNames from 'classnames'
 import { defineMessages } from 'react-intl'
+import { useCssHandles } from 'vtex.css-handles'
 
 import CategoryMenu from './components/CategoryMenu'
 import Item from './components/Item'
 import LevelContext from './components/LevelContext'
 import MenuContext from './components/MenuContext'
 import MenuItem, { MenuItemSchema } from './MenuItem'
-
-import { useCssHandles } from 'vtex.css-handles'
 
 const CSS_HANDLES = ['menuContainer', 'menuContainerNav'] as const
 
@@ -38,10 +36,11 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
   const menuContext = useMemo(
     () => ({
       experimentalOptimizeRendering,
-      hasTitle: title || categoryId ? true : false,
+      hasTitle: !!(title ?? categoryId),
       orientation,
       textType: textType ? TypographyMap[textType] : TypographyMap.body,
     }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [orientation, textType]
   )
 
@@ -54,19 +53,19 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
   return (
     <LevelContext.Provider value={level + 1}>
       <MenuContext.Provider value={menuContext}>
-          <nav className={handles.menuContainerNav}>
-            <ul
-              className={classNames(handles.menuContainer, 'list flex pl0 mv0', {
-                'flex-column': orientation === 'vertical',
-                'flex-row': orientation === 'horizontal',
-              })}
-            >
-              {!categoryId && title && <Item {...title} isTitle />}
-              {categoryId && <CategoryMenu categoryId={categoryId} />}
-              {children}
-              {menuItems}
-            </ul>
-          </nav>
+        <nav className={handles.menuContainerNav}>
+          <ul
+            className={classNames(handles.menuContainer, 'list flex pl0 mv0', {
+              'flex-column': orientation === 'vertical',
+              'flex-row': orientation === 'horizontal',
+            })}
+          >
+            {!categoryId && title && <Item {...title} isTitle />}
+            {categoryId && <CategoryMenu categoryId={categoryId} />}
+            {children}
+            {menuItems}
+          </ul>
+        </nav>
       </MenuContext.Provider>
     </LevelContext.Provider>
   )

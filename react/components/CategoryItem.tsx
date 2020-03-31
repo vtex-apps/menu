@@ -12,6 +12,7 @@ class CategoryItem extends Component<CategoryItemProps, State> {
   public state = { hasError: false }
 
   public componentDidCatch(error: any) {
+    // eslint-disable-next-line no-console
     console.log({ error })
   }
 
@@ -42,7 +43,7 @@ class CategoryItem extends Component<CategoryItemProps, State> {
 
           return (
             <StyledLink {...rest} title={titleTag} to={href}>
-              {text ? text : name}
+              {text ?? name}
             </StyledLink>
           )
         }}
@@ -53,7 +54,7 @@ class CategoryItem extends Component<CategoryItemProps, State> {
 
 export interface CategoryItemProps
   extends CategoryItemSchema,
-  StyledLinkProps { }
+    StyledLinkProps {}
 
 export interface CategoryItemSchema {
   categoryId: number

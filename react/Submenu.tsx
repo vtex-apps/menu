@@ -1,7 +1,6 @@
 import classNames from 'classnames'
 import React from 'react'
 import { defineMessages } from 'react-intl'
-
 import { useCssHandles } from 'vtex.css-handles'
 
 const CSS_HANDLES = ['submenu', 'submenuWrapper', 'submenuContainer'] as const
@@ -19,16 +18,23 @@ const parseTachyonsValue = (value: TachyonsScaleInput, name?: string) => {
 
   const parsedValue = typeof value === 'string' ? parseInt(value, 10) : value
 
-  if (isNaN(parsedValue) || String(parsedValue) !== String(value) || parsedValue < 0 || parsedValue > MAX_TACHYONS_SCALE) {
+  if (
+    // eslint-disable-next-line no-restricted-globals
+    isNaN(parsedValue) ||
+    String(parsedValue) !== String(value) ||
+    parsedValue < 0 ||
+    parsedValue > MAX_TACHYONS_SCALE
+  ) {
     if (name) {
-      console.warn(`Invalid ${name} value. It should be an integer between 0 and ${MAX_TACHYONS_SCALE}.`)
+      console.warn(
+        `Invalid ${name} value. It should be an integer between 0 and ${MAX_TACHYONS_SCALE}.`
+      )
     }
     return 0
   }
 
   return parsedValue
 }
-
 
 const Submenu: StorefrontFunctionComponent<SubmenuProps> = ({
   isOpen,
@@ -41,9 +47,21 @@ const Submenu: StorefrontFunctionComponent<SubmenuProps> = ({
   const handles = useCssHandles(CSS_HANDLES)
 
   return (
-    <div className={`${handles.submenuContainer} ${width === '100%' ? '' : 'relative'}`}>
+    <div
+      className={`${handles.submenuContainer} ${
+        width === '100%' ? '' : 'relative'
+      }`}
+    >
       <div
-        className={classNames(handles.submenuWrapper, `absolute left-0 bg-base pt${parseTachyonsValue(paddingTop, 'paddingTop')} pb${parseTachyonsValue(paddingBottom, 'paddingBottom')} bw1 bb b--muted-3 z-2`,
+        className={classNames(
+          handles.submenuWrapper,
+          `absolute left-0 bg-base pt${parseTachyonsValue(
+            paddingTop,
+            'paddingTop'
+          )} pb${parseTachyonsValue(
+            paddingBottom,
+            'paddingBottom'
+          )} bw1 bb b--muted-3 z-2`,
           {
             dn: !isOpen,
             flex: isOpen,
@@ -52,7 +70,13 @@ const Submenu: StorefrontFunctionComponent<SubmenuProps> = ({
           }
         )}
       >
-        <section className={classNames(handles.submenu, 'w-100 flex justify-center', { 'flex-column': orientation === Orientation.vertical })}>{children}</section>
+        <section
+          className={classNames(handles.submenu, 'w-100 flex justify-center', {
+            'flex-column': orientation === Orientation.vertical,
+          })}
+        >
+          {children}
+        </section>
       </div>
     </div>
   )
@@ -62,7 +86,6 @@ enum Orientation {
   horizontal = 'horizontal',
   vertical = 'vertical',
 }
-
 
 export interface SubmenuProps extends SubmenuSchema {
   isOpen: boolean

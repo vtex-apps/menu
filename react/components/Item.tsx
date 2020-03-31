@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
-import CategoryItem, {
-  CategoryItemSchema,
-} from './CategoryItem'
+
+import CategoryItem, { CategoryItemSchema } from './CategoryItem'
 import CustomItem, { CustomItemSchema } from './CustomItem'
 import { StyledLinkProps } from './StyledLink'
 
