@@ -34,8 +34,8 @@ const CategoryMenu: FunctionComponent<CategoryMenuProps> = ({
         }: { category: Category } = data
         return (
           <>
-            <CategoryLink {...category} isTitle/>
-            {children && children.map((child: Category) => (
+            <CategoryLink {...category} isTitle />
+            {children?.map((child: Category) => (
               <li key={child.id}>
                 <CategoryLink {...child} />
               </li>

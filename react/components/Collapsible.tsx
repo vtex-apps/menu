@@ -1,4 +1,11 @@
-import React, { useState, useRef, useEffect, useContext, FunctionComponent, useMemo } from 'react'
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useContext,
+  FunctionComponent,
+  useMemo,
+} from 'react'
 
 const TRANSITION_DELAY = 250
 
@@ -21,14 +28,17 @@ const Collapsible: FunctionComponent<Props> = ({ children, open }) => {
 
   const [height, setHeight] = useState(0)
 
-  const contextValue = useMemo(() => ({
-    updateHeight: (heightDelta: number) => {
-      setHeight(height + heightDelta)
-      if (isFunction(updateParentHeight)) {
-        updateParentHeight(heightDelta)
-      }
-    },
-  }), [ updateParentHeight, height ])
+  const contextValue = useMemo(
+    () => ({
+      updateHeight: (heightDelta: number) => {
+        setHeight(height + heightDelta)
+        if (isFunction(updateParentHeight)) {
+          updateParentHeight(heightDelta)
+        }
+      },
+    }),
+    [updateParentHeight, height]
+  )
 
   return (
     <CollapsibleContext.Provider value={contextValue}>
@@ -44,7 +54,11 @@ interface ContainerProps {
   height: number
 }
 
-const CollapsibleContainer: FunctionComponent<ContainerProps> = ({ children, open, height }) => {
+const CollapsibleContainer: FunctionComponent<ContainerProps> = ({
+  children,
+  open,
+  height,
+}) => {
   const { updateHeight } = useContext(CollapsibleContext)
 
   const container = useRef<HTMLDivElement>(null)
@@ -84,6 +98,7 @@ const CollapsibleContainer: FunctionComponent<ContainerProps> = ({ children, ope
         updateHeight(open ? childrenHeight : -childrenHeight)
       }
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
   return (

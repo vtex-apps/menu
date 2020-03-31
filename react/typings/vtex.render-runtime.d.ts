@@ -23,7 +23,11 @@ declare module 'vtex.render-runtime' {
   }
 
   export const ExtensionPoint: ComponentType<ExtensionPointProps>
-  export const useChildBlock: <BlockProps>({id}: {id: string}) => ChildBlock<BlockProps> | null
+  export const useChildBlock: <BlockProps>({
+    id,
+  }: {
+    id: string
+  }) => ChildBlock<BlockProps> | null
   export const Helmet: ReactElement
   export const Link: ReactType
   export const NoSSR: ReactElement
@@ -40,12 +44,16 @@ declare module 'vtex.render-runtime' {
     Component: ComponentType<TOriginalProps & RenderContextProps>
   ) => ComponentType<TOriginalProps>
 
-  export const buildCacheLocator = (app: string, type: string, cacheId: string) => string
+  export const buildCacheLocator = (
+    app: string,
+    type: string,
+    cacheId: string
+  ) => string
 
   interface RenderComponent<P = {}, S = {}> extends Component<P, S> {
     getCustomMessages?: (locale: string) => any
     schema: ComponentSchema
-    getSchema?: (a: any, b: any?) => ComponentSchema
+    getSchema?: (a: any, b: ?any) => ComponentSchema
     uiSchema: UISchema
   }
 

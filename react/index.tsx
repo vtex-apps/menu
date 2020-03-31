@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types'
 import React, { ReactNode } from 'react'
-
 import { useCssHandles } from 'vtex.css-handles'
 import { Link } from 'vtex.render-runtime'
 import { Container } from 'vtex.store-components'
+
 import Options from './constants/Options'
 
 // This is required because is used in static schema attribute of Menu Component
 const GLOBAL_PAGES =
   (global as any).__RUNTIME__ && Object.keys((global as any).__RUNTIME__.pages)
 
-const MAX_ITEMS: number = 10
+const MAX_ITEMS = 10
 
 const CSS_HANDLES = [
   'container',
@@ -76,7 +76,8 @@ const MenuLink: StorefrontFunctionComponent<Props> = ({ links = [] }) => {
   const handles = useCssHandles(CSS_HANDLES)
 
   const renderLink = (link: Link, index: number): ReactNode => {
-    let className: string = `${handles.renderLink} t-small link c-muted-2 dib dim mr3 mr4-ns`
+    let className = `${handles.renderLink} t-small link c-muted-2 dib dim mr3 mr4-ns`
+    // eslint-disable-next-line default-case
     switch (link.position) {
       case Options.LEFT:
         className = `${handles.linkLeft} ${className}`
@@ -102,6 +103,7 @@ const MenuLink: StorefrontFunctionComponent<Props> = ({ links = [] }) => {
         className={className}
         key={`${link.text}-${link.position}-${index}`}
         href={getValidPage(link.externalPage)}
+        // eslint-disable-next-line react/jsx-no-target-blank
         target="_blank"
       >
         {link.text}
@@ -116,21 +118,27 @@ const MenuLink: StorefrontFunctionComponent<Props> = ({ links = [] }) => {
     <div className={`${handles.container} bg-base h2 c-muted-2 w-100 dn db-ns`}>
       <Container>
         <nav className={`${handles.menuLinkNav} flex justify-between`}>
-          <div className={`${handles.menuLinkDivLeft} flex-grow pa3 flex items-center`}>
+          <div
+            className={`${handles.menuLinkDivLeft} flex-grow pa3 flex items-center`}
+          >
             {links
               .filter(link => link.position === Options.LEFT)
               .map((link, index) => {
                 return renderLink(link, index)
               })}
           </div>
-          <div className={`${handles.menuLinkDivMiddle} flex-grow pa3 flex items-center`}>
+          <div
+            className={`${handles.menuLinkDivMiddle} flex-grow pa3 flex items-center`}
+          >
             {links
               .filter(link => link.position === Options.MIDDLE)
               .map((link, index) => {
                 return renderLink(link, index)
               })}
           </div>
-          <div className={`${handles.menuLinkDivRight} flex-grow pa3 flex items-center`}>
+          <div
+            className={`${handles.menuLinkDivRight} flex-grow pa3 flex items-center`}
+          >
             {links
               .filter(link => link.position === Options.RIGHT)
               .map((link, index) => {

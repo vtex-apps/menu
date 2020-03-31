@@ -9,6 +9,7 @@ declare module 'vtex.native-types' {
 
   export const formatIOMessage: (params: FormatIOMessageParams) => string
 
+  // eslint-disable-next-line @typescript-eslint/interface-name-prefix
   interface IOMessageProps extends InjectedIntlProps {
     id: string
   }

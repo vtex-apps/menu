@@ -77,6 +77,7 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
   if (isCollapsible) {
     return (
       <li className={classNames(handles.menuItem, 'list')}>
+        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */}
         <div
           className={handles.menuItemInnerDiv}
           onClick={event => {

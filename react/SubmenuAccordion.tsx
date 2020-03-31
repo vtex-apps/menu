@@ -1,9 +1,9 @@
 import classNames from 'classnames'
 import React from 'react'
 import { defineMessages } from 'react-intl'
-import Collapsible from './components/Collapsible'
-
 import { useCssHandles } from 'vtex.css-handles'
+
+import Collapsible from './components/Collapsible'
 
 const CSS_HANDLES = ['submenuAccordion'] as const
 
@@ -19,8 +19,10 @@ const SubmenuAccordion: StorefrontFunctionComponent<Props> = ({
   const handles = useCssHandles(CSS_HANDLES)
 
   return (
-    <Collapsible open={isOpen} >
-      <section className={classNames(handles.submenuAccordion, 'w-100 flex pl4 flex')}>
+    <Collapsible open={isOpen}>
+      <section
+        className={classNames(handles.submenuAccordion, 'w-100 flex pl4 flex')}
+      >
         {children}
       </section>
     </Collapsible>

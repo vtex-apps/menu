@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Security
+- Bump dependencies versions.
+
 ## [2.24.0] - 2020-03-04
 ### Added
 - New CSS Handle `accordionIcon`.
