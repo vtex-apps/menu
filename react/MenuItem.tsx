@@ -43,10 +43,9 @@ const submenuReducer: Reducer<SubmenuState, SubmenuAction> = (
   }
 }
 
-const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
-  children,
-  ...props
-}) => {
+const MenuItem: StorefrontFunctionComponent<MenuItemSchema & {
+  Item?: any
+}> = ({ children, Item: ItemSlot, ...props }) => {
   const { experimentalOptimizeRendering } = useContext(MenuContext)
   const [{ isActive, hasBeenActive }, dispatch] = useReducer(
     submenuReducer,
@@ -89,7 +88,8 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
         </div>
         {(hasBeenActive || !experimentalOptimizeRendering) && (
           /* Collapsible menus need to still persist after being open,
-           * to make the closing transition work properly */ <>
+           * to make the closing transition work properly */
+          <>
             <ExtensionPoint id="submenu" isOpen={isActive} />
             <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
             {children}
@@ -108,7 +108,8 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
       <Item {...props} active={isActive} />
       {(isActive || !experimentalOptimizeRendering) && (
         <>
-          <ExtensionPoint id="submenu" isOpen={isActive} />
+          {ItemSlot && <ItemSlot isOpen={isActive} />}
+          {/* <ExtensionPoint id="submenu" isOpen={isActive} /> */}
           <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
           {children}
         </>
