@@ -90,7 +90,8 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema & {
           /* Collapsible menus need to still persist after being open,
            * to make the closing transition work properly */
           <>
-            <ExtensionPoint id="submenu" isOpen={isActive} />
+            {ItemSlot && <ItemSlot isOpen={isActive} />}
+            {/* <ExtensionPoint id="submenu" isOpen={isActive} /> */}
             <ExtensionPoint id="unstable--submenu" isOpen={isActive} />
             {children}
           </>
