@@ -1,4 +1,5 @@
 node_modules/
 coverage/
-*.snap.ts
+*.ts.snap
+*.tsx.snap
 **/__mocks__/*
