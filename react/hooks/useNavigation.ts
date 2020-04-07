@@ -35,7 +35,9 @@ const navigationsMock: Record<NavigationId, Navigation> = {
   },
 }
 
-export default function useNavigation(navigationId: NavigationId) {
+export default function useNavigation(navigationId: NavigationId | undefined) {
   const navigations = navigationsMock
-  return navigations[navigationId] ? navigations[navigationId] : null
+  return navigationId && navigations[navigationId]
+    ? navigations[navigationId]
+    : null
 }

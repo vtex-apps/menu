@@ -15,6 +15,7 @@ declare module 'navigation' {
   }
 
   interface MenuItemDefaultProps {
+    id: NavigationId
     navigationItem: NavigationItem
   }
 
@@ -29,6 +30,7 @@ declare module 'navigation' {
   type WrapElements = 'all' | 'none' | PossibleWrappedElements
 
   interface SubmenuDefaultProps {
+    id: NavigationId
     navigation: {
       id: NavigationId
       Item?: React.ComponentType

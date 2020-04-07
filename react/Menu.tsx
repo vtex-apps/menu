@@ -42,7 +42,7 @@ export default function Menu(props: Props) {
     <nav className={navClasses}>
       <ul className={listClasses}>
         {navigation?.items.map((item: NavigationItem) => (
-          <MenuItem navigationItem={item} key={item.id} />
+          <MenuItem id={item.id} navigationItem={item} key={item.id} />
         ))}
       </ul>
     </nav>
