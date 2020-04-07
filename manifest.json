@@ -16,10 +16,7 @@
     "docs": "0.x"
   },
   "dependencies": {
-    "vtex.store-components": "3.x",
-    "vtex.store-graphql": "2.x",
     "vtex.native-types": "0.x",
-    "vtex.store-icons": "0.x",
     "vtex.css-handles": "0.x",
     "vtex.overlay-layout": "0.x"
   },
