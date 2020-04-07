@@ -38,6 +38,9 @@ export default function MenuItemRoot(props: Props) {
       className={containerClasses}
       trigger={submenuNavigation ? 'click' : 'none'}
     >
+      {/* This navigationItem.link might be undefined, but thats ok
+       * https://stackoverflow.com/a/10510353
+       */}
       <a className={linkClasses} href={navigationItem.link}>
         {navigationItem.label}
       </a>

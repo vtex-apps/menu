@@ -1,5 +1,7 @@
 import { NavigationId, Navigation } from 'navigation'
 
+// This is temporary and will be removed when we have
+// real data
 const navigationsMock: Record<NavigationId, Navigation> = {
   '10000': {
     id: 10000,
