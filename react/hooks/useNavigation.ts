@@ -29,8 +29,50 @@ const navigationsMock: Record<NavigationId, Navigation> = {
     title: 'More',
     items: [
       {
-        id: 10004,
+        id: 10005,
         label: 'About us',
+        link: '/about-us',
+        subNavigation: '10008',
+      },
+      {
+        id: 10006,
+        label: 'About you',
+        link: '/about-us',
+      },
+      {
+        id: 10007,
+        label: 'About them',
+        link: '/about-us',
+      },
+    ],
+  },
+  '10008': {
+    id: 10008,
+    title: 'About us',
+    items: [
+      {
+        id: 10009,
+        label: 'Who we are',
+        link: '/about-us',
+      },
+      {
+        id: 10010,
+        label: 'What we are',
+        link: '/about-us',
+      },
+      {
+        id: 10011,
+        label: 'What we eat',
+        link: '/about-us',
+      },
+      {
+        id: 10012,
+        label: 'WHere we live',
+        link: '/about-us',
+      },
+      {
+        id: 10013,
+        label: 'What we do',
         link: '/about-us',
       },
     ],

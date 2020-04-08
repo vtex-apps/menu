@@ -3,7 +3,7 @@ import { useCssHandles } from 'vtex.css-handles'
 import { BaseOverlay } from 'vtex.overlay-layout'
 import { SubmenuProps, PossibleWrappedElements, WrapElements } from 'navigation'
 
-import DefaultSubmenuItem from './SubmenuItem'
+import DefaultSubmenuItem from './SubmenuItemVerticalList'
 import useNavigation from './hooks/useNavigation'
 
 const overlayClasses = {
@@ -31,7 +31,7 @@ export default function Submenu(props: SubmenuProps) {
   }
 
   let items: JSX.Element | JSX.Element[] = navigation.items.map((item, i) => (
-    <Item id={item.id} navigation={item} key={i} />
+    <Item id={item.id} navigationItem={item} key={i} />
   ))
   if (items.length > 0 && shouldWrap('items', wrapElements)) {
     items = <div className={handles.itemsWrapper}>{items}</div>
