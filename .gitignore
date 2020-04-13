@@ -1,5 +1,6 @@
-### SublimeText ###
+### Editors ###
 *.sublime-workspace
+.vscode/
 
 ### OSX ###
 .DS_Store
@@ -28,12 +29,13 @@ $RECYCLE.BIN/
 # App specific
 node_modules/
 docs/_book/
-*.orig
 .tmp
 .idea
 npm-debug.log
 .build/
 lib
-.eslintrc
-.editorconfig
-package-lock.json
+dist
+build
+lerna-debug.log
+yarn-error.log
+*.orig
