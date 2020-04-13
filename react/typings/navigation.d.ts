@@ -16,26 +16,20 @@ declare module 'navigation' {
 
   interface MenuItemProps {
     id: NavigationId
-    navigationItem: NavigationLeafItem | NavigationItem
+    navigationItem: NavigationItem
     children?: React.ReactNode
+    linkItemClasses?: string
   }
 
-  interface MenuItemLeafProps extends MenuItemProps {
-    [key: string]: any
-  }
-
-  type PossibleWrappedElements = 'children' | 'items'
+  type PossibleWrappedElements = 'children'
 
   // This is useful if the user wants to change the order between
   // children and the items of the menu
-  type WrapElements = 'all' | 'none' | PossibleWrappedElements
+  type WrapElements = 'none' | PossibleWrappedElements
 
   interface SubmenuProps {
     id: NavigationId
-    navigation: {
-      id: NavigationId
-      Item?: React.ComponentType
-    }
+    SubmenuList?: React.ComponentType
     children?: React.ReactNode
     wrapElements?: WrapElements
   }

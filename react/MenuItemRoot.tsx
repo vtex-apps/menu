@@ -45,14 +45,13 @@ export default function MenuItemRoot(props: Props) {
     >
       <MenuItem
         id={navigationItem.id}
-        className={linkClasses}
+        linkItemClasses={linkClasses}
         navigationItem={navigationItem}
       />
       {submenuNavigation && (
         <Submenu
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           id={navigationItem.subNavigation!}
-          navigation={submenuNavigation}
         />
       )}
     </BaseTrigger>

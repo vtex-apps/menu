@@ -8,41 +8,66 @@ import useNavigation from './hooks/useNavigation'
 
 interface Props {
   id: NavigationId
-  navigationItem: NavigationItem
-  MenuItem?: React.ComponentType
+  navigationItem?: NavigationItem
+  TopItem?: React.ComponentType
+  ListItem?: React.ComponentType
+  linkItemClasses?: string
 }
 
 const CSS_HANDLES = [
-  'submenuItemWrapper',
+  'verticalListWrapper',
   'submenuTopLink',
-  'submenuList',
-  'submenuListItem',
+  'submenuVerticalList',
+  'submenuVerticalListItem',
 ] as const
 
 export default function SubmenuItemList(props: Props) {
-  const { navigationItem, MenuItem = MenuItemDefault } = props
-  const { subNavigation } = navigationItem
+  const {
+    navigationItem,
+    TopItem = MenuItemDefault,
+    ListItem = MenuItemDefault,
+    linkItemClasses,
+  } = props
+  const subNavigation = navigationItem?.subNavigation
   const handles = useCssHandles(CSS_HANDLES)
   const navigation = useNavigation(subNavigation)
-  const topLinkClasses = classnames(handles.submenuTopLink, '')
-  const listItemClasses = classnames(handles.submenuListItem, '')
+
+  const wrapperClasses = classnames(
+    handles.verticalListWrapper,
+    'flex flex-column items-start'
+  )
+  const topLinkClasses = classnames(
+    handles.submenuTopLink,
+    linkItemClasses,
+    'link pv3 fw7 t-body'
+  )
+  const listClasses = classnames(
+    handles.submenuVerticalList,
+    'flex flex-column pv2 c-muted-3'
+  )
+  const listItemClasses = classnames(
+    handles.submenuVerticalListItem,
+    'link t-body'
+  )
   const hasList = (navigation?.items.length ?? 0) > 0
 
   return (
-    <div className={handles.submenuItemWrapper}>
-      <MenuItem
-        id={navigationItem.id}
-        className={topLinkClasses}
-        navigationItem={navigationItem}
-      />
+    <div className={wrapperClasses}>
+      {navigationItem && (
+        <TopItem
+          id={navigationItem.id}
+          linkItemClasses={topLinkClasses}
+          navigationItem={navigationItem}
+        />
+      )}
       {hasList && (
-        <div className={handles.submenuList}>
+        <div className={listClasses}>
           {navigation?.items?.map(item => (
-            <MenuItem
+            <ListItem
               id={item.id}
               key={item.id}
               navigationItem={item}
-              className={listItemClasses}
+              linkItemClasses={listItemClasses}
             />
           ))}
         </div>
