@@ -1,0 +1,10 @@
+{
+  "extends": "vtex-react",
+  "root": true,
+  "env": {
+    "node": false,
+    "es6": true,
+    "jest": true,
+    "browser": true
+  }
+}

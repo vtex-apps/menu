@@ -3,7 +3,7 @@ declare module 'navigation' {
 
   interface NavigationItem {
     id: NavigationId
-    label: string | undefined
+    label?: string
     link?: string
     subNavigation?: NavigationId
   }
@@ -14,32 +14,23 @@ declare module 'navigation' {
     items: NavigationItem[]
   }
 
-  interface MenuItemDefaultProps {
+  interface MenuItemProps {
     id: NavigationId
     navigationItem: NavigationItem
+    children?: React.ReactNode
+    linkItemClasses?: string
   }
 
-  interface MenuItemProps extends MenuItemDefaultProps {
-    [key: string]: any
-  }
-
-  type PossibleWrappedElements = 'children' | 'items'
+  type PossibleWrappedElements = 'children'
 
   // This is useful if the user wants to change the order between
   // children and the items of the menu
-  type WrapElements = 'all' | 'none' | PossibleWrappedElements
+  type WrapElements = 'none' | PossibleWrappedElements
 
-  interface SubmenuDefaultProps {
+  interface SubmenuProps {
     id: NavigationId
-    navigation: {
-      id: NavigationId
-      Item?: React.ComponentType
-    }
+    SubmenuList?: React.ComponentType
     children?: React.ReactNode
     wrapElements?: WrapElements
-  }
-
-  interface SubmenuProps extends SubmenuDefaultProps {
-    [key: string]: any
   }
 }
