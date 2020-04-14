@@ -26,7 +26,7 @@ const navigationsMock: Record<NavigationId, Navigation> = {
   },
   '10004': {
     id: 10004,
-    title: 'More',
+    title: 'Title of the menu More',
     items: [
       {
         id: 10005,
