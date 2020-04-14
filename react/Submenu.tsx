@@ -16,7 +16,7 @@ function shouldWrap(element: PossibleWrappedElements, value: WrapElements) {
   return value === element
 }
 
-const CSS_HANDLES = ['childrenWrapper', 'titleContainer', 'title'] as const
+const CSS_HANDLES = ['childrenWrapper'] as const
 
 export default function Submenu(props: SubmenuProps) {
   const {
@@ -38,20 +38,8 @@ export default function Submenu(props: SubmenuProps) {
     )
   }
 
-  const titleContainerClasses = classnames(
-    handles.titleContainer,
-    'flex justify-center'
-  )
-  const titleClasses = classnames(handles.titleContainer, '')
-
   return (
     <BaseOverlay classes={overlayClasses}>
-      {navigation?.title && (
-        <div className={titleContainerClasses}>
-          {/* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */}
-          <span className={titleClasses}>{navigation!.title}</span>
-        </div>
-      )}
       {navigation && <SubmenuList id={id} />}
       {maybeWrappedChildren}
     </BaseOverlay>
