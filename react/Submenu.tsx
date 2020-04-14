@@ -1,5 +1,4 @@
 import React from 'react'
-import classnames from 'classnames'
 import { useCssHandles } from 'vtex.css-handles'
 import { BaseOverlay } from 'vtex.overlay-layout'
 import { SubmenuProps, PossibleWrappedElements, WrapElements } from 'navigation'
