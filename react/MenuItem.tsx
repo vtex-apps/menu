@@ -3,9 +3,18 @@ import classnames from 'classnames'
 import { useCssHandles } from 'vtex.css-handles'
 import { MenuItemProps as Props } from 'navigation'
 
+// mock code
+import { MockSubConfig } from './hooks/useMockConfig'
+
 const CSS_HANDLES = ['menuItem', 'menuItemLabel', 'menuItemContent']
 
-export default function MenuItem(props: Props) {
+// mock code
+interface MockProps extends Props {
+  mockConfig: MockSubConfig | null
+}
+
+// mock code
+export default function MenuItem(props: MockProps) {
   const {
     children,
     linkItemClasses,

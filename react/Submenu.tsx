@@ -3,8 +3,9 @@ import { useCssHandles } from 'vtex.css-handles'
 import { BaseOverlay } from 'vtex.overlay-layout'
 import { SubmenuProps, PossibleWrappedElements, WrapElements } from 'navigation'
 
-import DefaultSubmenuList from './SubmenuItemHorizontalList'
 import useNavigation from './hooks/useNavigation'
+import DefaultSubmenuList from './SubmenuItemHorizontalList'
+import useMockConfig, { MockSubConfig } from './hooks/useMockConfig'
 
 const overlayClasses = {
   container: 'outline-0 bg-base pa5 flex flex-column justify-between',
@@ -18,14 +19,17 @@ function shouldWrap(element: PossibleWrappedElements, value: WrapElements) {
 const CSS_HANDLES = ['childrenWrapper'] as const
 
 export default function Submenu(props: SubmenuProps) {
-  const {
-    id,
-    children,
-    wrapElements = 'children',
-    SubmenuList = DefaultSubmenuList,
-  } = props
+  const { id, children, wrapElements = 'children' } = props
   const navigation = useNavigation(id)
   const handles = useCssHandles(CSS_HANDLES)
+  // mock code
+  let { SubmenuList = DefaultSubmenuList } = props
+  const mockConfig = useMockConfig(id)
+  let mockFoward: MockSubConfig | null = null
+  if (mockConfig?.List) {
+    SubmenuList = mockConfig?.List
+    mockFoward = mockConfig.subConfig as MockSubConfig
+  }
 
   let maybeWrappedChildren = children
   if (
@@ -39,7 +43,14 @@ export default function Submenu(props: SubmenuProps) {
 
   return (
     <BaseOverlay classes={overlayClasses}>
-      {navigation && <SubmenuList id={id} />}
+      {navigation && (
+        <SubmenuList
+          id={id}
+          // mock code
+          mockConfig={mockFoward}
+          navigationItem={{ id, subNavigation: id }}
+        />
+      )}
       {maybeWrappedChildren}
     </BaseOverlay>
   )

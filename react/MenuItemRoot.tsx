@@ -44,6 +44,8 @@ export default function MenuItemRoot(props: Props) {
       trigger={submenuNavigation ? 'click' : 'none'}
     >
       <MenuItem
+        // mock code
+        mockConfig={null}
         id={navigationItem.id}
         linkItemClasses={linkClasses}
         navigationItem={navigationItem}
