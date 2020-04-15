@@ -10,17 +10,84 @@ const navigationsMock: Record<NavigationId, Navigation> = {
       {
         id: 10001,
         label: 'Apparel & Accessories',
-        link: '/apparel---accessories/',
+        subNavigation: 10026,
       },
       {
         id: 10002,
         label: 'Home & Decor',
-        link: '/home---decor/',
+        subNavigation: 10033,
       },
       {
         id: 10003,
         label: 'More',
         subNavigation: 10004,
+      },
+    ],
+  },
+  '10033': {
+    id: 10033,
+    title: 'Home & Decor',
+    items: [
+      {
+        id: 10034,
+        label: 'My home, my rules',
+        link: '#',
+      },
+      {
+        id: 10034,
+        label: 'My home, my rules',
+        link: '#',
+      },
+      {
+        id: 10034,
+        label: 'My home, my rules',
+        link: '#',
+      },
+      {
+        id: 10034,
+        label: 'My home, my rules',
+        link: '#',
+      },
+      {
+        id: 10034,
+        label: 'My home, my rules',
+        link: '#',
+      },
+    ],
+  },
+  '10026': {
+    id: 10026,
+    title: 'Main Navigation',
+    items: [
+      {
+        id: 10027,
+        label: 'Hats',
+        link: '/apparel--accessories/hats',
+      },
+      {
+        id: 10028,
+        label: 'Shoes',
+        link: '/apparel--accessories/shoes',
+      },
+      {
+        id: 10029,
+        label: 'Accessories',
+        link: '/apparel--accessories/accessories',
+      },
+      {
+        id: 10030,
+        label: 'Watches',
+        link: '/apparel--accessories/watches',
+      },
+      {
+        id: 10031,
+        label: 'Eyeglasses',
+        link: '/apparel--accessories/eyeglasses',
+      },
+      {
+        id: 10032,
+        label: 'Clothing',
+        link: '/apparel--accessories/clothing',
       },
     ],
   },
