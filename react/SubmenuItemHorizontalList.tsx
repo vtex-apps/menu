@@ -73,6 +73,7 @@ export default function SubmenuItemHorizontalList(props: Props) {
               id={item.id}
               key={item.id}
               navigationItem={item}
+              linkItemClasses="link"
             />
           ))}
         </div>

@@ -6,7 +6,7 @@ import { MenuItemProps as Props } from 'navigation'
 // mock code
 import { MockSubConfig } from './hooks/useMockConfig'
 
-const CSS_HANDLES = ['menuItem', 'menuItemLabel', 'menuItemContent']
+const CSS_HANDLES = ['menuItem', 'menuItemLabel', 'menuItemContent'] as const
 
 // mock code
 interface MockProps extends Props {
@@ -22,7 +22,7 @@ export default function MenuItem(props: MockProps) {
   } = props
   const handles = useCssHandles(CSS_HANDLES)
   const hasChildren = React.Children.count(children) > 0
-  const linkClasses = classnames(handles.menuItemm, linkItemClasses)
+  const linkClasses = classnames(handles.menuItem, linkItemClasses)
 
   if (!hasChildren && !label) {
     return null
