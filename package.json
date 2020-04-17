@@ -21,6 +21,7 @@
     ]
   },
   "devDependencies": {
+    "@vtex/danger": "^0.0.16",
     "@vtex/prettier-config": "^0.1.3",
     "eslint": "^6.8.0",
     "eslint-config-vtex": "^12.3.1",
