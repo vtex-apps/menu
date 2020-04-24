@@ -2,5 +2,25 @@
   "menu": {
     "component": "Menu",
     "composition": "children"
+  },
+  "menu-item": {
+    "component": "MenuItem",
+    "composition": "children"
+  },
+  "menu-item.root": {
+    "component": "MenuItemRoot",
+    "composition": "children"
+  },
+  "menu-item.vertical-list": {
+    "component": "SubmenuItemVerticalList",
+    "composition": "children"
+  },
+  "menu-item.horizontal-list": {
+    "component": "SubmenuItemHorizontalList",
+    "composition": "children"
+  },
+  "submenu": {
+    "component": "Submenu",
+    "composition": "children"
   }
 }

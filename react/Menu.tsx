@@ -8,30 +8,17 @@ import useNavigation from './hooks/useNavigation'
 
 type NavigationId = number
 
-interface Navigation {
-  id: NavigationId
-  MenuItem: React.ComponentType<MenuItemProps>
-}
-
 interface Props {
-  navigation?: Partial<Navigation>
-}
-
-const defaultNavigation: Navigation = {
-  id: 10000,
-  MenuItem: DefaultMenuItemRoot,
+  navigationId: NavigationId
+  MenuItem?: React.ComponentType<MenuItemProps>
 }
 
 const CSS_HANDLES = ['navigation', 'navList'] as const
 
 export default function Menu(props: Props) {
-  const { navigation: navProp = defaultNavigation } = props
+  const { navigationId, MenuItem = DefaultMenuItemRoot } = props
   const handles = useCssHandles(CSS_HANDLES)
-  const { id, MenuItem } = {
-    ...defaultNavigation,
-    ...navProp,
-  }
-  const navigation = useNavigation(id)
+  const navigation = useNavigation(navigationId)
   const navClasses = classnames(handles.navigation, 'flex items-center')
   const listClasses = classnames(
     handles.navList,
