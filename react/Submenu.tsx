@@ -3,12 +3,11 @@ import { useCssHandles } from 'vtex.css-handles'
 import { BaseOverlay } from 'vtex.overlay-layout'
 import { SubmenuProps, PossibleWrappedElements, WrapElements } from 'navigation'
 
-import DefaultSubmenuList from './SubmenuItemHorizontalList'
+import DefaultSubmenuList from './MenuItemHorizontalList'
 import useNavigation from './hooks/useNavigation'
 
 const overlayClasses = {
   container: 'outline-0 bg-base pa5 flex flex-column justify-between',
-  popper: 'w-100',
 }
 
 function shouldWrap(element: PossibleWrappedElements, value: WrapElements) {

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import classnames from 'classnames'
 import { MenuItemProps } from 'navigation'
 import { useCssHandles } from 'vtex.css-handles'
@@ -29,30 +29,18 @@ export default function MenuItemRoot(props: Props) {
     'pa4 flex items-center h-100 link c-on-base'
   )
 
-  const submenuNavigation = useMemo(() => {
-    if (typeof navigationItem.subNavigation === 'undefined') {
-      return
-    }
-
-    return {
-      id: navigationItem.subNavigation,
-    }
-  }, [navigationItem.subNavigation])
   return (
     <BaseTrigger
       className={containerClasses}
-      trigger={submenuNavigation ? 'click' : 'none'}
+      trigger={navigationItem.subNavigation ? 'click' : 'none'}
     >
       <MenuItem
         id={navigationItem.id}
         linkItemClasses={linkClasses}
         navigationItem={navigationItem}
       />
-      {submenuNavigation && (
-        <Submenu
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          id={navigationItem.subNavigation!}
-        />
+      {navigationItem.subNavigation && (
+        <Submenu id={navigationItem.subNavigation} />
       )}
     </BaseTrigger>
   )

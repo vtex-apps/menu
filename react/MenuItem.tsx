@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import { useCssHandles } from 'vtex.css-handles'
 import { MenuItemProps as Props } from 'navigation'
 
-const CSS_HANDLES = ['menuItem', 'menuItemLabel', 'menuItemContent']
+const CSS_HANDLES = ['menuItem', 'menuItemLabel', 'menuItemContent'] as const
 
 export default function MenuItem(props: Props) {
   const {
@@ -13,7 +13,7 @@ export default function MenuItem(props: Props) {
   } = props
   const handles = useCssHandles(CSS_HANDLES)
   const hasChildren = React.Children.count(children) > 0
-  const linkClasses = classnames(handles.menuItemm, linkItemClasses)
+  const linkClasses = classnames(handles.menuItem, linkItemClasses)
 
   if (!hasChildren && !label) {
     return null
