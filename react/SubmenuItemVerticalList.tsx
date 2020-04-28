@@ -23,12 +23,13 @@ const CSS_HANDLES = [
 
 export default function SubmenuItemList(props: Props) {
   const {
+    id,
     navigationItem,
     TopItem = MenuItemDefault,
     ListItem = MenuItemDefault,
     linkItemClasses,
   } = props
-  const subNavigation = navigationItem?.subNavigation
+  const subNavigation = navigationItem?.subNavigation ?? id
   const handles = useCssHandles(CSS_HANDLES)
   const navigation = useNavigation(subNavigation)
 

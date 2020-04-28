@@ -29,9 +29,8 @@ export default function SubmenuItemHorizontalList(props: Props) {
     TopItem = MenuItemDefault,
     ListItem = MenuListItemDefault,
   } = props
-  const subNavigation = navigationItem?.subNavigation
+  const navigationId = navigationItem?.subNavigation ?? id
   const handles = useCssHandles(CSS_HANDLES)
-  const navigationId = subNavigation ?? id
   const navigation = useNavigation(navigationId)
 
   const hasList = (navigation?.items.length ?? 0) > 0

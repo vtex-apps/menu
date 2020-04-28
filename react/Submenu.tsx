@@ -8,7 +8,6 @@ import useNavigation from './hooks/useNavigation'
 
 const overlayClasses = {
   container: 'outline-0 bg-base pa5 flex flex-column justify-between',
-  popper: 'w-100',
 }
 
 function shouldWrap(element: PossibleWrappedElements, value: WrapElements) {

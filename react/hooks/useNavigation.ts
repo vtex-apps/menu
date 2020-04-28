@@ -7,36 +7,36 @@ const navigationsMock: Record<NavigationId, Navigation> = {
     id: '10000',
     title: 'Main Navigation',
     items: [
-      {
-        id: '10001',
-        label: 'only vertical',
-        subNavigation: '10026',
-      },
-      {
-        id: '10002',
-        label: 'only horizontal',
-        subNavigation: '10033',
-      },
-      {
-        id: '10003',
-        label: 'horizontal -> vertical',
-        subNavigation: '10004',
-      },
-      {
-        id: '10039',
-        label: 'vertical -> horizontal',
-        subNavigation: '10040',
-      },
+      // {
+      //   id: '10001',
+      //   label: 'only vertical',
+      //   subNavigation: '10026',
+      // },
+      // {
+      //   id: '10002',
+      //   label: 'only horizontal',
+      //   subNavigation: '10033',
+      // },
+      // {
+      //   id: '10003',
+      //   label: 'horizontal -> vertical',
+      //   subNavigation: '10004',
+      // },
+      // {
+      //   id: '10039',
+      //   label: 'vertical -> horizontal',
+      //   subNavigation: '10040',
+      // },
       {
         id: '10141',
         label: 'horizontal -> vertical -> vertical',
         subNavigation: '10041',
       },
-      {
-        id: '10080',
-        label: 'brands',
-        subNavigation: '10081',
-      },
+      // {
+      //   id: '10080',
+      //   label: 'brands',
+      //   subNavigation: '10081',
+      // },
     ],
   },
   '10081': {
@@ -93,11 +93,13 @@ const navigationsMock: Record<NavigationId, Navigation> = {
       {
         id: '10043',
         label: 'Agility',
+        link: '#',
         subNavigation: '10046',
       },
       {
         id: '10044',
         label: 'Intelligence',
+        link: '#',
         subNavigation: '10047',
       },
     ],
@@ -109,11 +111,13 @@ const navigationsMock: Record<NavigationId, Navigation> = {
       {
         id: '10068',
         label: 'Dire',
+        link: '#',
         subNavigation: '10070',
       },
       {
         id: '10069',
         label: 'Radiant',
+        link: '#',
         subNavigation: '10071',
       },
     ],
@@ -224,6 +228,7 @@ const navigationsMock: Record<NavigationId, Navigation> = {
       {
         id: '10059',
         label: 'Radiant',
+        link: '#',
         subNavigation: '10061',
       },
     ],
@@ -235,11 +240,13 @@ const navigationsMock: Record<NavigationId, Navigation> = {
       {
         id: '10048',
         label: 'Dire',
+        link: '#',
         subNavigation: '10050',
       },
       {
         id: '10049',
         label: 'Radiant',
+        link: '#',
         subNavigation: '10051',
       },
     ],
@@ -251,14 +258,17 @@ const navigationsMock: Record<NavigationId, Navigation> = {
       {
         id: '10052',
         label: 'Pudge',
+        link: '#',
       },
       {
         id: '10053',
         label: 'Slardar',
+        link: '#',
       },
       {
         id: '10054',
         label: 'Bristleback',
+        link: '#',
       },
     ],
   },
@@ -269,14 +279,17 @@ const navigationsMock: Record<NavigationId, Navigation> = {
       {
         id: '10055',
         label: 'Dragon Knight',
+        link: '#',
       },
       {
         id: '10056',
         label: 'Earth Spirit',
+        link: '#',
       },
       {
         id: '10057',
         label: 'Earth Shaker',
+        link: '#',
       },
     ],
   },
