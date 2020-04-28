@@ -12,11 +12,11 @@
     "composition": "children"
   },
   "menu-item.vertical-list": {
-    "component": "SubmenuItemVerticalList",
+    "component": "MenuItemVerticalList",
     "composition": "children"
   },
   "menu-item.horizontal-list": {
-    "component": "SubmenuItemHorizontalList",
+    "component": "MenuItemHorizontalList",
     "composition": "children"
   },
   "submenu": {

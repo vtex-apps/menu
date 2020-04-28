@@ -5,7 +5,7 @@ import { NavigationItem, NavigationId } from 'navigation'
 
 import MenuItemDefault from './MenuItem'
 import useNavigation from './hooks/useNavigation'
-import MenuListItemDefault from './SubmenuItemVerticalList'
+import MenuListItemDefault from './MenuItemVerticalList'
 
 interface Props {
   id: NavigationId
@@ -21,7 +21,7 @@ const CSS_HANDLES = [
   'submenuHorizontalList',
 ] as const
 
-export default function SubmenuItemHorizontalList(props: Props) {
+export default function MenuItemHorizontalList(props: Props) {
   const {
     id,
     navigationItem,

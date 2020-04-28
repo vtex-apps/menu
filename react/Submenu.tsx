@@ -3,7 +3,7 @@ import { useCssHandles } from 'vtex.css-handles'
 import { BaseOverlay } from 'vtex.overlay-layout'
 import { SubmenuProps, PossibleWrappedElements, WrapElements } from 'navigation'
 
-import DefaultSubmenuList from './SubmenuItemHorizontalList'
+import DefaultSubmenuList from './MenuItemHorizontalList'
 import useNavigation from './hooks/useNavigation'
 
 const overlayClasses = {

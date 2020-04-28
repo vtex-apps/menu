@@ -21,7 +21,7 @@ const CSS_HANDLES = [
   'submenuVerticalListItem',
 ] as const
 
-export default function SubmenuItemList(props: Props) {
+export default function MenuItemVerticalList(props: Props) {
   const {
     id,
     navigationItem,
