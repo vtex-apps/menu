@@ -138,7 +138,8 @@ The available `menu-item` block props are as follows:
 | `highlight`         | `boolean` | Whether the item has highlight                                            | N/A           |
 | `iconPosition`         | `String` | Icon position relative to the menu item text. Either to the `left` or `right`                                           | `left`          |
 | `iconProps`         | `IconProps` | Icon props                                           | N/A           |
-| `itemProps`         | `CategoryItem` or `CustomItem` | Item props                                           | N/A           |
+| `itemProps`         | `CategoryItem` or `CustomItem` | Item props                                           | N/A   |
+| `experimentalOptimizeRendering` | `boolean` | Whether the `menu-item`'s submenu will be lazy loaded i.e. only loaded with user interaction (`true`) or not (`false`).  |  `false` | 
 
 - For icons in the menu items:
 
