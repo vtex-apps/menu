@@ -86,8 +86,8 @@ const navigationsMock: Record<NavigationId, Navigation> = {
     items: [
       {
         id: '10042',
-        label: 'Strength',
-        link: '#',
+        label: 'Strength anchor el',
+        link: 'asduashduas-copy-2000035-/p',
         subNavigation: '10045',
       },
       {

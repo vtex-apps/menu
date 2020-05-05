@@ -14,13 +14,6 @@ declare module 'navigation' {
     items: NavigationItem[]
   }
 
-  interface MenuItemProps {
-    id: NavigationId
-    navigationItem: NavigationItem
-    children?: React.ReactNode
-    linkItemClasses?: string
-  }
-
   type PossibleWrappedElements = 'children'
 
   // This is useful if the user wants to change the order between

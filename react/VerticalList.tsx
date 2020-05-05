@@ -9,25 +9,26 @@ import useNavigation from './hooks/useNavigation'
 interface Props {
   id: NavigationId
   navigationItem?: NavigationItem
-  TopItem?: React.ComponentType
-  ListItem?: React.ComponentType
-  linkItemClasses?: string
+  TopItem?: typeof MenuItemDefault
+  MenuItem?: typeof MenuItemDefault
+  ListItem?: React.ComponentType<any>
 }
 
 const CSS_HANDLES = [
   'verticalListWrapper',
-  'submenuTopLink',
-  'submenuVerticalList',
-  'submenuVerticalListItem',
+  'verticalListTopLink',
+  'verticalList',
+  'verticalListItemContainer',
+  'menuItem',
 ] as const
 
-export default function MenuItemVerticalList(props: Props) {
+export default function VerticalList(props: Props) {
   const {
     id,
+    ListItem,
     navigationItem,
     TopItem = MenuItemDefault,
-    ListItem = MenuItemDefault,
-    linkItemClasses,
+    MenuItem = MenuItemDefault,
   } = props
   const subNavigation = navigationItem?.subNavigation ?? id
   const handles = useCssHandles(CSS_HANDLES)
@@ -37,19 +38,12 @@ export default function MenuItemVerticalList(props: Props) {
     handles.verticalListWrapper,
     'flex flex-column items-start'
   )
-  const topLinkClasses = classnames(
-    handles.submenuTopLink,
-    linkItemClasses,
-    'link pv3 fw7 t-body'
-  )
+  const topLinkClasses = classnames(handles.verticalListTopLink, 'pv3 fw7')
   const listClasses = classnames(
-    handles.submenuVerticalList,
-    'flex flex-column pv2 c-muted-3'
+    handles.verticalList,
+    'flex flex-column pv2 c-muted-3 list pa0'
   )
-  const listItemClasses = classnames(
-    handles.submenuVerticalListItem,
-    'link t-body'
-  )
+  const menuItemClasses = classnames(handles.menuItem)
   const hasList = (navigation?.items.length ?? 0) > 0
 
   return (
@@ -57,21 +51,26 @@ export default function MenuItemVerticalList(props: Props) {
       {navigationItem && (
         <TopItem
           id={navigationItem.id}
-          linkItemClasses={topLinkClasses}
+          className={topLinkClasses}
           navigationItem={navigationItem}
         />
       )}
       {hasList && (
-        <div className={listClasses}>
-          {navigation?.items?.map(item => (
-            <ListItem
-              id={item.id}
-              key={item.id}
-              navigationItem={item}
-              linkItemClasses={listItemClasses}
-            />
+        <ul className={listClasses}>
+          {navigation?.items.map(item => (
+            <li key={item.id} className={handles.verticalListItemContainer}>
+              {ListItem ? (
+                <ListItem id={item.id} navigationItem={item} />
+              ) : (
+                <MenuItem
+                  id={item.id}
+                  navigationItem={item}
+                  className={menuItemClasses}
+                />
+              )}
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </div>
   )

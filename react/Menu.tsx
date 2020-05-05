@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 import { useCssHandles } from 'vtex.css-handles'
-import { MenuItemProps, NavigationItem } from 'navigation'
+import { NavigationItem } from 'navigation'
 
 import DefaultMenuItemRoot from './MenuItemRoot'
 import useNavigation from './hooks/useNavigation'
@@ -10,10 +10,10 @@ type NavigationId = number
 
 interface Props {
   navigationId: NavigationId
-  MenuItem?: React.ComponentType<MenuItemProps>
+  MenuItem?: typeof DefaultMenuItemRoot
 }
 
-const CSS_HANDLES = ['navigation', 'navList'] as const
+const CSS_HANDLES = ['navigation', 'navList', 'menuItemRootContainer'] as const
 
 export default function Menu(props: Props) {
   const { navigationId, MenuItem = DefaultMenuItemRoot } = props
@@ -27,9 +27,15 @@ export default function Menu(props: Props) {
 
   return (
     <nav className={navClasses}>
-      <ul className={listClasses}>
+      <ul className={listClasses} role="menu">
         {navigation?.items.map((item: NavigationItem) => (
-          <MenuItem id={item.id} navigationItem={item} key={item.id} />
+          <li
+            key={item.id}
+            role="menuitem"
+            className={handles.menuItemRootContainer}
+          >
+            <MenuItem id={item.id} navigationItem={item} />
+          </li>
         ))}
       </ul>
     </nav>

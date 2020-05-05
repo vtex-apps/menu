@@ -11,12 +11,16 @@
     "component": "MenuItemRoot",
     "composition": "children"
   },
-  "menu-item.vertical-list": {
-    "component": "MenuItemVerticalList",
+  "menu-list": {
+    "component": "*",
     "composition": "children"
   },
-  "menu-item.horizontal-list": {
-    "component": "MenuItemHorizontalList",
+  "menu-list.vertical": {
+    "component": "VerticalList",
+    "composition": "children"
+  },
+  "menu-list.horizontal": {
+    "component": "HorizontalList",
     "composition": "children"
   },
   "submenu": {

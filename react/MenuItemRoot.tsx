@@ -1,44 +1,61 @@
 import React from 'react'
 import classnames from 'classnames'
-import { MenuItemProps } from 'navigation'
+import { Link } from 'vtex.render-runtime'
 import { useCssHandles } from 'vtex.css-handles'
 import { BaseTrigger } from 'vtex.overlay-layout'
+import { NavigationId, NavigationItem } from 'navigation'
 
-import styles from './styles.css'
 import SubmenuDefault from './Submenu'
-import MenuItemDefault from './MenuItem'
 
-interface Props extends MenuItemProps {
+type TypeOfRoute = 'internal' | 'external'
+
+interface Props {
+  id: NavigationId
+  navigationItem: NavigationItem
+  children?: React.ReactNode
+  className?: string
+  typeOfRoute?: TypeOfRoute
   Submenu?: React.ComponentType
-  MenuItem?: React.ComponentType<MenuItemProps>
 }
 
-const CSS_HANDLES = ['menuItem', 'link'] as const
+const CSS_HANDLES = [
+  'topMenuItem',
+  'topMenuItemLabel',
+  'topMenuSubmenuTrigger',
+  'topMenuItemExternal',
+] as const
 
 export default function MenuItemRoot(props: Props) {
   const {
     navigationItem,
     Submenu = SubmenuDefault,
-    MenuItem = MenuItemDefault,
+    typeOfRoute = 'internal',
   } = props
   const handles = useCssHandles(CSS_HANDLES)
 
-  const containerClasses = classnames(handles.menuItem, styles.cursorDefault)
   const linkClasses = classnames(
-    handles.link,
-    'pa4 flex items-center h-100 link c-on-base'
+    handles.topMenuItem,
+    'pa4 flex items-center h-100 link c-on-base',
+    {
+      [handles.topMenuItemExternal]: typeOfRoute === 'external',
+    }
   )
+
+  const triggerClasses = classnames(
+    handles.topMenuSubmenuTrigger,
+    'h-100 pointer'
+  )
+
+  const target = typeOfRoute === 'internal' ? undefined : '_blank'
 
   return (
     <BaseTrigger
-      className={containerClasses}
+      className={triggerClasses}
       trigger={navigationItem.subNavigation ? 'click' : 'none'}
     >
-      <MenuItem
-        id={navigationItem.id}
-        linkItemClasses={linkClasses}
-        navigationItem={navigationItem}
-      />
+      <Link className={linkClasses} to={navigationItem.link} target={target}>
+        <span className={handles.topMenuItemLabel}>{navigationItem.label}</span>
+      </Link>
       {navigationItem.subNavigation && (
         <Submenu id={navigationItem.subNavigation} />
       )}
