@@ -44,7 +44,7 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
     [orientation, textType]
   )
 
-  const menuItems = itemsProps.map(
+  const menuItems = itemsProps.filter(item => item.itemProps).map(
     ({ itemProps: { text }, itemProps, ...rest }) => (
       <MenuItem key={text} itemProps={itemProps} {...rest} />
     )
