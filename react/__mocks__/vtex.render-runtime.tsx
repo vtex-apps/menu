@@ -1,5 +1,4 @@
-import React, { Component, ReactNode } from 'react'
-import PropTypes from 'prop-types'
+import React, { ReactNode } from 'react'
 
 interface Props {
   children?: ReactNode
@@ -8,11 +7,5 @@ interface Props {
 /**
  * ExtensionPoint Mocked Component.
  */
-export class Link extends Component<Props> {
-  static readonly propTypes: Props = {
-    children: PropTypes.node,
-  }
-  render(): ReactNode {
-    return <a href="#">{this.props.children}</a>
-  }
-}
+// eslint-disable-next-line jsx-a11y/anchor-is-valid
+export const Link: React.FC<Props> = props => <a href="#">{props.children}</a>

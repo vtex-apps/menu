@@ -1,5 +1,4 @@
-import React, { Component, ReactNode } from 'react'
-import PropTypes from 'prop-types'
+import React, { ReactNode } from 'react'
 
 interface Props {
   children?: ReactNode
@@ -8,11 +7,6 @@ interface Props {
 /**
  * ExtensionPoint Mocked Component.
  */
-export class Container extends Component<Props> {
-  static readonly propTypes: Props = {
-    children: PropTypes.node,
-  }
-  render(): ReactNode {
-    return <section>{this.props.children}</section>
-  }
-}
+export const Container: React.FC<Props> = props => (
+  <section>{props.children}</section>
+)

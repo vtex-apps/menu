@@ -27,6 +27,7 @@
     "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.23",
     "@vtex/test-tools": "^3.0.3",
+    "@vtex/tsconfig": "^0.4.4",
     "apollo-cache-inmemory": "^1.6.5",
     "apollo-client": "^2.6.8",
     "test-data-bot": "^0.8.0",
