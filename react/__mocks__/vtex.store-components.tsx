@@ -8,6 +8,5 @@ interface Props {
  * ExtensionPoint Mocked Component.
  */
 export const Container: React.FC<Props> = props => (
-  // eslint-disable-next-line jsx-a11y/anchor-is-valid
-  <a href="#">{props.children}</a>
+  <section>{props.children}</section>
 )
