@@ -1,29 +1,28 @@
 import React from 'react'
 import classnames from 'classnames'
-import { MenuItemProps } from 'navigation'
 import { useCssHandles } from 'vtex.css-handles'
 import { BaseTrigger } from 'vtex.overlay-layout'
 
 import styles from './styles.css'
-import SubmenuDefault from './Submenu'
-import MenuItemDefault from './MenuItem'
 
-interface Props extends MenuItemProps {
-  Submenu?: React.ComponentType
-  MenuItem?: React.ComponentType<MenuItemProps>
+interface Props {
+  Submenu: React.ComponentType
+  link: string
+  label: string
 }
 
-const CSS_HANDLES = ['menuItem', 'link'] as const
+const CSS_HANDLES = ['menuItemContainer', 'menuItemLabel', 'link'] as const
 
 export default function MenuItemRoot(props: Props) {
-  const {
-    navigationItem,
-    Submenu = SubmenuDefault,
-    MenuItem = MenuItemDefault,
-  } = props
+  const { link, label, Submenu } = props
   const handles = useCssHandles(CSS_HANDLES)
 
-  const containerClasses = classnames(handles.menuItem, styles.cursorDefault)
+  const hasSubmenu = Boolean(Submenu)
+
+  const containerClasses = classnames(
+    handles.menuItemContainer,
+    styles.cursorDefault
+  )
   const linkClasses = classnames(
     handles.link,
     'pa4 flex items-center h-100 link c-on-base'
@@ -32,16 +31,12 @@ export default function MenuItemRoot(props: Props) {
   return (
     <BaseTrigger
       className={containerClasses}
-      trigger={navigationItem.subNavigation ? 'click' : 'none'}
+      trigger={hasSubmenu ? 'click' : 'none'}
     >
-      <MenuItem
-        id={navigationItem.id}
-        linkItemClasses={linkClasses}
-        navigationItem={navigationItem}
-      />
-      {navigationItem.subNavigation && (
-        <Submenu id={navigationItem.subNavigation} />
-      )}
+      <a className={linkClasses} href={link}>
+        {label && <span className={handles.menuItemLabel}>{label}</span>}
+      </a>
+      {hasSubmenu && <Submenu />}
     </BaseTrigger>
   )
 }
