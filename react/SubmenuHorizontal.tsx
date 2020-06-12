@@ -1,10 +1,15 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { useCssHandles } from 'vtex.css-handles'
+import { BaseOverlay } from 'vtex.overlay-layout'
 
 import {
   NavigationContextProvider,
   useNavigationItems,
 } from './components/NavigationContext'
+
+const overlayClasses = {
+  container: 'outline-0 bg-base pa5',
+}
 
 const CSS_HANDLES = ['childrenWrapper'] as const
 
@@ -19,20 +24,21 @@ function Submenu(props: any) {
       <div className={handles.childrenWrapper}>{children}</div>
     )
   }
+
   const hasItems =
     navigation?.navigationItems && navigation?.navigationItems.length > 0
 
   return hasItems ? (
-    <Fragment>
-      <ul className="list pl0">
+    <BaseOverlay classes={overlayClasses}>
+      <ul className="pl0 flex list">
         {navigation?.navigationItems.map((Item, idx) => (
-          <li className="pv3 pl0">
+          <li className="mh4">
             <Item key={idx} />
           </li>
         ))}
       </ul>
       {maybeWrappedChildren}
-    </Fragment>
+    </BaseOverlay>
   ) : null
 }
 
