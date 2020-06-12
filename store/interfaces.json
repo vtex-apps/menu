@@ -22,5 +22,9 @@
   "submenu": {
     "component": "Submenu",
     "composition": "children"
+  },
+  "submenu.horizontal": {
+    "component": "SubmenuHorizontal",
+    "composition": "children"
   }
 }
