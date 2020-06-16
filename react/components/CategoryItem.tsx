@@ -19,7 +19,7 @@ class CategoryItem extends Component<CategoryItemProps, State> {
   public render() {
     const { categoryId, text, ...rest } = this.props
 
-    if (this.state.hasError) {
+    if (this.state.hasError || categoryId == null) {
       return null
     }
 
