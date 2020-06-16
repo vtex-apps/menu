@@ -20,6 +20,9 @@ const CategoryLink: FunctionComponent<CategoryLinkProps> = ({
 const CategoryMenu: FunctionComponent<CategoryMenuProps> = ({
   categoryId,
 }: CategoryMenuProps) => {
+  if (categoryId == null) {
+    return null
+  }
   return (
     <Query query={categoryWithChildren} variables={{ id: categoryId }}>
       {({ data, loading, error }: any) => {
