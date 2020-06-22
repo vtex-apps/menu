@@ -1,4 +1,12 @@
-import React, { Reducer, useReducer, useContext } from 'react'
+import React, {
+  Reducer,
+  useReducer,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+} from 'react'
 import classNames from 'classnames'
 import { defineMessages } from 'react-intl'
 import { ExtensionPoint } from 'vtex.render-runtime'
@@ -10,7 +18,7 @@ import Item from './components/Item'
 import { IconProps } from './components/StyledLink'
 import useSubmenuImplementation from './hooks/useSubmenuImplementation'
 import MenuContext from './components/MenuContext'
-import { useMouseSpeedDebouncer } from './modules/useMouseSpeedDebouncer'
+import { useMouseSpeedDebouncer } from './hooks/useMouseSpeedDebouncer'
 
 const CSS_HANDLES = ['menuItem', 'menuItemInnerDiv']
 
@@ -52,27 +60,52 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
     submenuReducer,
     submenuInitialState
   )
-  /* Prevents submenus from closing if the mouse is moving within a certain speed.
-   * This makes it easier for the user to click on a submenu item without it closing on
-   * them if they hover another menu item by accident. */
-  const setActive = useMouseSpeedDebouncer(
+  const [isHovered, setHovered] = useState(false)
+  const setActive = useCallback(
     (value: boolean) => {
       if (value !== isActive) {
         dispatch({ type: value ? 'SHOW_SUBMENU' : 'HIDE_SUBMENU' })
       }
     },
-    {
-      delay: 200,
-      maxSpeed: 450,
-    }
+    [isActive]
   )
-  const handles = useCssHandles(CSS_HANDLES)
+
+  /* Prevents submenus from closing if the mouse is moving within a certain speed.
+   * This makes it easier for the user to click on a submenu item without it closing on
+   * them if they hover another menu item by accident. */
+  const debouncedSetActive = useMouseSpeedDebouncer(setActive, {
+    delay: 200,
+    maxSpeed: 450,
+  })
 
   /* This is a temporary check of which kind of submenu is being
    * inserted. This will be replaced by new functionality of useChildBlocks
    * in the future. */
   const submenuImplementation = useSubmenuImplementation()
   const isCollapsible = submenuImplementation === 'submenu.accordion'
+
+  const closeTimeout = useRef<number | null>(null)
+  useEffect(
+    function guaranteeClosing() {
+      if (isCollapsible) {
+        return
+      }
+
+      if (closeTimeout.current) {
+        clearTimeout(closeTimeout.current)
+      }
+
+      // if a menu is still active but is not hovered for at least 400ms, close it
+      if (isActive && !isHovered) {
+        closeTimeout.current = window.setTimeout(() => {
+          setActive(false)
+        }, 400)
+      }
+    },
+    [isActive, isCollapsible, isHovered, setActive]
+  )
+
+  const handles = useCssHandles(CSS_HANDLES)
 
   if (isCollapsible) {
     return (
@@ -102,8 +135,14 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
   return (
     <li
       className={classNames(handles.menuItem, 'list')}
-      onMouseEnter={() => setActive(true)}
-      onMouseLeave={() => setActive(false)}
+      onMouseEnter={() => {
+        debouncedSetActive(true)
+        setHovered(true)
+      }}
+      onMouseLeave={() => {
+        debouncedSetActive(false)
+        setHovered(false)
+      }}
     >
       <Item {...props} active={isActive} />
       {(isActive || !experimentalOptimizeRendering) && (
