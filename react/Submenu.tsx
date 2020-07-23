@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import React from 'react'
 import { defineMessages } from 'react-intl'
-import { useCssHandles } from 'vtex.css-handles'
+import { useCssHandles, applyModifiers } from 'vtex.css-handles'
 
 const CSS_HANDLES = ['submenu', 'submenuWrapper', 'submenuContainer'] as const
 
@@ -54,7 +54,7 @@ const Submenu: StorefrontFunctionComponent<SubmenuProps> = ({
     >
       <div
         className={classNames(
-          handles.submenuWrapper,
+          applyModifiers(handles.submenuWrapper, isOpen ? 'open' : 'close'),
           `absolute left-0 bg-base pt${parseTachyonsValue(
             paddingTop,
             'paddingTop'
