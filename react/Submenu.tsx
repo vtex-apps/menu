@@ -54,7 +54,10 @@ const Submenu: StorefrontFunctionComponent<SubmenuProps> = ({
     >
       <div
         className={classNames(
-          applyModifiers(handles.submenuWrapper, isOpen ? 'open' : 'close'),
+          applyModifiers(
+            handles.submenuWrapper,
+            isOpen ? 'isOpen' : 'isClosed'
+          ),
           `absolute left-0 bg-base pt${parseTachyonsValue(
             paddingTop,
             'paddingTop'
