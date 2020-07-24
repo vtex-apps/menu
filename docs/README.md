@@ -198,6 +198,8 @@ In order to apply CSS customizations on this and other blocks, follow the instru
 | `styledLinkIcon`          |
 | `submenu`                 |
 | `submenuWrapper`          |
+| `submenuWrapper--isOpen`  |
+| `submenuWrapper--isClosed`|
 | `submenuAccordion`        |
 | `submenuContainer`        |
 
