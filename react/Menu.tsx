@@ -38,7 +38,8 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
   const menuContext = useMemo(
     () => ({
       experimentalOptimizeRendering:
-        experimentalOptimizeRendering || getSettings('vtex.store')?.enableMenuRenderingOptimization,
+        experimentalOptimizeRendering ||
+        getSettings('vtex.store')?.enableMenuRenderingOptimization,
       hasTitle: !!(title ?? categoryId),
       orientation,
       textType: textType ? TypographyMap[textType] : TypographyMap.body,
