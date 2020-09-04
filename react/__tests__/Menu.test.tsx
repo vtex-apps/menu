@@ -18,6 +18,6 @@ describe('Menu Component', () => {
   })
 
   it('should be editable through storefront', () => {
-    expect(Menu.getSchema({})).toHaveProperty('title')
+    expect(Menu.getSchema?.({})).toHaveProperty('title')
   })
 })
