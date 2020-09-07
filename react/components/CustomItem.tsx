@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react'
-import { injectIntl, InjectedIntlProps } from 'react-intl'
+import { injectIntl } from 'react-intl'
 import { formatIOMessage } from 'vtex.native-types'
 
 import StyledLink, { StyledLinkProps } from './StyledLink'
 
 const CustomItem: FunctionComponent<
-  CustomItemProps & InjectedIntlProps
+  CustomItemProps & { intl: any }
 > = props => {
   const { type, noFollow, tagTitle, text, href, intl, ...rest } = props
 

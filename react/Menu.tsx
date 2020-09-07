@@ -2,6 +2,7 @@ import React, { useContext, useMemo } from 'react'
 import classNames from 'classnames'
 import { defineMessages } from 'react-intl'
 import { useCssHandles } from 'vtex.css-handles'
+import { useRuntime } from 'vtex.render-runtime'
 
 import CategoryMenu from './components/CategoryMenu'
 import Item from './components/Item'
@@ -31,17 +32,20 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
   children,
   experimentalOptimizeRendering = false,
 }) => {
+  const { getSettings } = useRuntime()
   const level = useContext(LevelContext)
   const handles = useCssHandles(CSS_HANDLES)
   const menuContext = useMemo(
     () => ({
-      experimentalOptimizeRendering,
+      experimentalOptimizeRendering:
+        experimentalOptimizeRendering ||
+        getSettings('vtex.store')?.enableMenuRenderingOptimization,
       hasTitle: !!(title ?? categoryId),
       orientation,
       textType: textType ? TypographyMap[textType] : TypographyMap.body,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [orientation, textType]
+    [orientation, textType, experimentalOptimizeRendering]
   )
 
   const menuItems = itemsProps
