@@ -1,3 +1,4 @@
+// @ts-expect-error - useTreePath is not a public API
 import { useRuntime, useTreePath } from 'vtex.render-runtime'
 
 /** This is a throwaway function, while useChildBlock doesn't return
@@ -9,6 +10,7 @@ const useSubmenuImplementation = () => {
   const treePathContext = useTreePath()
 
   const { treePath } = treePathContext
+  // @ts-expect-error - extensions is not a public API
   const { extensions } = runtime
 
   if (!extensions || !treePath) {
