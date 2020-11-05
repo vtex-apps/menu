@@ -19,6 +19,7 @@ import { IconProps } from './components/StyledLink'
 import useSubmenuImplementation from './hooks/useSubmenuImplementation'
 import MenuContext from './components/MenuContext'
 import { useMouseSpeedDebouncer } from './hooks/useMouseSpeedDebouncer'
+import { useUrlChange } from './hooks/useUrlChange'
 
 const CSS_HANDLES = ['menuItem', 'menuItemInnerDiv']
 
@@ -69,6 +70,11 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
     },
     [isActive]
   )
+
+  // Close any active/open menu when url changes
+  useUrlChange(() => {
+    if (isActive) setActive(false)
+  }, [isActive, setActive])
 
   /* Prevents submenus from closing if the mouse is moving within a certain speed.
    * This makes it easier for the user to click on a submenu item without it closing on

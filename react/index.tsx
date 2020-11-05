@@ -26,7 +26,7 @@ const CSS_HANDLES = [
 
 interface Link {
   text?: string | null
-  internalPage: string | null
+  internalPage?: string
   params?: string | null
   externalPage?: string | null
   typeOfRoute?: string | null
