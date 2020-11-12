@@ -27,9 +27,12 @@ class CategoryItem extends Component<CategoryItemProps, State> {
       <Query query={category} variables={{ id: categoryId }}>
         {({ data, loading, error }: QueryResult) => {
           if (error) {
-            throw new Error(
-              `GraphQL error while rendering Menu rendered Category id ${categoryId}`
+            console.error(
+              `GraphQL error while rendering Menu Item with type category and categoryId. Block props: ${JSON.stringify(
+                this.props
+              )}`
             )
+            return null
           }
 
           if (loading) {
