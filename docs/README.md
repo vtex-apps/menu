@@ -140,6 +140,7 @@ The available `menu-item` block props are as follows:
 | `highlight`         | `boolean` | Whether the item has highlight                                            | N/A           |
 | `iconPosition`         | `String` | Icon position relative to the menu item text. Either to the `left` or `right`                                           | `left`          |
 | `iconProps`         | `IconProps` | Icon props                                           | N/A           |
+| `isOpenOnMount`         | `boolean` | Whether the submenu should be opened on mount                                      | `false`           |
 | `itemProps`         | `CategoryItem` or `CustomItem` | Item props                                           | N/A           |
 
 - For icons in the menu items:
