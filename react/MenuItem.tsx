@@ -10,7 +10,7 @@ import React, {
 import classNames from 'classnames'
 import { defineMessages } from 'react-intl'
 import { ExtensionPoint } from 'vtex.render-runtime'
-import { useCssHandles } from 'vtex.css-handles'
+import { useCssHandles, applyModifiers } from 'vtex.css-handles'
 
 import { CategoryItemSchema } from './components/CategoryItem'
 import { CustomItemSchema } from './components/CustomItem'
@@ -113,9 +113,15 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
 
   const handles = useCssHandles(CSS_HANDLES)
 
+  const itemClasses = classNames(
+    handles.menuItem,
+    'list',
+    applyModifiers(handles.menuItem, isActive ? 'isOpen' : 'isClosed')
+  )
+
   if (isCollapsible) {
     return (
-      <li className={classNames(handles.menuItem, 'list')}>
+      <li className={itemClasses}>
         {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */}
         <div
           className={handles.menuItemInnerDiv}
@@ -140,7 +146,7 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
 
   return (
     <li
-      className={classNames(handles.menuItem, 'list')}
+      className={itemClasses}
       onMouseEnter={() => {
         debouncedSetActive(true)
         setHovered(true)
