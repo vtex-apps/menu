@@ -36,6 +36,7 @@
   "admin/editor.menu.item.iconId.title": "Icon ID",
   "admin/editor.menu.item.highlight.title": "Highlight",
   "admin/editor.menu.item.submenuWidth.title": "Submenu Width",
+  "admin/editor.menu.item.isOpenOnMount.title": "Is Submenu open on mount",
   "admin/editor.menu.item.params.title": "Params",
   "admin/editor.menu.item.params.categoryId.title": "Category ID",
   "admin/editor.menu.item.params.text.title": "Text",
