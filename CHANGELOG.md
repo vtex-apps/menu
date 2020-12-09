@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- New `submenuColumn` CSS handle.
+- `classes` prop to `Column`, `Menu`, `MenuItem`, `Submenu` and `SubmenuAccordion` components.
+
+### Changed
+- `vtex.css-handles` dependency from `0.x` to `1.x`.
 
 ## [2.27.0] - 2020-11-05
 ### Changed
