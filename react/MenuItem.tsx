@@ -10,7 +10,7 @@ import React, {
 import classNames from 'classnames'
 import { defineMessages } from 'react-intl'
 import { ExtensionPoint } from 'vtex.render-runtime'
-import { useCssHandles } from 'vtex.css-handles'
+import { useCssHandles, CssHandlesTypes } from 'vtex.css-handles'
 
 import { CategoryItemSchema } from './components/CategoryItem'
 import { CustomItemSchema } from './components/CustomItem'
@@ -21,7 +21,19 @@ import MenuContext from './components/MenuContext'
 import { useMouseSpeedDebouncer } from './hooks/useMouseSpeedDebouncer'
 import { useUrlChange } from './hooks/useUrlChange'
 
-const CSS_HANDLES = ['menuItem', 'menuItemInnerDiv']
+const CSS_HANDLES = ['menuItem', 'menuItemInnerDiv'] as const
+
+export interface MenuItemSchema {
+  id: string
+  type: 'category' | 'custom'
+  iconProps: IconProps
+  iconPosition: 'left' | 'right'
+  highlight: boolean
+  itemProps: CategoryItemSchema | CustomItemSchema
+  blockClass?: string
+  experimentalOptimizeRendering?: boolean
+  classes: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+}
 
 const submenuInitialState = {
   hasBeenActive: false,
@@ -111,7 +123,7 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
     [isActive, isCollapsible, isHovered, setActive]
   )
 
-  const handles = useCssHandles(CSS_HANDLES)
+  const { handles } = useCssHandles(CSS_HANDLES, { classes: props.classes })
 
   if (isCollapsible) {
     return (
@@ -160,17 +172,6 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
       )}
     </li>
   )
-}
-
-export interface MenuItemSchema {
-  id: string
-  type: 'category' | 'custom'
-  iconProps: IconProps
-  iconPosition: 'left' | 'right'
-  highlight: boolean
-  itemProps: CategoryItemSchema | CustomItemSchema
-  blockClass?: string
-  experimentalOptimizeRendering?: boolean
 }
 
 const messages = defineMessages({

@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
 import React, { ReactNode } from 'react'
+import PropTypes from 'prop-types'
 import { useCssHandles } from 'vtex.css-handles'
 import { Link } from 'vtex.render-runtime'
 import { Container } from 'vtex.store-components'
@@ -51,6 +51,7 @@ interface Props {
  */
 const getParams = (params?: string | null): { [key: string]: string } => {
   const json: { [key: string]: string } = {}
+
   if (params) {
     const array: string[] = params.split(',')
     array.forEach((item: string) => {
@@ -58,6 +59,7 @@ const getParams = (params?: string | null): { [key: string]: string } => {
       json[pair[0]] = pair[1]
     })
   }
+
   return json
 }
 
@@ -65,6 +67,7 @@ const getValidPage = (page?: string | null): string => {
   if (!page || (!page.startsWith('http://') && !page.startsWith('https://'))) {
     page = `http://${page}`
   }
+
   return page
 }
 
@@ -73,10 +76,11 @@ const getValidPage = (page?: string | null): string => {
  * Shows a menu bar with links.
  */
 const MenuLink: StorefrontFunctionComponent<Props> = ({ links = [] }) => {
-  const handles = useCssHandles(CSS_HANDLES)
+  const { handles } = useCssHandles(CSS_HANDLES)
 
   const renderLink = (link: Link, index: number): ReactNode => {
     let className = `${handles.renderLink} t-small link c-muted-2 dib dim mr3 mr4-ns`
+
     // eslint-disable-next-line default-case
     switch (link.position) {
       case Options.LEFT:
@@ -89,6 +93,7 @@ const MenuLink: StorefrontFunctionComponent<Props> = ({ links = [] }) => {
         className = `${handles.linkRight} ${className}`
         break
     }
+
     return link.typeOfRoute === Options.INTERNAL ? (
       <Link
         className={className}
@@ -114,6 +119,7 @@ const MenuLink: StorefrontFunctionComponent<Props> = ({ links = [] }) => {
   if (!links.length) {
     return null
   }
+
   return (
     <div className={`${handles.container} bg-base h2 c-muted-2 w-100 dn db-ns`}>
       <Container>
