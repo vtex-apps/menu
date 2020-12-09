@@ -143,7 +143,7 @@ The available `menu-item` block props are as follows:
 | `iconPosition`         | `String` | Icon position relative to the menu item text. Either to the `left` or `right`                                           | `left`          |
 | `iconProps`         | `IconProps` | Icon props                                           | `undefined`           |
 | `itemProps`         | `CategoryItem` or `CustomItem` | Item props                                           | `undefined`           |
-| `classes`         | `CustomCSSClasses` | Used to override default CSS handles. To better understand how this prop works, we recommend reading about it [here](https://github.com/vtex-apps/css-handles#usecustomclasses). Note that this is only useful if you're using this block as a React component.                                      | `undefined`           |
+| `classes`         | `CustomCSSClasses` | Used to override default CSS handles. To better understand how this prop works, we recommend reading about it [here](https://github.com/vtex-apps/css-handles#usecustomclasses). Note that this is only useful if you're importing this block as a React component.                                      | `undefined`           |
 
 - For icons in the menu items:
 
