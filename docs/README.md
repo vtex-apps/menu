@@ -3,7 +3,9 @@
 # Menu
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 VTEX Menu is a store component responsible for displaying a bar containing links and drop-down sub-menus.
@@ -136,11 +138,12 @@ The available `menu-item` block props are as follows:
 | Prop name      | Type     | Description                                          | Default value |
 | -------------- | -------- | ---------------------------------------------------- | ------------- |
 | `type`         | `String` | Menu item type, either `category` or `custom`                                            | `category`           |
-| `id`         | `String` | menu item ID                                           | N/A           |
-| `highlight`         | `boolean` | Whether the item has highlight                                            | N/A           |
+| `id`         | `String` | menu item ID                                           | `undefined`           |
+| `highlight`         | `boolean` | Whether the item has highlight                                            | `undefined`           |
 | `iconPosition`         | `String` | Icon position relative to the menu item text. Either to the `left` or `right`                                           | `left`          |
-| `iconProps`         | `IconProps` | Icon props                                           | N/A           |
-| `itemProps`         | `CategoryItem` or `CustomItem` | Item props                                           | N/A           |
+| `iconProps`         | `IconProps` | Icon props                                           | `undefined`           |
+| `itemProps`         | `CategoryItem` or `CustomItem` | Item props                                           | `undefined`           |
+| `classes`         | `CustomCSSClasses` | Used to override default CSS handles. To better understand how this prop works, we recommend reading about it [here](https://github.com/vtex-apps/css-handles#usecustomclasses). Note that this is only useful if you're using this block as a React component.                                      | `undefined`           |
 
 - For icons in the menu items:
 
@@ -174,34 +177,35 @@ The available `menu-item` block props are as follows:
 
 In order to apply CSS customizations on this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
 
-| CSS Handle                |
-| --------------------------|
-| `accordionIcon`           |
-| `accordionIcon--isOpen`   |
-| `accordionIcon--isClosed` |
-| `container`               |
-| `linkLeft`                |
-| `linkMiddle`              |
-| `linkRight`               |
-| `menuContainer`           |
-| `menuContainerNav`        |
-| `menuItem`                |
-| `menuItemInnerDiv`        |
-| `menuLinkDivLeft`         |
-| `menuLinkDivMiddle`       |
-| `menuLinkDivRight`        |
-| `menuLinkNav`             |
-| `renderLink`              |
-| `styledLink`              |
-| `styledLinkContainer`     |
-| `styledLinkContent`       |
-| `styledLinkIcon`          |
-| `submenu`                 |
-| `submenuWrapper`          |
-| `submenuWrapper--isOpen`  |
-| `submenuWrapper--isClosed`|
-| `submenuAccordion`        |
-| `submenuContainer`        |
+| CSS Handle                 |
+| -------------------------- |
+| `accordionIcon--isClosed`  |
+| `accordionIcon--isOpen`    |
+| `accordionIcon`            |
+| `container`                |
+| `linkLeft`                 |
+| `linkMiddle`               |
+| `linkRight`                |
+| `menuContainerNav`         |
+| `menuContainer`            |
+| `menuItemInnerDiv`         |
+| `menuItem`                 |
+| `menuLinkDivLeft`          |
+| `menuLinkDivMiddle`        |
+| `menuLinkDivRight`         |
+| `menuLinkNav`              |
+| `renderLink`               |
+| `styledLinkContainer`      |
+| `styledLinkContent`        |
+| `styledLinkIcon`           |
+| `styledLink`               |
+| `submenuAccordion`         |
+| `submenuColumn`            |
+| `submenuContainer`         |
+| `submenuWrapper--isClosed` |
+| `submenuWrapper--isOpen`   |
+| `submenuWrapper`           |
+| `submenu`                  |
 
 ## Contributors
 
