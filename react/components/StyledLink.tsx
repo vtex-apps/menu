@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import React, { FunctionComponent, useContext } from 'react'
-import { useCssHandles, applyModifiers } from 'vtex.css-handles'
+import { useCssHandles } from 'vtex.css-handles'
 import { Link } from 'vtex.render-runtime'
 import { Icon } from 'vtex.store-icons'
 
@@ -24,7 +24,7 @@ const defaultTypography: Record<number, string> = {
 const StyledLink: FunctionComponent<StyledLinkProps> = props => {
   const level = useContext(LevelContext)
   const { orientation, hasTitle } = useContext(MenuContext)
-  const handles = useCssHandles(CSS_HANDLES)
+  const { handles, withModifiers } = useCssHandles(CSS_HANDLES)
 
   const {
     typography = defaultTypography[level],
@@ -79,8 +79,8 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
       {iconPosition === 'right' && iconComponent}
       {accordion && (
         <div
-          className={`${applyModifiers(
-            handles.accordionIcon,
+          className={`${withModifiers(
+            'accordionIcon',
             active ? 'isOpen' : 'isClosed'
           )} ml3 c-muted-2`}
         >
