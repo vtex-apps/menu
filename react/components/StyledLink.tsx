@@ -46,7 +46,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
   const hasLink = to && to !== '#'
 
   const linkClassNames = classNames(
-    handles.styledLink,
+    withModifiers('styledLink', highlight ? 'highlight' : ''),
     'no-underline pointer',
     {
       [typography]: true,
