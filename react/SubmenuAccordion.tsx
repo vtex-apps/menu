@@ -9,7 +9,7 @@ const CSS_HANDLES = ['submenuAccordion'] as const
 interface Props {
   isOpen: boolean
   blockClass?: string
-  classes: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+  classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
 const SubmenuAccordion: StorefrontFunctionComponent<Props> = ({

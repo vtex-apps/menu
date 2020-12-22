@@ -32,7 +32,7 @@ export interface MenuItemSchema {
   itemProps: CategoryItemSchema | CustomItemSchema
   blockClass?: string
   experimentalOptimizeRendering?: boolean
-  classes: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+  classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
 const submenuInitialState = {

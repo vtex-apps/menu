@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import PropTypes from 'prop-types'
-import { useCssHandles } from 'vtex.css-handles'
+import { useCssHandles, CssHandlesTypes } from 'vtex.css-handles'
 import { Link } from 'vtex.render-runtime'
 import { Container } from 'vtex.store-components'
 
@@ -44,6 +44,7 @@ interface Options {
 
 interface Props {
   links?: Link[]
+  classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
 /**
@@ -75,8 +76,11 @@ const getValidPage = (page?: string | null): string => {
  * Links MenuLink Component.
  * Shows a menu bar with links.
  */
-const MenuLink: StorefrontFunctionComponent<Props> = ({ links = [] }) => {
-  const { handles } = useCssHandles(CSS_HANDLES)
+const MenuLink: StorefrontFunctionComponent<Props> = ({
+  links = [],
+  classes,
+}) => {
+  const { handles } = useCssHandles(CSS_HANDLES, { classes })
 
   const renderLink = (link: Link, index: number): ReactNode => {
     let className = `${handles.renderLink} t-small link c-muted-2 dib dim mr3 mr4-ns`
@@ -157,28 +161,6 @@ const MenuLink: StorefrontFunctionComponent<Props> = ({ links = [] }) => {
   )
 }
 
-MenuLink.propTypes = {
-  links: PropTypes.arrayOf(
-    PropTypes.shape({
-      /** External page to redirect */
-      externalPage: PropTypes.string,
-      /** Internal page to redirect */
-      internalPage: PropTypes.string.isRequired,
-      /** Page route to redirect when clicked */
-      page: PropTypes.string,
-      /** Params to redirect to internal page */
-      params: PropTypes.string,
-      /** Link position  */
-      position: PropTypes.string,
-      /** Link text */
-      text: PropTypes.string,
-      /** Type of Route (internal or external) */
-      typeOfRoute: PropTypes.string,
-    }).isRequired
-  ),
-}
-
-// tslint:disable: object-literal-sort-keys
 MenuLink.schema = {
   title: 'admin/editor.menu-link',
   description: 'admin/editor.menu-link.description',

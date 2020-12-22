@@ -21,7 +21,7 @@ interface MenuSchema {
   blockClass?: string
   items?: MenuItemSchema[]
   experimentalOptimizeRendering?: boolean
-  classes: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+  classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
 enum Typography {

@@ -11,7 +11,7 @@ export interface SubmenuProps extends SubmenuSchema {
   paddingTop: number | string
   paddingBottom: number | string
   blockClass?: string
-  classes: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+  classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
 const MAX_TACHYONS_SCALE = 11
@@ -49,11 +49,12 @@ const Submenu: StorefrontFunctionComponent<SubmenuProps> = ({
   isOpen,
   width,
   children,
+  classes,
   orientation = Orientation.horizontal,
   paddingTop = 4,
   paddingBottom = 4,
 }) => {
-  const { handles, withModifiers } = useCssHandles(CSS_HANDLES)
+  const { handles, withModifiers } = useCssHandles(CSS_HANDLES, { classes })
 
   return (
     <div

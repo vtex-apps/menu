@@ -4,7 +4,7 @@ import { useCssHandles, CssHandlesTypes } from 'vtex.css-handles'
 const CSS_HANDLES = ['submenuColumn'] as const
 
 interface Props {
-  classes: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+  classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
 function Column(props: PropsWithChildren<Props>) {
