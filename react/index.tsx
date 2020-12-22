@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react'
-import PropTypes from 'prop-types'
 import { useCssHandles, CssHandlesTypes } from 'vtex.css-handles'
 import { Link } from 'vtex.render-runtime'
 import { Container } from 'vtex.store-components'
