@@ -10,7 +10,11 @@ import React, {
 import classNames from 'classnames'
 import { defineMessages } from 'react-intl'
 import { ExtensionPoint } from 'vtex.render-runtime'
-import { useCssHandles, applyModifiers, CssHandlesTypes } from 'vtex.css-handles'
+import {
+  useCssHandles,
+  applyModifiers,
+  CssHandlesTypes,
+} from 'vtex.css-handles'
 
 import { CategoryItemSchema } from './components/CategoryItem'
 import { CustomItemSchema } from './components/CustomItem'
