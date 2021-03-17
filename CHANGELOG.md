@@ -8,6 +8,25 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - Add CSS handles modifiers of open and close to menu item.
+
+## [2.29.0] - 2021-03-08
+
+### Added
+
+- I18n Ro and Jp.
+
+### Fixed
+
+- Crowdin configuration file.
+
+## [2.28.0] - 2021-01-04
+### Added
+- New `submenuColumn` CSS handle.
+- `classes` prop to `Column`, `Menu`, `MenuItem`, `Submenu` and `SubmenuAccordion` components.
+
+### Changed
+- `vtex.css-handles` dependency from `0.x` to `1.x`.
+
 ## [2.27.0] - 2020-11-05
 ### Changed
 - Close submenus whenever the URL changes.

@@ -1,9 +1,18 @@
-import classNames from 'classnames'
 import React from 'react'
+import classNames from 'classnames'
 import { defineMessages } from 'react-intl'
-import { useCssHandles, applyModifiers } from 'vtex.css-handles'
+import { useCssHandles, CssHandlesTypes } from 'vtex.css-handles'
 
 const CSS_HANDLES = ['submenu', 'submenuWrapper', 'submenuContainer'] as const
+
+export interface SubmenuProps extends SubmenuSchema {
+  isOpen: boolean
+  orientation: Orientation
+  paddingTop: number | string
+  paddingBottom: number | string
+  blockClass?: string
+  classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+}
 
 const MAX_TACHYONS_SCALE = 11
 export type TachyonsScaleInput = string | number | undefined
@@ -40,11 +49,12 @@ const Submenu: StorefrontFunctionComponent<SubmenuProps> = ({
   isOpen,
   width,
   children,
+  classes,
   orientation = Orientation.horizontal,
   paddingTop = 4,
   paddingBottom = 4,
 }) => {
-  const handles = useCssHandles(CSS_HANDLES)
+  const { handles, withModifiers } = useCssHandles(CSS_HANDLES, { classes })
 
   return (
     <div
@@ -54,10 +64,7 @@ const Submenu: StorefrontFunctionComponent<SubmenuProps> = ({
     >
       <div
         className={classNames(
-          applyModifiers(
-            handles.submenuWrapper,
-            isOpen ? 'isOpen' : 'isClosed'
-          ),
+          withModifiers('submenuWrapper', isOpen ? 'isOpen' : 'isClosed'),
           `absolute left-0 bg-base pt${parseTachyonsValue(
             paddingTop,
             'paddingTop'
@@ -88,14 +95,6 @@ const Submenu: StorefrontFunctionComponent<SubmenuProps> = ({
 enum Orientation {
   horizontal = 'horizontal',
   vertical = 'vertical',
-}
-
-export interface SubmenuProps extends SubmenuSchema {
-  isOpen: boolean
-  orientation: Orientation
-  paddingTop: number | string
-  paddingBottom: number | string
-  blockClass?: string
 }
 
 interface SubmenuSchema {

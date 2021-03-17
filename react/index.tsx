@@ -1,6 +1,5 @@
-import PropTypes from 'prop-types'
 import React, { ReactNode } from 'react'
-import { useCssHandles } from 'vtex.css-handles'
+import { useCssHandles, CssHandlesTypes } from 'vtex.css-handles'
 import { Link } from 'vtex.render-runtime'
 import { Container } from 'vtex.store-components'
 
@@ -44,6 +43,7 @@ interface Options {
 
 interface Props {
   links?: Link[]
+  classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
 /**
@@ -51,6 +51,7 @@ interface Props {
  */
 const getParams = (params?: string | null): { [key: string]: string } => {
   const json: { [key: string]: string } = {}
+
   if (params) {
     const array: string[] = params.split(',')
     array.forEach((item: string) => {
@@ -58,6 +59,7 @@ const getParams = (params?: string | null): { [key: string]: string } => {
       json[pair[0]] = pair[1]
     })
   }
+
   return json
 }
 
@@ -65,6 +67,7 @@ const getValidPage = (page?: string | null): string => {
   if (!page || (!page.startsWith('http://') && !page.startsWith('https://'))) {
     page = `http://${page}`
   }
+
   return page
 }
 
@@ -72,11 +75,15 @@ const getValidPage = (page?: string | null): string => {
  * Links MenuLink Component.
  * Shows a menu bar with links.
  */
-const MenuLink: StorefrontFunctionComponent<Props> = ({ links = [] }) => {
-  const handles = useCssHandles(CSS_HANDLES)
+const MenuLink: StorefrontFunctionComponent<Props> = ({
+  links = [],
+  classes,
+}) => {
+  const { handles } = useCssHandles(CSS_HANDLES, { classes })
 
   const renderLink = (link: Link, index: number): ReactNode => {
     let className = `${handles.renderLink} t-small link c-muted-2 dib dim mr3 mr4-ns`
+
     // eslint-disable-next-line default-case
     switch (link.position) {
       case Options.LEFT:
@@ -89,6 +96,7 @@ const MenuLink: StorefrontFunctionComponent<Props> = ({ links = [] }) => {
         className = `${handles.linkRight} ${className}`
         break
     }
+
     return link.typeOfRoute === Options.INTERNAL ? (
       <Link
         className={className}
@@ -114,6 +122,7 @@ const MenuLink: StorefrontFunctionComponent<Props> = ({ links = [] }) => {
   if (!links.length) {
     return null
   }
+
   return (
     <div className={`${handles.container} bg-base h2 c-muted-2 w-100 dn db-ns`}>
       <Container>
@@ -151,28 +160,6 @@ const MenuLink: StorefrontFunctionComponent<Props> = ({ links = [] }) => {
   )
 }
 
-MenuLink.propTypes = {
-  links: PropTypes.arrayOf(
-    PropTypes.shape({
-      /** External page to redirect */
-      externalPage: PropTypes.string,
-      /** Internal page to redirect */
-      internalPage: PropTypes.string.isRequired,
-      /** Page route to redirect when clicked */
-      page: PropTypes.string,
-      /** Params to redirect to internal page */
-      params: PropTypes.string,
-      /** Link position  */
-      position: PropTypes.string,
-      /** Link text */
-      text: PropTypes.string,
-      /** Type of Route (internal or external) */
-      typeOfRoute: PropTypes.string,
-    }).isRequired
-  ),
-}
-
-// tslint:disable: object-literal-sort-keys
 MenuLink.schema = {
   title: 'admin/editor.menu-link',
   description: 'admin/editor.menu-link.description',

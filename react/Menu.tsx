@@ -1,7 +1,7 @@
 import React, { useContext, useMemo } from 'react'
 import classNames from 'classnames'
 import { defineMessages } from 'react-intl'
-import { useCssHandles } from 'vtex.css-handles'
+import { CssHandlesTypes, useCssHandles } from 'vtex.css-handles'
 import { useRuntime } from 'vtex.render-runtime'
 
 import CategoryMenu from './components/CategoryMenu'
@@ -11,6 +11,29 @@ import MenuContext from './components/MenuContext'
 import MenuItem, { MenuItemSchema } from './MenuItem'
 
 const CSS_HANDLES = ['menuContainer', 'menuContainerNav'] as const
+
+interface MenuSchema {
+  orientation?: 'vertical' | 'horizontal'
+  categoryId?: number
+  textType?: Typography
+  title?: MenuItemSchema
+  additionalDef?: string
+  blockClass?: string
+  items?: MenuItemSchema[]
+  experimentalOptimizeRendering?: boolean
+  classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+}
+
+enum Typography {
+  heading1 = 't-heading-1',
+  heading2 = 't-heading-2',
+  heading3 = 't-heading-3',
+  heading4 = 't-heading-4',
+  heading5 = 't-heading-5',
+  body = 't-body',
+  small = 't-small',
+  mini = 't-mini',
+}
 
 const TypographyMap: Record<string, string> = {
   body: 't-body',
@@ -31,10 +54,11 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
   items: itemsProps = [],
   children,
   experimentalOptimizeRendering = false,
+  classes,
 }) => {
   const { getSettings } = useRuntime()
   const level = useContext(LevelContext)
-  const handles = useCssHandles(CSS_HANDLES)
+  const { handles } = useCssHandles(CSS_HANDLES, { classes })
   const menuContext = useMemo(
     () => ({
       experimentalOptimizeRendering:
@@ -73,28 +97,6 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
       </MenuContext.Provider>
     </LevelContext.Provider>
   )
-}
-
-interface MenuSchema {
-  orientation?: 'vertical' | 'horizontal'
-  categoryId?: number
-  textType?: Typography
-  title?: MenuItemSchema
-  additionalDef?: string
-  blockClass?: string
-  items?: MenuItemSchema[]
-  experimentalOptimizeRendering?: boolean
-}
-
-enum Typography {
-  heading1 = 't-heading-1',
-  heading2 = 't-heading-2',
-  heading3 = 't-heading-3',
-  heading4 = 't-heading-4',
-  heading5 = 't-heading-5',
-  body = 't-body',
-  small = 't-small',
-  mini = 't-mini',
 }
 
 const messages = defineMessages({
