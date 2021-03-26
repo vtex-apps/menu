@@ -190,6 +190,8 @@ In order to apply CSS customizations on this and other blocks, follow the instru
 | `menuContainer`            |
 | `menuItemInnerDiv`         |
 | `menuItem`                 |
+| `menuItem--isOpen`         |
+| `menuItem--isClosed`       |
 | `menuLinkDivLeft`          |
 | `menuLinkDivMiddle`        |
 | `menuLinkDivRight`         |
