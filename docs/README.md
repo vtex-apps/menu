@@ -142,6 +142,7 @@ The available `menu-item` block props are as follows:
 | `highlight`         | `boolean` | Whether the item has highlight                                            | `undefined`           |
 | `iconPosition`         | `String` | Icon position relative to the menu item text. Either to the `left` or `right`                                           | `left`          |
 | `iconProps`         | `IconProps` | Icon props                                           | `undefined`           |
+| `isOpenOnMount` | `boolean` | Whether the submenu should always be automatically displayed when its parent is hovered/clicked on (`true`) or not (`false`). | `false` |
 | `itemProps`         | `CategoryItem` or `CustomItem` | Item props                                           | `undefined`           |
 | `classes`         | `CustomCSSClasses` | Used to override default CSS handles. To better understand how this prop works, we recommend reading about it [here](https://github.com/vtex-apps/css-handles#usecustomclasses). Note that this is only useful if you're importing this block as a React component.                                      | `undefined`           |
 
