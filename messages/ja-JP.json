@@ -33,6 +33,7 @@
   "admin/editor.menu.item.iconId.title": "アイコン ID",
   "admin/editor.menu.item.highlight.title": "ハイライト",
   "admin/editor.menu.item.submenuWidth.title": "サブメニュー幅",
+  "admin/editor.menu.item.isOpenOnMount.title": "マウント時にサブメニューが開いているか",
   "admin/editor.menu.item.params.title": "パラメータ",
   "admin/editor.menu.item.params.categoryId.title": "カテゴリ ID",
   "admin/editor.menu.item.params.text.title": "テキスト",
