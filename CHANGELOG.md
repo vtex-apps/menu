@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Add CSS handles modifiers of open and close to menu item.
+
 ## [2.29.0] - 2021-03-08
 
 ### Added
