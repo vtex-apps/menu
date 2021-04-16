@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- `__editorItemTitle` in contentSchemas, now the user is able to differ menu items names
+
 ## [2.29.0] - 2021-03-08
 
 ### Added

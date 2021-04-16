@@ -32,6 +32,8 @@
   "admin/editor.menu.item.custom.title": "カスタム",
   "admin/editor.menu.item.iconId.title": "アイコン ID",
   "admin/editor.menu.item.highlight.title": "ハイライト",
+  "admin/editor.menu.item.editorItemTitle.title": "メニュー項目名",
+  "admin/editor.menu.item.editorItemTitle.description": "これはサイトエディタでのみ表示されます",
   "admin/editor.menu.item.submenuWidth.title": "サブメニュー幅",
   "admin/editor.menu.item.params.title": "パラメータ",
   "admin/editor.menu.item.params.categoryId.title": "カテゴリ ID",

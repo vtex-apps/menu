@@ -176,6 +176,11 @@
         }
       },
       "properties": {
+        "__editorItemTitle": {
+          "title": "admin/editor.menu.item.editorItemTitle.title",
+          "description": "admin/editor.menu.item.editorItemTitle.description",
+          "type": "string"
+        },
         "highlight": {
           "title": "admin/editor.menu.item.highlight.title",
           "type": "boolean"
