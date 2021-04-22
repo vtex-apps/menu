@@ -33,6 +33,7 @@
   "admin/editor.menu.item.type.title": "item type title",
   "admin/editor.menu.item.category.title": "'category' item type title",
   "admin/editor.menu.item.custom.title": "'custom' item type title",
+  "admin/editor.menu.item.editorItemTitle.title": "editorItemTitle title",
   "admin/editor.menu.item.iconId.title": "iconId title",
   "admin/editor.menu.item.highlight.title": "highlight title",
   "admin/editor.menu.item.submenuWidth.title": "subMenuWidth title",

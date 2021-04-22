@@ -31,6 +31,8 @@
   "admin/editor.menu.item.category.title": "Categorie",
   "admin/editor.menu.item.custom.title": "Personalizat",
   "admin/editor.menu.item.iconId.title": "ID iconiță",
+  "admin/editor.menu.item.editorItemTitle.title": "Nume element meniu",
+  "admin/editor.menu.item.editorItemTitle.description": "Acest lucru va fi vizibil numai în Editorul Site-ului",
   "admin/editor.menu.item.highlight.title": "Evidențiere",
   "admin/editor.menu.item.submenuWidth.title": "Lățime sub-meniu",
   "admin/editor.menu.item.params.title": "Parametri",
