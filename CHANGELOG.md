@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Add prop 'isOpenOnMount' to allow opening submenu on mount
+
 ## [2.31.0] - 2021-05-05
 
 ### Added
