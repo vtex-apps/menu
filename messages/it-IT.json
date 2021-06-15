@@ -2,7 +2,7 @@
   "admin/editor.menu-link": "Menù",
   "admin/editor.menu-link.title": "Titolo",
   "admin/editor.menu-link.description": "Una barra del menù con link",
-  "admin/editor.menu-link.links": "Link",
+  "admin/editor.menu-link.links": "Collegamenti",
   "admin/editor.menu-link.links.link": "Link",
   "admin/editor.menu-link.links.link.text": "Testo link",
   "admin/editor.menu-link.links.link.internalPage": "Pagina di destinazione",
@@ -18,16 +18,13 @@
   "admin/editor.menu-link.links.link.position.left": "Sinistra",
   "admin/editor.menu-link.links.link.position.middle": "Centro",
   "admin/editor.menu-link.links.link.position.right": "Destra",
-  
   "admin/editor.future-menu.title": "Menù",
   "admin/editor.future-menu.description": "App VTEX Menu",
   "admin/editor.menu.typography.title": "Tipografia",
   "admin/editor.menu.typography.description": "Consente agli utenti di scegliere quale classe tipografica verrà utilizzata nelle voci di menu",
-  
   "admin/editor.menu.orientation.title": "Orientamento",
   "admin/editor.menu.orientation.vertical.label": "verticale",
   "admin/editor.menu.orientation.horizontal.label": "orizzontale",
-  
   "admin/editor.menu.items.title": "Voce di menù",
   "admin/editor.menu.item.id.title": "ID",
   "admin/editor.menu.item.type.title": "Tipo",
@@ -48,9 +45,8 @@
   "admin/editor.menu.item.params.noFollow.title": "attributo nofollow",
   "admin/editor.menu.item.params.tagTitle.title": "attributo title",
   "admin/editor.menu.submenu.title": "Sottomenù",
-  
   "admin/editor.menu.additionalDef.title": "Definizione aggiuntiva",
-  "admin/editor.menu.def.none": "Nessuna",
+  "admin/editor.menu.def.none": "Nessuno",
   "admin/editor.menu.def.title": "Titolo",
   "admin/editor.menu.def.category": "Categoria",
   "admin/editor.menu.categoryId.title": "ID categoria"
