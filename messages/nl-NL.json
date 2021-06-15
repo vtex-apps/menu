@@ -18,20 +18,17 @@
   "admin/editor.menu-link.links.link.position.left": "Links",
   "admin/editor.menu-link.links.link.position.middle": "Midden",
   "admin/editor.menu-link.links.link.position.right": "Rechts",
-  
   "admin/editor.future-menu.title": "Menu",
   "admin/editor.future-menu.description": "De VTEX Menu-app",
   "admin/editor.menu.typography.title": "Typografie",
   "admin/editor.menu.typography.description": "Stelt gebruikers in staat om te kiezen welke typografieklasse zal worden gebruikt in de menu-items",
-  
   "admin/editor.menu.orientation.title": "Orientatie",
   "admin/editor.menu.orientation.vertical.label": "verticaal",
   "admin/editor.menu.orientation.horizontal.label": "horizontaal",
-  
   "admin/editor.menu.items.title": "Menu-item",
   "admin/editor.menu.item.id.title": "ID",
   "admin/editor.menu.item.type.title": "Type",
-  "admin/editor.menu.item.category.title": "Category",
+  "admin/editor.menu.item.category.title": "Categorie",
   "admin/editor.menu.item.custom.title": "Aangepast",
   "admin/editor.menu.item.iconId.title": "Icoon-id",
   "admin/editor.menu.item.editorItemTitle.title": "Naam menu-item",
@@ -48,7 +45,6 @@
   "admin/editor.menu.item.params.noFollow.title": "nofollow-attribuut",
   "admin/editor.menu.item.params.tagTitle.title": "titel attribuut",
   "admin/editor.menu.submenu.title": "Submenu",
-  
   "admin/editor.menu.additionalDef.title": "Aanvullende definitie",
   "admin/editor.menu.def.none": "Geen",
   "admin/editor.menu.def.title": "Titel",
