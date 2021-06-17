@@ -18,16 +18,13 @@
   "admin/editor.menu-link.links.link.position.left": "왼쪽",
   "admin/editor.menu-link.links.link.position.middle": "중간",
   "admin/editor.menu-link.links.link.position.right": "오른쪽",
-  
   "admin/editor.future-menu.title": "메뉴",
   "admin/editor.future-menu.description": "The VTEX 메뉴 앱",
   "admin/editor.menu.typography.title": "타이포그래피",
   "admin/editor.menu.typography.description": "사용자가 메뉴 항목에 사용할 타이포그래피 클래스를 선택할 수 있습니다.",
-  
   "admin/editor.menu.orientation.title": "방향",
   "admin/editor.menu.orientation.vertical.label": "수직",
   "admin/editor.menu.orientation.horizontal.label": "수평",
- 
   "admin/editor.menu.items.title": "메뉴 항목",
   "admin/editor.menu.item.id.title": "아이디",
   "admin/editor.menu.item.type.title": "유형",
@@ -36,6 +33,8 @@
   "admin/editor.menu.item.iconId.title": "아이콘 ID",
   "admin/editor.menu.item.editorItemTitle.title": "메뉴 항목 이름",
   "admin/editor.menu.item.editorItemTitle.description": "이것은 사이트 편집기에만 표시됩니다.",
+  "admin/editor.menu.item.iconProps": "아이콘 Props",
+  "admin/editor.menu.item.iconProps.id.title": "아이콘 ID",
   "admin/editor.menu.item.highlight.title": "하이라이트",
   "admin/editor.menu.item.submenuWidth.title": "하위 메뉴 너비",
   "admin/editor.menu.item.params.title": "매개 변수",
@@ -48,7 +47,6 @@
   "admin/editor.menu.item.params.noFollow.title": "nofollow 속성",
   "admin/editor.menu.item.params.tagTitle.title": "제목 속성",
   "admin/editor.menu.submenu.title": "하위 메뉴",
-  
   "admin/editor.menu.additionalDef.title": "추가 정의",
   "admin/editor.menu.def.none": "없음",
   "admin/editor.menu.def.title": "제목",

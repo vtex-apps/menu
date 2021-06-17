@@ -18,16 +18,13 @@
   "admin/editor.menu-link.links.link.position.left": "Stânga",
   "admin/editor.menu-link.links.link.position.middle": "Mijloc",
   "admin/editor.menu-link.links.link.position.right": "Dreapta",
-  
   "admin/editor.future-menu.title": "Meniu",
   "admin/editor.future-menu.description": "Aplicația VTEX Menu",
   "admin/editor.menu.typography.title": "Tipografie",
   "admin/editor.menu.typography.description": "Permite utilizatorilor să aleagă ce clasă de tipografie va fi folosite în articolele meniului",
-  
   "admin/editor.menu.orientation.title": "Orientare",
   "admin/editor.menu.orientation.vertical.label": "vertical",
   "admin/editor.menu.orientation.horizontal.label": "orizontal",
-  
   "admin/editor.menu.items.title": "Articol meniu",
   "admin/editor.menu.item.id.title": "ID",
   "admin/editor.menu.item.type.title": "Tip",
@@ -36,6 +33,8 @@
   "admin/editor.menu.item.iconId.title": "ID iconiță",
   "admin/editor.menu.item.editorItemTitle.title": "Denumire articol meniu",
   "admin/editor.menu.item.editorItemTitle.description": "Acest lucru va fi vizibil doar în Site Editor",
+  "admin/editor.menu.item.iconProps": "Props Iconiță",
+  "admin/editor.menu.item.iconProps.id.title": "ID iconiță",
   "admin/editor.menu.item.highlight.title": "Evidențiere",
   "admin/editor.menu.item.submenuWidth.title": "Lățime sub-meniu",
   "admin/editor.menu.item.params.title": "Parametri",
@@ -48,7 +47,6 @@
   "admin/editor.menu.item.params.noFollow.title": "atribut nofollow",
   "admin/editor.menu.item.params.tagTitle.title": "atribut titlu",
   "admin/editor.menu.submenu.title": "Sub-meniu",
-  
   "admin/editor.menu.additionalDef.title": "Definiție suplimentară",
   "admin/editor.menu.def.none": "Niciunul",
   "admin/editor.menu.def.title": "Titlu",

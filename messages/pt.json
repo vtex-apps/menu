@@ -3,7 +3,7 @@
   "admin/editor.menu-link.title": "Título",
   "admin/editor.menu-link.description": "Uma barra de menu com links",
   "admin/editor.menu-link.links": "Links",
-  "admin/editor.menu-link.links.link": "Link",
+  "admin/editor.menu-link.links.link": "URL",
   "admin/editor.menu-link.links.link.text": "Texto do Link",
   "admin/editor.menu-link.links.link.internalPage": "Página Alvo",
   "admin/editor.menu-link.links.link.internalPage.description": "Se interna",
@@ -18,18 +18,15 @@
   "admin/editor.menu-link.links.link.position.left": "Esquerda",
   "admin/editor.menu-link.links.link.position.middle": "Centro",
   "admin/editor.menu-link.links.link.position.right": "Direita",
-
   "admin/editor.future-menu.title": "Menu",
   "admin/editor.future-menu.description": "Menu de navegação",
   "admin/editor.menu.typography.title": "Tipografia",
   "admin/editor.menu.typography.description": "Permite escolher a classe de tipografia para ser usada pelos itens do menu",
-
   "admin/editor.menu.orientation.title": "Orientação",
   "admin/editor.menu.orientation.vertical.label": "vertical",
   "admin/editor.menu.orientation.horizontal.label": "horizontal",
-
   "admin/editor.menu.items.title": "Item do Menu",
-  "admin/editor.menu.item.id.title": "ID",
+  "admin/editor.menu.item.id.title": "Código",
   "admin/editor.menu.item.type.title": "Tipo",
   "admin/editor.menu.item.category.title": "Categoria",
   "admin/editor.menu.item.custom.title": "Customizado",
@@ -48,7 +45,6 @@
   "admin/editor.menu.item.params.noFollow.title": "Atributo nofollow",
   "admin/editor.menu.item.params.tagTitle.title": "Atributo title",
   "admin/editor.menu.submenu.title": "Submenu",
-
   "admin/editor.menu.additionalDef.title": "Definições adicionais",
   "admin/editor.menu.def.none": "Nenhuma",
   "admin/editor.menu.def.title": "Título",

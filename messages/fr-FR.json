@@ -18,16 +18,13 @@
   "admin/editor.menu-link.links.link.position.left": "Gauche",
   "admin/editor.menu-link.links.link.position.middle": "Milieu",
   "admin/editor.menu-link.links.link.position.right": "Droite",
-  
   "admin/editor.future-menu.title": "Menu",
   "admin/editor.future-menu.description": "L’application VTEX Menu",
   "admin/editor.menu.typography.title": "Typographie",
   "admin/editor.menu.typography.description": "Permet aux utilisateurs de choisir la typographie qui sera utilisée dans les éléments du menu",
-  
   "admin/editor.menu.orientation.title": "Orientation",
   "admin/editor.menu.orientation.vertical.label": "verticale",
   "admin/editor.menu.orientation.horizontal.label": "horizontale",
-  
   "admin/editor.menu.items.title": "Élément de menu",
   "admin/editor.menu.item.id.title": "Identité",
   "admin/editor.menu.item.type.title": "Type",
@@ -48,7 +45,6 @@
   "admin/editor.menu.item.params.noFollow.title": "attribut nofollow",
   "admin/editor.menu.item.params.tagTitle.title": "attribut title",
   "admin/editor.menu.submenu.title": "Sous-menu",
-  
   "admin/editor.menu.additionalDef.title": "Définition supplémentaire",
   "admin/editor.menu.def.none": "Aucun",
   "admin/editor.menu.def.title": "Titre",
