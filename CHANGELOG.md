@@ -7,31 +7,44 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- French, Spanish, Japanese, Italian, Korean and Dutch translation.
+
+### Changed
+- Gitignore to include .vscode.
+
+### Removed
+- Pseudolanguage
+
 ## [2.34.3] - 2021-12-10
 
 ## [2.34.2] - 2021-12-10
+
 ### Fixed
 - Add categoryId back - it was mistakenly removed in the previous deploy
 
 ## [2.34.1] - 2021-10-18
+
 ### Fixed
-- IconId useless and duplicated not working properly on contentSchema
+- IconId useless and duplicated not working properly on contentSchema.
 
 ## [2.34.0] - 2021-10-05
+
 ### Added
-- Add prop 'onMountBehavior' to allow opening submenu on mount
+- Add prop 'onMountBehavior' to allow opening submenu on mount.
 
 ## [2.33.0] - 2021-09-24
 
-### Added 
-- I18n Bg and Bs
+### Added
+- Bulgarian and Pseudolanguage translation.
 
 ### Fixed
-- I18n Fr, It, Ja, Ko, Nl and Ro
+- French, Italian, Japanese, Korean, Dutch and Romanian translation.
 
 ## [2.32.1] - 2021-09-13
+
 ### Added
-- Update schema to be able to change svg icon from Site Editor
+- Update schema to be able to change svg icon from Site Editor.
 
 ## [2.32.0] - 2021-06-24
 
