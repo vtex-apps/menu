@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Add prop 'isOpenOnMount' to allow opening submenu on mount
 
+## [2.32.0] - 2021-06-24
+### Added
+- Add CSS handles modifiers of open and close to menu item.
+
 ## [2.31.0] - 2021-05-05
 
 ### Added
