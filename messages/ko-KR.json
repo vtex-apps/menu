@@ -34,6 +34,7 @@
   "admin/editor.menu.item.category.title": "카테고리",
   "admin/editor.menu.item.custom.title": "사용자 지정",
   "admin/editor.menu.item.iconId.title": "아이콘 ID",
+  "admin/editor.menu.item.onMountBehavior.title": "마우스 오버 시 하위 메뉴 열기",
   "admin/editor.menu.item.editorItemTitle.title": "메뉴 항목 이름",
   "admin/editor.menu.item.editorItemTitle.description": "이것은 사이트 편집기에만 표시됩니다.",
   "admin/editor.menu.item.highlight.title": "하이라이트",

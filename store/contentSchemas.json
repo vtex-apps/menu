@@ -206,10 +206,13 @@
           "type": "string",
           "nullable": true
         },
-        "isOpenOnMount": {
-          "title": "admin/editor.menu.item.isOpenOnMount.title",
-          "type": "boolean",
-          "nullable": true
+        "onMountBehavior": {
+          "title": "admin/editor.menu.item.onMountBehavior.title",
+          "type": "string",
+          "enum": [
+            "open",
+            "closed"
+          ]
         }
       }
     },
