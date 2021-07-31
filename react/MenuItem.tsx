@@ -34,7 +34,7 @@ export interface MenuItemSchema {
   iconPosition: 'left' | 'right'
   highlight: boolean
   itemProps: CategoryItemSchema | CustomItemSchema
-  onMountBehavior?: string
+  onMountBehavior?: 'open' | 'closed'
   blockClass?: string
   experimentalOptimizeRendering?: boolean
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
@@ -43,7 +43,7 @@ export interface MenuItemSchema {
 type SubmenuState = {
   hasBeenActive: boolean
   isActive: boolean
-  onMountBehavior?: string
+  onMountBehavior?: 'open' | 'closed'
 }
 
 type SubmenuAction =
@@ -81,9 +81,6 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
   onMountBehavior = 'closed',
   ...props
 }) => {
-
-  console.log('TESTE', onMountBehavior)
-
 
   const { experimentalOptimizeRendering } = useContext(MenuContext)
   const [
