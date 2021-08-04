@@ -8,8 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Added
-- Add prop 'onMountBehavior' to allow opening submenu on mount (DDSC-126)
 
+- Add prop 'onMountBehavior' to allow opening submenu on mount
 ## [2.32.0] - 2021-06-24
 
 ### Added

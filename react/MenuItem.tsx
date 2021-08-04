@@ -87,8 +87,8 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
     { isActive, hasBeenActive, onMountBehavior: onMountBehaviorFlag },
     dispatch,
   ] = useReducer(submenuReducer, {
-    hasBeenActive: onMountBehavior === 'open' ?? false,
-    isActive: onMountBehavior === 'open' ?? false,
+    hasBeenActive: onMountBehavior === 'open',
+    isActive: onMountBehavior === 'open',
     onMountBehavior,
   })
   const [isHovered, setHovered] = useState(false)
