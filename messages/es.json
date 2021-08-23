@@ -34,7 +34,7 @@
   "admin/editor.menu.item.category.title": "Categoría",
   "admin/editor.menu.item.custom.title": "Personalizado",
   "admin/editor.menu.item.iconId.title": "ID de icono",
-  "admin/editor.menu.item.onMountBehavior.title": "Submenú abierto on flotar",
+  "admin/editor.menu.item.onMountBehavior.title": "El submenú se abre al pasar el mouse por encima",
   "admin/editor.menu.item.editorItemTitle.title": "Nombre del Elemento del menú",
   "admin/editor.menu.item.editorItemTitle.description": "Esto solo será visible en Site Editor",
   "admin/editor.menu.item.highlight.title": "Destacado",

@@ -34,7 +34,7 @@
   "admin/editor.menu.item.category.title": "Categorie",
   "admin/editor.menu.item.custom.title": "Personalizat",
   "admin/editor.menu.item.iconId.title": "ID iconiță",
-  "admin/editor.menu.item.onMountBehavior.title": "Submeniul se deschide pe hover",
+  "admin/editor.menu.item.onMountBehavior.title": "Submeniul se deschide la trecerea cu mouse-ul",
   "admin/editor.menu.item.editorItemTitle.title": "Denumire articol meniu",
   "admin/editor.menu.item.editorItemTitle.description": "Acest lucru va fi vizibil doar în Site Editor",
   "admin/editor.menu.item.highlight.title": "Evidențiere",
