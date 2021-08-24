@@ -81,7 +81,6 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
   onMountBehavior = 'closed',
   ...props
 }) => {
-
   const { experimentalOptimizeRendering } = useContext(MenuContext)
   const [
     { isActive, hasBeenActive, onMountBehavior: onMountBehaviorFlag },
