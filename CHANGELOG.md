@@ -7,7 +7,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-
 - Update schema to be able to change svg icon from Site Editor
 
 ## [2.32.0] - 2021-06-24

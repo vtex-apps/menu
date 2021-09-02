@@ -141,10 +141,10 @@
                   "type": "object",
                   "properties": {
                     "iconProps": {
-                      "title": "Icon Props",
+                      "title": "admin/editor.menu.item.iconProps",
                       "properties": {
                         "id": {
-                          "title": "Icon Props: ID",
+                          "title": "admin/editor.menu.item.iconProps.id.title",
                           "type": "string",
                           "default": null
                         }
@@ -210,11 +210,6 @@
           "widget": {
             "ui:widget": "radio"
           }
-        },
-        "iconId": {
-          "title": "admin/editor.menu.item.iconId.title",
-          "type": "string",
-          "nullable": true
         }
       }
     },
