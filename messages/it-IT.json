@@ -18,16 +18,13 @@
   "admin/editor.menu-link.links.link.position.left": "Sinistra",
   "admin/editor.menu-link.links.link.position.middle": "Centro",
   "admin/editor.menu-link.links.link.position.right": "Destra",
-  
   "admin/editor.future-menu.title": "Menù",
   "admin/editor.future-menu.description": "App VTEX Menu",
   "admin/editor.menu.typography.title": "Tipografia",
   "admin/editor.menu.typography.description": "Consente agli utenti di scegliere quale classe tipografica verrà utilizzata nelle voci di menu",
-  
   "admin/editor.menu.orientation.title": "Orientamento",
   "admin/editor.menu.orientation.vertical.label": "verticale",
   "admin/editor.menu.orientation.horizontal.label": "orizzontale",
-  
   "admin/editor.menu.items.title": "Voce di menù",
   "admin/editor.menu.item.id.title": "ID",
   "admin/editor.menu.item.type.title": "Tipo",
@@ -36,6 +33,8 @@
   "admin/editor.menu.item.iconId.title": "ID icona",
   "admin/editor.menu.item.editorItemTitle.title": "Nome della voce di menù",
   "admin/editor.menu.item.editorItemTitle.description": "Sarà visibile solo su Site Editor",
+  "admin/editor.menu.item.iconProps": "Props di icona",
+  "admin/editor.menu.item.iconProps.id.title": "ID icona",
   "admin/editor.menu.item.highlight.title": "In evidenza",
   "admin/editor.menu.item.submenuWidth.title": "Larghezza sottomenù",
   "admin/editor.menu.item.params.title": "Parametri",
@@ -48,7 +47,6 @@
   "admin/editor.menu.item.params.noFollow.title": "attributo nofollow",
   "admin/editor.menu.item.params.tagTitle.title": "attributo title",
   "admin/editor.menu.submenu.title": "Sottomenù",
-  
   "admin/editor.menu.additionalDef.title": "Definizione aggiuntiva",
   "admin/editor.menu.def.none": "Nessuna",
   "admin/editor.menu.def.title": "Titolo",
