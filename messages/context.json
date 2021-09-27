@@ -18,16 +18,13 @@
   "admin/editor.menu-link.links.link.position.left": "admin/editor.menu-link.links.link.position.left",
   "admin/editor.menu-link.links.link.position.middle": "admin/editor.menu-link.links.link.position.middle",
   "admin/editor.menu-link.links.link.position.right": "admin/editor.menu-link.links.link.position.right",
-
   "admin/editor.future-menu.title": "Title of the menu editor used in storefront",
   "admin/editor.future-menu.description": "Description of the menu",
   "admin/editor.menu.typography.title": "Title of the editor 'typography' item.",
   "admin/editor.menu.typography.description": "Allows users to choose which typography class will be used in the menu items",
-
   "admin/editor.menu.orientation.title": "Title for the orientation option",
   "admin/editor.menu.orientation.vertical.label": "Label for vertical orientation",
   "admin/editor.menu.orientation.horizontal.label": "Label for horizontal orientation",
-
   "admin/editor.menu.items.title": "menu items title",
   "admin/editor.menu.item.id.title": "item id title",
   "admin/editor.menu.item.type.title": "item type title",
@@ -48,7 +45,6 @@
   "admin/editor.menu.item.params.noFollow.title": "params noFollow title",
   "admin/editor.menu.item.params.tagTitle.title": "params tagTitle title",
   "admin/editor.menu.submenu.title": "Submenu's title",
-
   "admin/editor.menu.additionalDef.title": "Additional Definition title",
   "admin/editor.menu.def.none": "None value used in radio button",
   "admin/editor.menu.def.title": "Title value used in radio button",
