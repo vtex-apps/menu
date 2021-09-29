@@ -33,6 +33,8 @@
   "admin/editor.menu.item.editorItemTitle.title": "editorItemTitle title",
   "admin/editor.menu.item.iconId.title": "iconId title",
   "admin/editor.menu.item.onMountBehavior.title": "onMountBehavior title",
+  "admin/editor.menu.item.iconProps": "iconProps title",
+  "admin/editor.menu.item.iconProps.id.title": "iconId title",
   "admin/editor.menu.item.highlight.title": "highlight title",
   "admin/editor.menu.item.submenuWidth.title": "subMenuWidth title",
   "admin/editor.menu.item.params.title": "params Title",

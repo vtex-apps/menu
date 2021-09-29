@@ -37,6 +37,10 @@
   "admin/editor.menu.item.onMountBehavior.title": "Submenu is open on hover",
   "admin/editor.menu.item.editorItemTitle.title": "Menu Item Name",
   "admin/editor.menu.item.editorItemTitle.description": "This will only be visible on Site Editor",
+  
+  "admin/editor.menu.item.iconProps": "Icon Props",
+  "admin/editor.menu.item.iconProps.id.title": "Icon ID",
+  
   "admin/editor.menu.item.highlight.title": "Highlight",
   "admin/editor.menu.item.submenuWidth.title": "Submenu Width",
   "admin/editor.menu.item.params.title": "Params",

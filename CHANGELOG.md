@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Add prop 'onMountBehavior' to allow opening submenu on mount
 
+## [2.33.0] - 2021-09-24
+
+### Added 
+- I18n Bg and Bs
+
+### Fixed
+- I18n Fr, It, Ja, Ko, Nl and Ro
+
+## [2.32.1] - 2021-09-13
+### Added
+- Update schema to be able to change svg icon from Site Editor
+
 ## [2.32.0] - 2021-06-24
 
 ### Added

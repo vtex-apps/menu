@@ -140,6 +140,16 @@
                 "itemProps": {
                   "type": "object",
                   "properties": {
+                    "iconProps": {
+                      "title": "admin/editor.menu.item.iconProps",
+                      "properties": {
+                        "id": {
+                          "title": "admin/editor.menu.item.iconProps.id.title",
+                          "type": "string",
+                          "default": null
+                        }
+                      }
+                    },
                     "type": {
                       "title": "admin/editor.menu.item.params.type.title",
                       "type": "string",
