@@ -31,6 +31,7 @@
   "admin/editor.menu.item.category.title": "Categoria",
   "admin/editor.menu.item.custom.title": "Customizado",
   "admin/editor.menu.item.iconId.title": "ID do ícone",
+  "admin/editor.menu.item.onMountBehavior.title": "Submenu aberto no hover",
   "admin/editor.menu.item.editorItemTitle.title": "Nome do Ítem do Menu",
   "admin/editor.menu.item.editorItemTitle.description": "Só será visível dentro do Site Editor",
   "admin/editor.menu.item.highlight.title": "Destaque",

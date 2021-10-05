@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Add prop 'onMountBehavior' to allow opening submenu on mount
 
 ## [2.33.0] - 2021-09-24
 
@@ -20,6 +22,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update schema to be able to change svg icon from Site Editor
 
 ## [2.32.0] - 2021-06-24
+
 ### Added
 - Add CSS handles modifiers of open and close to menu item.
 

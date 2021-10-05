@@ -34,19 +34,22 @@ export interface MenuItemSchema {
   iconPosition: 'left' | 'right'
   highlight: boolean
   itemProps: CategoryItemSchema | CustomItemSchema
+  onMountBehavior?: 'open' | 'closed'
   blockClass?: string
   experimentalOptimizeRendering?: boolean
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
-const submenuInitialState = {
-  hasBeenActive: false,
-  isActive: false,
+type SubmenuState = {
+  hasBeenActive: boolean
+  isActive: boolean
+  onMountBehavior?: 'open' | 'closed'
 }
 
-type SubmenuState = typeof submenuInitialState
-
-type SubmenuAction = { type: 'SHOW_SUBMENU' } | { type: 'HIDE_SUBMENU' }
+type SubmenuAction =
+  | { type: 'SHOW_SUBMENU' }
+  | { type: 'HIDE_SUBMENU' }
+  | { type: 'DISABLE_ON_MOUNT_BEHAVIOR_FLAG' }
 
 const submenuReducer: Reducer<SubmenuState, SubmenuAction> = (
   state,
@@ -63,6 +66,11 @@ const submenuReducer: Reducer<SubmenuState, SubmenuAction> = (
         ...state,
         isActive: false,
       }
+    case 'DISABLE_ON_MOUNT_BEHAVIOR_FLAG':
+      return {
+        ...state,
+        onMountBehavior: 'closed',
+      }
     default:
       return state
   }
@@ -70,13 +78,18 @@ const submenuReducer: Reducer<SubmenuState, SubmenuAction> = (
 
 const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
   children,
+  onMountBehavior = 'closed',
   ...props
 }) => {
   const { experimentalOptimizeRendering } = useContext(MenuContext)
-  const [{ isActive, hasBeenActive }, dispatch] = useReducer(
-    submenuReducer,
-    submenuInitialState
-  )
+  const [
+    { isActive, hasBeenActive, onMountBehavior: onMountBehaviorFlag },
+    dispatch,
+  ] = useReducer(submenuReducer, {
+    hasBeenActive: onMountBehavior === 'open',
+    isActive: onMountBehavior === 'open',
+    onMountBehavior,
+  })
   const [isHovered, setHovered] = useState(false)
   const setActive = useCallback(
     (value: boolean) => {
@@ -86,6 +99,12 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
     },
     [isActive]
   )
+  
+  const disableIsOpenOnMountFlag = useCallback(() => {
+    if (onMountBehaviorFlag === 'open') {
+      dispatch({ type: 'DISABLE_ON_MOUNT_BEHAVIOR_FLAG' })
+    }
+  }, [onMountBehaviorFlag])
 
   // Close any active/open menu when url changes
   useUrlChange(() => {
@@ -118,13 +137,13 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
       }
 
       // if a menu is still active but is not hovered for at least 400ms, close it
-      if (isActive && !isHovered) {
+      if (isActive && !isHovered && onMountBehaviorFlag === 'closed') {
         closeTimeout.current = window.setTimeout(() => {
           setActive(false)
         }, 400)
       }
     },
-    [isActive, isCollapsible, isHovered, setActive]
+    [isActive, isCollapsible, isHovered, setActive, onMountBehaviorFlag]
   )
 
   const { handles } = useCssHandles(CSS_HANDLES, { classes: props.classes })
@@ -166,6 +185,7 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
       onMouseEnter={() => {
         debouncedSetActive(true)
         setHovered(true)
+        disableIsOpenOnMountFlag()
       }}
       onMouseLeave={() => {
         debouncedSetActive(false)
@@ -220,6 +240,10 @@ const messages = defineMessages({
   internalTitle: {
     defaultMessage: '',
     id: 'admin/editor.menu.item.params.internal.title',
+  },
+  onMountBehaviorTitle: {
+    defaultMessage: '',
+    id: 'admin/editor.menu.item.onMountBehavior.title',
   },
   itemIdTitle: {
     defaultMessage: '',

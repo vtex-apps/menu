@@ -31,6 +31,7 @@
   "admin/editor.menu.item.category.title": "カテゴリ",
   "admin/editor.menu.item.custom.title": "カスタム",
   "admin/editor.menu.item.iconId.title": "アイコン ID",
+  "admin/editor.menu.item.onMountBehavior.title": "マウスを重ねるとサブメニューが開きます",
   "admin/editor.menu.item.editorItemTitle.title": "メニュー項目名",
   "admin/editor.menu.item.editorItemTitle.description": "これはサイト編集者にのみ表示されます",
   "admin/editor.menu.item.highlight.title": "ハイライト",
