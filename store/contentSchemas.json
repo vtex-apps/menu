@@ -118,16 +118,7 @@
                   "enum": [
                     "category"
                   ]
-                },
-                "itemProps": {
-                  "type": "object",
-                  "properties": {
-                    "categoryId": {
-                      "title": "admin/editor.menu.item.params.categoryId.title",
-                      "type": "string"
-                    }
-                  }
-                }
+                }                
               }
             },
             {
@@ -136,20 +127,10 @@
                   "enum": [
                     "custom"
                   ]
-                },
+                },              
                 "itemProps": {
                   "type": "object",
-                  "properties": {
-                    "iconProps": {
-                      "title": "admin/editor.menu.item.iconProps",
-                      "properties": {
-                        "id": {
-                          "title": "admin/editor.menu.item.iconProps.id.title",
-                          "type": "string",
-                          "default": null
-                        }
-                      }
-                    },
+                  "properties": {                    
                     "type": {
                       "title": "admin/editor.menu.item.params.type.title",
                       "type": "string",
@@ -179,6 +160,26 @@
                       "$ref": "app:vtex.native-types#/definitions/text"
                     }
                   }
+                },
+                "iconProps": {
+                  "title": "admin/editor.menu.item.iconProps",
+                  "properties": {
+                    "id": {
+                      "title": "admin/editor.menu.item.iconProps.id.title",
+                      "type": "string",
+                      "default": null
+                    },
+                    "size":{
+                      "title": "admin/editor.menu.item.iconProps.size.title",
+                      "type": "integer",
+                      "default": 16
+                    },
+                    "viewBox": {
+                      "title": "admin/editor.menu.item.iconProps.viewBox.title",
+                      "type": "string",
+                      "default": "0 0 16 16"
+                    }      
+                  }
                 }
               }
             }
@@ -192,7 +193,7 @@
           "type": "string"
         },
         "highlight": {
-          "title": "admin/editor.menu.item.highlight.title",
+          "title": "admin/editor.menu.item.highlight.title",          
           "type": "boolean"
         },
         "type": {
@@ -210,11 +211,6 @@
           "widget": {
             "ui:widget": "radio"
           }
-        },
-        "iconId": {
-          "title": "admin/editor.menu.item.iconId.title",
-          "type": "string",
-          "nullable": true
         },
         "onMountBehavior": {
           "title": "admin/editor.menu.item.onMountBehavior.title",
