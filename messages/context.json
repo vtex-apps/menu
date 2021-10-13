@@ -31,6 +31,7 @@
   "admin/editor.menu.item.category.title": "'category' item type title",
   "admin/editor.menu.item.custom.title": "'custom' item type title",
   "admin/editor.menu.item.editorItemTitle.title": "editorItemTitle title",
+  "admin/editor.menu.item.editorItemTitle.description": "editorItemTitle description",
   "admin/editor.menu.item.iconId.title": "iconId title",  
   "admin/editor.menu.item.onMountBehavior.title": "onMountBehavior title",
   "admin/editor.menu.item.iconProps": "iconProps title",
