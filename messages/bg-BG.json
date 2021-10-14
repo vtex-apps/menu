@@ -29,7 +29,7 @@
   "admin/editor.menu.item.id.title": "ИД",
   "admin/editor.menu.item.type.title": "Тип",
   "admin/editor.menu.item.category.title": "Категория",
-  "admin/editor.menu.item.custom.title": "По избор",  
+  "admin/editor.menu.item.custom.title": "По избор",
   "admin/editor.menu.item.iconProps.id.title": "Икона на ИД",
   "admin/editor.menu.item.editorItemTitle.title": "Наименование на елемент от меню",
   "admin/editor.menu.item.editorItemTitle.description": "Това ще е видимо само в редактора за сайтове",
