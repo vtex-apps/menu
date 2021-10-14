@@ -29,7 +29,7 @@
   "admin/editor.menu.item.id.title": "ID",
   "admin/editor.menu.item.type.title": "Tipo",
   "admin/editor.menu.item.category.title": "Categoria",
-  "admin/editor.menu.item.custom.title": "Personalizzato",  
+  "admin/editor.menu.item.custom.title": "Personalizzato",
   "admin/editor.menu.item.iconProps.id.title": "ID icona",
   "admin/editor.menu.item.onMountBehavior.title": "Il sottomenù si apre al passaggio del mouse",
   "admin/editor.menu.item.editorItemTitle.title": "Nome della voce di menù",

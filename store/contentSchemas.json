@@ -127,7 +127,7 @@
                   "enum": [
                     "custom"
                   ]
-                },              
+                },
                 "itemProps": {
                   "type": "object",
                   "properties": {                    
@@ -183,7 +183,7 @@
           "type": "string"
         },
         "highlight": {
-          "title": "admin/editor.menu.item.highlight.title",          
+          "title": "admin/editor.menu.item.highlight.title",
           "type": "boolean"
         },
         "type": {
