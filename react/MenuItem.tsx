@@ -233,10 +233,6 @@ const messages = defineMessages({
     defaultMessage: '',
     id: 'admin/editor.menu.item.params.href.title',
   },
-  iconIdTitle: {
-    defaultMessage: '',
-    id: 'admin/editor.menu.item.iconId.title',
-  },
   internalTitle: {
     defaultMessage: '',
     id: 'admin/editor.menu.item.params.internal.title',
