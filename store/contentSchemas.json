@@ -168,17 +168,7 @@
                       "title": "admin/editor.menu.item.iconProps.id.title",
                       "type": "string",
                       "default": null
-                    },
-                    "size":{
-                      "title": "admin/editor.menu.item.iconProps.size.title",
-                      "type": "integer",
-                      "default": 16
-                    },
-                    "viewBox": {
-                      "title": "admin/editor.menu.item.iconProps.viewBox.title",
-                      "type": "string",
-                      "default": "0 0 16 16"
-                    }      
+                    }
                   }
                 }
               }

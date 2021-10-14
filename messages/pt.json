@@ -31,8 +31,6 @@
   "admin/editor.menu.item.category.title": "Categoria",
   "admin/editor.menu.item.custom.title": "Customizado",
   "admin/editor.menu.item.iconProps.id.title": "ID do ícone",
-  "admin/editor.menu.item.iconProps.size.title": "Tamanho do ícone",
-  "admin/editor.menu.item.iconProps.viewBox.title": "viewBox do ícone",
   "admin/editor.menu.item.onMountBehavior.title": "Submenu aberto no hover",
   "admin/editor.menu.item.editorItemTitle.title": "Nome do Ítem do Menu",
   "admin/editor.menu.item.editorItemTitle.description.title": "Só será visível dentro do Site Editor",
