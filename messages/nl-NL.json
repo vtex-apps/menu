@@ -30,7 +30,7 @@
   "admin/editor.menu.item.type.title": "Type",
   "admin/editor.menu.item.category.title": "Category",
   "admin/editor.menu.item.custom.title": "Aangepast",
-  "admin/editor.menu.item.iconId.title": "Icoon-id",
+  "admin/editor.menu.item.iconProps.id.title": "Icoon-id",
   "admin/editor.menu.item.onMountBehavior.title": "Submenu wordt geopend bij beweging van de cursor over het scherm",
   "admin/editor.menu.item.editorItemTitle.title": "Naam menu-item",
   "admin/editor.menu.item.editorItemTitle.description": "Dit zal alleen zichtbaar zijn op Site Editor",

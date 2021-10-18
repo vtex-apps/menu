@@ -62,7 +62,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
   const iconComponent = iconProps?.id ? (
     <span className={`${handles.styledLinkIcon} mh2`} data-testid={iconTestId}>
       <Icon
-        id={iconProps.id ? iconProps.id : iconId}
+        id={iconProps.id}
         isActive={iconProps.isActive}
         size={iconProps.size}
         viewBox={iconProps.viewBox}

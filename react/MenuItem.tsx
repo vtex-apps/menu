@@ -99,7 +99,6 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
     },
     [isActive]
   )
-  
   const disableIsOpenOnMountFlag = useCallback(() => {
     if (onMountBehaviorFlag === 'open') {
       dispatch({ type: 'DISABLE_ON_MOUNT_BEHAVIOR_FLAG' })
@@ -232,10 +231,6 @@ const messages = defineMessages({
   hrefTitle: {
     defaultMessage: '',
     id: 'admin/editor.menu.item.params.href.title',
-  },
-  iconIdTitle: {
-    defaultMessage: '',
-    id: 'admin/editor.menu.item.iconId.title',
   },
   internalTitle: {
     defaultMessage: '',

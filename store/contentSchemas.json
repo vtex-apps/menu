@@ -118,16 +118,7 @@
                   "enum": [
                     "category"
                   ]
-                },
-                "itemProps": {
-                  "type": "object",
-                  "properties": {
-                    "categoryId": {
-                      "title": "admin/editor.menu.item.params.categoryId.title",
-                      "type": "string"
-                    }
-                  }
-                }
+                }                
               }
             },
             {
@@ -139,17 +130,7 @@
                 },
                 "itemProps": {
                   "type": "object",
-                  "properties": {
-                    "iconProps": {
-                      "title": "admin/editor.menu.item.iconProps",
-                      "properties": {
-                        "id": {
-                          "title": "admin/editor.menu.item.iconProps.id.title",
-                          "type": "string",
-                          "default": null
-                        }
-                      }
-                    },
+                  "properties": {                    
                     "type": {
                       "title": "admin/editor.menu.item.params.type.title",
                       "type": "string",
@@ -177,6 +158,16 @@
                     "tagTitle": {
                       "title": "admin/editor.menu.item.params.tagTitle.title",
                       "$ref": "app:vtex.native-types#/definitions/text"
+                    }
+                  }
+                },
+                "iconProps": {
+                  "title": "admin/editor.menu.item.iconProps",
+                  "properties": {
+                    "id": {
+                      "title": "admin/editor.menu.item.iconProps.id.title",
+                      "type": "string",
+                      "default": null
                     }
                   }
                 }
@@ -210,11 +201,6 @@
           "widget": {
             "ui:widget": "radio"
           }
-        },
-        "iconId": {
-          "title": "admin/editor.menu.item.iconId.title",
-          "type": "string",
-          "nullable": true
         },
         "onMountBehavior": {
           "title": "admin/editor.menu.item.onMountBehavior.title",
