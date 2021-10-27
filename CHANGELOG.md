@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Added the description for the `iconId`.
+
 ## [2.34.1] - 2021-10-18
 ### Fixed
 - IconId useless and duplicated not working properly on contentSchema
