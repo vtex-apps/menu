@@ -138,7 +138,8 @@ The available `menu-item` block props are as follows:
 | Prop name      | Type     | Description                                          | Default value |
 | -------------- | -------- | ---------------------------------------------------- | ------------- |
 | `type`         | `String` | Menu item type, either `category` or `custom`                                            | `category`           |
-| `id`         | `String` | menu item ID                                           | `undefined`           |
+| `id`           | `String` | menu item ID                                         | `undefined`   |
+| `iconId`       | `String` | ID for the desired [Store Icons'](https://developers.vtex.com/vtex-developer-docs/docs/vtex-store-icons#usage) to be rendered alongside the `menu-item` block.| `null`   |
 | `highlight`         | `boolean` | Whether the item has highlight                                            | `undefined`           |
 | `iconPosition`         | `String` | Icon position relative to the menu item text. Either to the `left` or `right`                                           | `left`          |
 | `iconProps`         | `IconProps` | Icon props                                           | `undefined`           |
