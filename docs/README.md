@@ -84,7 +84,6 @@ _Example:_
       {
         "id": "menu-item-about-us",
         "type": "custom",
-        "iconId": null,
         "highlight": false,
         "itemProps": {
           "type": "internal",
