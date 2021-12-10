@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- Add categoryId back - it was mistakenly removed in the previous deploy
 
 ## [2.34.1] - 2021-10-18
 ### Fixed
