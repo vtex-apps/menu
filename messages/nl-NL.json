@@ -34,6 +34,8 @@
   "admin/editor.menu.item.onMountBehavior.title": "Submenu wordt geopend bij beweging van de cursor over het scherm",
   "admin/editor.menu.item.editorItemTitle.title": "Naam menu-item",
   "admin/editor.menu.item.editorItemTitle.description": "Dit zal alleen zichtbaar zijn op Site Editor",
+  "admin/editor.menu.item.iconProps": "Pictogram props",
+  "admin/editor.menu.item.iconProps.id.title": "Icoon-id",
   "admin/editor.menu.item.highlight.title": "Highlight",
   "admin/editor.menu.item.submenuWidth.title": "Breedte submenu",
   "admin/editor.menu.item.params.title": "Params",
