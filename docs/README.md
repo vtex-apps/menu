@@ -72,7 +72,6 @@ _Example:_
       {
         "id": "menu-item-shop",
         "type": "custom",
-        "iconId": null,
         "highlight": false,
         "itemProps": {
           "type": "internal",
@@ -85,7 +84,6 @@ _Example:_
       {
         "id": "menu-item-about-us",
         "type": "custom",
-        "iconId": null,
         "highlight": false,
         "itemProps": {
           "type": "internal",
@@ -138,7 +136,7 @@ The available `menu-item` block props are as follows:
 | Prop name      | Type     | Description                                          | Default value |
 | -------------- | -------- | ---------------------------------------------------- | ------------- |
 | `type`         | `String` | Menu item type, either `category` or `custom`                                            | `category`           |
-| `id`         | `String` | menu item ID                                           | `undefined`           |
+| `id`           | `String` | menu item ID                                         | `undefined`   |
 | `highlight`         | `boolean` | Whether the item has highlight                                            | `undefined`           |
 | `iconPosition`         | `String` | Icon position relative to the menu item text. Either to the `left` or `right`                                           | `left`          |
 | `iconProps`         | `IconProps` | Icon props                                           | `undefined`           |

@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Removed the description for the `iconId` and example.
+
 ## [2.34.4] - 2021-12-16
 
 ### Fixed
