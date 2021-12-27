@@ -118,7 +118,16 @@
                   "enum": [
                     "category"
                   ]
-                }                
+                },
+                "itemProps": {
+                  "type": "object",
+                  "properties": {
+                    "categoryId": {
+                      "title": "admin/editor.menu.item.params.categoryId.title",
+                      "type": "string"
+                    }
+                  } 
+                }             
               }
             },
             {

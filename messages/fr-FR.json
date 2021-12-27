@@ -34,6 +34,8 @@
   "admin/editor.menu.item.onMountBehavior.title": "Le sous-menu est ouvert sur pointage",
   "admin/editor.menu.item.editorItemTitle.title": "Nom de l’item du menu",
   "admin/editor.menu.item.editorItemTitle.description": "Ceci ne sera visible que dans l’éditeur du site (Site Editor)",
+  "admin/editor.menu.item.iconProps": "Propriétés d’icônes",
+  "admin/editor.menu.item.iconProps.id.title": "ID de l’icône",
   "admin/editor.menu.item.highlight.title": "Point fort",
   "admin/editor.menu.item.submenuWidth.title": "Largeur du sous-menu",
   "admin/editor.menu.item.params.title": "Paramètres",

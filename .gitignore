@@ -35,3 +35,4 @@ npm-debug.log
 .build/
 lib
 package-lock.json
+.vscode
