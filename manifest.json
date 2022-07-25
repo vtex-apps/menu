@@ -1,7 +1,7 @@
 {
   "name": "menu",
   "vendor": "vtex",
-  "version": "2.34.23",
+  "version": "2.34.24",
   "title": "VTEX Menu",
   "description": "A Menu Component",
   "mustUpdateAt": "2019-04-03",
