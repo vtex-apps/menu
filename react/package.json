@@ -38,5 +38,8 @@
     "vtex.store-components": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.134.0/public/@types/vtex.store-components",
     "vtex.store-graphql": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-graphql@2.136.8/public/@types/vtex.store-graphql",
     "vtex.store-icons": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-icons@0.18.0/public/@types/vtex.store-icons"
+  },
+  "resolutions": {
+    "json-schema": "^0.4.0"
   }
 }
