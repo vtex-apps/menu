@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-- `jsdom` to yarn resolutions field.
+- `jsdom` and `jest-environment-jsdom` to yarn resolutions field.
 
 ## [2.34.22] - 2022-07-25
 ### Added
