@@ -31,7 +31,7 @@
   "admin/editor.menu.item.category.title": "Category",
   "admin/editor.menu.item.custom.title": "Custom",
   "admin/editor.menu.item.iconProps.id.title": "Icon ID",
-  "admin/editor.menu.item.onMountBehavior.title": "Submenu is open on hover",
+  "admin/editor.menu.item.onMountBehavior.title": "Submenu behavior on hover",
   "admin/editor.menu.item.editorItemTitle.title": "Menu item name",
   "admin/editor.menu.item.editorItemTitle.description": "This will only be visible on Site Editor",
   "admin/editor.menu.item.highlight.title": "Highlight",
