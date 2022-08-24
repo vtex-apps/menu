@@ -8,7 +8,7 @@
   "admin/editor.menu-link.links.link.internalPage": "Página-alvo",
   "admin/editor.menu-link.links.link.internalPage.description": "Se interna",
   "admin/editor.menu-link.links.link.params": "Parâmetros",
-  "admin/editor.menu-link.links.link.params.description": "Parâmetros separados por vírgula, ex.: chave=valor,a=b,c=d",
+  "admin/editor.menu-link.links.link.params.description": "Os parâmetros devem ser separados por vírgula, ex.: chave=valor,a=b,c=d",
   "admin/editor.menu-link.links.link.externalPage": "URL (deve começar com https ou http)",
   "admin/editor.menu-link.links.link.externalPage.description": "Se externa",
   "admin/editor.menu-link.links.link.typeOfRoute": "Tipo de rota",
