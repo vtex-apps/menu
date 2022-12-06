@@ -28,6 +28,8 @@ export const useMouseSpeedDebouncer = (
       const speed = getMouseSpeed()
       if (speed <= maxSpeed) {
         fn(...args)
+      } else if (lastSpeed !== null && lastSpeed > maxSpeed) {
+        fn(...args)
       } else if (lastSpeed == null || lastSpeed !== speed) {
         timeout.current = window.setTimeout(check, delay)
       }
