@@ -56,7 +56,8 @@ _Example:_
       "activeClassName": "rebel-pink",
       "mutedClassName": "c-action-primary"
     },
-    "iconToTheRight": true
+    "iconToTheRight": true,
+    "analyticsEvent": "menu_footer_click"
   }
 }
 ```
@@ -79,7 +80,8 @@ _Example:_
           "noFollow": false,
           "tagTitle": "Shop",
           "text": "Shop"
-        }
+        },
+        "analyticsEvent": "menu_footer_click"
       },
       {
         "id": "menu-item-about-us",
@@ -91,7 +93,8 @@ _Example:_
           "noFollow": false,
           "tagTitle": "about-us",
           "text": "About Us"
-        }
+        },
+        "analyticsEvent": "menu_footer_click"
       }
     ]
   }
@@ -112,6 +115,7 @@ You can define a submenu for a menu-item:
       "tagTitle": "Shop",
       "text": "Shop"
     },
+    "analyticsEvent": "menu_footer_click"
   },
   "blocks": ["vtex.menu@2.x:submenu#shop"] // Defining a submenu
 },
@@ -143,6 +147,7 @@ The available `menu-item` block props are as follows:
 | `onMountBehavior` | `enum` | Whether the submenu should always be automatically displayed when its parent is hovered/clicked on (`open`) or not (`closed`). | `closed` |
 | `itemProps`         | `CategoryItem` or `CustomItem` | Item props                                           | `undefined`           |
 | `classes`         | `CustomCSSClasses` | Used to override default CSS handles. To better understand how this prop works, we recommend reading about it [here](https://github.com/vtex-apps/css-handles#usecustomclasses). Note that this is only useful if you're importing this block as a React component.                                      | `undefined`           |
+| `analyticsEvent`         | `String` | Used to generate [event message](https://developer.mozilla.org/en-US/docs/Web/API/Window/message_event) on click of menu item, for web analytics purposes.                                   | `undefined`           |
 
 - For icons in the menu items:
 
@@ -207,6 +212,10 @@ In order to apply CSS customizations on this and other blocks, follow the instru
 | `submenuWrapper--isOpen`   |
 | `submenuWrapper`           |
 | `submenu`                  |
+
+#### Web analytics
+To track user data when a menu item is clicked, an [event message](https://developer.mozilla.org/en-US/docs/Web/API/Window/message_event) can be generated, containing `analyticsEvent` and `itemProps`.
+
 
 ## Contributors
 
