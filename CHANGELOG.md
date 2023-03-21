@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - German translation.
 
+### Fixed
+- I18n issue in Menu Items content schema.
+
 ## [2.34.26] - 2022-12-06
 ### Fixed
 - Fix submenu stays open if mouse leaves menu.
