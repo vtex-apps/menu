@@ -31,7 +31,7 @@
   "admin/editor.menu.item.category.title": "Kategorie",
   "admin/editor.menu.item.custom.title": "Benutzerdefiniert",
   "admin/editor.menu.item.iconProps.id.title": "Symbol-ID",
-  "admin/editor.menu.item.onMountBehavior.title": "Untermenü ist beim Mausverschiebung geöffnet",
+  "admin/editor.menu.item.onMountBehavior.title": "Untermenü ist bei Mausverschiebung geöffnet",
   "admin/editor.menu.item.editorItemTitle.title": "Name des Menüpunkts",
   "admin/editor.menu.item.editorItemTitle.description": "Dies wird nur im Site-Editor sichtbar sein",
   "admin/editor.menu.item.highlight.title": "Hervorhebung",
