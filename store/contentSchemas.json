@@ -101,7 +101,7 @@
         "items": {
           "minItems": 0,
           "type": "array",
-          "title": "Menu Items",
+          "title": "admin/editor.menu.items.title",
           "items": {
             "$ref": "app:vtex.menu#/definitions/MenuItem"
           }
