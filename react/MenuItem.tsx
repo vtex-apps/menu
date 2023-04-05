@@ -136,10 +136,14 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
       }
 
       // if a menu is still active but is not hovered for at least 400ms, close it
-      if (isActive && !isHovered && onMountBehaviorFlag === 'closed') {
+      if (isActive && !isHovered && onMountBehaviorFlag !== 'open') {
         closeTimeout.current = window.setTimeout(() => {
           setActive(false)
         }, 400)
+      }
+
+      return () => {
+        closeTimeout.current && clearTimeout(closeTimeout.current)
       }
     },
     [isActive, isCollapsible, isHovered, setActive, onMountBehaviorFlag]
