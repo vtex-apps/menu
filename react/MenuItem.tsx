@@ -24,6 +24,7 @@ import useSubmenuImplementation from './hooks/useSubmenuImplementation'
 import MenuContext from './components/MenuContext'
 import { useMouseSpeedDebouncer } from './hooks/useMouseSpeedDebouncer'
 import { useUrlChange } from './hooks/useUrlChange'
+import { usePixel } from 'vtex.pixel-manager'
 
 const CSS_HANDLES = ['menuItem', 'menuItemInnerDiv'] as const
 
@@ -38,6 +39,7 @@ export interface MenuItemSchema {
   blockClass?: string
   experimentalOptimizeRendering?: boolean
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+  analyticsEvent?: string
 }
 
 type SubmenuState = {
@@ -81,6 +83,13 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
   onMountBehavior = 'closed',
   ...props
 }) => {
+  const {push} = usePixel(); 
+  const pushAnalyticsEvent = () => {
+    props?.analyticsEvent && push({
+      event: props.analyticsEvent,
+      props: props.itemProps
+    })
+  }
   const { experimentalOptimizeRendering } = useContext(MenuContext)
   const [
     { isActive, hasBeenActive, onMountBehavior: onMountBehaviorFlag },
@@ -194,6 +203,7 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
         debouncedSetActive(false)
         setHovered(false)
       }}
+      onClick={pushAnalyticsEvent}
     >
       <Item {...props} active={isActive} />
       {(isActive || !experimentalOptimizeRendering) && (
