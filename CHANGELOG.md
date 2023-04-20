@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased]
+
+### Fixed
 - Updated readme.md according to task LOC-10500.
 
 ## [2.35.1] - 2023-04-05
