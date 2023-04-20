@@ -8,13 +8,13 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-VTEX Menu is a store component responsible for displaying a bar containing links and drop-down sub-menus.
+VTEX Menu is a store component that displays a bar containing links and dropdown submenus.
 
-![menu-app](https://user-images.githubusercontent.com/52087100/68619014-5af1c680-04a9-11ea-9cdc-23468bd55c23.png)
+![menu-app](https://cdn.jsdelivr.net/gh/vtexdocs/dev-portal-content@main/images/vtex-menu-0.png)
 
 ## Configuration
 
-1. Import the menu's app to your dependencies as `manifest.json`, for example:
+1. Import the menu app to your dependencies as `manifest.json`. For example:
 
 ```json
   "dependencies": {
@@ -24,7 +24,7 @@ VTEX Menu is a store component responsible for displaying a bar containing links
 
 2. Add the `vtex.menu@2.x:menu` block to the [store header](https://github.com/vtex-apps/store-header/blob/master/store/interfaces.json) template.
 
-3. To build the store's menu options, you need to configure the `menu-item` blocks. These can be declared in two different ways in `vtex.menu@2.x:menu`: as children or as props. The advantage of this latest `menu-item` configuration compared is that Site Editor can be used to edit the blocks.
+3. Configure the `menu-item` blocks to build the store menu options. These can be declared in two ways in `vtex.menu@2.x:menu`: as children or as props. The advantage of the second type of `menu-item` configuration is that Site Editor can be used to edit the blocks.
 
 ### `menu-item` as children
 
@@ -98,7 +98,7 @@ _Example:_
 }
 ```
 
-You can define a submenu for a menu-item:
+You can define a submenu for a menu item:
 
 ```jsonc
 "menu-item#shop": {
@@ -128,53 +128,53 @@ You can define a submenu for a menu-item:
 ```
 
 <div class="alert alert-info">
-The Menu block has no prerequisite children. Therefore, any menu block implementation does not need to have any blocks declared within it to properly function.
+The Menu block has no prerequisite children. Therefore, Menu block implementations do not need to have any blocks declared within them to function properly.
 </div>
 
 The available `menu-item` block props are as follows:
 
-| Prop name      | Type     | Description                                          | Default value |
-| -------------- | -------- | ---------------------------------------------------- | ------------- |
-| `type`         | `String` | Menu item type, either `category` or `custom`                                            | `category`           |
-| `id`           | `String` | menu item ID                                         | `undefined`   |
-| `highlight`         | `boolean` | Whether the item has highlight                                            | `undefined`           |
-| `iconPosition`         | `String` | Icon position relative to the menu item text. Either to the `left` or `right`                                           | `left`          |
-| `iconProps`         | `IconProps` | Icon props                                           | `undefined`           |
-| `onMountBehavior` | `enum` | Whether the submenu should always be automatically displayed when its parent is hovered/clicked on (`open`) or not (`closed`). | `closed` |
-| `itemProps`         | `CategoryItem` or `CustomItem` | Item props                                           | `undefined`           |
-| `classes`         | `CustomCSSClasses` | Used to override default CSS handles. To better understand how this prop works, we recommend reading about it [here](https://github.com/vtex-apps/css-handles#usecustomclasses). Note that this is only useful if you're importing this block as a React component.                                      | `undefined`           |
+| Prop name         | Type                           | Description                                                                                                                                                                                                                                                           | Default value |
+| ----------------- | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `type`            | `string`                       | Menu item type, either `category` or `custom`                                                                                                                                                                                                                         | `category`    |
+| `id`              | `string`                       | Menu item ID                                                                                                                                                                                                                                                          | `undefined`   |
+| `highlight`       | `boolean`                      | Whether the item has a highlight                                                                                                                                                                                                                                      | `undefined`   |
+| `iconPosition`    | `string`                       | Icon position relative to the menu item text. Either to the `left` or `right`.                                                                                                                                                                                        | `left`        |
+| `iconProps`       | `IconProps`                    | Icon props                                                                                                                                                                                                                                                            | `undefined`   |
+| `onMountBehavior` | `enum`                         | Whether the submenu should always be automatically displayed when its parent is hovered/clicked on (`open`) or (`close`).                                                                                                                                             | `closed`      |
+| `itemProps`       | `CategoryItem` or `CustomItem` | Item props                                                                                                                                                                                                                                                            | `undefined`   |
+| `classes`         | `CustomCSSClasses`             | Used to override default CSS handles. To better understand how this prop works, we recommend reading about it [here](https://github.com/vtex-apps/css-handles#usecustomclasses). Please note that this is only useful when importing this block as a React component. | `undefined`   |
 
 - For icons in the menu items:
 
-| Prop name      | Type     | Description                                          | Default value |
-| -------------- | -------- | ---------------------------------------------------- | ------------- |
-| `id`         | `String` | Icon ID  | N/A           |
-| `isActive`         | `boolean` | Whether the item is active or not | `true`          |
-| `size`         | `number` | Icon size | 16           |
-| `viewBox`         | `String` | Icon view box   | `0 0 16 16`           |
-| `activeClassName`         | `String` | Icon classname when `isActive` is true  | N/A           |
-| `mutedClassName`         | `String` | Icon classname when `isActive` is false  | N/A           |
+| Prop name         | Type      | Description                             | Default value |
+| ----------------- | --------- | --------------------------------------- | ------------- |
+| `id`              | `string`  | Icon ID                                 | N/A           |
+| `isActive`        | `boolean` | Whether or not the item is active       | `true`        |
+| `size`            | `number`  | Icon size                               | 16            |
+| `viewBox`         | `string`  | Icon view box                           | `0 0 16 16`   |
+| `activeClassName` | `string`  | Icon classname when `isActive` is true  | N/A           |
+| `mutedClassName`  | `string`  | Icon classname when `isActive` is false | N/A           |
 
-- For category related menu items:
+- For category-related menu items:
 
-| Prop name      | Type     | Description                                          | Default value |
-| -------------- | -------- | ---------------------------------------------------- | ------------- |
-| `categoryId`         | `number` | Item category ID  | N/A           |
-| `text`         | `String` | Menu item text  | N/A          |
+| Prop name    | Type     | Description      | Default value |
+| ------------ | -------- | ---------------- | ------------- |
+| `categoryId` | `number` | Item category ID | N/A           |
+| `text`       | `string` | Menu item text   | N/A           |
 
 - For customized items:
 
-| Prop name      | Type     | Description                                          | Default value |
-| -------------- | -------- | ---------------------------------------------------- | ------------- |
-| `type`         | `String` | Menu item type, either `internal` or `external` | `internal`           |
-| `href`         | `String` |  Link to where the menu item leads  | N/A |
-| `noFollow`         | `boolean` | No follow attribute  | N/A          |
-| `tagTitle`         | `String` | Menu item tag  | N/A          |
-| `text`         | `String` | Menu item text  | N/A          |
+| Prop name  | Type      | Description                                     | Default value |
+| ---------- | --------- | ----------------------------------------------- | ------------- |
+| `type`     | `string`  | Menu item type, either `internal` or `external` | `internal`    |
+| `href`     | `string`  | Link to where the menu item leads               | N/A           |
+| `noFollow` | `boolean` | No follow attribute                             | N/A           |
+| `tagTitle` | `string`  | Menu item tag                                   | N/A           |
+| `text`     | `string`  | Menu item text                                  | N/A           |
 
 #### Customization
 
-In order to apply CSS customizations on this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
+To apply CSS customizations to this and other blocks, please follow the instructions in [Using CSS Handles for store customization](https://developers.vtex.com/docs/guides/vtex-io-documentation-using-css-handles-for-store-customization).
 
 | CSS Handle                 |
 | -------------------------- |
