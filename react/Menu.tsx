@@ -19,6 +19,7 @@ interface MenuSchema {
   title?: MenuItemSchema
   additionalDef?: string
   blockClass?: string
+
   items?: MenuItemSchema[]
   experimentalOptimizeRendering?: boolean
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
@@ -51,7 +52,7 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
   textType,
   title,
   categoryId,
-  items: itemsProps = [], // aqui
+  items: itemsProps = [],
   children,
   experimentalOptimizeRendering = false,
   classes,
@@ -74,14 +75,12 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
 
   const menuItems = itemsProps
     .filter(item => item.itemProps)
-    .map((
-      { itemProps: { text }, itemProps, blockClass, ...rest } // aqui
-    ) => (
+    .map(({ itemProps: { text }, itemProps, blockClassItem, ...rest }) => (
       <MenuItem
         key={text}
         itemProps={itemProps}
+        blockClassItem={blockClassItem}
         {...rest}
-        blockClass={blockClass}
       />
     ))
 

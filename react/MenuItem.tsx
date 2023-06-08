@@ -35,7 +35,7 @@ export interface MenuItemSchema {
   highlight: boolean
   itemProps: CategoryItemSchema | CustomItemSchema
   onMountBehavior?: 'open' | 'closed'
-  blockClass?: string
+  blockClassItem?: string
   experimentalOptimizeRendering?: boolean
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
@@ -79,6 +79,7 @@ const submenuReducer: Reducer<SubmenuState, SubmenuAction> = (
 const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
   children,
   onMountBehavior = 'closed',
+  blockClassItem,
   ...props
 }) => {
   const { experimentalOptimizeRendering } = useContext(MenuContext)
@@ -168,7 +169,12 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
             event.stopPropagation()
           }}
         >
-          <Item {...props} accordion active={isActive} />
+          <Item
+            blockClassItem={blockClassItem}
+            accordion
+            active={isActive}
+            {...props}
+          />
         </div>
         {(hasBeenActive || !experimentalOptimizeRendering) && (
           /* Collapsible menus need to still persist after being open,
@@ -195,7 +201,8 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
         setHovered(false)
       }}
     >
-      <Item {...props} active={isActive} />
+      <Item blockClassItem={blockClassItem} {...props} active={isActive} />
+
       {(isActive || !experimentalOptimizeRendering) && (
         <>
           <ExtensionPoint id="submenu" isOpen={isActive} />

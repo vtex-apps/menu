@@ -42,6 +42,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
     iconPosition,
     treePath,
     blockClass,
+    blockClassItem,
     ...rest
   } = props
 
@@ -49,7 +50,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
 
   const linkClassNames = classNames(
     withModifiers('styledLink', highlight ? 'highlight' : ''),
-    withModifiers('styledLink-custom', blockClass ?? ''),
+    withModifiers('styledLink-custom', blockClassItem ?? ''),
     'no-underline pointer',
 
     {
@@ -124,6 +125,7 @@ export interface StyledLinkProps extends LinkProps {
   iconId?: string
   iconProps?: IconProps
   blockClass?: string
+  blockClassItem?: string
   iconPosition?: 'left' | 'right'
 }
 

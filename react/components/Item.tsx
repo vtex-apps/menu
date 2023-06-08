@@ -15,7 +15,7 @@ const menuItemTypes = {
 }
 
 const Item: FunctionComponent<ItemProps> = props => {
-  const { type, itemProps, ...rest } = props
+  const { type, itemProps, blockClassItem, ...rest } = props
 
   // TODO: fix
   const Component = menuItemTypes[type] as any
@@ -24,13 +24,14 @@ const Item: FunctionComponent<ItemProps> = props => {
     return null
   }
 
-  return <Component {...rest} {...itemProps} />
+  return <Component blockClassItem={blockClassItem} {...rest} {...itemProps} />
 }
 
 interface ItemProps extends StyledLinkProps {
   type: 'category' | 'custom'
   accordion?: boolean
   itemProps: CategoryItemSchema | CustomItemSchema
+  blockClassItem?: string
 }
 
 export default Item
