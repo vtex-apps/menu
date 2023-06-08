@@ -51,7 +51,7 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
   textType,
   title,
   categoryId,
-  items: itemsProps = [],
+  items: itemsProps = [], // aqui
   children,
   experimentalOptimizeRendering = false,
   classes,
@@ -74,8 +74,15 @@ const Menu: StorefrontFunctionComponent<MenuSchema> = ({
 
   const menuItems = itemsProps
     .filter(item => item.itemProps)
-    .map(({ itemProps: { text }, itemProps, ...rest }) => (
-      <MenuItem key={text} itemProps={itemProps} {...rest} />
+    .map((
+      { itemProps: { text }, itemProps, blockClass, ...rest } // aqui
+    ) => (
+      <MenuItem
+        key={text}
+        itemProps={itemProps}
+        {...rest}
+        blockClass={blockClass}
+      />
     ))
 
   return (

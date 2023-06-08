@@ -13,6 +13,7 @@ const CSS_HANDLES = [
   'styledLinkContainer',
   'styledLinkContent',
   'accordionIcon',
+  'styledLink-custom',
 ] as const
 
 const defaultTypography: Record<number, string> = {
@@ -40,6 +41,7 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
     iconProps,
     iconPosition,
     treePath,
+    blockClass,
     ...rest
   } = props
 
@@ -47,7 +49,9 @@ const StyledLink: FunctionComponent<StyledLinkProps> = props => {
 
   const linkClassNames = classNames(
     withModifiers('styledLink', highlight ? 'highlight' : ''),
+    withModifiers('styledLink-custom', blockClass ?? ''),
     'no-underline pointer',
+
     {
       [typography]: true,
       'c-emphasis': highlight,
@@ -119,6 +123,7 @@ export interface StyledLinkProps extends LinkProps {
   treePath?: string
   iconId?: string
   iconProps?: IconProps
+  blockClass?: string
   iconPosition?: 'left' | 'right'
 }
 
