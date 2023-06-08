@@ -7,10 +7,20 @@ import StyledLink, { StyledLinkProps } from './StyledLink'
 const CustomItem: FunctionComponent<
   CustomItemProps & { intl: any }
 > = props => {
-  const { type, noFollow, tagTitle, text, href, intl, ...rest } = props
+  const {
+    type,
+    noFollow,
+    tagTitle,
+    text,
+    href,
+    intl,
+    blockClassItem,
+    ...rest
+  } = props
 
   return (
     <StyledLink
+      blockClassItem={blockClassItem}
       {...rest}
       to={href}
       title={formatIOMessage({ id: tagTitle, intl })}
@@ -30,6 +40,7 @@ export interface CustomItemSchema {
   noFollow: boolean
   tagTitle: string
   text: string
+  blockClassItem?: string
 }
 
 export default injectIntl(CustomItem)

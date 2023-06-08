@@ -8,9 +8,7 @@
             {
               "properties": {
                 "additionalDef": {
-                  "enum": [
-                    "category"
-                  ]
+                  "enum": ["category"]
                 },
                 "categoryId": {
                   "type": "integer",
@@ -21,9 +19,7 @@
             {
               "properties": {
                 "additionalDef": {
-                  "enum": [
-                    "title"
-                  ]
+                  "enum": ["title"]
                 },
                 "title": {
                   "$ref": "app:vtex.menu#/definitions/MenuItem"
@@ -33,9 +29,7 @@
             {
               "properties": {
                 "additionalDef": {
-                  "enum": [
-                    "enum"
-                  ]
+                  "enum": ["enum"]
                 }
               }
             }
@@ -45,11 +39,7 @@
       "properties": {
         "additionalDef": {
           "title": "admin/editor.menu.additionalDef.title",
-          "enum": [
-            "none",
-            "category",
-            "title"
-          ],
+          "enum": ["none", "category", "title"],
           "enumNames": [
             "admin/editor.menu.def.none",
             "admin/editor.menu.def.category",
@@ -88,10 +78,7 @@
         "orientation": {
           "title": "admin/editor.menu.orientation.title",
           "type": "string",
-          "enum": [
-            "vertical",
-            "horizontal"
-          ],
+          "enum": ["vertical", "horizontal"],
           "enumNames": [
             "admin/editor.menu.orientation.vertical.label",
             "admin/editor.menu.orientation.horizontal.label"
@@ -108,6 +95,7 @@
         }
       }
     },
+
     "MenuItem": {
       "dependencies": {
         "type": {
@@ -115,9 +103,7 @@
             {
               "properties": {
                 "type": {
-                  "enum": [
-                    "category"
-                  ]
+                  "enum": ["category"]
                 },
                 "itemProps": {
                   "type": "object",
@@ -126,27 +112,22 @@
                       "title": "admin/editor.menu.item.params.categoryId.title",
                       "type": "string"
                     }
-                  } 
-                }             
+                  }
+                }
               }
             },
             {
               "properties": {
                 "type": {
-                  "enum": [
-                    "custom"
-                  ]
+                  "enum": ["custom"]
                 },
                 "itemProps": {
                   "type": "object",
-                  "properties": {                    
+                  "properties": {
                     "type": {
                       "title": "admin/editor.menu.item.params.type.title",
                       "type": "string",
-                      "enum": [
-                        "internal",
-                        "external"
-                      ],
+                      "enum": ["internal", "external"],
                       "enumNames": [
                         "admin/editor.menu.item.params.internal.title",
                         "admin/editor.menu.item.params.external.title"
@@ -198,10 +179,7 @@
         "type": {
           "title": "admin/editor.menu.item.type.title",
           "type": "string",
-          "enum": [
-            "category",
-            "custom"
-          ],
+          "enum": ["category", "custom"],
           "default": "custom",
           "enumNames": [
             "admin/editor.menu.item.category.title",
@@ -214,10 +192,7 @@
         "onMountBehavior": {
           "title": "admin/editor.menu.item.onMountBehavior.title",
           "type": "string",
-          "enum": [
-            "open",
-            "closed"
-          ]
+          "enum": ["open", "closed"]
         }
       }
     },
@@ -226,10 +201,7 @@
       "properties": {
         "submenuWidth": {
           "title": "admin/editor.menu.item.submenuWidth.title",
-          "enum": [
-            "100%",
-            "auto"
-          ],
+          "enum": ["100%", "auto"],
           "default": "auto"
         }
       }

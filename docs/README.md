@@ -42,6 +42,7 @@ _Example:_
     "id": "menu-item-shop",
     "type": "custom",
     "highlight": false,
+    "blockClassItem": "custom-class"
     "itemProps": {
       "type": "internal",
       "href": "#",
@@ -136,6 +137,7 @@ The available `menu-item` block props are as follows:
 | Prop name         | Type                           | Description                                                                                                                                                                                                                                                           | Default value |
 | ----------------- | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
 | `type`            | `string`                       | Menu item type, either `category` or `custom`                                                                                                                                                                                                                         | `category`    |
+| `blockClassItem`            | `string`                       | you can pass a class for each  menu item                                                                                                                                                                                                                         | `undefined`    |
 | `id`              | `string`                       | Menu item ID                                                                                                                                                                                                                                                          | `undefined`   |
 | `highlight`       | `boolean`                      | Whether the item has a highlight                                                                                                                                                                                                                                      | `undefined`   |
 | `iconPosition`    | `string`                       | Icon position relative to the menu item text. Either to the `left` or `right`.                                                                                                                                                                                        | `left`        |
