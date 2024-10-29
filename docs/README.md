@@ -2,19 +2,13 @@
 
 # Menu
 
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
-
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-
-VTEX Menu is a store component that displays a bar containing links and dropdown submenus.
+The Menu component displays a navigation bar with links and dropdown submenus. It can be configured to display internal or external links and supports both category-based and custom menu items.
 
 ![menu-app](https://cdn.jsdelivr.net/gh/vtexdocs/dev-portal-content@main/images/vtex-menu-0.png)
 
 ## Configuration
 
-1. Import the menu app to your dependencies as `manifest.json`. For example:
+1. Add the app to your store theme's dependencies in the `manifest.json`.
 
 ```json
   "dependencies": {
@@ -98,7 +92,9 @@ _Example:_
 }
 ```
 
-You can define a submenu for a menu item:
+### Adding a submenu 
+
+You can define a submenu by adding the `submenu` block to a `menu-item`:
 
 ```jsonc
 "menu-item#shop": {
@@ -128,8 +124,10 @@ You can define a submenu for a menu item:
 ```
 
 <div class="alert alert-info">
-The Menu block has no prerequisite children. Therefore, Menu block implementations do not need to have any blocks declared within them to function properly.
+The Menu block doesn't require any specific child blocks to function
 </div>
+
+## `menu-item` props
 
 The available `menu-item` block props are as follows:
 
@@ -142,9 +140,9 @@ The available `menu-item` block props are as follows:
 | `iconProps`       | `IconProps`                    | Icon props                                                                                                                                                                                                                                                            | `undefined`   |
 | `onMountBehavior` | `enum`                         | Whether the submenu should always be automatically displayed when its parent is hovered/clicked on (`open`) or (`close`).                                                                                                                                             | `closed`      |
 | `itemProps`       | `CategoryItem` or `CustomItem` | Item props                                                                                                                                                                                                                                                            | `undefined`   |
-| `classes`         | `CustomCSSClasses`             | Used to override default CSS handles. To better understand how this prop works, we recommend reading about it [here](https://github.com/vtex-apps/css-handles#usecustomclasses). Please note that this is only useful when importing this block as a React component. | `undefined`   |
+| `blockClass`         | `CustomCSSClasses`             | Used to override default CSS handles. To learn how this prop works, we recommend reading about it [here](https://github.com/vtex-apps/css-handles#usecustomclasses). Please note that this is only useful when importing this block as a React component. | `undefined`   |
 
-- For icons in the menu items:
+### Icon props
 
 | Prop name         | Type      | Description                             | Default value |
 | ----------------- | --------- | --------------------------------------- | ------------- |
@@ -155,14 +153,14 @@ The available `menu-item` block props are as follows:
 | `activeClassName` | `string`  | Icon classname when `isActive` is true  | N/A           |
 | `mutedClassName`  | `string`  | Icon classname when `isActive` is false | N/A           |
 
-- For category-related menu items:
+### Category-specific props
 
 | Prop name    | Type     | Description      | Default value |
 | ------------ | -------- | ---------------- | ------------- |
 | `categoryId` | `number` | Item category ID | N/A           |
 | `text`       | `string` | Menu item text   | N/A           |
 
-- For customized items:
+### Custom item props
 
 | Prop name  | Type      | Description                                     | Default value |
 | ---------- | --------- | ----------------------------------------------- | ------------- |
@@ -172,7 +170,7 @@ The available `menu-item` block props are as follows:
 | `tagTitle` | `string`  | Menu item tag                                   | N/A           |
 | `text`     | `string`  | Menu item text                                  | N/A           |
 
-#### Customization
+## Customization
 
 To apply CSS customizations to this and other blocks, please follow the instructions in [Using CSS Handles for store customization](https://developers.vtex.com/docs/guides/vtex-io-documentation-using-css-handles-for-store-customization).
 
