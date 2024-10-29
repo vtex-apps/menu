@@ -2,6 +2,12 @@
 
 # Menu
 
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+
 The Menu component displays a navigation bar with links and dropdown submenus. It can be configured to display internal or external links and supports both category-based and custom menu items.
 
 ![menu-app](https://cdn.jsdelivr.net/gh/vtexdocs/dev-portal-content@main/images/vtex-menu-0.png)
