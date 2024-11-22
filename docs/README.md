@@ -129,9 +129,7 @@ You can define a submenu by adding the `submenu` block to a `menu-item`:
 }
 ```
 
-<div class="alert alert-info">
-The Menu block doesn't require any specific child blocks to work
-</div>
+>ℹ️ The Menu block doesn't require any specific child blocks to work
 
 ## `menu-item` props
 
